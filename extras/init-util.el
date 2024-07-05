@@ -26,6 +26,6 @@
     (setq url-proxy-services nil)
     (message "No HTTP proxy")))
 
-(provide 'init-simple)
-;;; init-simple.el ends here
+(provide 'init-util)
+;;; init-util.el ends here
 

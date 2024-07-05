@@ -11,6 +11,24 @@
 
 ;;; Code:
 
+(use-package avy
+  :ensure t
+  :bind (("M-g w" . avy-goto-word-1)
+	 ("M-g l" . avy-goto-line)
+	 ("M-g c" . avy-goto-char-timer)))
+
+(use-package vundo
+  :ensure t
+  :bind (("C-c /" . vundo)))
+
+(use-package easy-kill
+  :ensure t
+  :bind (([remap kill-ring-save] . easy-kill)
+	 ([remap mark-sexp] . easy-mark)))
+
+(use-package speedrect)
+;; :vc (:url "https://github.com/jdtsmith/speedrect")
+
 (use-package no-littering
   :ensure t
   :config (no-littering-theme-backups))
@@ -21,7 +39,7 @@
   (vertico-mode +1)
   :bind (:map vertico-map
 	("RET" . vertico-directory-enter)
-        ("DEL" . vertico-directory-delete-char))
+	("DEL" . vertico-directory-delete-char))
   :config
   (vertico-indexed-mode +1))
 
@@ -30,7 +48,6 @@
   :init
   (setq corfu-auto t)
   (global-corfu-mode +1))
-
 
 (use-package embark
   :ensure t
@@ -46,16 +63,17 @@
 	 ("C-x r b" . consult-bookmark)
 	 ("M-r"     . consult-recent-file)
 	 ("M-y"     . consult-yank-pop)
+	 ("M-s f"   . consult-fd)
 	 ("M-s r"   . consult-ripgrep)
 	 ("M-s l"   . consult-line)
 	 ("M-s M-l" . consult-line-multi)
 	 ("M-g i"   . consult-imenu)
 	 ("M-g g"   . consult-goto-line)
 	 ("M-g m"   . consult-mark)
-         ("M-g M-m" . consult-global-mark))
+	 ("M-g M-m" . consult-global-mark))
   :config
   (setq xref-show-xrefs-function #'consult-xref
-        xref-show-definitions-function #'consult-xref)
+	xref-show-definitions-function #'consult-xref)
   (setq consult-ripgrep-args (concat consult-ripgrep-args " --hidden"))
   (consult-customize
    consult-theme :preview-key '(:debounce 0.2 any)
@@ -70,7 +88,7 @@
   :config
   (setq completion-styles '(basic orderless))
   (setq completion-category-overrides '((file (styles basic partial-completion))
-                                        (eglot (styles basic yx/orderless-with-initialism)))))
+					(eglot (styles basic yx/orderless-with-initialism)))))
 
 
 (provide 'init-base)

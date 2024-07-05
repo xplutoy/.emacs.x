@@ -20,6 +20,10 @@
 
 (defvar yx/org-dir "~/org-notes/")
 
+(defconst IS-MAC (eq system-type 'darwin))
+
+(defconst IS-WIN (eq system-type 'windows-nt))
+
 (set-language-environment "UTF-8")
 
 (with-eval-after-load 'package
@@ -72,6 +76,11 @@
 
 (setopt recentf-auto-cleanup 300)
 
+(setopt split-width-threshold 120)
+
+(setopt custom-file null-device)
+
+
 ;; global mirror mode
 
 (winner-mode +1)
@@ -108,11 +117,24 @@
 ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(cl-loop for font in '("LXGW WenKai" "Microsoft Yahei" "PingFang SC")
-	 when (x-list-fonts font)
-	 return (set-fontset-font t 'han (font-spec :family font)))
+(defvar yx/f-font "IBM Plex Mono")
+(defvar yx/v-font "IBM Plex Sans")
+(defvar yx/s-font "IBM Plex Serif")
 
-(load-theme 'modus-operandi t)
+(defun yx/setup-font ()
+  (set-frame-font "Courier New-14" nil t)
+
+  (set-face-attribute 'fixed-pitch nil :family yx/f-font)
+  (set-face-attribute 'variable-pitch nil :family yx/v-font)
+  (set-face-attribute 'fixed-pitch-serif nil :family yx/s-font)
+
+  (cl-loop for font in '("LXGW WenKai" "Microsoft Yahei" "PingFang SC")
+	   when (x-list-fonts font)
+	   return (set-fontset-font t 'han (font-spec :family font)))
+
+  (load-theme 'modus-operandi t))
+
+(add-hook 'after-init-hook #'yx/setup-font)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
@@ -121,6 +143,9 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (keymap-global-unset "C-z")
+
+(keymap-global-set "C-/"   #'undo-only)
+(keymap-global-set "M-/"   #'hippie-expand)
 
 (keymap-global-set "C-z ." #'repeat)
 (keymap-global-set "C-z a" #'org-agenda-list)
@@ -136,37 +161,14 @@
 ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(add-to-list 'load-path
-	     (expand-file-name "extras" user-emacs-directory))
+(add-to-list 'load-path "~/.emacs.d/extras")
 
-(require 'init-simple)
+(require 'init-util)
 
 (require 'init-base)
 
-(require 'init-org)
+(require 'init-org+)
 
-(require 'init-writting)
-
-(require 'init-dev)
+(require 'init-dev+)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;
-;;;   Customization
-;;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(blink-cursor-mode nil)
- '(package-selected-packages
-   '(olivetti orderless no-littering magit denote embark-consult consult embark corfu vertico))
- '(tool-bar-mode nil))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(default ((t (:family "Courier New" :foundry "outline" :slant normal :weight regular :height 143 :width normal)))))

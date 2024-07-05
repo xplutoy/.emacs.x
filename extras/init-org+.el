@@ -11,6 +11,12 @@
 
 ;;; Code:
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;
+;;;   Org
+;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (setq org-directory yx/org-dir)
 
 (setq org-agenda-files '("inbox.org" "work.org"))
@@ -34,6 +40,7 @@
 (use-package org
   :init
   (setq org-pretty-entities t)
+  (setq org-use-sub-superscripts '{})
   (setq org-startup-folded 'show2levels)
   (setq org-crypt-key nil)
   (setq org-special-ctrl-k t)
@@ -79,6 +86,7 @@
 		   ("xelatex -no-pdf -interaction nonstopmode -shell-escape -output-directory %o %f")
 		   :image-converter
 		   ("dvisvgm %f -e -n -b min -c %S -o %O"))))
+  (setq org-preview-latex-image-directory (no-littering-expand-var-file-name "ltximg/"))
   :config
   (add-to-list 'org-latex-classes
                '("ctexart"
@@ -89,15 +97,57 @@
                  ("\\paragraph{%s}"     . "\\paragraph*{%s}")
                  ("\\subparagraph{%s}"  . "\\subparagraph*{%s}"))))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;
+;;;   Org+
+;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (use-package valign
   :ensure t
   :hook (org-mode . valign-mode))
 
+(use-package mixed-pitch
+  :ensure t
+  :hook (text-mode . mixed-pitch-mode))
+
 (use-package org-modern
   :ensure t
-  :after org
   :config (global-org-modern-mode +1))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;
+;;;   Writting and Reading
+;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(provide 'init-org)
-;;; init-org.el ends here
+(use-package denote
+  :ensure t
+  :bind (("C-c n c"   . denote)
+	 ("C-c n t"   . denote-template)
+	 ("C-c n n"   . denote-open-or-create)
+	 ("C-c n i"   . denote-link-or-create)
+	 ("C-c n C-l" . denote-backlinks)
+	 ("C-c n C-f" . denote-find-link)
+	 ("C-c n C-b" . denote-find-backlink)
+	 ("C-c n M-f" . denote-org-dblock-insert-links)
+	 ("C-c n M-b" . denote-org-dblock-insert-backlinks))
+  :custom
+  (denote-directory yx/org-dir)
+  (denote-known-keywords nil)
+  (denote-date-prompt-use-org-read-date t)
+  (denote-prompts '(subdirectory title keywords signature))
+  :config
+  (require 'denote-org-extras)
+  (denote-rename-buffer-mode 1))
+
+(use-package olivetti
+  :ensure t
+  :hook ((org-mode . olivetti-mode)
+         (org-agenda-mode . olivetti-mode))
+  :init
+  (setq olivetti-style nil)
+  (setq olivetti-mode-map nil))
+
+(provide 'init-org+)
+;;; init-org+.el ends here
