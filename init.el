@@ -38,7 +38,7 @@
 
 (setopt truncate-lines t)
 
-(setopt tab-always-indent 'complete) 
+(setopt tab-always-indent 'complete)
 
 (setopt sentence-end-double-space nil)
 
@@ -98,11 +98,21 @@
 
 (pixel-scroll-precision-mode +1)
 
-(load-theme 'modus-operandi t)
-
 (add-hook 'after-init-hook #'recentf-mode)
 
 (add-hook 'text-mode-hook #'variable-pitch-mode)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;
+;;;   Ui
+;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(cl-loop for font in '("LXGW WenKai" "Microsoft Yahei" "PingFang SC")
+	 when (x-list-fonts font)
+	 return (set-fontset-font t 'han (font-spec :family font)))
+
+(load-theme 'modus-operandi t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
@@ -127,7 +137,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (add-to-list 'load-path
-             (expand-file-name "extras" user-emacs-directory))
+	     (expand-file-name "extras" user-emacs-directory))
 
 (require 'init-simple)
 
