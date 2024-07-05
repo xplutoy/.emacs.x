@@ -129,6 +129,8 @@
 (add-to-list 'load-path
              (expand-file-name "extras" user-emacs-directory))
 
+(require 'init-simple)
+
 (require 'init-base)
 
 (require 'init-org)
