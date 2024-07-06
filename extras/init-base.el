@@ -11,6 +11,16 @@
 
 ;;; Code:
 
+(use-package no-littering
+  :ensure t
+  :config (no-littering-theme-backups))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;
+;;;   Edit
+;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (use-package avy
   :ensure t
   :bind (("M-g w" . avy-goto-word-1)
@@ -29,9 +39,11 @@
 (use-package speedrect)
 ;; :vc (:url "https://github.com/jdtsmith/speedrect")
 
-(use-package no-littering
-  :ensure t
-  :config (no-littering-theme-backups))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;
+;;;   Minibuffer
+;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (use-package vertico
   :ensure t
@@ -60,7 +72,10 @@
   :ensure t
   :bind (("C-x b"   . consult-buffer)
 	 ("C-x 4 b" . consult-buffer-other-window)
+	 ("C-x p b" . consult-project-buffer)
 	 ("C-x r b" . consult-bookmark)
+	 ("C-x M-:" . consult-complex-command)
+	 ("M-X"     . consult-mode-command)
 	 ("M-r"     . consult-recent-file)
 	 ("M-y"     . consult-yank-pop)
 	 ("M-s f"   . consult-fd)
@@ -69,6 +84,11 @@
 	 ("M-s M-l" . consult-line-multi)
 	 ("M-g i"   . consult-imenu)
 	 ("M-g g"   . consult-goto-line)
+	 ("M-g f"   . consult-flymake)
+	 ("M-g h"   . consult-outline)
+	 ("C-x '"   . consult-register-store)
+	 ("M-g '"   . consult-register)
+	 ("M-g M-'" . consult-register-load)
 	 ("M-g m"   . consult-mark)
 	 ("M-g M-m" . consult-global-mark))
   :config

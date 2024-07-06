@@ -39,12 +39,15 @@
 
 (use-package org
   :init
+  (setq org-modules nil)
+  (setq org-tags-column 0)
   (setq org-pretty-entities t)
   (setq org-use-sub-superscripts '{})
   (setq org-startup-folded 'show2levels)
   (setq org-crypt-key nil)
   (setq org-special-ctrl-k t)
   (setq org-special-ctrl-a/e t)
+  (setq org-mouse-1-follows-link nil)
   (setq org-yank-adjusted-subtrees t)
   (setq org-reverse-note-order t)
   (setq org-refile-targets '((nil :maxlevel . 2)))

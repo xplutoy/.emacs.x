@@ -80,18 +80,32 @@
 
 (setopt custom-file null-device)
 
-
-;; global mirror mode
-
-(winner-mode +1)
+(setopt display-buffer-alist
+	'(("\\`\\*\\(Compile-Log\\|Org Links\\)\\*\\'"
+	   (display-buffer-no-window)
+	   (allow-no-window . t)))
+	)
 
 (windmove-default-keybindings 'control)
+
+(add-hook 'text-mode-hook #'visual-line-mode)
+(add-hook 'text-mode-hook #'variable-pitch-mode)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;
+;;;   Global mirror mode
+;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(tooltip-mode -1)
 
 (tool-bar-mode -1)
 
 (scroll-bar-mode -1)
 
 (blink-cursor-mode -1)
+
+(winner-mode +1)
 
 (repeat-mode +1)
 
@@ -107,9 +121,9 @@
 
 (pixel-scroll-precision-mode +1)
 
-(add-hook 'after-init-hook #'recentf-mode)
 
-(add-hook 'text-mode-hook #'variable-pitch-mode)
+;; make sure toggle after no-littering
+(add-hook 'after-init-hook #'recentf-mode)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
@@ -144,16 +158,18 @@
 
 (keymap-global-unset "C-z")
 
-(keymap-global-set "C-/"   #'undo-only)
-(keymap-global-set "M-/"   #'hippie-expand)
+(keymap-global-set "C-/"	#'undo-only)
+(keymap-global-set "M-/"	#'hippie-expand)
 
-(keymap-global-set "C-z ." #'repeat)
-(keymap-global-set "C-z a" #'org-agenda-list)
-(keymap-global-set "C-z c" #'org-capture)
-(keymap-global-set "C-z l" #'org-store-link)
-(keymap-global-set "C-z s" #'scratch-buffer)
+(keymap-global-set "C-x C-b"	#'ibuffer)
 
-(keymap-global-set "C-c d" #'duplicate-dwim)
+(keymap-global-set "C-z ."	#'repeat)
+(keymap-global-set "C-z a"	#'org-agenda-list)
+(keymap-global-set "C-z c"	#'org-capture)
+(keymap-global-set "C-z l"	#'org-store-link)
+(keymap-global-set "C-z s"	#'scratch-buffer)
+
+(keymap-global-set "C-c d"	#'duplicate-dwim)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
