@@ -19,6 +19,8 @@
 
 (setq org-directory yx/org-dir)
 
+(setq org-attach-id-dir (expand-file-name "data" yx/org-dir))
+
 (setq org-agenda-files '("inbox.org" "work.org"))
 
 (setq org-refile-targets
@@ -35,7 +37,7 @@
       '((sequence "TODO(t!)" "SOMEDAY(s!)" "NEXT(n!)" "HOLD(h@/!)" "WAITING(w@/!)" "|" "CANCELED(c@/!)" "DONE(d!)")))
 
 (setq org-capture-templates
-      '(("w" "工作待办" entry (file+headline "work.org" "工作待办") "* TODO %?" :prepend t)
+      '(("w" "工作待办" entry (file "work.org") "* TODO %?" :prepend t)
 	("t" "个人事务" entry (file+headline org-default-notes-file "个人事务") "* TODO [#B] %?" :prepend t)
 	("s" "未来想做" entry (file+headline org-default-notes-file "未来想做") "* SOMEDAY %?"   :prepend t)
 	("h" "习惯养成" entry (file+headline org-default-notes-file "习惯养成") "* NEXT %?"      :prepend t)))
@@ -45,6 +47,7 @@
   (setq org-modules nil)
   (setq org-tags-column 0)
   (setq org-pretty-entities t)
+  (setq org-log-into-drawer t)
   (setq org-use-sub-superscripts '{})
   (setq org-startup-folded 'show2levels)
   (setq org-crypt-key nil)

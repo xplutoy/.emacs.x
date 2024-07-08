@@ -3,7 +3,6 @@
 ;; Author: yangxue <yangxue.cs@foxmail.com>
 ;; Copyright (C) 2024, yangxue, all right reserved.
 ;; Created: 2024-07-05 11:18:22
-;; Modified: <2024-07-05 12:01:16 yangx>
 ;; Licence: GPLv3
 
 ;;; Commentary:
@@ -83,8 +82,10 @@
 (setopt display-buffer-alist
 	'(("\\`\\*\\(Compile-Log\\|Org Links\\)\\*\\'"
 	   (display-buffer-no-window)
-	   (allow-no-window . t)))
-	)
+	   (allow-no-window . t))
+	  ("\\`\\*\\(Org Select\\|Bookmark List\\)\\*\\'"
+	   (display-buffer-at-bottom))
+	  ))
 
 (windmove-default-keybindings 'control)
 
