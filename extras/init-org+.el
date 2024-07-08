@@ -21,6 +21,10 @@
 
 (setq org-agenda-files '("inbox.org" "work.org"))
 
+(setq org-refile-targets
+      '((nil :maxlevel . 2)
+	(org-agenda-files :maxlevel . 2)))
+
 (setq org-tag-persistent-alist
       '((:startgroup . nil)
         ("@me" . ?m) ("@work" . ?t) ("@life" . ?l)
@@ -31,8 +35,7 @@
       '((sequence "TODO(t!)" "SOMEDAY(s!)" "NEXT(n!)" "HOLD(h@/!)" "WAITING(w@/!)" "|" "CANCELED(c@/!)" "DONE(d!)")))
 
 (setq org-capture-templates
-      '(("d" "工作完成" entry (file+olp+datetree "work.org" "工作完成") "* %?")
-	("w" "工作待办" entry (file+headline "work.org" "工作待办") "* TODO %?" :prepend t)
+      '(("w" "工作待办" entry (file+headline "work.org" "工作待办") "* TODO %?" :prepend t)
 	("t" "个人事务" entry (file+headline org-default-notes-file "个人事务") "* TODO [#B] %?" :prepend t)
 	("s" "未来想做" entry (file+headline org-default-notes-file "未来想做") "* SOMEDAY %?"   :prepend t)
 	("h" "习惯养成" entry (file+headline org-default-notes-file "习惯养成") "* NEXT %?"      :prepend t)))
@@ -50,8 +53,8 @@
   (setq org-mouse-1-follows-link nil)
   (setq org-yank-adjusted-subtrees t)
   (setq org-reverse-note-order t)
-  (setq org-refile-targets '((nil :maxlevel . 2)))
   (setq org-refile-use-outline-path 'file)
+  (setq org-outline-path-complete-in-steps nil)
   :config
   (require 'org-tempo)
   (org-crypt-use-before-save-magic)
