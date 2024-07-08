@@ -83,7 +83,7 @@
 	'(("\\`\\*\\(Compile-Log\\|Org Links\\)\\*\\'"
 	   (display-buffer-no-window)
 	   (allow-no-window . t))
-	  ("\\`\\*\\(Org Select\\|Bookmark List\\)\\*\\'"
+	  ("\\`\\*\\(Org Select\\|Agenda Commands\\|Bookmark List\\)\\*\\'"
 	   (display-buffer-at-bottom))
 	  ))
 
@@ -110,8 +110,6 @@
 
 (repeat-mode +1)
 
-(savehist-mode +1)
-
 (save-place-mode +1)
 
 (delete-selection-mode +1)
@@ -125,6 +123,7 @@
 
 ;; make sure toggle after no-littering
 (add-hook 'after-init-hook #'recentf-mode)
+(add-hook 'after-init-hook #'savehist-mode)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
@@ -165,7 +164,8 @@
 (keymap-global-set "C-x C-b"	#'ibuffer)
 
 (keymap-global-set "C-z ."	#'repeat)
-(keymap-global-set "C-z a"	#'org-agenda-list)
+(keymap-global-set "C-z a"	#'org-agenda)
+(keymap-global-set "C-z C-a"	#'org-agenda-list)
 (keymap-global-set "C-z c"	#'org-capture)
 (keymap-global-set "C-z l"	#'org-store-link)
 (keymap-global-set "C-z s"	#'scratch-buffer)

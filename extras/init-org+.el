@@ -19,9 +19,12 @@
 
 (setq org-directory yx/org-dir)
 
+(setq org-agenda-files '("inbox.org" "work.org"))
+
 (setq org-attach-id-dir (expand-file-name "data" yx/org-dir))
 
-(setq org-agenda-files '("inbox.org" "work.org"))
+(setq org-cite-global-bibliography
+      (list (expand-file-name "bibliography.bib" yx/org-dir)))
 
 (setq org-refile-targets
       '((nil :maxlevel . 2)
@@ -56,6 +59,9 @@
   (setq org-mouse-1-follows-link nil)
   (setq org-yank-adjusted-subtrees t)
   (setq org-reverse-note-order t)
+  (setq org-agenda-span 'day)
+  (setq org-M-RET-may-split-line nil)
+  (setq org-tags-exclude-from-inheritance '(project crypt))
   (setq org-refile-use-outline-path 'file)
   (setq org-outline-path-complete-in-steps nil)
   :config
