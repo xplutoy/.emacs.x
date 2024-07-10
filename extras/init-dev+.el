@@ -18,7 +18,7 @@
 
 (setq major-mode-remap-alist '((python-mode . python-ts-mode)))
 
-(add-hook 'prog-mode-hook #'electric-pair-mode)
+(add-hook 'prog-mode-hook #'electric-pair-local-mode)
 
 (use-package eglot
   :custom

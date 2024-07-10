@@ -3,3 +3,4 @@ var/
 elpa/
 eln-cache/
 server/
+tree-sitter/
