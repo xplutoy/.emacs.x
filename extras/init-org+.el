@@ -21,10 +21,12 @@
 
 (setq org-agenda-files '("inbox.org" "work.org"))
 
-(setq org-attach-id-dir (expand-file-name "data" yx/org-dir))
+(setq org-default-notes-file (expand-file-name "inbox.org" org-directory))
+
+(setq org-attach-id-dir (expand-file-name "data" org-directory))
 
 (setq org-cite-global-bibliography
-      (list (expand-file-name "bibliography.bib" yx/org-dir)))
+      (list (expand-file-name "bibliography.bib" org-directory)))
 
 (setq org-refile-targets
       '((nil :maxlevel . 2)
@@ -149,7 +151,7 @@
 	 ("C-c n M-f" . denote-org-dblock-insert-links)
 	 ("C-c n M-b" . denote-org-dblock-insert-backlinks))
   :custom
-  (denote-directory yx/org-dir)
+  (denote-directory org-directory)
   (denote-known-keywords nil)
   (denote-date-prompt-use-org-read-date t)
   (denote-prompts '(subdirectory title keywords signature))
