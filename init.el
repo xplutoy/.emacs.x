@@ -1,7 +1,6 @@
 ;;; -*- lexical-binding: t -*-
 
-;; Author: yangxue <yangxue.cs@foxmail.com>
-;; Copyright (C) 2024, yangxue, all right reserved.
+;; Author:  yangxue <yangxue.cs@foxmail.com>
 ;; Created: 2024-07-05 11:18:22
 ;; Licence: GPLv3
 
@@ -127,9 +126,14 @@
 
 (pixel-scroll-precision-mode +1)
 
-(add-hook 'after-init-hook #'recentf-mode)
+(add-hook 'after-init-hook   #'recentf-mode)
 
-(add-hook 'after-init-hook #'savehist-mode)
+(add-hook 'after-init-hook   #'savehist-mode)
+
+(add-hook 'dired-mode-hook   #'hl-line-mode)
+
+(add-hook 'ibuffer-mode-hook #'hl-line-mode)
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
@@ -163,6 +167,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (keymap-global-unset "C-z")
+(keymap-global-unset "M-'")
 
 (keymap-global-set "C-/"	#'undo-only)
 (keymap-global-set "M-/"	#'hippie-expand)
@@ -177,9 +182,11 @@
 
 (keymap-global-set "C-c d"	#'duplicate-dwim)
 
+(keymap-global-set "M-' r"      #'raise-sexp)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
-;;;   Optional extras
+;;;   Core extras
 ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 

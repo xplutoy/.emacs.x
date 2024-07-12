@@ -1,7 +1,6 @@
 ;;; -*- lexical-binding: t -*-
 
-;; Author: yangxue <yangxue.cs@foxmail.com>
-;; Copyright (C) 2024, yangxue, all right reserved.
+;; Author:  yangxue <yangxue.cs@foxmail.com>
 ;; Created: 2024-07-05 12:00:21
 ;; Licence: GPLv3
 
@@ -30,6 +29,11 @@
 (use-package vundo
   :ensure t
   :bind (("C-c /" . vundo)))
+
+(use-package expreg
+  :ensure t
+  :bind (("M-' =" . expreg-expand)
+         ("M-' -" . expreg-contract)))
 
 (use-package easy-kill
   :ensure t

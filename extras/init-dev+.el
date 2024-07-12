@@ -1,7 +1,6 @@
 ;;; -*- lexical-binding: t -*-
 
-;; Author: yangxue <yangxue.cs@foxmail.com>
-;; Copyright (C) 2024, yangxue, all right reserved.
+;; Author:  yangxue <yangxue.cs@foxmail.com>
 ;; Created: 2024-07-05 11:59:57
 ;; Licence: GPLv3
 
@@ -13,6 +12,8 @@
 
 (setq vc-follow-symlinks t)
 (setq vc-handled-backends '(Git))
+
+(add-hook 'prog-mode-hook #'hl-line-mode)
 
 (add-hook 'prog-mode-hook #'display-line-numbers-mode)
 
@@ -45,6 +46,32 @@
   :config
   (when IS-WIN
     (setq color-rg-command-prefix "powershell")))
+
+(setq auto-insert-alist nil)
+
+(define-skeleton yx/py-header  ""
+  nil
+  "# --------------------------------------------------"
+  "\n# Author:      " (user-mail-address)
+  "\n# Date:        " (format-time-string "%F %T")
+  "\n# Description: " (skeleton-read "Description: ")
+  "\n#\n#\n"
+  "# --------------------------------------------------"
+  "\n\n" @ _ "\n")
+
+(define-skeleton yx/el-header  ""
+  nil
+  ";;; -*- lexical-binding: t -*-\n"
+  "\n;; Author:  " (message-user-mail-address)
+  "\n;; Created: " (format-time-string "%F %T")
+  "\n;; Licence: GPLv3"
+  "\n\n;;; Commentary:\n\n;; " @ _
+  "\n\n;;; Code:"
+  "\n\n(provide '" (file-name-base (buffer-file-name)) ")"
+  "\n;;; " (file-name-nondirectory (buffer-file-name)) " ends here\n")
+
+(define-auto-insert "\\.el$" #'yx/el-header)
+(define-auto-insert "\\.py$" #'yx/py-header)
 
 
 (provide 'init-dev+)

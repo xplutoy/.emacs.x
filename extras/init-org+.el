@@ -1,7 +1,6 @@
 ;;; -*- lexical-binding: t -*-
 
-;; Author: yangxue <yangxue.cs@foxmail.com>
-;; Copyright (C) 2024, yangxue, all right reserved.
+;; Author:  yangxue <yangxue.cs@foxmail.com>
 ;; Created: 2024-07-05 12:00:03
 ;; Licence: GPLv3
 
@@ -39,13 +38,13 @@
         ("crypt" . ?c) ("project" . ?p)))
 
 (setq org-todo-keywords
-      '((sequence "TODO(t!)" "SOMEDAY(s!)" "NEXT(n!)" "HOLD(h@/!)" "WAITING(w@/!)" "|" "CANCELED(c@/!)" "DONE(d!)")))
+      '((sequence "TODO(t!)" "SOMEDAY(s!)" "NEXT(n!)" "HOLD(h@/!)" "|" "CANCELED(c@/!)" "DONE(d!)")))
 
 (setq org-capture-templates
-      '(("w" "工作待办" entry (file "work.org") "* TODO %?" :prepend t)
-	("t" "个人事务" entry (file+headline org-default-notes-file "个人事务") "* TODO [#B] %?" :prepend t)
-	("s" "未来想做" entry (file+headline org-default-notes-file "未来想做") "* SOMEDAY %?"   :prepend t)
-	("h" "习惯养成" entry (file+headline org-default-notes-file "习惯养成") "* NEXT %?"      :prepend t)))
+      '(("w" "work" entry (file "work.org") "* TODO %?" :prepend t)
+	("t" "home" entry (file org-default-notes-file) "* TODO %?" :prepend t)
+        ("d" "diary" entry (file+olp+datetree "diary.org") "* Journal %<%H:%M>\n%?")
+	("h" "habit" entry (file+headline org-default-notes-file "Habits") "* NEXT %?")))
 
 (use-package org
   :init
@@ -63,13 +62,19 @@
   (setq org-yank-adjusted-subtrees t)
   (setq org-reverse-note-order t)
   (setq org-M-RET-may-split-line nil)
+  (setq org-image-actual-width '(450))
   (setq org-tags-exclude-from-inheritance '(crypt))
   (setq org-refile-use-outline-path 'file)
+  (setq org-goto-interface 'outline-path-completion)
   (setq org-outline-path-complete-in-steps nil)
+  (setq org-agenda-scheduled-leaders '("计划@-- " "拖延%03d "))
+  (setq org-agenda-deadline-leaders  '("截止@-- " "剩余%03d " "逾期%03d "))
   :config
   (require 'org-tempo)
   (org-crypt-use-before-save-magic)
   (add-hook 'org-mode-hook (lambda () (setq line-spacing 2)))
+  (add-hook 'org-agenda-mode-hook #'hl-line-mode)
+  (add-hook 'org-cycle-hook #'yx/org-toggle-inline-images-in-subtree)
   (org-babel-do-load-languages
    'org-babel-load-languages '((python . t) (emacs-lisp . t)))
   :custom-face
@@ -120,6 +125,16 @@
 ;;;   Org+
 ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(use-package org-ql
+  :ensure t
+  :bind (("C-c q v" . org-ql-view)
+         ("C-c q s" . org-ql-search)
+         ("C-c q q" . org-ql-find-in-org-directory)
+         :map org-mode-map
+         ("C-c q f" . org-ql-find)
+         ("C-c q r" . org-ql-refile)
+         ("C-c q l" . org-ql-open-link)))
 
 (use-package valign
   :ensure t
