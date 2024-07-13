@@ -2,15 +2,15 @@
 
 An Emacs configuration that meets my minimum requirements. 
 
-== 安装（window）
+# 安装（window）
 
-直接到 [https://www.gnu.org/software/emacs/download.html](Emacs 官网) 下载 window 安装包。
+直接到 [GNU Emacs](https://www.gnu.org/software/emacs/download.html) 下载 window 安装包。
 
-== 设置 HOME 环境变量
+# 设置 HOME 环境变量
 
 Emacs 会优先到 HOME 环境变量指定的地址去寻找配置文件。
 
-== 安装 msys2 和 unix tools
+# 安装 msys2 和 unix tools
 
 ```
   # msys2
@@ -25,7 +25,7 @@ Emacs 会优先到 HOME 环境变量指定的地址去寻找配置文件。
 
 设置 msys2 环境。新增 MSYSTEM 环境变量，值为 UCRT64。
 
-== 安装 gnupg
+# 安装 gnupg
 
 ```
   winget install -e --id GnuPG.GnuPG
@@ -44,7 +44,7 @@ Emacs 会优先到 HOME 环境变量指定的地址去寻找配置文件。
   allow-loopback-pinentry
 ```
 
-== 安装 rg/find/grep/git
+# 安装 rg/find/grep/git
 
 ```
   winget install BurntSushi.ripgrep.GNU
