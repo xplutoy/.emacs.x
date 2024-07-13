@@ -2,7 +2,7 @@
 
 ;; Author:  yangxue <yangxue.cs@foxmail.com>
 ;; Created: 2024-07-05 11:59:57
-;; Licence: GPLv3
+;; License: GPLv3
 
 ;;; Commentary:
 
@@ -64,7 +64,7 @@
   ";;; -*- lexical-binding: t -*-\n"
   "\n;; Author:  " (message-user-mail-address)
   "\n;; Created: " (format-time-string "%F %T")
-  "\n;; Licence: GPLv3"
+  "\n;; License: GPLv3"
   "\n\n;;; Commentary:\n\n;; " @ _
   "\n\n;;; Code:"
   "\n\n(provide '" (file-name-base (buffer-file-name)) ")"

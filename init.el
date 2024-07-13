@@ -2,7 +2,7 @@
 
 ;; Author:  yangxue <yangxue.cs@foxmail.com>
 ;; Created: 2024-07-05 11:18:22
-;; Licence: GPLv3
+;; License: GPLv3
 
 ;;; Commentary:
 
@@ -48,6 +48,8 @@
 
 (setopt sentence-end-double-space nil)
 
+(setopt use-dialog-box nil)
+
 (setopt use-short-answers t)
 
 (setopt system-time-locale "C")
@@ -87,14 +89,21 @@
 	   (display-buffer-no-window)
 	   (allow-no-window . t))
 	  ("\\`\\*\\(Org Select\\|Agenda Commands\\|Bookmark List\\)\\*\\'"
-	   (display-buffer-at-bottom))
-	  ))
+	   (display-buffer-at-bottom))))
 
-(windmove-default-keybindings 'control)
-(windmove-swap-states-default-keybindings '(shift control))
+(setopt flyspell-mode-map nil)
+
+(add-hook 'text-mode-hook #'flyspell-mode)
+(add-hook 'prog-mode-hook #'flyspell-prog-mode)
 
 (add-hook 'text-mode-hook #'visual-line-mode)
 (add-hook 'text-mode-hook #'variable-pitch-mode)
+
+(add-hook 'dired-mode-hook   #'hl-line-mode)
+(add-hook 'ibuffer-mode-hook #'hl-line-mode)
+
+(windmove-default-keybindings 'control)
+(windmove-swap-states-default-keybindings '(shift control))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
@@ -129,10 +138,6 @@
 (add-hook 'after-init-hook   #'recentf-mode)
 
 (add-hook 'after-init-hook   #'savehist-mode)
-
-(add-hook 'dired-mode-hook   #'hl-line-mode)
-
-(add-hook 'ibuffer-mode-hook #'hl-line-mode)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

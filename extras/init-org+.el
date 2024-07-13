@@ -2,7 +2,7 @@
 
 ;; Author:  yangxue <yangxue.cs@foxmail.com>
 ;; Created: 2024-07-05 12:00:03
-;; Licence: GPLv3
+;; License: GPLv3
 
 ;;; Commentary:
 
