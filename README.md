@@ -6,11 +6,11 @@ An Emacs configuration that meets my minimum requirements.
 
 直接到 [GNU Emacs](https://www.gnu.org/software/emacs/download.html) 下载 window 安装包。
 
-# 设置 HOME 环境变量
+## 设置 HOME 环境变量
 
 Emacs 会优先到 HOME 环境变量指定的地址去寻找配置文件。
 
-# 安装 msys2 和 unix tools
+## 安装 msys2 和 unix tools
 
 ```
   # msys2
@@ -25,7 +25,7 @@ Emacs 会优先到 HOME 环境变量指定的地址去寻找配置文件。
 
 设置 msys2 环境。新增 MSYSTEM 环境变量，值为 UCRT64。
 
-# 安装 gnupg
+## 安装 gnupg
 
 ```
   winget install -e --id GnuPG.GnuPG
@@ -37,14 +37,14 @@ Emacs 会优先到 HOME 环境变量指定的地址去寻找配置文件。
   gpg --import sub_private_key.asc
 ```
 
-配置 gnupg，在 ~%APPDATA%\gnupg~ 目录下新建 gpg-agent.conf 文件，并写入下面两条配置：
+配置 gnupg，在 %APPDATA%\gnupg 目录下新建 gpg-agent.conf 文件，并写入下面两条配置：
 
 ```
   allow-emacs-pinentry
   allow-loopback-pinentry
 ```
 
-# 安装 rg/find/grep/git
+## 安装 rg/find/grep/git
 
 ```
   winget install BurntSushi.ripgrep.GNU
@@ -54,3 +54,6 @@ Emacs 会优先到 HOME 环境变量指定的地址去寻找配置文件。
   winget install -e --id sharkdp.fd
 ```
 
+# 参考
+
+1. [emacs-bedrock](https://sr.ht/~ashton314/emacs-bedrock/)

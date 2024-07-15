@@ -29,7 +29,7 @@
 
 (setq org-refile-targets
       '((nil :maxlevel . 2)
-	(org-agenda-files :maxlevel . 2)))
+        (org-agenda-files :maxlevel . 2)))
 
 (setq org-tag-persistent-alist
       '((:startgroup . nil)
@@ -42,15 +42,16 @@
 
 (setq org-capture-templates
       '(("w" "work" entry (file "work.org") "* TODO %?" :prepend t)
-	("t" "home" entry (file org-default-notes-file) "* TODO %?" :prepend t)
+        ("t" "home" entry (file org-default-notes-file) "* TODO %?" :prepend t)
         ("d" "diary" entry (file+olp+datetree "diary.org") "* Journal %<%H:%M>\n%?")
-	("h" "habit" entry (file+headline org-default-notes-file "Habits") "* NEXT %?")))
+        ("h" "habit" entry (file+headline org-default-notes-file "Habits") "* NEXT %?")))
 
 (use-package org
   :init
   (setq org-modules nil)
   (setq org-tags-column 0)
   (setq org-pretty-entities t)
+  (setq org-log-done 'time)
   (setq org-log-into-drawer t)
   (setq org-hide-emphasis-markers t)
   (setq org-use-sub-superscripts '{})
@@ -88,37 +89,9 @@
 (use-package ox-latex
   :init
   (setq org-latex-compiler "xelatex")
-  (setq org-latex-default-class "ctexart")
-  (setq org-latex-packages-alist '(("" "bm")
-				   ("" "amsthm")
-				   ("" "amsfonts")
-				   ("" "xcolor" t)
-				   ("cache=false" "minted" t)))
-  (setq org-latex-pdf-process '("latexmk -f -xelatex -shell-escape -output-directory=%o %f"))
-  (setq org-preview-latex-default-process 'dvisvgm)
-  (setq org-preview-latex-process-alist
-	'((dvisvgm :programs
-		   ("xelatex" "dvisvgm")
-		   :description "xdv > svg"
-		   :message "you need to install the programs: xelatex and dvisvgm."
-		   :use-xcolor t
-		   :image-input-type "xdv"
-		   :image-output-type "svg"
-		   :image-size-adjust (1.7 . 1.5)
-		   :latex-compiler
-		   ("xelatex -no-pdf -interaction nonstopmode -shell-escape -output-directory %o %f")
-		   :image-converter
-		   ("dvisvgm %f -e -n -b min -c %S -o %O"))))
-  (setq org-preview-latex-image-directory (no-littering-expand-var-file-name "ltximg/"))
-  :config
-  (add-to-list 'org-latex-classes
-               '("ctexart"
-                 "\\documentclass[11pt]{ctexart}"
-                 ("\\section{%s}"       . "\\section*{%s}")
-                 ("\\subsection{%s}"    . "\\subsection*{%s}")
-                 ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
-                 ("\\paragraph{%s}"     . "\\paragraph*{%s}")
-                 ("\\subparagraph{%s}"  . "\\subparagraph*{%s}"))))
+  (setq org-latex-packages-alist '(("" "amsfonts")))
+  (setq org-preview-latex-image-directory
+        (no-littering-expand-var-file-name "ltximg/")))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
@@ -157,14 +130,14 @@
 (use-package denote
   :ensure t
   :bind (("C-c n c"   . denote)
-	 ("C-c n t"   . denote-template)
-	 ("C-c n n"   . denote-open-or-create)
-	 ("C-c n i"   . denote-link-or-create)
-	 ("C-c n C-l" . denote-backlinks)
-	 ("C-c n C-f" . denote-find-link)
-	 ("C-c n C-b" . denote-find-backlink)
-	 ("C-c n M-f" . denote-org-dblock-insert-links)
-	 ("C-c n M-b" . denote-org-dblock-insert-backlinks))
+         ("C-c n t"   . denote-template)
+         ("C-c n n"   . denote-open-or-create)
+         ("C-c n i"   . denote-link-or-create)
+         ("C-c n C-l" . denote-backlinks)
+         ("C-c n C-f" . denote-find-link)
+         ("C-c n C-b" . denote-find-backlink)
+         ("C-c n M-f" . denote-org-dblock-insert-links)
+         ("C-c n M-b" . denote-org-dblock-insert-backlinks))
   :custom
   (denote-directory org-directory)
   (denote-known-keywords nil)

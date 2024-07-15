@@ -180,7 +180,7 @@
 (keymap-global-set "C-x C-b"	#'ibuffer)
 
 (keymap-global-set "C-z ."	#'repeat)
-(keymap-global-set "C-z a"	#'org-agenda-list)
+(keymap-global-set "C-z a"	#'org-agenda)
 (keymap-global-set "C-z c"	#'org-capture)
 (keymap-global-set "C-z l"	#'org-store-link)
 (keymap-global-set "C-z s"	#'scratch-buffer)

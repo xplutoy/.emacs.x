@@ -70,7 +70,8 @@
   :init
   (setq embark-cycle-key ".")
   (setq prefix-help-command #'embark-prefix-help-command)
-  :bind (("C-." . embark-act)))
+  :bind (("C-." . embark-act)
+         ("M-." . embark-dwim)))
 
 (use-package consult
   :ensure t
