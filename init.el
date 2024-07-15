@@ -34,6 +34,10 @@
 
 (setopt frame-title-format '("%b - GNU Emacs"))
 
+(setopt abbrev-mode t)
+
+(setopt abbrev-suggest t)
+
 (setopt word-wrap t)
 
 (setopt word-wrap-by-category t)
