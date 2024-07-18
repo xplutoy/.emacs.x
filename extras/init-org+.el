@@ -18,7 +18,7 @@
 
 (setq org-directory yx/org-dir)
 
-(setq org-agenda-files '("inbox.org" "work.org"))
+(setq org-agenda-files '("inbox.org"))
 
 (setq org-default-notes-file (expand-file-name "inbox.org" org-directory))
 
@@ -41,10 +41,10 @@
       '((sequence "TODO(t!)" "SOMEDAY(s!)" "NEXT(n!)" "HOLD(h@/!)" "|" "CANCELED(c@/!)" "DONE(d!)")))
 
 (setq org-capture-templates
-      '(("w" "work" entry (file "work.org") "* TODO %?" :prepend t)
-        ("t" "home" entry (file org-default-notes-file) "* TODO %?" :prepend t)
-        ("d" "diary" entry (file+olp+datetree "diary.org") "* Journal %<%H:%M>\n%?")
-        ("h" "habit" entry (file+headline org-default-notes-file "Habits") "* NEXT %?")))
+      '(("d" "diary" entry (file+olp+datetree "diary.org") "* Journal %<%H:%M>\n%?")
+        ("h" "home"  entry (file+headline org-default-notes-file "Home") "* TODO %?" :prepend t)
+        ("w" "work"  entry (file+headline org-default-notes-file "Work") "* TODO %?" :prepend t)
+        ("z" "habit" entry (file+headline org-default-notes-file "Habit") "* NEXT %?")))
 
 (use-package org
   :init
@@ -63,7 +63,8 @@
   (setq org-yank-adjusted-subtrees t)
   (setq org-reverse-note-order t)
   (setq org-M-RET-may-split-line nil)
-  (setq org-image-actual-width '(450))
+  (setq org-image-actual-width '(550))
+  (setq org-footnote-auto-adjust t)
   (setq org-tags-exclude-from-inheritance '(crypt))
   (setq org-refile-use-outline-path 'file)
   (setq org-goto-interface 'outline-path-completion)
