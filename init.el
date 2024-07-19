@@ -164,6 +164,12 @@
   (cl-loop for font in '("LXGW WenKai" "Microsoft Yahei" "PingFang SC")
 	   when (x-list-fonts font)
 	   return (set-fontset-font t 'han (font-spec :family font)))
+  (cl-loop for font in '("Segoe UI Symbol" "Symbola" "Symbol")
+           when (x-list-fonts font)
+           return (set-fontset-font t 'symbol (font-spec :family font) nil))
+  (cl-loop for font in '("Segoe UI Emoji" "Noto Color Emoji" "Apple Color Emoji")
+           when (x-list-fonts font)
+           return (set-fontset-font t 'emoji  (font-spec :family font) nil))
 
   (load-theme 'modus-operandi t))
 

@@ -119,9 +119,12 @@
   :ensure t
   :bind ("C-c p" . cape-prefix-map)
   :init
+  (setq cape-dict-file (no-littering-expand-etc-file-name "google-10000-english.txt"))
   (add-hook 'completion-at-point-functions
-            (cape-capf-super #'cape-dabbrev #'cape-dict #'cape-keyword))
-  (add-hook 'completion-at-point-functions #'cape-file))
+            (cape-capf-super #'cape-abbrev #'cape-dabbrev #'cape-dict))
+  (add-hook 'completion-at-point-functions #'cape-file)
+  (add-hook 'completion-at-point-functions #'cape-tex)
+  (add-hook 'completion-at-point-functions #'cape-emoji))
 
 
 (provide 'init-base)
