@@ -56,6 +56,7 @@
   (setq org-hide-emphasis-markers t)
   (setq org-use-sub-superscripts '{})
   (setq org-startup-folded 'show2levels)
+  (setq org-startup-with-latex-preview t)
   (setq org-crypt-key nil)
   (setq org-special-ctrl-k t)
   (setq org-special-ctrl-a/e t)
