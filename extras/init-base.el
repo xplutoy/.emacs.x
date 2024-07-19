@@ -115,6 +115,14 @@
   (setq completion-category-overrides '((file (styles basic partial-completion))
 					(eglot (styles basic yx/orderless-with-initialism)))))
 
+(use-package cape
+  :ensure t
+  :bind ("C-c p" . cape-prefix-map)
+  :init
+  (add-hook 'completion-at-point-functions
+            (cape-capf-super #'cape-dabbrev #'cape-dict #'cape-keyword))
+  (add-hook 'completion-at-point-functions #'cape-file))
+
 
 (provide 'init-base)
 ;;; init-base.el ends here
