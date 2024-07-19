@@ -99,13 +99,8 @@
   :config
   (setq xref-show-xrefs-function #'consult-xref
 	xref-show-definitions-function #'consult-xref)
+  (setq consult-preview-key nil)
   (setq consult-ripgrep-args (concat consult-ripgrep-args " --hidden"))
-  (consult-customize
-   consult-theme :preview-key '(:debounce 0.2 any)
-   consult-bookmark
-   consult-recent-file
-   consult--source-buffer
-   consult--source-recent-file :preview-key "M-.")
   (use-package embark-consult :ensure t))
 
 (use-package orderless
