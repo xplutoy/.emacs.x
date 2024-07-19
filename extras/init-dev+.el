@@ -14,38 +14,15 @@
 (setq vc-handled-backends '(Git))
 
 (add-hook 'prog-mode-hook #'hl-line-mode)
-
+(add-hook 'prog-mode-hook #'electric-pair-local-mode)
 (add-hook 'prog-mode-hook #'display-line-numbers-mode)
 
 (setq major-mode-remap-alist '((python-mode . python-ts-mode)))
 
-(add-hook 'prog-mode-hook #'electric-pair-local-mode)
+(setq ediff-window-setup-function #'ediff-setup-windows-plain)
+(setq ediff-split-window-function #'split-window-horizontally)
 
-(use-package eglot
-  :custom
-  (eglot-send-changes-idle-time 0.1)
-  (eglot-extend-to-xref t)
-  :config
-  (fset #'jsonrpc--log-event #'ignore))
-
-(use-package magit
-  :ensure t
-  :bind (("C-c v" . magit-file-dispatch))
-  :init
-  (setq magit-bury-buffer-function #'magit-restore-window-configuration)
-  (setq magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1))
-
-(use-package color-rg
-  ;; :vc (:url "https://github.com/manateelazycat/color-rg")
-  :bind(("M-s s"   . color-rg-search-input)
-        ("M-s p"   . color-rg-search-input-in-project))
-  :custom
-  (color-rg-recenter-match-line t)
-  (color-rg-search-no-ignore-file nil)
-  (color-rg-mac-load-path-from-shell nil)
-  :config
-  (when IS-WIN
-    (setq color-rg-command-prefix "powershell")))
+(add-hook 'ediff-after-quit-hook-internal 'winner-undo)
 
 (setq auto-insert-alist nil)
 
@@ -72,6 +49,33 @@
 
 (define-auto-insert "\\.el$" #'yx/el-header)
 (define-auto-insert "\\.py$" #'yx/py-header)
+
+
+(use-package eglot
+  :custom
+  (eglot-send-changes-idle-time 0.1)
+  (eglot-extend-to-xref t)
+  :config
+  (fset #'jsonrpc--log-event #'ignore))
+
+(use-package magit
+  :ensure t
+  :bind (("C-c v" . magit-file-dispatch))
+  :init
+  (setq magit-bury-buffer-function #'magit-restore-window-configuration)
+  (setq magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1))
+
+(use-package color-rg
+  ;; :vc (:url "https://github.com/manateelazycat/color-rg")
+  :bind(("M-s s"   . color-rg-search-input)
+        ("M-s p"   . color-rg-search-input-in-project))
+  :custom
+  (color-rg-recenter-match-line t)
+  (color-rg-search-no-ignore-file nil)
+  (color-rg-mac-load-path-from-shell nil)
+  :config
+  (when IS-WIN
+    (setq color-rg-command-prefix "powershell")))
 
 
 (provide 'init-dev+)

@@ -14,6 +14,7 @@
   :ensure t
   :bind (("C-z RET"   . gptel-menu))
   :config
+  (setq gptel-use-curl nil)
   (setq gptel-default-mode 'org-mode)
   (setq gptel-org-branching-context t)
   (setq gptel-backend (gptel-make-openai "KiMi"

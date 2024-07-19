@@ -70,6 +70,7 @@
   (setq org-refile-use-outline-path 'file)
   (setq org-goto-interface 'outline-path-completion)
   (setq org-outline-path-complete-in-steps nil)
+  (setq org-agenda-skip-scheduled-if-deadline-is-shown t)
   (setq org-agenda-scheduled-leaders '("计划@-- " "拖延%03d "))
   (setq org-agenda-deadline-leaders  '("截止@-- " "剩余%03d " "逾期%03d "))
   :config
