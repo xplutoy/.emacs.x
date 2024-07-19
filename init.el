@@ -72,7 +72,7 @@
 
 (setopt initial-scratch-message nil)
 
-(setopt switch-to-buffer-obey-display-actions t)
+(setopt delete-by-moving-to-trash t)
 
 (setopt dired-kill-when-opening-new-dired-buffer t)
 
@@ -88,12 +88,19 @@
 
 (setopt custom-file null-device)
 
+(setopt switch-to-buffer-obey-display-actions t)
+
 (setopt display-buffer-alist
 	'(("\\`\\*\\(Compile-Log\\|Org Links\\)\\*\\'"
 	   (display-buffer-no-window)
 	   (allow-no-window . t))
 	  ("\\`\\*\\(Org Select\\|Agenda Commands\\|Bookmark List\\)\\*\\'"
 	   (display-buffer-at-bottom))))
+
+(setopt webjump-sites
+        '(("ZhiHu"  . [simple-query "zhihu.com" "zhihu.com/search?q=" ""])
+          ("GitHub" . [simple-query "github.com" "github.com/search?q=" ""])
+          ("DuckGo" . [simple-query "duckduckgo.com" "duckduckgo.com/?q=" ""])))
 
 (setopt flyspell-mode-map nil)
 
@@ -194,6 +201,7 @@
 (keymap-global-set "C-z c"	#'org-capture)
 (keymap-global-set "C-z l"	#'org-store-link)
 (keymap-global-set "C-z s"	#'scratch-buffer)
+(keymap-global-set "C-z /"	#'webjump)
 
 (keymap-global-set "C-c d"	#'duplicate-dwim)
 

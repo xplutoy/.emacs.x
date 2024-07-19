@@ -16,12 +16,12 @@
   :config
   (setq gptel-use-curl nil)
   (setq gptel-default-mode 'org-mode)
-  (setq gptel-org-branching-context t)
   (setq gptel-backend (gptel-make-openai "KiMi"
                         :host "api.moonshot.cn"
                         :key 'gptel-api-key
                         :models '("moonshot-v1-32k" "moonshot-v1-128k")))
-  (setq gptel-model "moonshot-v1-32k"))
+  (setq gptel-model "moonshot-v1-32k")
+  (add-hook 'gptel-post-response-functions 'gptel-end-of-response))
 
 
 (provide 'init-misc)
