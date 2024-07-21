@@ -24,6 +24,18 @@
   (setq gptel-model "moonshot-v1-32k")
   (add-hook 'gptel-post-response-functions 'gptel-end-of-response))
 
+(use-package elfeed
+  :ensure t
+  :init
+  (setq elfeed-feeds
+   '(("https://spaces.ac.cn/feed" ai)
+     ("https://lilianweng.github.io/index.xml" ai)
+     ("https://tech.meituan.com/feed/" tech)
+     ("https://ameow.xyz/feed/categories/weekly.xml" tech)
+     ("https://www.ruanyifeng.com/blog/atom.xml" tech)
+     ("https://planet.emacslife.com/atom.xml" emacs)))
+  :hook (elfeed-show-mode . olivetti-mode))
+
 
 (provide 'init-misc)
 ;;; init-misc.el ends here
