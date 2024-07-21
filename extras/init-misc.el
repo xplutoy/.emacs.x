@@ -12,7 +12,8 @@
 
 (use-package gptel
   :ensure t
-  :bind (("C-z RET"   . gptel-menu))
+  :bind (("C-z z"   . gptel)
+         ("C-z C-z" . gptel-menu))
   :config
   (setq gptel-use-curl nil)
   (setq gptel-default-mode 'org-mode)

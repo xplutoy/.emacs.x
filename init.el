@@ -26,9 +26,15 @@
 
 (with-eval-after-load 'package
   (add-to-list 'package-archives
-	       '("melpa" . "https://melpa.org/packages/") t))
+               '("melpa" . "https://melpa.org/packages/") t))
+
+(setopt gc-cons-threshold (* 128 1024 1024))
 
 (setopt fill-column 89)
+
+(setopt word-wrap t)
+
+(setopt word-wrap-by-category t)
 
 (setopt user-mail-address "yangxue.cs@foxmail.com")
 
@@ -37,10 +43,6 @@
 (setopt abbrev-mode t)
 
 (setopt abbrev-suggest t)
-
-(setopt word-wrap t)
-
-(setopt word-wrap-by-category t)
 
 (setopt truncate-lines t)
 
@@ -51,6 +53,8 @@
 (setopt tab-always-indent 'complete)
 
 (setopt sentence-end-double-space nil)
+
+(setopt save-silently t)
 
 (setopt use-dialog-box nil)
 
@@ -91,11 +95,11 @@
 (setopt switch-to-buffer-obey-display-actions t)
 
 (setopt display-buffer-alist
-	'(("\\`\\*\\(Compile-Log\\|Org Links\\)\\*\\'"
-	   (display-buffer-no-window)
-	   (allow-no-window . t))
-	  ("\\`\\*\\(Org Select\\|Agenda Commands\\|Bookmark List\\)\\*\\'"
-	   (display-buffer-at-bottom))))
+        '(("\\`\\*\\(Compile-Log\\|Org Links\\)\\*\\'"
+           (display-buffer-no-window)
+           (allow-no-window . t))
+          ("\\`\\*\\(Org Select\\|Agenda Commands\\|Bookmark List\\)\\*\\'"
+           (display-buffer-at-bottom))))
 
 (setopt webjump-sites
         '(("ZhiHu"  . [simple-query "zhihu.com" "zhihu.com/search?q=" ""])
@@ -103,6 +107,8 @@
           ("DuckGo" . [simple-query "duckduckgo.com" "duckduckgo.com/?q=" ""])))
 
 (setopt flyspell-mode-map nil)
+
+(setopt ispell-alternate-dictionary "~/.emacs.d/etc/google-10000-english.txt")
 
 (add-hook 'text-mode-hook #'flyspell-mode)
 (add-hook 'prog-mode-hook #'flyspell-prog-mode)
@@ -169,8 +175,8 @@
   (set-face-attribute 'fixed-pitch-serif nil :family yx/s-font)
 
   (cl-loop for font in '("LXGW WenKai" "Microsoft Yahei" "PingFang SC")
-	   when (x-list-fonts font)
-	   return (set-fontset-font t 'han (font-spec :family font)))
+           when (x-list-fonts font)
+           return (set-fontset-font t 'han (font-spec :family font)))
   (cl-loop for font in '("Segoe UI Symbol" "Symbola" "Symbol")
            when (x-list-fonts font)
            return (set-fontset-font t 'symbol (font-spec :family font) nil))
@@ -182,6 +188,7 @@
 
 (add-hook 'after-init-hook #'yx/setup-font)
 
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
 ;;;   Keybindings
@@ -189,12 +196,17 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (keymap-global-unset "C-z")
+(keymap-global-unset "C-t")
 (keymap-global-unset "M-'")
 
 (keymap-global-set "C-/"	#'undo-only)
 (keymap-global-set "M-/"	#'hippie-expand)
 
 (keymap-global-set "C-x C-b"	#'ibuffer)
+
+(keymap-global-set "C-c d"	#'duplicate-dwim)
+
+(keymap-global-set "M-' r"      #'raise-sexp)
 
 (keymap-global-set "C-z ."	#'repeat)
 (keymap-global-set "C-z a"	#'org-agenda)
@@ -203,9 +215,10 @@
 (keymap-global-set "C-z s"	#'scratch-buffer)
 (keymap-global-set "C-z /"	#'webjump)
 
-(keymap-global-set "C-c d"	#'duplicate-dwim)
+(keymap-global-set "C-t f"      #'follow-mode)
+(keymap-global-set "C-t h"      #'highlight-changes-mode)
+(keymap-global-set "C-t l"      #'flymake-mode)
 
-(keymap-global-set "M-' r"      #'raise-sexp)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
