@@ -40,9 +40,11 @@
 
 (setopt frame-title-format '("%b - GNU Emacs"))
 
-(setopt abbrev-mode t)
+(setopt initial-scratch-message nil)
 
-(setopt abbrev-suggest t)
+(setopt initial-major-mode 'fundamental-mode)
+
+(setopt abbrev-mode t)
 
 (setopt truncate-lines t)
 
@@ -56,6 +58,8 @@
 
 (setopt save-silently t)
 
+(setopt visible-bell t)
+
 (setopt use-dialog-box nil)
 
 (setopt use-short-answers t)
@@ -66,15 +70,11 @@
 
 (setopt enable-recursive-minibuffers t)
 
-(setopt cursor-in-non-selected-windows t)
-
 (setopt find-file-visit-truename t)
 
 (setopt inhibit-splash-screen t)
 
 (setopt inhibit-startup-message t)
-
-(setopt initial-scratch-message nil)
 
 (setopt delete-by-moving-to-trash t)
 
