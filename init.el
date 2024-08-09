@@ -28,7 +28,7 @@
   (add-to-list 'package-archives
                '("melpa" . "https://melpa.org/packages/") t))
 
-(setopt gc-cons-threshold (* 128 1024 1024))
+(setopt gc-cons-threshold (* 56 1024 1024))
 
 (setopt fill-column 89)
 
@@ -134,27 +134,27 @@
 
 (scroll-bar-mode -1)
 
-(blink-cursor-mode -1)
+(add-hook 'after-init-hook #'repeat-mode)
 
-(winner-mode +1)
+(add-hook 'after-init-hook #'winner-mode)
 
-(window-divider-mode +1)
+(add-hook 'after-init-hook #'recentf-mode)
 
-(repeat-mode +1)
+(add-hook 'after-init-hook #'savehist-mode)
 
-(save-place-mode +1)
+(add-hook 'after-init-hook #'save-place-mode)
 
-(delete-selection-mode +1)
+(add-hook 'after-init-hook #'blink-cursor-mode)
 
-(auto-save-visited-mode +1)
+(add-hook 'after-init-hook #'window-divider-mode)
 
-(global-auto-revert-mode +1)
+(add-hook 'after-init-hook #'delete-selection-mode)
 
-(pixel-scroll-precision-mode +1)
+(add-hook 'after-init-hook #'auto-save-visited-mode)
 
-(add-hook 'after-init-hook   #'recentf-mode)
+(add-hook 'after-init-hook #'global-auto-revert-mode)
 
-(add-hook 'after-init-hook   #'savehist-mode)
+(add-hook 'after-init-hook #'pixel-scroll-precision-mode)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
