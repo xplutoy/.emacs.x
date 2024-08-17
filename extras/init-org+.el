@@ -24,6 +24,8 @@
 
 (setq org-attach-id-dir (expand-file-name "data" org-directory))
 
+(setq org-cite-csl-styles-dir no-littering-etc-directory)
+
 (setq org-cite-global-bibliography
       (list (expand-file-name "bibliography.bib" org-directory)))
 
@@ -94,8 +96,11 @@
   :init
   (setq org-latex-compiler "xelatex")
   (setq org-latex-packages-alist '(("" "amsfonts")))
+  (setq org-cite-export-processors '((t csl "ieee.csl")))
   (setq org-preview-latex-image-directory
         (no-littering-expand-var-file-name "ltximg/")))
+
+(use-package citeproc :ensure t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
