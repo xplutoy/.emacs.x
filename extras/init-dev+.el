@@ -14,6 +14,7 @@
 (setq vc-handled-backends '(Git))
 
 (add-hook 'prog-mode-hook #'hl-line-mode)
+(add-hook 'prog-mode-hook #'show-paren-local-mode)
 (add-hook 'prog-mode-hook #'electric-pair-local-mode)
 (add-hook 'prog-mode-hook #'display-line-numbers-mode)
 
@@ -53,6 +54,7 @@
 
 (use-package eglot
   :custom
+  (eglot-report-progress nil)
   (eglot-send-changes-idle-time 0.1)
   (eglot-extend-to-xref t)
   :config

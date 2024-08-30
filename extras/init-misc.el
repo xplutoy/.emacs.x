@@ -9,6 +9,11 @@
 ;;
 
 ;;; Code:
+(use-package eat
+  :ensure t
+  :init
+  (add-hook 'eshell-load-hook #'eat-eshell-mode)
+  (add-hook 'eshell-load-hook #'eat-eshell-visual-command-mode))
 
 (use-package gptel
   :ensure t

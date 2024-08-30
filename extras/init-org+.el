@@ -68,6 +68,7 @@
   (setq org-footnote-auto-adjust t)
   (setq org-yank-adjusted-subtrees t)
   (setq org-M-RET-may-split-line nil)
+  (setq org-startup-with-latex-preview t)
   (setq org-insert-heading-respect-content t)
   (setq org-tags-exclude-from-inheritance '(crypt))
   (setq org-refile-use-outline-path 'file)
@@ -76,6 +77,7 @@
   (setq org-agenda-skip-scheduled-if-deadline-is-shown t)
   (setq org-agenda-scheduled-leaders '("计划@-- " "拖延%03d "))
   (setq org-agenda-deadline-leaders  '("截止@-- " "剩余%03d " "逾期%03d "))
+  (setq org-export-with-sub-superscripts '{})
   :config
   (require 'org-tempo)
   (org-crypt-use-before-save-magic)

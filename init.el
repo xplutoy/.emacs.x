@@ -28,7 +28,9 @@
   (add-to-list 'package-archives
                '("melpa" . "https://melpa.org/packages/") t))
 
-(setopt gc-cons-threshold (* 56 1024 1024))
+(setopt custom-file null-device)
+
+(setopt gc-cons-threshold (* 32 1024 1024))
 
 (setopt fill-column 89)
 
@@ -53,6 +55,10 @@
 (setopt indent-tabs-mode nil)
 
 (setopt tab-always-indent 'complete)
+
+(setopt bidi-inhibit-bpa t)
+
+(setopt bidi-paragraph-direction 'left-to-right)
 
 (setopt sentence-end-double-space nil)
 
@@ -90,8 +96,6 @@
 
 (setopt split-width-threshold 120)
 
-(setopt custom-file null-device)
-
 (setopt switch-to-buffer-obey-display-actions t)
 
 (setopt display-buffer-alist
@@ -105,6 +109,8 @@
         '(("ZhiHu"  . [simple-query "zhihu.com" "zhihu.com/search?q=" ""])
           ("GitHub" . [simple-query "github.com" "github.com/search?q=" ""])
           ("DuckGo" . [simple-query "duckduckgo.com" "duckduckgo.com/?q=" ""])))
+
+(setopt show-paren-style 'parenthesis)
 
 (setopt flyspell-mode-map nil)
 
