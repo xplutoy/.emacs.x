@@ -56,6 +56,11 @@
         (setq org-inline-image-overlays (delete ov org-inline-image-overlays)))
       )))
 
+(defun yx/auth-get-pwd (host)
+  "Find `secret' in `auth-sources' for HOST entry."
+  (when-let ((source (auth-source-search :host host)))
+    (funcall (plist-get (car source) :secret))))
+
 
 (provide 'init-util)
 ;;; init-util.el ends here

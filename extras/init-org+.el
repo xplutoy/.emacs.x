@@ -90,6 +90,7 @@
   (org-level-1 ((t (:height 1.20))))
   (org-level-2 ((t (:height 1.15))))
   (org-level-3 ((t (:height 1.10))))
+  (org-level-4 ((t (:height 1.05))))
   (org-document-title ((t (:height 1.30))))
   (org-done ((t (:strike-through t))))
   (org-headline-done ((t (:strike-through t)))))

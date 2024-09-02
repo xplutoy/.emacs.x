@@ -35,7 +35,6 @@
   (setq elfeed-feeds
    '(("https://spaces.ac.cn/feed" ai)
      ("https://lilianweng.github.io/index.xml" ai)
-     ("https://tech.meituan.com/feed/" tech)
      ("https://ameow.xyz/feed/categories/weekly.xml" tech)
      ("https://www.ruanyifeng.com/blog/atom.xml" tech)
      ("https://planet.emacslife.com/atom.xml" emacs)))

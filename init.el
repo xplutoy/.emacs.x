@@ -125,6 +125,8 @@
 (add-hook 'dired-mode-hook   #'hl-line-mode)
 (add-hook 'ibuffer-mode-hook #'hl-line-mode)
 
+(add-hook 'before-save-hook #'delete-trailing-whitespace)
+
 (windmove-default-keybindings 'control)
 (windmove-swap-states-default-keybindings '(shift control))
 
@@ -133,35 +135,27 @@
 ;;;   Global mirror mode
 ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(repeat-mode +1)
+(winner-mode +1)
 
 (tooltip-mode -1)
-
 (tool-bar-mode -1)
-
 (scroll-bar-mode -1)
+(blink-cursor-mode +1)
+(window-divider-mode +1)
 
-(add-hook 'after-init-hook #'repeat-mode)
+(save-place-mode +1)
+(auto-save-visited-mode +1)
+(global-auto-revert-mode +1)
 
-(add-hook 'after-init-hook #'winner-mode)
+(delete-selection-mode +1)
+(pixel-scroll-precision-mode +1)
+
+(unless (display-graphic-p)
+  (xterm-mouse-mode 1))
 
 (add-hook 'after-init-hook #'recentf-mode)
-
 (add-hook 'after-init-hook #'savehist-mode)
-
-(add-hook 'after-init-hook #'save-place-mode)
-
-(add-hook 'after-init-hook #'blink-cursor-mode)
-
-(add-hook 'after-init-hook #'window-divider-mode)
-
-(add-hook 'after-init-hook #'delete-selection-mode)
-
-(add-hook 'after-init-hook #'auto-save-visited-mode)
-
-(add-hook 'after-init-hook #'global-auto-revert-mode)
-
-(add-hook 'after-init-hook #'pixel-scroll-precision-mode)
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
