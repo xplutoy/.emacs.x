@@ -29,74 +29,50 @@
                '("melpa" . "https://melpa.org/packages/") t))
 
 (setopt custom-file null-device)
-
 (setopt gc-cons-threshold (* 32 1024 1024))
-
-(setopt fill-column 89)
-
-(setopt word-wrap t)
-
-(setopt word-wrap-by-category t)
-
+(setopt system-time-locale "C")
 (setopt user-mail-address "yangxue.cs@foxmail.com")
 
+(setopt fill-column 89)
+(setopt word-wrap t)
+(setopt word-wrap-by-category t)
+(setopt truncate-lines t)
+(setopt require-final-newline t)
+
 (setopt frame-title-format '("%b - GNU Emacs"))
-
 (setopt initial-scratch-message nil)
-
 (setopt initial-major-mode 'fundamental-mode)
 
 (setopt abbrev-mode t)
-
-(setopt truncate-lines t)
-
-(setopt require-final-newline t)
-
 (setopt indent-tabs-mode nil)
-
 (setopt tab-always-indent 'complete)
 
 (setopt bidi-inhibit-bpa t)
-
 (setopt bidi-paragraph-direction 'left-to-right)
 
 (setopt sentence-end-double-space nil)
 
 (setopt save-silently t)
-
 (setopt visible-bell t)
-
 (setopt use-dialog-box nil)
-
 (setopt use-short-answers t)
-
-(setopt system-time-locale "C")
-
-(setopt set-mark-command-repeat-pop t)
-
-(setopt enable-recursive-minibuffers t)
-
-(setopt find-file-visit-truename t)
-
 (setopt inhibit-splash-screen t)
-
 (setopt inhibit-startup-message t)
 
-(setopt delete-by-moving-to-trash t)
-
-(setopt dired-kill-when-opening-new-dired-buffer t)
-
-(setopt winner-boring-buffers-regexp "^\\*")
-
-(setopt epg-pinentry-mode 'loopback)
-
-(setopt epa-file-encrypt-to user-mail-address)
+(setopt set-mark-command-repeat-pop t)
+(setopt enable-recursive-minibuffers t)
+(setopt find-file-visit-truename t)
 
 (setopt recentf-auto-cleanup 300)
+(setopt delete-by-moving-to-trash t)
+(setopt dired-kill-when-opening-new-dired-buffer t)
+
+(setopt epg-pinentry-mode 'loopback)
+(setopt epa-file-encrypt-to user-mail-address)
 
 (setopt split-width-threshold 120)
-
 (setopt switch-to-buffer-obey-display-actions t)
+(setopt winner-boring-buffers-regexp "^\\*")
 
 (setopt display-buffer-alist
         '(("\\`\\*\\(Compile-Log\\|Org Links\\)\\*\\'"
@@ -113,7 +89,6 @@
 (setopt show-paren-style 'parenthesis)
 
 (setopt flyspell-mode-map nil)
-
 (setopt ispell-alternate-dictionary "~/.emacs.d/etc/google-10000-english.txt")
 
 (add-hook 'text-mode-hook #'flyspell-mode)
