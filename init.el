@@ -100,8 +100,6 @@
 (add-hook 'dired-mode-hook   #'hl-line-mode)
 (add-hook 'ibuffer-mode-hook #'hl-line-mode)
 
-(add-hook 'before-save-hook #'delete-trailing-whitespace)
-
 (windmove-default-keybindings 'control)
 (windmove-swap-states-default-keybindings '(shift control))
 
@@ -180,15 +178,16 @@
 (keymap-global-set "C-x C-b"	#'ibuffer)
 
 (keymap-global-set "C-c d"	#'duplicate-dwim)
+(keymap-global-set "C-c v"      #'follow-delete-other-windows-and-split)
 
 (keymap-global-set "M-' r"      #'raise-sexp)
 
 (keymap-global-set "C-z ."	#'repeat)
+(keymap-global-set "C-z /"	#'webjump)
 (keymap-global-set "C-z a"	#'org-agenda)
 (keymap-global-set "C-z c"	#'org-capture)
 (keymap-global-set "C-z l"	#'org-store-link)
 (keymap-global-set "C-z s"	#'scratch-buffer)
-(keymap-global-set "C-z /"	#'webjump)
 
 (keymap-global-set "C-t f"      #'follow-mode)
 (keymap-global-set "C-t h"      #'highlight-changes-mode)
