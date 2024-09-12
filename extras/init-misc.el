@@ -35,9 +35,11 @@
   (setq elfeed-feeds
    '(("https://spaces.ac.cn/feed" ai)
      ("https://lilianweng.github.io/index.xml" ai)
-     ("https://ameow.xyz/feed/categories/weekly.xml" tech)
-     ("https://www.ruanyifeng.com/blog/atom.xml" tech)
-     ("https://planet.emacslife.com/atom.xml" emacs)))
+     ("https://planet.emacslife.com/atom.xml" emacs)
+     ("https://www.juliabloggers.com/feed/" julia)
+     ("https://planet.haskell.org/rss20.xml" haskell)
+     ("https://www.ruanyifeng.com/blog/atom.xml" tech)))
+  (setq elfeed-use-curl nil)
   :hook (elfeed-show-mode . olivetti-mode))
 
 

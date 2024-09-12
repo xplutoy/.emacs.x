@@ -176,6 +176,7 @@
 (keymap-global-set "M-/"	#'hippie-expand)
 
 (keymap-global-set "C-x C-b"	#'ibuffer)
+(keymap-global-set "C-x C-d"    #'project-dired)
 
 (keymap-global-set "C-c d"	#'duplicate-dwim)
 (keymap-global-set "C-c v"      #'follow-delete-other-windows-and-split)

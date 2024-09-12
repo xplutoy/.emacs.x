@@ -53,12 +53,12 @@
   (setq org-modules nil)
   (setq org-tags-column 0)
   (setq org-pretty-entities t)
-  (setq org-cycle-separator-lines 0)
   (setq org-log-done 'time)
   (setq org-log-into-drawer t)
   (setq org-hide-emphasis-markers t)
   (setq org-use-sub-superscripts '{})
   (setq org-startup-folded 'show2levels)
+  (setq org-cycle-separator-lines -1)
   (setq org-crypt-key nil)
   (setq org-support-shift-select t)
   (setq org-special-ctrl-k t)
@@ -145,6 +145,7 @@
   :ensure t
   :bind (("C-c n c"   . denote)
          ("C-c n t"   . denote-template)
+         ("C-c n r"   . denote-rename-file)
          ("C-c n n"   . denote-open-or-create)
          ("C-c n i"   . denote-link-or-create)
          ("C-c n C-l" . denote-backlinks)
@@ -159,7 +160,8 @@
   (denote-prompts '(subdirectory title keywords signature))
   :config
   (require 'denote-org-extras)
-  (denote-rename-buffer-mode 1))
+  (denote-rename-buffer-mode 1)
+  (add-hook 'dired-mode-hook #'denote-dired-mode-in-directories))
 
 (use-package olivetti
   :ensure t

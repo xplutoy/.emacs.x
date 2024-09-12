@@ -25,6 +25,8 @@
     (setq url-proxy-services nil)
     (message "No HTTP proxy")))
 
+(add-hook 'emacs-startup-hook #'yx/proxy-http-toggle)
+
 
 (defun yx/keyboard-quit ()
   "Do-What-I-Mean behaviour for a general `keyboard-quit'."
