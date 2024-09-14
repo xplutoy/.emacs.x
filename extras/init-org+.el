@@ -105,13 +105,12 @@
   (setq org-preview-latex-image-directory
         (no-littering-expand-var-file-name "ltximg/")))
 
-(use-package citeproc :ensure t)
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
 ;;;   Org+
 ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(use-package citeproc :ensure t)
 
 (use-package org-ql
   :ensure t

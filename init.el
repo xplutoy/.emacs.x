@@ -58,6 +58,7 @@
 (setopt use-short-answers t)
 (setopt inhibit-splash-screen t)
 (setopt inhibit-startup-message t)
+(setopt eldoc-echo-area-use-multiline-p nil)
 
 (setopt set-mark-command-repeat-pop t)
 (setopt enable-recursive-minibuffers t)
