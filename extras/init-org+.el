@@ -70,6 +70,7 @@
   (setq org-footnote-auto-adjust t)
   (setq org-yank-adjusted-subtrees t)
   (setq org-M-RET-may-split-line nil)
+  (setq org-todo-repeat-to-state "NEXT")
   (setq org-startup-with-latex-preview t)
   (setq org-insert-heading-respect-content t)
   (setq org-tags-exclude-from-inheritance '(crypt))

@@ -33,12 +33,13 @@
   :ensure t
   :init
   (setq elfeed-feeds
-   '(("https://spaces.ac.cn/feed" ai)
-     ("https://lilianweng.github.io/index.xml" ai)
-     ("https://planet.emacslife.com/atom.xml" emacs)
-     ("https://www.juliabloggers.com/feed/" julia)
-     ("https://planet.haskell.org/rss20.xml" haskell)
-     ("https://www.ruanyifeng.com/blog/atom.xml" tech)))
+        '(("https://spaces.ac.cn/feed" ai)
+          ("https://lilianweng.github.io/index.xml" ai)
+          ("https://gregorygundersen.com/feed.xml" ai)
+          ("https://www.juliabloggers.com/feed/" julia)
+          ("https://planet.emacslife.com/atom.xml" emacs)
+          ("https://planet.haskell.org/rss20.xml" haskell)
+          ("https://www.ruanyifeng.com/blog/atom.xml" tech)))
   (setq elfeed-use-curl nil)
   :hook (elfeed-show-mode . olivetti-mode))
 

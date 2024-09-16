@@ -33,7 +33,7 @@
 (setopt system-time-locale "C")
 (setopt user-mail-address "yangxue.cs@foxmail.com")
 
-(setopt fill-column 89)
+(setopt fill-column 78)
 (setopt word-wrap t)
 (setopt word-wrap-by-category t)
 (setopt truncate-lines t)
@@ -90,7 +90,8 @@
 (setopt show-paren-style 'parenthesis)
 
 (setopt flyspell-mode-map nil)
-(setopt ispell-alternate-dictionary "~/.emacs.d/etc/google-10000-english.txt")
+(setopt ispell-personal-dictionary "~/.emacs.d/etc/aspell-en.pws")
+(setopt ispell-alternate-dictionary "~/.emacs.d/etc/google-10000-en.txt")
 
 (add-hook 'text-mode-hook #'flyspell-mode)
 (add-hook 'prog-mode-hook #'flyspell-prog-mode)
