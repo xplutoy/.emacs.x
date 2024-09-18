@@ -148,9 +148,9 @@
          ("C-c n r"   . denote-rename-file)
          ("C-c n n"   . denote-open-or-create)
          ("C-c n i"   . denote-link-or-create)
-         ("C-c n C-l" . denote-backlinks)
-         ("C-c n C-f" . denote-find-link)
-         ("C-c n C-b" . denote-find-backlink)
+         ("C-c n l"   . denote-find-link)
+         ("C-c n C-l" . denote-find-backlink)
+         ("C-c n M-l" . denote-backlinks)
          ("C-c n M-f" . denote-org-dblock-insert-links)
          ("C-c n M-b" . denote-org-dblock-insert-backlinks))
   :custom
@@ -162,6 +162,18 @@
   (require 'denote-org-extras)
   (denote-rename-buffer-mode 1)
   (add-hook 'dired-mode-hook #'denote-dired-mode-in-directories))
+
+(use-package consult-denote
+  :ensure t
+  :bind (("C-c n f" . consult-denote-find)
+         ("C-c n g" . consult-denote-grep))
+  :init
+  (consult-denote-mode +1)
+  :config
+  (when (executable-find "fd")
+    (setq consult-denote-find-command #'consult-fd))
+  (when (executable-find "rg")
+    (setq consult-denote-grep-command #'consult-ripgrep)))
 
 (use-package olivetti
   :ensure t

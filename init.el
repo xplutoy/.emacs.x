@@ -196,6 +196,9 @@
 (keymap-global-set "C-t h"      #'highlight-changes-mode)
 (keymap-global-set "C-t l"      #'flymake-mode)
 
+(when (eq system-type 'windows-nt)
+      (setq w32-lwindow-modifier 'super)
+      (w32-register-hot-key [s-t]))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
