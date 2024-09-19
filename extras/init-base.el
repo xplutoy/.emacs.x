@@ -102,7 +102,7 @@
 	 ("M-g M-'" . consult-register-load)
 	 ("M-g m"   . consult-mark)
 	 ("M-g M-m" . consult-global-mark)
-         :org-mode-map
+         :map org-mode-map
          ("M-g h"   . consult-org-heading))
   :config
   (setq xref-show-xrefs-function #'consult-xref
