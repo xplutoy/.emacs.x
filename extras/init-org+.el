@@ -49,6 +49,9 @@
         ("z" "habit" entry (file+headline org-default-notes-file "Habit") "* NEXT %?")))
 
 (use-package org
+  :bind (("C-c b" . org-switchb)
+         :map org-mode-map
+         ("C-x n n" . org-toggle-narrow-to-subtree))
   :init
   (setq org-modules nil)
   (setq org-tags-column 0)
@@ -89,6 +92,7 @@
   (add-hook 'org-cycle-hook #'yx/org-toggle-inline-images-in-subtree)
   (org-babel-do-load-languages
    'org-babel-load-languages '((python . t) (emacs-lisp . t)))
+  (add-to-list 'org-babel-default-header-args '(:results . "silent") t)
   :custom-face
   (org-level-1 ((t (:height 1.20))))
   (org-level-2 ((t (:height 1.15))))
@@ -104,7 +108,9 @@
   (setq org-latex-packages-alist '(("" "amsfonts")))
   (setq org-cite-export-processors '((t csl "ieee.csl")))
   (setq org-preview-latex-image-directory
-        (no-littering-expand-var-file-name "ltximg/")))
+        (no-littering-expand-var-file-name "ltximg/"))
+  :config
+  (plist-put org-format-latex-options :scale 1.2))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;

@@ -19,19 +19,19 @@
 (defvar yx/org-dir "~/org-notes/")
 
 (defconst IS-MAC (eq system-type 'darwin))
-
 (defconst IS-WIN (eq system-type 'windows-nt))
-
-(set-language-environment "UTF-8")
 
 (with-eval-after-load 'package
   (add-to-list 'package-archives
                '("melpa" . "https://melpa.org/packages/") t))
 
-(setopt custom-file null-device)
+(unless IS-WIN
+  (set-language-environment "UTF-8"))
+
 (setopt gc-cons-threshold (* 32 1024 1024))
 (setopt system-time-locale "C")
 (setopt user-mail-address "yangxue.cs@foxmail.com")
+(setopt custom-file (locate-user-emacs-file "custom.el"))
 
 (setopt fill-column 78)
 (setopt word-wrap t)
@@ -196,7 +196,7 @@
 (keymap-global-set "C-t h"      #'highlight-changes-mode)
 (keymap-global-set "C-t l"      #'flymake-mode)
 
-(when (eq system-type 'windows-nt)
+(when IS-WIN
       (setq w32-lwindow-modifier 'super)
       (w32-register-hot-key [s-t]))
 
@@ -217,5 +217,7 @@
 (require 'init-dev+)
 
 (require 'init-misc)
+
+(load custom-file 'noerror)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

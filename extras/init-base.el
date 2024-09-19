@@ -96,11 +96,14 @@
 	 ("M-g f"   . consult-flymake)
          ("M-g e"   . consult-compile-error)
 	 ("M-g h"   . consult-outline)
-	 ("C-x '"   . consult-register-store)
+         ("M-g a"   . consult-org-agenda)
+	 ("M-#"     . consult-register-store)
 	 ("M-g '"   . consult-register)
 	 ("M-g M-'" . consult-register-load)
 	 ("M-g m"   . consult-mark)
-	 ("M-g M-m" . consult-global-mark))
+	 ("M-g M-m" . consult-global-mark)
+         :org-mode-map
+         ("M-g h"   . consult-org-heading))
   :config
   (setq xref-show-xrefs-function #'consult-xref
 	xref-show-definitions-function #'consult-xref)

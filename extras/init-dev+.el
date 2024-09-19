@@ -62,7 +62,8 @@
 
 (use-package magit
   :ensure t
-  :bind (("C-c v" . magit-file-dispatch))
+  :bind (("C-c g" . magit-dispatch)
+         ("C-c v" . magit-file-dispatch))
   :init
   (setq magit-bury-buffer-function #'magit-restore-window-configuration)
   (setq magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1))
