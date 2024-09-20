@@ -32,8 +32,8 @@
 
 (use-package expreg
   :ensure t
-  :bind (("M-' =" . expreg-expand)
-         ("M-' -" . expreg-contract)))
+  :bind (("C-M-=" . expreg-expand)
+         ("C-M--" . expreg-contract)))
 
 (use-package easy-kill
   :ensure t

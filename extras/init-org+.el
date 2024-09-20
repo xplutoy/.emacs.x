@@ -54,13 +54,13 @@
          ("C-x n n" . org-toggle-narrow-to-subtree))
   :init
   (setq org-modules nil)
+  (setq org-startup-folded 'show2levels)
   (setq org-tags-column 0)
   (setq org-pretty-entities t)
   (setq org-log-done 'time)
   (setq org-log-into-drawer t)
   (setq org-hide-emphasis-markers t)
   (setq org-use-sub-superscripts '{})
-  (setq org-startup-folded 'show2levels)
   (setq org-cycle-separator-lines -1)
   (setq org-crypt-key nil)
   (setq org-support-shift-select t)
@@ -83,6 +83,7 @@
   (setq org-agenda-skip-scheduled-if-deadline-is-shown t)
   (setq org-agenda-scheduled-leaders '("计划@-- " "拖延%03d "))
   (setq org-agenda-deadline-leaders  '("截止@-- " "剩余%03d " "逾期%03d "))
+  (setq org-id-link-to-org-use-id 'create-if-interactive)
   (setq org-export-with-sub-superscripts '{})
   :config
   (require 'org-tempo)

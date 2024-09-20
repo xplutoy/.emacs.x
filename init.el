@@ -172,7 +172,8 @@
 
 (keymap-global-unset "C-z")
 (keymap-global-unset "C-t")
-(keymap-global-unset "M-'")
+
+(keymap-global-set "C-M-r"      #'raise-sexp)
 
 (keymap-global-set "C-/"	#'undo-only)
 (keymap-global-set "M-/"	#'hippie-expand)
@@ -182,8 +183,6 @@
 
 (keymap-global-set "C-c d"	#'duplicate-dwim)
 (keymap-global-set "C-c v"      #'follow-delete-other-windows-and-split)
-
-(keymap-global-set "M-' r"      #'raise-sexp)
 
 (keymap-global-set "C-z ."	#'repeat)
 (keymap-global-set "C-z /"	#'webjump)
