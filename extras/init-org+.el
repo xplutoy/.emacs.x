@@ -85,6 +85,7 @@
   (setq org-agenda-deadline-leaders  '("截止@-- " "剩余%03d " "逾期%03d "))
   (setq org-id-link-to-org-use-id 'create-if-interactive)
   (setq org-export-with-sub-superscripts '{})
+  (setq org-export-use-babel nil)
   :config
   (require 'org-tempo)
   (org-crypt-use-before-save-magic)
@@ -94,6 +95,7 @@
   (org-babel-do-load-languages
    'org-babel-load-languages '((python . t) (emacs-lisp . t)))
   (add-to-list 'org-babel-default-header-args '(:results . "silent") t)
+  (add-to-list 'org-babel-default-header-args '(:eval . "never-export") t)
   :custom-face
   (org-level-1 ((t (:height 1.20))))
   (org-level-2 ((t (:height 1.15))))
