@@ -29,6 +29,10 @@
   (setq gptel-model "moonshot-v1-32k")
   (add-hook 'gptel-post-response-functions 'gptel-end-of-response))
 
+(use-package minions
+  :ensure t
+  :hook (after-init . minions-mode))
+
 (use-package elfeed
   :ensure t
   :init
