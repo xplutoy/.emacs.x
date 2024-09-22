@@ -76,6 +76,7 @@
   (setq org-todo-repeat-to-state "NEXT")
   (setq org-startup-with-latex-preview t)
   (setq org-insert-heading-respect-content t)
+  (setq org-blank-before-new-entry '((heading 'auto)))
   (setq org-tags-exclude-from-inheritance '(crypt))
   (setq org-refile-use-outline-path 'file)
   (setq org-goto-interface 'outline-path-completion)
@@ -90,6 +91,7 @@
   (require 'org-tempo)
   (org-crypt-use-before-save-magic)
   (add-hook 'org-mode-hook (lambda () (setq line-spacing 2)))
+  (add-hook 'org-mode-hook (lambda () (set-buffer-file-coding-system 'utf-8)))
   (add-hook 'org-agenda-mode-hook #'hl-line-mode)
   (add-hook 'org-cycle-hook #'yx/org-toggle-inline-images-in-subtree)
   (org-babel-do-load-languages

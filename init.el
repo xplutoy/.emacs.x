@@ -94,7 +94,6 @@
 (setopt ispell-personal-dictionary "~/.emacs.d/etc/aspell-en.pws")
 (setopt ispell-alternate-dictionary "~/.emacs.d/etc/google-10000-en.txt")
 
-(add-hook 'text-mode-hook #'flyspell-mode)
 (add-hook 'prog-mode-hook #'flyspell-prog-mode)
 
 (add-hook 'text-mode-hook #'visual-line-mode)
@@ -174,10 +173,10 @@
 (keymap-global-unset "C-z")
 (keymap-global-unset "C-t")
 
-(keymap-global-set "C-M-r"      #'raise-sexp)
-
 (keymap-global-set "C-/"	#'undo-only)
 (keymap-global-set "M-/"	#'hippie-expand)
+
+(keymap-global-set "C-M-r"      #'raise-sexp)
 
 (keymap-global-set "C-x C-b"	#'ibuffer)
 (keymap-global-set "C-x C-d"    #'project-dired)
