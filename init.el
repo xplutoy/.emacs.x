@@ -143,7 +143,7 @@
 (defvar yx/s-font "IBM Plex Serif")
 
 (defun yx/setup-font ()
-  (set-frame-font "Courier New-14" nil t)
+  (set-frame-font "Courier New-14" nil t t)
 
   (set-face-attribute 'fixed-pitch nil :family yx/f-font)
   (set-face-attribute 'variable-pitch nil :family yx/v-font)
@@ -162,7 +162,6 @@
   (load-theme 'modus-operandi t))
 
 (add-hook 'after-init-hook #'yx/setup-font)
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
