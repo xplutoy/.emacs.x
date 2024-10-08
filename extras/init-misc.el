@@ -38,8 +38,10 @@
   :init
   (setq elfeed-feeds
         '(("https://spaces.ac.cn/feed" ai)
-          ("https://lilianweng.github.io/index.xml" ai)
+          ("https://xianblog.wordpress.com/feed/" math)
           ("https://gregorygundersen.com/feed.xml" ai)
+          ("https://lilianweng.github.io/index.xml" ai)
+          ("https://feeds.feedburner.com/RBloggers" R)
           ("https://www.juliabloggers.com/feed/" julia)
           ("https://planet.emacslife.com/atom.xml" emacs)
           ("https://planet.haskell.org/rss20.xml" haskell)

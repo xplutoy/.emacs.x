@@ -91,7 +91,6 @@
   (require 'org-tempo)
   (org-crypt-use-before-save-magic)
   (add-hook 'org-mode-hook (lambda () (setq line-spacing 2)))
-  (add-hook 'org-mode-hook (lambda () (set-buffer-file-coding-system 'utf-8)))
   (add-hook 'org-agenda-mode-hook #'hl-line-mode)
   (add-hook 'org-cycle-hook #'yx/org-toggle-inline-images-in-subtree)
   (org-babel-do-load-languages

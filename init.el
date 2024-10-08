@@ -25,8 +25,7 @@
   (add-to-list 'package-archives
                '("melpa" . "https://melpa.org/packages/") t))
 
-(unless IS-WIN
-  (set-language-environment "UTF-8"))
+(set-language-environment "UTF-8")
 
 (setopt gc-cons-threshold (* 32 1024 1024))
 (setopt system-time-locale "C")
