@@ -37,15 +37,10 @@
   :ensure t
   :init
   (setq elfeed-feeds
-        '(("https://spaces.ac.cn/feed" ai)
-          ("https://xianblog.wordpress.com/feed/" math)
-          ("https://gregorygundersen.com/feed.xml" ai)
-          ("https://lilianweng.github.io/index.xml" ai)
+        '(("https://planet.emacslife.com/atom.xml" emacs)
           ("https://feeds.feedburner.com/RBloggers" R)
           ("https://www.juliabloggers.com/feed/" julia)
-          ("https://planet.emacslife.com/atom.xml" emacs)
-          ("https://planet.haskell.org/rss20.xml" haskell)
-          ("https://www.ruanyifeng.com/blog/atom.xml" tech)))
+          ("https://planet.haskell.org/rss20.xml" haskell)))
   (setq elfeed-use-curl nil)
   :hook (elfeed-show-mode . olivetti-mode))
 

@@ -69,6 +69,7 @@
   (setq magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1))
 
 (use-package color-rg
+  :load-path "elpa/color-rg"
   ;; :vc (:url "https://github.com/manateelazycat/color-rg")
   :bind(("M-s s"   . color-rg-search-input)
         ("M-s p"   . color-rg-search-input-in-project))

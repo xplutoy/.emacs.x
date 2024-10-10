@@ -40,7 +40,8 @@
   :bind (([remap kill-ring-save] . easy-kill)
 	 ([remap mark-sexp] . easy-mark)))
 
-(use-package speedrect)
+(use-package speedrect
+  :load-path "elpa/speedrect")
 ;; :vc (:url "https://github.com/jdtsmith/speedrect")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

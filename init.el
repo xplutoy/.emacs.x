@@ -27,6 +27,7 @@
 
 (set-language-environment "UTF-8")
 
+(setopt byte-compile-warnings nil)
 (setopt gc-cons-threshold (* 32 1024 1024))
 (setopt system-time-locale "C")
 (setopt user-mail-address "yangxue.cs@foxmail.com")
@@ -52,7 +53,6 @@
 (setopt sentence-end-double-space nil)
 
 (setopt save-silently t)
-(setopt visible-bell t)
 (setopt use-dialog-box nil)
 (setopt use-short-answers t)
 (setopt inhibit-splash-screen t)
@@ -125,9 +125,6 @@
 (delete-selection-mode +1)
 (pixel-scroll-precision-mode +1)
 
-(unless (display-graphic-p)
-  (xterm-mouse-mode 1))
-
 (add-hook 'after-init-hook #'recentf-mode)
 (add-hook 'after-init-hook #'savehist-mode)
 
@@ -142,7 +139,7 @@
 (defvar yx/s-font "IBM Plex Serif")
 
 (defun yx/setup-font ()
-  (set-frame-font "Courier New-14" nil t t)
+  (set-frame-font "Courier New-15" nil t t)
 
   (set-face-attribute 'fixed-pitch nil :family yx/f-font)
   (set-face-attribute 'variable-pitch nil :family yx/v-font)
