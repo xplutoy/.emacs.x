@@ -85,8 +85,9 @@
   (setq org-agenda-scheduled-leaders '("计划@-- " "拖延%03d "))
   (setq org-agenda-deadline-leaders  '("截止@-- " "剩余%03d " "逾期%03d "))
   (setq org-id-link-to-org-use-id 'create-if-interactive)
-  (setq org-export-with-sub-superscripts '{})
   (setq org-export-use-babel nil)
+  (setq org-export-with-broken-links 'mark)
+  (setq org-export-with-sub-superscripts '{})
   :config
   (require 'org-tempo)
   (org-crypt-use-before-save-magic)
