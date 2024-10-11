@@ -9,16 +9,15 @@
 ;;
 
 ;;; Code:
-
 (setq vc-follow-symlinks t)
 (setq vc-handled-backends '(Git))
 
 (add-hook 'prog-mode-hook #'hl-line-mode)
+(add-hook 'prog-mode-hook #'hs-minor-mode)
 (add-hook 'prog-mode-hook #'show-paren-local-mode)
-(add-hook 'prog-mode-hook #'electric-pair-local-mode)
 (add-hook 'prog-mode-hook #'display-line-numbers-mode)
-
-(setq major-mode-remap-alist '((python-mode . python-ts-mode)))
+(add-hook 'prog-mode-hook #'electric-pair-local-mode)
+(add-hook 'prog-mode-hook #'electric-indent-local-mode)
 
 (setq ediff-window-setup-function #'ediff-setup-windows-plain)
 (setq ediff-split-window-function #'split-window-horizontally)
@@ -81,6 +80,20 @@
   (when IS-WIN
     (setq color-rg-command-prefix "powershell")))
 
+(use-package buffer-env
+  :unless IS-WIN
+  :ensure t
+  :init
+  (add-hook 'comint-mode-hook #'buffer-env-update)
+  (add-hook 'hack-local-variables-hook #'buffer-env-update)
+  (setq buffer-env-script-name '(".envrc" ".venv/bin/activate")))
+
+;;;; python
+(add-to-list 'treesit-language-source-alist
+             '(python . ("https://github.com/tree-sitter/tree-sitter-python")))
+(add-to-list 'major-mode-remap-alist '(python-mode . python-ts-mode))
+
+(add-hook 'python-ts-mode-hook #'eglot-ensure)
 
 (provide 'init-dev+)
 ;;; init-dev+.el ends here
