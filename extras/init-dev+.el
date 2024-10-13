@@ -57,7 +57,8 @@
   (eglot-send-changes-idle-time 0.1)
   (eglot-extend-to-xref t)
   :config
-  (fset #'jsonrpc--log-event #'ignore))
+  (fset #'jsonrpc--log-event #'ignore)
+  (add-to-list 'eglot-stay-out-of 'yasnippet))
 
 (use-package magit
   :ensure t
@@ -88,12 +89,21 @@
   (add-hook 'hack-local-variables-hook #'buffer-env-update)
   (setq buffer-env-script-name '(".envrc" ".venv/bin/activate")))
 
+(use-package reformatter
+  :ensure t)
+
 ;;;; python
 (add-to-list 'treesit-language-source-alist
              '(python . ("https://github.com/tree-sitter/tree-sitter-python")))
 (add-to-list 'major-mode-remap-alist '(python-mode . python-ts-mode))
 
-(add-hook 'python-ts-mode-hook #'eglot-ensure)
+(add-hook 'python-base-mode-hook #'eglot-ensure)
+
+(setq python-indent-guess-indent-offset-verbose nil)
+(add-to-list 'python-shell-completion-native-disabled-interpreters "python")
+
+(reformatter-define black :program "black" :args '("-"))
+(add-hook 'python-base-mode-hook #'black-on-save-mode)
 
 (provide 'init-dev+)
 ;;; init-dev+.el ends here
