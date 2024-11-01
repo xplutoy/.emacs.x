@@ -105,5 +105,9 @@
 (reformatter-define black :program "black" :args '("-"))
 (add-hook 'python-base-mode-hook #'black-on-save-mode)
 
+;;;; julia
+(use-package julia-mode
+  :ensure t)
+
 (provide 'init-dev+)
 ;;; init-dev+.el ends here

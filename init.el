@@ -50,6 +50,7 @@
 (setopt bidi-inhibit-bpa t)
 (setopt bidi-paragraph-direction 'left-to-right)
 
+(setopt reb-re-syntax 'string)
 (setopt sentence-end-double-space nil)
 
 (setopt save-silently t)
@@ -65,6 +66,7 @@
 
 (setopt recentf-auto-cleanup 300)
 (setopt delete-by-moving-to-trash t)
+(setopt global-auto-revert-non-file-buffers t)
 (setopt dired-kill-when-opening-new-dired-buffer t)
 
 (setopt epg-pinentry-mode 'loopback)
@@ -73,6 +75,9 @@
 (setopt split-width-threshold 120)
 (setopt switch-to-buffer-obey-display-actions t)
 (setopt winner-boring-buffers-regexp "^\\*")
+
+(setopt completion-auto-select 'second-tab)
+(setopt read-extended-command-predicate #'command-completion-default-include-p)
 
 (setopt display-buffer-alist
         '(("\\`\\*\\(Compile-Log\\|Org Links\\)\\*\\'"
@@ -90,6 +95,7 @@
 
 (setopt flyspell-mode-map nil)
 (setopt ispell-silently-savep t)
+(setopt ispell-dictionary "en_US")
 (setopt ispell-personal-dictionary "~/.emacs.d/etc/aspell-en.pws")
 (setopt ispell-alternate-dictionary "~/.emacs.d/etc/google-10000-en.txt")
 
