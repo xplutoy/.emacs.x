@@ -12,6 +12,7 @@
 (use-package eat
   :ensure t
   :init
+  (setq eat-kill-buffer-on-exit t)
   (add-hook 'eshell-load-hook #'eat-eshell-mode)
   (add-hook 'eshell-load-hook #'eat-eshell-visual-command-mode))
 

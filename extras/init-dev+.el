@@ -19,6 +19,11 @@
 (add-hook 'prog-mode-hook #'electric-pair-local-mode)
 (add-hook 'prog-mode-hook #'electric-indent-local-mode)
 
+(setq shell-kill-buffer-on-exit t)
+
+(setq compilation-scroll-output 'first-error)
+(setq compilation-auto-jump-to-first-error t)
+
 (setq ediff-window-setup-function #'ediff-setup-windows-plain)
 (setq ediff-split-window-function #'split-window-horizontally)
 
