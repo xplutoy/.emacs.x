@@ -67,7 +67,7 @@
 (setopt recentf-auto-cleanup 300)
 (setopt delete-by-moving-to-trash t)
 (setopt global-auto-revert-non-file-buffers t)
-(setopt dired-kill-when-opening-new-dired-buffer t)
+(setopt mouse-drag-and-drop-region-cross-program t)
 
 (setopt epg-pinentry-mode 'loopback)
 (setopt epa-file-encrypt-to user-mail-address)
@@ -98,6 +98,10 @@
 (setopt ispell-dictionary "en_US")
 (setopt ispell-personal-dictionary "~/.emacs.d/etc/aspell-en.pws")
 (setopt ispell-alternate-dictionary "~/.emacs.d/etc/google-10000-en.txt")
+
+(setopt dired-dwim-target t)
+(setopt dired-mouse-drag-files t)
+(setopt dired-kill-when-opening-new-dired-buffer t)
 
 (add-hook 'dired-mode-hook #'hl-line-mode)
 (add-hook 'dired-mode-hook #'dired-omit-mode)
