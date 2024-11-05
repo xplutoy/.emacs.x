@@ -99,12 +99,12 @@
 (setopt ispell-personal-dictionary "~/.emacs.d/etc/aspell-en.pws")
 (setopt ispell-alternate-dictionary "~/.emacs.d/etc/google-10000-en.txt")
 
-(add-hook 'prog-mode-hook #'flyspell-prog-mode)
+(add-hook 'dired-mode-hook #'hl-line-mode)
+(add-hook 'dired-mode-hook #'dired-omit-mode)
 
 (add-hook 'text-mode-hook #'visual-line-mode)
 (add-hook 'text-mode-hook #'variable-pitch-mode)
 
-(add-hook 'dired-mode-hook   #'hl-line-mode)
 (add-hook 'ibuffer-mode-hook #'hl-line-mode)
 
 (windmove-default-keybindings 'control)
@@ -145,8 +145,8 @@
 (defvar yx/s-font "IBM Plex Serif")
 
 (defun yx/setup-font ()
-  (set-frame-font "Courier New-15" nil t t)
 
+  (set-frame-font "Courier New-15" nil t t)
   (set-face-attribute 'fixed-pitch nil :family yx/f-font)
   (set-face-attribute 'variable-pitch nil :family yx/v-font)
   (set-face-attribute 'fixed-pitch-serif nil :family yx/s-font)
@@ -160,7 +160,6 @@
   (cl-loop for font in '("Segoe UI Emoji" "Noto Color Emoji" "Apple Color Emoji")
            when (x-list-fonts font)
            return (set-fontset-font t 'emoji  (font-spec :family font) nil))
-
   (load-theme 'modus-operandi t))
 
 (add-hook 'after-init-hook #'yx/setup-font)
