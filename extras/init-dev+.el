@@ -119,9 +119,11 @@
 (use-package ess
   :ensure t
   :custom
+  (ess-use-company nil)
   (ess-ask-for-ess-directory nil)
   (inferior-R-args "--quiet --no-save --no-restore")
   :config
+  (require 'ess-r-mode)
   (keymap-set ess-r-mode-map ";" 'ess-insert-assign)
   (keymap-set inferior-ess-r-mode-map ";" 'ess-insert-assign)
   (add-hook 'ess-r-mode #'eglot-ensure))
