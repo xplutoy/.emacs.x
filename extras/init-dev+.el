@@ -115,5 +115,16 @@
 (use-package julia-mode
   :ensure t)
 
+;;;; R
+(use-package ess
+  :ensure t
+  :custom
+  (ess-ask-for-ess-directory nil)
+  (inferior-R-args "--quiet --no-save --no-restore")
+  :config
+  (keymap-set ess-r-mode-map ";" 'ess-insert-assign)
+  (keymap-set inferior-ess-r-mode-map ";" 'ess-insert-assign)
+  (add-hook 'ess-r-mode #'eglot-ensure))
+
 (provide 'init-dev+)
 ;;; init-dev+.el ends here

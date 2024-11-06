@@ -116,7 +116,9 @@
   :ensure t
   :config
   (setq completion-styles '(basic orderless))
-  (setq completion-category-overrides '((file (styles basic partial-completion)))))
+  (setq completion-category-overrides '((eglot (styles orderless))
+                                        (eglot-capf (styles orderless))
+                                        (file (styles basic partial-completion)))))
 
 (use-package cape
   :ensure t
