@@ -123,6 +123,7 @@
   (ess-ask-for-ess-directory nil)
   (inferior-R-args "--quiet --no-save --no-restore")
   :config
+  (require 'ess-julia)
   (require 'ess-r-mode)
   (keymap-set ess-r-mode-map ";" 'ess-insert-assign)
   (keymap-set inferior-ess-r-mode-map ";" 'ess-insert-assign)
