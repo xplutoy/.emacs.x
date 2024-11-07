@@ -127,7 +127,7 @@
   (require 'ess-r-mode)
   (keymap-set ess-r-mode-map ";" 'ess-insert-assign)
   (keymap-set inferior-ess-r-mode-map ";" 'ess-insert-assign)
-  (add-hook 'ess-r-mode #'eglot-ensure))
+  (add-hook 'ess-r-mode-hook #'eglot-ensure))
 
 (provide 'init-dev+)
 ;;; init-dev+.el ends here
