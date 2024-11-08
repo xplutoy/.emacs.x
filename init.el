@@ -203,6 +203,9 @@
       (setq w32-lwindow-modifier 'super)
       (w32-register-hot-key [s-t]))
 
+(with-eval-after-load 'isearch
+  (keymap-substitute isearch-mode-map #'isearch-delete-char #'isearch-del-char))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
 ;;;   Core extras
@@ -210,6 +213,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (add-to-list 'load-path "~/.emacs.d/extras")
+(add-to-list 'load-path "~/.emacs.d/site-lisp")
 
 (require 'init-util)
 
