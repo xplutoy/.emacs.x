@@ -12,13 +12,12 @@
 (require 'gptel)
 (require 'thingatpt)
 
-(defvar gptel-ext-word-count 18
-  "Approximate word count of LLM summary.")
-
 (defvar gptel-ext--history nil)
 
-(defvar gptel-ext--commit-prompt
-  "The user provides the result of running `git diff --cached`. You suggest a conventional commit message. Don't add anything else to the response. The following describes conventional commits.
+(defvar gptel-ext--word-count 18)
+
+(defconst gptel-ext--commit-sys-role
+  "You are a senior programmer assistant living in Emacs. The user provides the result of running `git diff --cached`. You suggest a conventional commit message. Don't add anything else to the response. The following describes conventional commits.
 
 # Conventional Commits 1.0.0
 
@@ -52,17 +51,30 @@ Additional types are not mandated by the Conventional Commits specification, and
 <br /><br />
 A scope may be provided to a commit's type, to provide additional contextual information and is contained within parenthesis, e.g., `feat(parser): add ability to parse arrays`.")
 
-(defun gptel-ext--callback (response info)
+(defun gptel-ext--callback-1 (response info)
   "Show RESPONSE in the echo area."
   (if response
       (message "ChatGPT: %s" response)
     (message "gptel failed with message: %s" (plist-get info :status))))
 
+(defun gptel-ext--callback-2 (response info)
+  (if response
+      (with-current-buffer (get-buffer-create "*gptel-ext*")
+        (let ((inhibit-read-only t))
+            (erase-buffer)
+            (insert response))
+        (special-mode)
+        (goto-char (point-min))
+        (display-buffer (current-buffer)))
+    (message "gptel-ext failed with message: %s" (plist-get info :status))))
+
 ;;;###autoload
 (defun gptel-quick (prompt)
     (interactive (list (read-string "Prompts: " nil gptel-ext--history)))
     (when (string= prompt "") (user-error "A prompt is required."))
-    (gptel-request prompt :callback #'gptel-ext--callback))
+    (gptel-request prompt
+      :system "You are a large language model living in Emacs and a helpful assistant.Respond succinctly and concisely."
+      :callback #'gptel-ext--callback-2))
 
 ;;;###autoload
 (defun gptel-commit ()
@@ -70,7 +82,8 @@ A scope may be provided to a commit's type, to provide additional contextual inf
   (interactive)
   (let* ((lines (magit-git-lines "diff" "--cached"))
          (changes (string-join lines "\n")))
-    (gptel-request changes :system gptel-ext--commit-prompt)))
+    (gptel-request changes
+      :system gptel-ext--commit-sys-role)))
 
 ;;;###autoload
 (defun gptel-explain (query-text &optional count)
@@ -82,12 +95,12 @@ QUERY-TEXT is the text being explained.  COUNT is the approximate word count of 
           ((use-region-p) (buffer-substring-no-properties (region-beginning) (region-end)))
           (t (thing-at-point 'sexp)))
          current-prefix-arg))
-  (let* ((count (or count gptel-ext-word-count)))
-         (gptel-request query-text
-           :system (format "Explain in %d words or fewer." count)
-           :context (list query-text count
-                          (posn-at-point (and (use-region-p) (region-beginning))))
-           :callback #'gptel-ext--callback)))
+  (let* ((count (or count gptel-ext--word-count)))
+    (gptel-request query-text
+      :system (format "Explain in %d words or fewer." count)
+      :context (list query-text count
+                     (posn-at-point (and (use-region-p) (region-beginning))))
+      :callback #'gptel-ext--callback-1)))
 
 ;;;###autoload
 (defun gptel-translate (query-text)
@@ -99,7 +112,7 @@ QUERY-TEXT is the text being explained.  COUNT is the approximate word count of 
   (let ((trans-prompt (format "Please translate the following into each other's language (only the translated result will be returned)：\n%s" query-text)))
     (gptel-request trans-prompt
       :system "You are a translator, well versed in translating between Chinese and English."
-    :callback #'gptel-ext--callback)))
+      :callback #'gptel-ext--callback-1)))
 
 
 (provide 'gptel-ext)
