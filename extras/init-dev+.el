@@ -99,14 +99,15 @@
   :ensure t)
 
 ;;;; python
+(setq python-shell-dedicated 'project)
+(setq python-indent-guess-indent-offset-verbose nil)
+(add-to-list 'python-shell-completion-native-disabled-interpreters "python")
+
 (add-to-list 'treesit-language-source-alist
              '(python . ("https://github.com/tree-sitter/tree-sitter-python")))
 (add-to-list 'major-mode-remap-alist '(python-mode . python-ts-mode))
 
 (add-hook 'python-base-mode-hook #'eglot-ensure)
-
-(setq python-indent-guess-indent-offset-verbose nil)
-(add-to-list 'python-shell-completion-native-disabled-interpreters "python")
 
 (reformatter-define black :program "black" :args '("-"))
 (add-hook 'python-base-mode-hook #'black-on-save-mode)
