@@ -48,6 +48,19 @@
   (setq elfeed-use-curl nil)
   :hook (elfeed-show-mode . olivetti-mode))
 
+(use-package tex
+  :ensure auctex
+  :hook ((LaTeX-mode . eglot-ensure)
+         (LaTeX-mode . turn-on-reftex)
+         (LaTeX-mode . LaTeX-math-mode))
+  :custom
+  (Tex-master 'dwim)
+  (TeX-engine 'xetex)
+  (TeX-auto-save t)
+  (TeX-parse-self t)
+  (TeX-save-query nil)
+  (reftex-plug-into-AUCTeX t))
+
 
 (provide 'init-misc)
 ;;; init-misc.el ends here
