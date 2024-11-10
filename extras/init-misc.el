@@ -30,9 +30,6 @@
   (setq gptel-model 'moonshot-v1-32k)
   (add-hook 'gptel-post-response-functions 'gptel-end-of-response))
 
-(require 'gptel-ext)
-(keymap-global-set "C-z d" #'gptel-translate)
-
 (use-package minions
   :ensure t
   :hook (after-init . minions-mode))
