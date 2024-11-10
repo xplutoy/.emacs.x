@@ -48,8 +48,8 @@
 (use-package tex
   :ensure auctex
   :hook ((LaTeX-mode . eglot-ensure)
-         (LaTeX-mode . turn-on-reftex)
-         (LaTeX-mode . LaTeX-math-mode))
+         (LaTeX-mode . turn-on-cdlatex)
+         (LaTeX-mode . prettify-symbols-mode))
   :custom
   (Tex-master 'dwim)
   (TeX-engine 'xetex)
@@ -57,6 +57,11 @@
   (TeX-parse-self t)
   (TeX-save-query nil)
   (reftex-plug-into-AUCTeX t))
+
+(use-package cdlatex
+  :ensure t
+  :hook ((LaTeX-mode . turn-on-cdlatex)
+         (org-mode . turn-on-org-cdlatex)))
 
 
 (provide 'init-misc)
