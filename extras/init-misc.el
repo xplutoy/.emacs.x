@@ -41,7 +41,8 @@
         '(("https://planet.emacslife.com/atom.xml" emacs)
           ("https://feeds.feedburner.com/RBloggers" R)
           ("https://www.juliabloggers.com/feed/" julia)
-          ("https://planet.haskell.org/rss20.xml" haskell)))
+          ("https://planet.haskell.org/rss20.xml" haskell)
+          ("https://rss.arxiv.org/rss/cs.AI+cs.CV+cs.LG" arxiv-ai)))
   (setq elfeed-use-curl nil)
   :hook (elfeed-show-mode . olivetti-mode))
 
