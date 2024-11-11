@@ -143,14 +143,14 @@
 ;;;   Ui
 ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
+(defvar yx/d-font "Courier New")
 (defvar yx/f-font "IBM Plex Mono")
 (defvar yx/v-font "IBM Plex Sans")
 (defvar yx/s-font "IBM Plex Serif")
 
 (defun yx/setup-font ()
 
-  (set-frame-font "Courier New-15" nil t t)
+  (set-face-attribute 'default nil :family yx/d-font :height 150)
   (set-face-attribute 'fixed-pitch nil :family yx/f-font)
   (set-face-attribute 'variable-pitch nil :family yx/v-font)
   (set-face-attribute 'fixed-pitch-serif nil :family yx/s-font)
