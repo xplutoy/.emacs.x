@@ -1,0 +1,8 @@
+alias q  exit
+alias f  find-file $1
+alias ff find-file-other-window $1
+alias d  dired $1
+alias l  ls -lh $*
+alias ll ls -lah $*
+alias gs magit-status
+alias gd magit-diff-staged
