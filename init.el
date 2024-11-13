@@ -111,7 +111,7 @@
 
 (add-hook 'ibuffer-mode-hook #'hl-line-mode)
 
-(windmove-default-keybindings 'control)
+(windmove-default-keybindings 'shift)
 (windmove-swap-states-default-keybindings '(shift control))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
