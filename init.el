@@ -139,9 +139,24 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
+;;;   Functions
+;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(add-to-list 'load-path "~/.emacs.d/extras")
+
+(require 'init-util)
+
+(yx/set-exec-path-from-shell)
+
+(add-hook 'emacs-startup-hook #'yx/proxy-http-toggle)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;
 ;;;   Ui
 ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (defvar yx/d-font "Courier New")
 (defvar yx/f-font "IBM Plex Mono")
 (defvar yx/v-font "IBM Plex Sans")
@@ -181,6 +196,8 @@
 
 (keymap-global-set "C-/"	#'undo-only)
 (keymap-global-set "M-/"	#'hippie-expand)
+(keymap-global-set "C-g"        #'yx/keyboard-quit)
+(keymap-global-set "C-;"        #'yx/eshell-toggle)
 
 (keymap-global-set "C-M-r"      #'raise-sexp)
 
@@ -213,11 +230,6 @@
 ;;;   Core extras
 ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(add-to-list 'load-path "~/.emacs.d/extras")
-(add-to-list 'load-path "~/.emacs.d/site-lisp")
-
-(require 'init-util)
 
 (require 'init-base)
 

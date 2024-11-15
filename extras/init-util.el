@@ -10,23 +10,20 @@
 
 ;;; Code:
 
-(defvar yx-proxy "127.0.0.1:7890")
-
 (defun yx/proxy-http-toggle ()
   "Toggle HTTP/HTTPS proxy."
   (interactive)
-  (if (not(bound-and-true-p url-proxy-services))
-      (progn
-	(setq url-proxy-services
-              `(("http" . ,yx-proxy)
-		("https" . ,yx-proxy)
-		("no_proxy" . "^\\(localhost\\|192.168.*\\|10.*\\)")))
-	(message "Current HTTP proxy is `%s'" yx-proxy))
-    (setq url-proxy-services nil)
-    (message "No HTTP proxy")))
+  (let ((url-proxy "127.0.0.1:7890"))
+    (if (not(bound-and-true-p url-proxy-services))
+        (progn
+	  (setq url-proxy-services
+                `(("http" . ,url-proxy)
+		  ("https" . ,url-proxy)
+		  ("no_proxy" . "^\\(localhost\\|192.168.*\\|10.*\\)")))
+	  (message "Current HTTP proxy is `%s'" url-proxy))
+      (setq url-proxy-services nil))))
 
 (add-hook 'emacs-startup-hook #'yx/proxy-http-toggle)
-
 
 (defun yx/keyboard-quit ()
   "Do-What-I-Mean behaviour for a general `keyboard-quit'."
@@ -35,9 +32,6 @@
          (abort-recursive-edit))
         (t
          (keyboard-quit))))
-
-(keymap-global-set "C-g" #'yx/keyboard-quit)
-
 
 (defun yx/org-toggle-inline-images-in-subtree (state &optional beg end)
   "Refresh inline image previews in the current heading/tree."
@@ -88,8 +82,15 @@
                       (ignore-errors (delete-window (get-buffer-window popup-buffer-name))))
                     nil t))))))
 
-(keymap-global-set "C-;" #'yx/eshell-toggle)
-
+(defun yx/set-exec-path-from-shell (&optional pathvar)
+  (interactive)
+  (let* ((pathvar (or pathvar "PATH"))
+         (path-from-shell
+          (shell-command-to-string
+           (format "/bin/zsh -c -i 'echo -n $%s'" pathvar))))
+    (setenv pathvar path-from-shell)
+    (when (string-equal pathvar "PATH")
+      (setq exec-path (split-string path-from-shell path-separator)))))
 
 (provide 'init-util)
 ;;; init-util.el ends here
