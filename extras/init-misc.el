@@ -78,5 +78,9 @@
   (sis-global-respect-mode t)
   (sis-global-context-mode t))
 
+(use-package bing-dict
+  :ensure t
+  :bind (("M-s d" . bing-dict-brief)))
+
 (provide 'init-misc)
 ;;; init-misc.el ends here
