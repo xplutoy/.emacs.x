@@ -76,7 +76,8 @@
 
 (use-package consult
   :ensure t
-  :bind (("C-x b"   . consult-buffer)
+  :bind (("s-r"     . consult-recent-file)
+         ("C-x b"   . consult-buffer)
 	 ("C-x 4 b" . consult-buffer-other-window)
          ("C-x 5 b" . consult-buffer-other-frame)
 	 ("C-x p b" . consult-project-buffer)
@@ -84,7 +85,6 @@
          ("C-x t b" . consult-buffer-other-tab)
 	 ("C-x M-:" . consult-complex-command)
 	 ("M-X"     . consult-mode-command)
-	 ("M-r"     . consult-recent-file)
 	 ("M-y"     . consult-yank-pop)
 	 ("M-s f"   . consult-fd)
 	 ("M-s r"   . consult-ripgrep)

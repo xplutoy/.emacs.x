@@ -64,6 +64,19 @@
   :hook ((LaTeX-mode . turn-on-cdlatex)
          (org-mode . turn-on-org-cdlatex)))
 
+(use-package sis
+  :ensure t
+  :config
+  (add-to-list 'sis-prefix-override-keys "C-z")
+  (add-to-list 'sis-prefix-override-keys "M-s")
+  (add-to-list 'sis-prefix-override-keys "M-g")
+  (when IS-MAC
+    (sis-ism-lazyman-config
+     "com.apple.keylayout.ABC"
+     "com.apple.inputmethod.SCIM.Shuangpin"))
+  (sis-global-inline-mode t)
+  (sis-global-respect-mode t)
+  (sis-global-context-mode t))
 
 (provide 'init-misc)
 ;;; init-misc.el ends here

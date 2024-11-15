@@ -36,7 +36,6 @@
 (setopt fill-column 78)
 (setopt word-wrap t)
 (setopt word-wrap-by-category t)
-(setopt truncate-lines t)
 (setopt require-final-newline t)
 
 (setopt frame-title-format '("%b - GNU Emacs"))
@@ -111,7 +110,7 @@
 
 (add-hook 'ibuffer-mode-hook #'hl-line-mode)
 
-(windmove-default-keybindings 'shift)
+(windmove-default-keybindings 'meta)
 (windmove-swap-states-default-keybindings '(shift control))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -168,6 +167,9 @@
 
 (add-hook 'after-init-hook #'yx/setup-font)
 
+(setopt nobreak-char-display nil)
+(setopt mode-line-end-spaces '(:eval (if (display-graphic-p) " 　" "-%-")))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
 ;;;   Keybindings
@@ -201,7 +203,7 @@
 
 (when IS-WIN
       (setq w32-lwindow-modifier 'super)
-      (w32-register-hot-key [s-t]))
+      (w32-register-hot-key [s-r]))
 
 (with-eval-after-load 'isearch
   (keymap-substitute isearch-mode-map #'isearch-delete-char #'isearch-del-char))
