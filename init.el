@@ -197,7 +197,6 @@
 (keymap-global-set "C-/"	#'undo-only)
 (keymap-global-set "M-/"	#'hippie-expand)
 (keymap-global-set "C-g"        #'yx/keyboard-quit)
-(keymap-global-set "C-;"        #'yx/eshell-toggle)
 
 (keymap-global-set "C-M-r"      #'raise-sexp)
 
