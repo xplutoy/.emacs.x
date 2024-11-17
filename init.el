@@ -186,7 +186,7 @@
 (keymap-global-set "C-x C-d"    #'project-dired)
 
 (keymap-global-set "C-c d"	#'duplicate-dwim)
-(keymap-global-set "C-c v"      #'follow-delete-other-windows-and-split)
+(keymap-global-set "C-c 3"      #'follow-delete-other-windows-and-split)
 
 (keymap-global-set "C-z ."	#'repeat)
 (keymap-global-set "C-z /"	#'webjump)
