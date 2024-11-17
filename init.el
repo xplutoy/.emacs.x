@@ -157,33 +157,14 @@
 ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(defvar yx/d-font "Courier New")
-(defvar yx/f-font "IBM Plex Mono")
-(defvar yx/v-font "IBM Plex Sans")
-(defvar yx/s-font "IBM Plex Serif")
-
-(defun yx/setup-font ()
-
-  (set-face-attribute 'default nil :family yx/d-font :height 150)
-  (set-face-attribute 'fixed-pitch nil :family yx/f-font)
-  (set-face-attribute 'variable-pitch nil :family yx/v-font)
-  (set-face-attribute 'fixed-pitch-serif nil :family yx/s-font)
-
-  (cl-loop for font in '("LXGW WenKai" "Microsoft Yahei" "PingFang SC")
-           when (x-list-fonts font)
-           return (set-fontset-font t 'han (font-spec :family font)))
-  (cl-loop for font in '("Segoe UI Symbol" "Symbola" "Symbol")
-           when (x-list-fonts font)
-           return (set-fontset-font t 'symbol (font-spec :family font) nil))
-  (cl-loop for font in '("Segoe UI Emoji" "Noto Color Emoji" "Apple Color Emoji")
-           when (x-list-fonts font)
-           return (set-fontset-font t 'emoji  (font-spec :family font) nil))
-  (load-theme 'modus-operandi t))
-
-(add-hook 'after-init-hook #'yx/setup-font)
-
 (setopt nobreak-char-display nil)
 (setopt mode-line-end-spaces '(:eval (if (display-graphic-p) " 　" "-%-")))
+
+(set-face-attribute 'default nil :family "IBM Plex Mono" :height 150)
+(set-face-attribute 'variable-pitch nil :family "IBM Plex Sans")
+(set-fontset-font t 'han (font-spec :family "LXGW WenKai"))
+
+(load-theme 'modus-operandi t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
