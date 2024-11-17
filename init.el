@@ -94,9 +94,7 @@
 
 (setopt flyspell-mode-map nil)
 (setopt ispell-silently-savep t)
-(setopt ispell-dictionary "en_US")
 (setopt ispell-personal-dictionary "~/.emacs.d/etc/aspell-en.pws")
-(setopt ispell-alternate-dictionary "~/.emacs.d/etc/google-10000-en.txt")
 
 (setopt dired-dwim-target t)
 (setopt dired-mouse-drag-files t)
