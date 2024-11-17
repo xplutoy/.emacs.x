@@ -147,7 +147,8 @@
 
 (require 'init-util)
 
-(yx/set-exec-path-from-shell)
+(when IS-MAC
+  (yx/set-exec-path-from-shell))
 
 (add-hook 'emacs-startup-hook #'yx/proxy-http-toggle)
 
@@ -161,7 +162,7 @@
 (setopt mode-line-end-spaces '(:eval (if (display-graphic-p) " 　" "-%-")))
 
 (set-face-attribute 'default nil :family "IBM Plex Mono" :height 150)
-(set-face-attribute 'variable-pitch nil :family "IBM Plex Sans")
+(set-face-attribute 'variable-pitch nil :family "IBM Plex Serif")
 (set-fontset-font t 'han (font-spec :family "LXGW WenKai"))
 
 (load-theme 'modus-operandi t)
