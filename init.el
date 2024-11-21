@@ -159,7 +159,7 @@
 (setopt nobreak-char-display nil)
 (setopt mode-line-end-spaces '(:eval (if (display-graphic-p) " 　" "-%-")))
 
-(set-face-attribute 'default nil :family "IBM Plex Mono" :height 150)
+(set-face-attribute 'default nil :family "Intel One Mono" :height 150)
 (set-face-attribute 'variable-pitch nil :family "IBM Plex Serif")
 (set-fontset-font t 'han (font-spec :family "LXGW WenKai"))
 

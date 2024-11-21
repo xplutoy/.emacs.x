@@ -18,13 +18,7 @@
 
 (setq org-directory yx/org-dir)
 
-(setq org-agenda-files '("inbox.org"))
-
 (setq org-default-notes-file (expand-file-name "inbox.org" org-directory))
-
-(setq org-attach-id-dir (expand-file-name "data" org-directory))
-
-(setq org-cite-csl-styles-dir no-littering-etc-directory)
 
 (setq org-cite-global-bibliography
       (list (expand-file-name "bibliography.bib" org-directory)))
@@ -81,6 +75,9 @@
   (setq org-refile-use-outline-path 'file)
   (setq org-goto-interface 'outline-path-completion)
   (setq org-outline-path-complete-in-steps nil)
+  (setq org-attach-id-dir (expand-file-name "data" org-directory))
+  (setq org-agenda-files '("inbox.org"))
+  (setq org-agenda-diary-file (expand-file-name "diary.org" org-directory))
   (setq org-agenda-skip-scheduled-if-deadline-is-shown t)
   (setq org-agenda-scheduled-leaders '("计划@-- " "拖延%03d "))
   (setq org-agenda-deadline-leaders  '("截止@-- " "剩余%03d " "逾期%03d "))
@@ -111,9 +108,8 @@
   :init
   (setq org-latex-compiler "xelatex")
   (setq org-latex-packages-alist '(("" "amsfonts")))
-  (setq org-cite-export-processors '((t csl "ieee.csl")))
-  (setq org-preview-latex-image-directory
-        (no-littering-expand-var-file-name "ltximg/"))
+  (setq org-cite-export-processors `((t csl ,(expand-file-name "ieee.csl" no-littering-etc-directory))))
+  (setq org-preview-latex-image-directory (no-littering-expand-var-file-name "ltximg/"))
   :config
   (plist-put org-format-latex-options :scale 1.2))
 
