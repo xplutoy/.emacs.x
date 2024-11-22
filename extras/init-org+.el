@@ -69,6 +69,7 @@
   (setq org-M-RET-may-split-line nil)
   (setq org-todo-repeat-to-state "NEXT")
   (setq org-startup-with-latex-preview t)
+  (setq org-fontify-quote-and-verse-blocks t)
   (setq org-insert-heading-respect-content t)
   (setq org-blank-before-new-entry '((heading 'auto)))
   (setq org-tags-exclude-from-inheritance '(crypt))

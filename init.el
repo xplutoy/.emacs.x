@@ -157,7 +157,11 @@
 
 (set-face-attribute 'default nil :family "Intel One Mono" :height 150)
 (set-face-attribute 'variable-pitch nil :family "IBM Plex Serif")
-(set-fontset-font t 'han (font-spec :family "LXGW WenKai"))
+
+(setopt face-font-rescale-alist '(("LXGW WenKai Mono"  . 1.2)))
+(set-fontset-font t 'han (font-spec :family "LXGW WenKai Mono"))
+
+(setopt modus-themes-org-blocks 'tinted-background)
 
 (load-theme 'modus-operandi t)
 
