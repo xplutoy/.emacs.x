@@ -14,7 +14,7 @@
   "Toggle HTTP/HTTPS proxy."
   (interactive)
   (let ((url-proxy "127.0.0.1:7890"))
-    (if (not(bound-and-true-p url-proxy-services))
+    (if (not (bound-and-true-p url-proxy-services))
         (progn
 	  (setq url-proxy-services
                 `(("http" . ,url-proxy)

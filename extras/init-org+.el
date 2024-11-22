@@ -140,7 +140,11 @@
 
 (use-package org-modern
   :ensure t
-  :config (global-org-modern-mode +1))
+  :custom
+  (org-modern-table nil)
+  (org-modern-block-fringe nil)
+  :config
+  (global-org-modern-mode +1))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
