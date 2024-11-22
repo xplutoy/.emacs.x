@@ -92,10 +92,6 @@
 
 (setopt show-paren-style 'parenthesis)
 
-(setopt flyspell-mode-map nil)
-(setopt ispell-silently-savep t)
-(setopt ispell-personal-dictionary "~/.emacs.d/etc/aspell-en.pws")
-
 (setopt dired-dwim-target t)
 (setopt dired-mouse-drag-files t)
 (setopt dired-kill-when-opening-new-dired-buffer t)
@@ -197,12 +193,16 @@
 (keymap-global-set "C-t h"      #'highlight-changes-mode)
 (keymap-global-set "C-t l"      #'flymake-mode)
 
-(when IS-WIN
-      (setq w32-lwindow-modifier 'super)
-      (w32-register-hot-key [s-r]))
+(with-eval-after-load 'flyspell
+  (keymap-unset flyspell-mode-map "C-.")
+  (keymap-unset flyspell-mode-map "C-,"))
 
 (with-eval-after-load 'isearch
   (keymap-substitute isearch-mode-map #'isearch-delete-char #'isearch-del-char))
+
+(when IS-WIN
+      (setq w32-lwindow-modifier 'super)
+      (w32-register-hot-key [s-r]))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
