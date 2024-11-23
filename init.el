@@ -27,11 +27,12 @@
 
 (set-language-environment "UTF-8")
 
+(setopt user-mail-address "yangxue.cs@foxmail.com")
+
+(setopt system-time-locale "C")
 (setopt byte-compile-warnings nil)
 (setopt gc-cons-threshold (* 32 1024 1024))
-(setopt system-time-locale "C")
-(setopt user-mail-address "yangxue.cs@foxmail.com")
-(setopt custom-file (locate-user-emacs-file "custom.el"))
+(setopt custom-file "~/.emacs.d/custom.el")
 
 (setopt fill-column 78)
 (setopt word-wrap t)
@@ -104,8 +105,8 @@
 
 (add-hook 'ibuffer-mode-hook #'hl-line-mode)
 
-(windmove-default-keybindings 'meta)
-(windmove-swap-states-default-keybindings '(shift control))
+(windmove-default-keybindings 'control)
+(windmove-swap-states-default-keybindings '(control shift))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;

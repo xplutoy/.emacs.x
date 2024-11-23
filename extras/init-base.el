@@ -120,14 +120,6 @@
                                         (eglot-capf (styles orderless))
                                         (file (styles basic partial-completion)))))
 
-(use-package cape
-  :ensure t
-  :bind ("C-c p" . cape-prefix-map)
-  :init
-  (add-hook 'completion-at-point-functions #'cape-file)
-  (add-hook 'completion-at-point-functions #'cape-tex)
-  (add-hook 'completion-at-point-functions #'cape-emoji))
-
 
 (provide 'init-base)
 ;;; init-base.el ends here
