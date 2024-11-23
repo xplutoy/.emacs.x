@@ -119,7 +119,6 @@
 (tooltip-mode -1)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
-(blink-cursor-mode +1)
 (window-divider-mode +1)
 
 (save-place-mode +1)

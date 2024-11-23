@@ -56,15 +56,14 @@
   (when-let ((source (auth-source-search :host host)))
     (funcall (plist-get (car source) :secret))))
 
-(defun yx/set-exec-path-from-shell (&optional pathvar)
+(defun yx/set-exec-path-from-shell (&optional path)
   (interactive)
-  (let* ((pathvar (or pathvar "PATH"))
-         (path-from-shell
-          (shell-command-to-string
-           (format "/bin/zsh -c -i 'echo -n $%s'" pathvar))))
-    (setenv pathvar path-from-shell)
-    (when (string-equal pathvar "PATH")
-      (setq exec-path (split-string path-from-shell path-separator)))))
+  (let* ((path (or path "PATH"))
+         (path-vars (shell-command-to-string
+                     (format "%s -c -i 'echo -n $%s'" (getenv "SHELL") path))))
+    (setenv path path-vars)
+    (when (string-equal path "PATH")
+      (setq exec-path (split-string path-vars path-separator)))))
 
 (provide 'init-util)
 ;;; init-util.el ends here
