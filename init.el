@@ -155,10 +155,10 @@
 (setopt nobreak-char-display nil)
 (setopt mode-line-end-spaces '(:eval (if (display-graphic-p) " 　" "-%-")))
 
-(set-face-attribute 'default nil :family "Intel One Mono" :height 150)
+(set-face-attribute 'default nil :family "IBM Plex Mono" :height 140)
 (set-face-attribute 'variable-pitch nil :family "IBM Plex Serif")
 
-(setopt face-font-rescale-alist '(("LXGW WenKai Mono"  . 1.2)))
+(setopt face-font-rescale-alist '(("LXGW WenKai Mono" . 1.2)))
 (set-fontset-font t 'han (font-spec :family "LXGW WenKai Mono"))
 
 (setopt modus-themes-org-blocks 'tinted-background)
@@ -192,10 +192,6 @@
 (keymap-global-set "C-z c"	#'org-capture)
 (keymap-global-set "C-z l"	#'org-store-link)
 (keymap-global-set "C-z s"	#'scratch-buffer)
-
-(keymap-global-set "C-t f"      #'follow-mode)
-(keymap-global-set "C-t h"      #'highlight-changes-mode)
-(keymap-global-set "C-t l"      #'flymake-mode)
 
 (with-eval-after-load 'flyspell
   (keymap-unset flyspell-mode-map "C-.")

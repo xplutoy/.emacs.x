@@ -9,9 +9,6 @@
 ;;
 
 ;;; Code:
-(setq vc-follow-symlinks t)
-(setq vc-handled-backends '(Git))
-
 (add-hook 'prog-mode-hook #'hl-line-mode)
 (add-hook 'prog-mode-hook #'hs-minor-mode)
 (add-hook 'prog-mode-hook #'flyspell-prog-mode)
@@ -21,13 +18,20 @@
 (add-hook 'prog-mode-hook #'electric-pair-local-mode)
 (add-hook 'prog-mode-hook #'electric-indent-local-mode)
 
-(setq shell-kill-buffer-on-exit t)
+(setopt vc-follow-symlinks t)
+(setopt vc-handled-backends '(Git))
 
-(setq compilation-scroll-output 'first-error)
-(setq compilation-auto-jump-to-first-error t)
+(setopt gdb-many-windows t)
+(setopt gdb-restore-window-configuration-after-quit t)
+(setopt gud-highlight-current-line t)
 
-(setq ediff-window-setup-function #'ediff-setup-windows-plain)
-(setq ediff-split-window-function #'split-window-horizontally)
+(setopt shell-kill-buffer-on-exit t)
+
+(setopt compilation-scroll-output 'first-error)
+(setopt compilation-auto-jump-to-first-error t)
+
+(setopt ediff-window-setup-function #'ediff-setup-windows-plain)
+(setopt ediff-split-window-function #'split-window-horizontally)
 
 (add-hook 'ediff-after-quit-hook-internal 'winner-undo)
 
@@ -57,15 +61,21 @@
 (define-auto-insert "\\.el$" #'yx/el-header)
 (define-auto-insert "\\.py$" #'yx/py-header)
 
-
-(use-package eglot
-  :custom
-  (eglot-report-progress nil)
-  (eglot-send-changes-idle-time 0.1)
-  (eglot-extend-to-xref t)
-  :config
+(with-eval-after-load 'eglot
+  (setopt eglot-extend-to-xref t)
+  (setopt eglot-report-progress nil)
+  (setopt eglot-send-changes-idle-time 0.1)
   (fset #'jsonrpc--log-event #'ignore)
-  (add-to-list 'eglot-stay-out-of 'yasnippet))
+  (add-to-list 'eglot-stay-out-of 'yasnippet)
+  (keymap-set eglot-mode-map "C-c l r" #'eglot-rename)
+  (keymap-set eglot-mode-map "C-c l f" #'eglot-format)
+  (keymap-set eglot-mode-map "C-c l a" #'eglot-code-actions))
+
+(with-eval-after-load 'flymake
+  (setopt flymake-fringe-indicator-position 'right-fringe)
+  (keymap-set flymake-mode-map "M-p" #'flymake-goto-prev-error)
+  (keymap-set flymake-mode-map "M-n" #'flymake-goto-next-error)
+  (keymap-set flymake-mode-map "C-c l d" #'flymake-show-buffer-diagnostics))
 
 (use-package magit
   :ensure t
@@ -100,8 +110,8 @@
   :ensure t)
 
 ;;;; python
-(setq python-shell-dedicated 'project)
-(setq python-indent-guess-indent-offset-verbose nil)
+(setopt python-shell-dedicated 'project)
+(setopt python-indent-guess-indent-offset-verbose nil)
 (add-to-list 'python-shell-completion-native-disabled-interpreters "python")
 
 (add-to-list 'treesit-language-source-alist
@@ -110,7 +120,10 @@
 
 (add-hook 'python-base-mode-hook #'eglot-ensure)
 
-(reformatter-define black :program "black" :args '("-"))
+(reformatter-define black
+  :program "black"
+  :args '("-"))
+
 (add-hook 'python-base-mode-hook #'black-on-save-mode)
 
 ;;;; julia
