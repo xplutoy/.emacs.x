@@ -115,16 +115,11 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (repeat-mode +1)
 (winner-mode +1)
-
-(tooltip-mode -1)
-(tool-bar-mode -1)
-(scroll-bar-mode -1)
-(window-divider-mode +1)
-
 (save-place-mode +1)
 (auto-save-visited-mode +1)
 (global-auto-revert-mode +1)
 
+(window-divider-mode +1)
 (delete-selection-mode +1)
 (pixel-scroll-precision-mode +1)
 
@@ -155,10 +150,6 @@
 (setopt nobreak-char-display nil)
 (setopt mode-line-end-spaces '(:eval (if (display-graphic-p) " 　" "-%-")))
 
-(set-face-attribute 'default nil :family "IBM Plex Mono" :height 140)
-(set-face-attribute 'variable-pitch nil :family "IBM Plex Serif")
-
-(setopt face-font-rescale-alist '(("LXGW WenKai Mono" . 1.2)))
 (set-fontset-font t 'han (font-spec :family "LXGW WenKai Mono"))
 
 (setopt modus-themes-org-blocks 'tinted-background)

@@ -9,14 +9,14 @@
 ;;
 
 ;;; Code:
+(show-paren-mode +1)
+(electric-pair-mode +1)
+(electric-indent-mode +1)
+
 (add-hook 'prog-mode-hook #'hl-line-mode)
 (add-hook 'prog-mode-hook #'hs-minor-mode)
-(add-hook 'prog-mode-hook #'flyspell-prog-mode)
-(add-hook 'prog-mode-hook #'show-paren-local-mode)
 (add-hook 'prog-mode-hook #'toggle-truncate-lines)
 (add-hook 'prog-mode-hook #'display-line-numbers-mode)
-(add-hook 'prog-mode-hook #'electric-pair-local-mode)
-(add-hook 'prog-mode-hook #'electric-indent-local-mode)
 
 (setopt vc-follow-symlinks t)
 (setopt vc-handled-backends '(Git))
@@ -35,7 +35,7 @@
 
 (add-hook 'ediff-after-quit-hook-internal 'winner-undo)
 
-(setq auto-insert-alist nil)
+(setopt auto-insert-alist nil)
 
 (define-skeleton yx/py-header  ""
   nil
@@ -106,8 +106,7 @@
   (add-hook 'hack-local-variables-hook #'buffer-env-update)
   (setq buffer-env-script-name '(".envrc" ".venv/bin/activate")))
 
-(use-package reformatter
-  :ensure t)
+(use-package reformatter :ensure t)
 
 ;;;; python
 (setopt python-shell-dedicated 'project)
