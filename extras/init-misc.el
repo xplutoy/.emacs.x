@@ -18,22 +18,16 @@
 
 (use-package gptel
   :ensure t
-  :init
-  (setq gptel-use-curl nil)
-  (setq gptel-default-mode 'org-mode)
-  (setq gptel-backend (gptel-make-openai "kimi"
+  :bind ("M-s g" . gptel-menu)
+  :custom
+  (gptel-use-curl nil)
+  (gptel-default-mode 'org-mode)
+  (gptel-backend (gptel-make-openai "kimi"
                         :host "api.moonshot.cn"
                         :key 'gptel-api-key
                         :models '(moonshot-v1-32k)))
-  (setq gptel-model 'moonshot-v1-32k)
-
-  (defun yx/gptel-dwim (&optional arg)
-    (interactive "P")
-    (if (or arg (region-active-p))
-        (call-interactively #'gptel-menu)
-      (call-interactively #'gptel)))
-  (keymap-global-set "C-z <return>" #'yx/gptel-dwim)
-
+  (gptel-model 'moonshot-v1-32k)
+  :config
   (add-hook 'gptel-post-response-functions 'gptel-end-of-response))
 
 (use-package minions

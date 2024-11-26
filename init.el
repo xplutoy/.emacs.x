@@ -162,27 +162,23 @@
 ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(keymap-global-unset "C-z")
-(keymap-global-unset "C-t")
-
 (keymap-global-set "C-/"	#'undo-only)
 (keymap-global-set "M-/"	#'hippie-expand)
 (keymap-global-set "C-g"        #'yx/keyboard-quit)
 
 (keymap-global-set "C-M-r"      #'raise-sexp)
 
+(keymap-global-set "M-s /"      #'webjump)
+
 (keymap-global-set "C-x C-b"	#'ibuffer)
 (keymap-global-set "C-x C-d"    #'project-dired)
 
+(keymap-global-set "C-c a"	#'org-agenda)
+(keymap-global-set "C-c c"	#'org-capture)
+(keymap-global-set "C-c l"	#'org-store-link)
+(keymap-global-set "C-c s"	#'scratch-buffer)
 (keymap-global-set "C-c d"	#'duplicate-dwim)
 (keymap-global-set "C-c 3"      #'follow-delete-other-windows-and-split)
-
-(keymap-global-set "C-z ."	#'repeat)
-(keymap-global-set "C-z /"	#'webjump)
-(keymap-global-set "C-z a"	#'org-agenda)
-(keymap-global-set "C-z c"	#'org-capture)
-(keymap-global-set "C-z l"	#'org-store-link)
-(keymap-global-set "C-z s"	#'scratch-buffer)
 
 (with-eval-after-load 'flyspell
   (keymap-unset flyspell-mode-map "C-.")
