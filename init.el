@@ -16,8 +16,6 @@
 ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(defvar yx/org-dir "~/org-notes/")
-
 (defconst IS-MAC (eq system-type 'darwin))
 (defconst IS-WIN (eq system-type 'windows-nt))
 
@@ -27,12 +25,9 @@
 
 (set-language-environment "UTF-8")
 
-(setopt user-mail-address "yangxue.cs@foxmail.com")
-
 (setopt system-time-locale "C")
-(setopt byte-compile-warnings nil)
-(setopt gc-cons-threshold (* 32 1024 1024))
 (setopt custom-file "~/.emacs.d/custom.el")
+(setopt user-mail-address "yangxue.cs@foxmail.com")
 
 (setopt fill-column 78)
 (setopt word-wrap t)
@@ -67,6 +62,8 @@
 (setopt recentf-auto-cleanup 300)
 (setopt delete-by-moving-to-trash t)
 (setopt global-auto-revert-non-file-buffers t)
+
+(setopt mouse-wheel-tilt-scroll t)
 (setopt mouse-drag-and-drop-region-cross-program t)
 
 (setopt epg-pinentry-mode 'loopback)
@@ -113,6 +110,7 @@
 ;;;   Global mirror mode
 ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (repeat-mode +1)
 (winner-mode +1)
 (save-place-mode +1)

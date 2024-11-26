@@ -16,7 +16,7 @@
 ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(setq org-directory yx/org-dir)
+(setq org-directory "~/org-notes/")
 
 (setq org-default-notes-file (expand-file-name "inbox.org" org-directory))
 

@@ -10,6 +10,8 @@
 
 ;;; Code:
 
+(setq gc-cons-threshold (* 10 1024 1024))
+
 (add-to-list 'default-frame-alist '(font . "Iosevka-14"))
 (add-to-list 'default-frame-alist '(menu-bar-lines . nil))
 (add-to-list 'default-frame-alist '(tool-bar-lines . nil))

@@ -9,6 +9,7 @@
 ;;
 
 ;;; Code:
+
 (use-package eat
   :ensure t
   :init
