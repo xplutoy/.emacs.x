@@ -12,7 +12,12 @@
 
 (use-package no-littering
   :ensure t
-  :config (no-littering-theme-backups))
+  :init (no-littering-theme-backups))
+
+(use-package exec-path-from-shell
+  :ensure t
+  :when IS-MAC
+  :init (exec-path-from-shell-initialize))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
@@ -62,9 +67,9 @@
 
 (use-package corfu
   :ensure t
-  :init
-  (setq corfu-auto t)
-  (global-corfu-mode +1))
+  :hook (prog-mode . corfu-mode)
+  :custom
+  (corfu-auto t))
 
 (use-package embark
   :ensure t

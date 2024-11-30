@@ -29,34 +29,26 @@
 
 (setq org-tag-persistent-alist
       '((:startgroup . nil)
-        ("@me" . ?m) ("@work" . ?t) ("@life" . ?l)
-        (:endgroup . nil)
-        ("crypt" . ?c) ("project" . ?p)))
+        ("@home" . ?h)
+        ("@self" . ?s)
+        ("@work" . ?w)
+        (:endgroup . nil)))
 
 (setq org-todo-keywords
-      '((sequence "TODO(t!)" "SOMEDAY(s!)" "NEXT(n!)" "HOLD(h@/!)" "|" "CANCELED(c@/!)" "DONE(d!)")))
+      '((sequence "TODO(t!)" "NEXT(n!)" "HOLD(h@/!)" "|" "CANCELED(c@/!)" "DONE(d!)")))
 
 (setq org-capture-templates
-      '(("d" "diary" entry (file+olp+datetree "diary.org") "* Journal %<%H:%M>\n%?")
-        ("h" "home"  entry (file+headline org-default-notes-file "Home") "* TODO %?" :prepend t)
-        ("w" "work"  entry (file+headline org-default-notes-file "Work") "* TODO %?" :prepend t)
-        ("z" "habit" entry (file+headline org-default-notes-file "Habit") "* NEXT %?")))
+      '(("h" "home"  entry (file+headline org-default-notes-file "Home") "* TODO %?" :prepend t)
+        ("w" "work"  entry (file+headline org-default-notes-file "Work") "* TODO %?" :prepend t)))
 
 (use-package org
-  :bind (("C-c b" . org-switchb)
-         :map org-mode-map
-         ("C-x n n" . org-toggle-narrow-to-subtree))
   :init
-  (setq org-modules nil)
-  (setq org-startup-folded 'show2levels)
-  (setq org-tags-column 0)
-  (setq org-pretty-entities t)
+  (setq org-crypt-key nil)
   (setq org-log-done 'time)
+  (setq org-pretty-entities t)
   (setq org-log-into-drawer t)
   (setq org-hide-emphasis-markers t)
   (setq org-use-sub-superscripts '{})
-  (setq org-cycle-separator-lines -1)
-  (setq org-crypt-key nil)
   (setq org-support-shift-select t)
   (setq org-special-ctrl-k t)
   (setq org-special-ctrl-a/e t)
@@ -93,7 +85,7 @@
   (add-hook 'org-agenda-mode-hook #'hl-line-mode)
   (add-hook 'org-cycle-hook #'yx/org-toggle-inline-images-in-subtree)
   (org-babel-do-load-languages
-   'org-babel-load-languages '((python . t) (emacs-lisp . t)))
+   'org-babel-load-languages '((python . t) (emacs-lisp . t) (R . t)))
   (add-to-list 'org-babel-default-header-args '(:results . "silent") t)
   (add-to-list 'org-babel-default-header-args '(:eval . "never-export") t)
   :custom-face
@@ -119,6 +111,7 @@
 ;;;   Org+
 ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (use-package citeproc :ensure t)
 
 (use-package org-ql

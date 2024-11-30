@@ -37,14 +37,21 @@
 
 (use-package elfeed
   :ensure t
-  :init
-  (setq elfeed-feeds
-        '(("https://planet.emacslife.com/atom.xml" emacs)
-          ("https://feeds.feedburner.com/RBloggers" R)
-          ("https://www.juliabloggers.com/feed/" julia)
-          ("https://planet.haskell.org/rss20.xml" haskell)
-          ("https://rss.arxiv.org/rss/cs.AI+cs.CV+cs.LG" arxiv-ai)))
-  (setq elfeed-use-curl nil)
+  :custom
+  (elfeed-feeds
+   '(("https://planet.emacslife.com/atom.xml" emacs)
+     ("https://feeds.feedburner.com/RBloggers" R)
+     ("https://www.juliabloggers.com/feed/" julia)
+     ("https://www.planetpython.org/rss20.xml" python)
+     ("https://planet.lisp.org/rss20.xml" lisp)
+     ("https://planet.scheme.org/atom.xml" scheme)
+     ("https://planet.haskell.org/rss20.xml" haskell)
+     ("https://www.cyberciti.biz/feed/" linux)
+     ("https://eranraviv.com/feed/" math)
+     ("https://writings.stephenwolfram.com/feed/" math)
+     ("https://towardsdatascience.com/feed" data-sci)
+     ("https://machinelearningmastery.com/feed/" ai-new)
+     ("https://rss.arxiv.org/rss/cs.AI+cs.CV+cs.LG" ai-paper)))
   :hook (elfeed-show-mode . olivetti-mode))
 
 (use-package tex
