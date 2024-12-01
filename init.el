@@ -135,6 +135,7 @@
 
 (set-fontset-font t 'han (font-spec :family "LXGW WenKai Mono"))
 
+(setopt modus-themes-mixed-fonts t)
 (setopt modus-themes-org-blocks 'tinted-background)
 
 (load-theme 'modus-operandi t)

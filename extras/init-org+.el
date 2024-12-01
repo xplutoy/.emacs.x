@@ -123,10 +123,6 @@
   :ensure t
   :hook (org-mode . valign-mode))
 
-(use-package mixed-pitch
-  :ensure t
-  :hook (text-mode . mixed-pitch-mode))
-
 (use-package org-modern
   :ensure t
   :custom
