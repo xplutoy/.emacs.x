@@ -18,7 +18,7 @@
 
 (setq org-directory "~/org-notes/")
 
-(setq org-default-notes-file (expand-file-name "inbox.org" org-directory))
+(setq org-agenda-files '("inbox.org"))
 
 (setq org-cite-global-bibliography
       (list (expand-file-name "bibliography.bib" org-directory)))
@@ -38,8 +38,8 @@
       '((sequence "TODO(t!)" "NEXT(n!)" "HOLD(h@/!)" "|" "CANCELED(c@/!)" "DONE(d!)")))
 
 (setq org-capture-templates
-      '(("h" "home"  entry (file+headline org-default-notes-file "Home") "* TODO %?" :prepend t)
-        ("w" "work"  entry (file+headline org-default-notes-file "Work") "* TODO %?" :prepend t)))
+      '(("h" "home"  entry (file+headline "inbox.org" "Home") "* TODO %?" :prepend t)
+        ("w" "work"  entry (file+headline "inbox.org" "Work") "* TODO %?" :prepend t)))
 
 (use-package org
   :init
@@ -64,8 +64,6 @@
   (setq org-goto-interface 'outline-path-completion)
   (setq org-outline-path-complete-in-steps nil)
   (setq org-attach-id-dir (expand-file-name "data" org-directory))
-  (setq org-agenda-files '("inbox.org"))
-  (setq org-agenda-diary-file (expand-file-name "diary.org" org-directory))
   (setq org-agenda-skip-scheduled-if-deadline-is-shown t)
   (setq org-agenda-scheduled-leaders '("计划@-- " "拖延%03d "))
   (setq org-agenda-deadline-leaders  '("截止@-- " "剩余%03d " "逾期%03d "))
@@ -146,9 +144,8 @@
          ("C-c n i"   . denote-link-or-create)
          ("C-c n l"   . denote-find-link)
          ("C-c n C-l" . denote-find-backlink)
-         ("C-c n M-l" . denote-backlinks)
-         ("C-c n M-f" . denote-org-dblock-insert-links)
-         ("C-c n M-b" . denote-org-dblock-insert-backlinks))
+         ("C-c n C-f" . denote-org-dblock-insert-links)
+         ("C-c n C-b" . denote-org-dblock-insert-backlinks))
   :custom
   (denote-directory org-directory)
   (denote-known-keywords nil)
