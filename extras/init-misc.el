@@ -75,7 +75,6 @@
 (use-package sis
   :ensure t
   :config
-  (add-to-list 'sis-prefix-override-keys "C-z")
   (add-to-list 'sis-prefix-override-keys "M-s")
   (add-to-list 'sis-prefix-override-keys "M-g")
   (when IS-MAC
@@ -89,6 +88,7 @@
 (use-package bing-dict
   :ensure t
   :bind (("M-s d" . bing-dict-brief)))
+
 
 (provide 'init-misc)
 ;;; init-misc.el ends here
