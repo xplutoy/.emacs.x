@@ -19,7 +19,7 @@
 
 (use-package gptel
   :ensure t
-  :bind ("M-s g" . gptel-menu)
+  :bind ("C-c g" . gptel-menu)
   :custom
   (gptel-use-curl nil)
   (gptel-default-mode 'org-mode)

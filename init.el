@@ -146,23 +146,25 @@
 ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(keymap-global-set "C-/"	#'undo-only)
-(keymap-global-set "M-/"	#'hippie-expand)
-(keymap-global-set "C-g"        #'yx/keyboard-quit)
+(keymap-global-unset "C-z")
 
-(keymap-global-set "C-M-r"      #'raise-sexp)
+(keymap-global-set "C-/"      #'undo-only)
+(keymap-global-set "M-/"      #'hippie-expand)
+(keymap-global-set "C-g"      #'yx/keyboard-quit)
 
-(keymap-global-set "M-s /"      #'webjump)
+(keymap-global-set "C-M-r"    #'raise-sexp)
 
-(keymap-global-set "C-x C-b"	#'ibuffer)
-(keymap-global-set "C-x C-d"    #'project-dired)
+(keymap-global-set "C-x C-b"  #'ibuffer)
+(keymap-global-set "C-x C-d"  #'project-dired)
 
-(keymap-global-set "C-c a"	#'org-agenda)
-(keymap-global-set "C-c c"	#'org-capture)
-(keymap-global-set "C-c l"	#'org-store-link)
-(keymap-global-set "C-c s"	#'scratch-buffer)
-(keymap-global-set "C-c d"	#'duplicate-dwim)
-(keymap-global-set "C-c 3"      #'follow-delete-other-windows-and-split)
+(keymap-global-set "C-c a"    #'org-agenda)
+(keymap-global-set "C-c c"    #'org-capture)
+(keymap-global-set "C-c l"    #'org-store-link)
+(keymap-global-set "C-c d"    #'duplicate-dwim)
+(keymap-global-set "C-c s"    #'scratch-buffer)
+(keymap-global-set "C-c 3"    #'follow-delete-other-windows-and-split)
+
+(keymap-global-set "M-s /"    #'webjump)
 
 (with-eval-after-load 'flyspell
   (keymap-unset flyspell-mode-map "C-.")

@@ -121,6 +121,7 @@
 (use-package org-modern
   :ensure t
   :custom
+  (org-modern-star nil)
   (org-modern-table nil)
   (org-modern-block-fringe nil)
   :config

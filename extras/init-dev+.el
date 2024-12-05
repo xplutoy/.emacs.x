@@ -34,8 +34,6 @@
 (setopt ediff-window-setup-function #'ediff-setup-windows-plain)
 (setopt ediff-split-window-function #'split-window-horizontally)
 
-(add-hook 'ediff-after-quit-hook-internal 'winner-undo)
-
 (setopt auto-insert-alist nil)
 
 (define-skeleton yx/py-header  ""
