@@ -142,8 +142,6 @@
 (keymap-global-set "C-c s"    #'scratch-buffer)
 (keymap-global-set "C-c 3"    #'follow-delete-other-windows-and-split)
 
-(keymap-global-set "M-s /"    #'webjump)
-
 (with-eval-after-load 'flyspell
   (keymap-unset flyspell-mode-map "C-.")
   (keymap-unset flyspell-mode-map "C-,"))
