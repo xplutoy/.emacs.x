@@ -19,10 +19,6 @@
 (defconst IS-MAC (eq system-type 'darwin))
 (defconst IS-WIN (eq system-type 'windows-nt))
 
-(with-eval-after-load 'package
-  (add-to-list 'package-archives
-               '("melpa" . "https://melpa.org/packages/") t))
-
 (set-language-environment "UTF-8")
 
 (setopt system-time-locale "C")
@@ -52,7 +48,6 @@
 (setopt find-file-visit-truename t)
 (setopt delete-by-moving-to-trash t)
 (setopt mouse-wheel-tilt-scroll t)
-(setopt show-paren-style 'parenthesis)
 (setopt global-auto-revert-non-file-buffers t)
 
 (setopt epg-pinentry-mode 'loopback)
@@ -64,18 +59,6 @@
 
 (setopt completion-auto-select 'second-tab)
 (setopt read-extended-command-predicate #'command-completion-default-include-p)
-
-(setopt display-buffer-alist
-        '(("\\`\\*\\(Compile-Log\\|Org Links\\)\\*\\'"
-           (display-buffer-no-window)
-           (allow-no-window . t))
-          ("\\`\\*\\(Org Select\\|Agenda Commands\\|Bookmark List\\)\\*\\'"
-           (display-buffer-at-bottom))))
-
-(setopt webjump-sites
-        '(("ZhiHu"  . [simple-query "zhihu.com" "zhihu.com/search?q=" ""])
-          ("GitHub" . [simple-query "github.com" "github.com/search?q=" ""])
-          ("DuckGo" . [simple-query "duckduckgo.com" "duckduckgo.com/?q=" ""])))
 
 (setopt user-mail-address "yangxue.cs@foxmail.com")
 (setopt smtpmail-smtp-server "smtp.qq.com")
@@ -96,6 +79,9 @@
 
 (windmove-default-keybindings 'control)
 (windmove-swap-states-default-keybindings '(control shift))
+
+(add-to-list 'package-archives
+               '("melpa" . "https://melpa.org/packages/") t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
