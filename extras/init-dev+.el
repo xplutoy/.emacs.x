@@ -106,6 +106,11 @@
 
 (use-package reformatter :ensure t)
 
+(use-package tempel
+  :ensure t
+  :bind (("M-*" . tempel-insert)
+         ("M-+" . tempel-complete)))
+
 ;;;; python
 (setopt python-shell-dedicated 'project)
 (setopt python-indent-guess-indent-offset-verbose nil)
@@ -130,13 +135,14 @@
 ;;;; R
 (use-package ess
   :ensure t
+  :defer 5
   :custom
   (ess-use-company nil)
   (ess-ask-for-ess-directory nil)
   (inferior-R-args "--quiet --no-save --no-restore")
   :config
+  (require 'ess-site)
   (require 'ess-julia)
-  (require 'ess-r-mode)
   (keymap-set ess-r-mode-map ";" 'ess-insert-assign)
   (keymap-set inferior-ess-r-mode-map ";" 'ess-insert-assign)
   (add-hook 'ess-r-mode-hook #'eglot-ensure))
