@@ -33,38 +33,27 @@
 (setopt word-wrap t)
 (setopt word-wrap-by-category t)
 (setopt require-final-newline t)
-
-(setopt frame-title-format '("%b - GNU Emacs"))
-(setopt initial-scratch-message nil)
-(setopt initial-major-mode 'fundamental-mode)
-
-(setopt abbrev-mode t)
 (setopt indent-tabs-mode nil)
 (setopt tab-always-indent 'complete)
 
-(setopt bidi-inhibit-bpa t)
-(setopt bidi-paragraph-direction 'left-to-right)
-
-(setopt reb-re-syntax 'string)
-(setopt sentence-end-double-space nil)
-
-(setopt save-silently t)
-(setopt use-dialog-box nil)
 (setopt use-short-answers t)
+(setopt use-dialog-box nil)
 (setopt inhibit-splash-screen t)
 (setopt inhibit-startup-message t)
-(setopt eldoc-echo-area-use-multiline-p nil)
+(setopt initial-scratch-message nil)
+(setopt frame-title-format '("%b - GNU Emacs"))
 
+(setopt bidi-inhibit-bpa t)
+(setopt bidi-paragraph-direction 'left-to-right)
+(setopt sentence-end-double-space nil)
+
+(setopt reb-re-syntax 'string)
 (setopt set-mark-command-repeat-pop t)
 (setopt enable-recursive-minibuffers t)
 (setopt find-file-visit-truename t)
-
-(setopt recentf-auto-cleanup 300)
 (setopt delete-by-moving-to-trash t)
-(setopt global-auto-revert-non-file-buffers t)
-
 (setopt mouse-wheel-tilt-scroll t)
-(setopt mouse-drag-and-drop-region-cross-program t)
+(setopt global-auto-revert-non-file-buffers t)
 
 (setopt epg-pinentry-mode 'loopback)
 (setopt epa-file-encrypt-to user-mail-address)
@@ -97,6 +86,7 @@
 (add-hook 'dired-mode-hook #'hl-line-mode)
 (add-hook 'dired-mode-hook #'dired-omit-mode)
 
+(add-hook 'text-mode-hook #'abbrev-mode)
 (add-hook 'text-mode-hook #'visual-line-mode)
 (add-hook 'text-mode-hook #'variable-pitch-mode)
 
