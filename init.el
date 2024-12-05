@@ -27,7 +27,6 @@
 
 (setopt system-time-locale "C")
 (setopt custom-file "~/.emacs.d/custom.el")
-(setopt user-mail-address "yangxue.cs@foxmail.com")
 
 (setopt fill-column 78)
 (setopt word-wrap t)
@@ -53,6 +52,7 @@
 (setopt find-file-visit-truename t)
 (setopt delete-by-moving-to-trash t)
 (setopt mouse-wheel-tilt-scroll t)
+(setopt show-paren-style 'parenthesis)
 (setopt global-auto-revert-non-file-buffers t)
 
 (setopt epg-pinentry-mode 'loopback)
@@ -77,7 +77,9 @@
           ("GitHub" . [simple-query "github.com" "github.com/search?q=" ""])
           ("DuckGo" . [simple-query "duckduckgo.com" "duckduckgo.com/?q=" ""])))
 
-(setopt show-paren-style 'parenthesis)
+(setopt user-mail-address "yangxue.cs@foxmail.com")
+(setopt smtpmail-smtp-server "smtp.qq.com")
+(setopt gnus-select-method '(nnimap "foxmail.cs" (nnimap-address "imap.qq.com")))
 
 (setopt dired-dwim-target t)
 (setopt dired-mouse-drag-files t)
@@ -164,8 +166,8 @@
   (keymap-substitute isearch-mode-map #'isearch-delete-char #'isearch-del-char))
 
 (when IS-WIN
-      (setq w32-lwindow-modifier 'super)
-      (w32-register-hot-key [s-r]))
+  (setq w32-lwindow-modifier 'super)
+  (w32-register-hot-key [s-r]))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;

@@ -4,3 +4,5 @@ eln-cache/
 server/
 tree-sitter/
 /custom.el
+etc/gnus/
+
