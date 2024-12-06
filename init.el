@@ -68,14 +68,10 @@
 (setopt dired-mouse-drag-files t)
 (setopt dired-kill-when-opening-new-dired-buffer t)
 
-(add-hook 'dired-mode-hook #'hl-line-mode)
-(add-hook 'dired-mode-hook #'dired-omit-mode)
-
 (add-hook 'text-mode-hook #'abbrev-mode)
 (add-hook 'text-mode-hook #'visual-line-mode)
 (add-hook 'text-mode-hook #'variable-pitch-mode)
-
-(add-hook 'ibuffer-mode-hook #'hl-line-mode)
+(add-hook 'text-mode-hook (lambda () (hl-line-mode 'toggle)))
 
 (windmove-default-keybindings 'control)
 (windmove-swap-states-default-keybindings '(control shift))
@@ -96,6 +92,7 @@
 (global-auto-revert-mode +1)
 
 (window-divider-mode +1)
+(global-hl-line-mode +1)
 (delete-selection-mode +1)
 (pixel-scroll-precision-mode +1)
 
