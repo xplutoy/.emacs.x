@@ -60,14 +60,15 @@
 (define-auto-insert "\\.py$" #'yx/py-header)
 
 (with-eval-after-load 'eglot
+  (setopt eglot-autoshutdown t)
   (setopt eglot-extend-to-xref t)
   (setopt eglot-report-progress nil)
   (setopt eglot-send-changes-idle-time 0.1)
   (fset #'jsonrpc--log-event #'ignore)
-  (add-to-list 'eglot-stay-out-of 'yasnippet)
   (keymap-set eglot-mode-map "C-c l r" #'eglot-rename)
   (keymap-set eglot-mode-map "C-c l f" #'eglot-format)
-  (keymap-set eglot-mode-map "C-c l a" #'eglot-code-actions))
+  (keymap-set eglot-mode-map "C-c l a" #'eglot-code-actions)
+  (keymap-set eglot-mode-map "C-c l d" #'eglot-help-at-point))
 
 (with-eval-after-load 'flymake
   (setopt flymake-fringe-indicator-position 'right-fringe)
@@ -103,7 +104,13 @@
   (add-hook 'hack-local-variables-hook #'buffer-env-update)
   (setq buffer-env-script-name '(".envrc" ".venv/bin/activate")))
 
-(use-package reformatter :ensure t)
+(use-package reformatter
+  :ensure t
+  :config
+  (reformatter-define black
+    :program "black"
+    :args '("-"))
+  (add-hook 'python-base-mode-hook #'black-on-save-mode))
 
 (use-package tempel
   :ensure t
@@ -113,6 +120,7 @@
 ;;;; python
 (setopt python-shell-dedicated 'project)
 (setopt python-indent-guess-indent-offset-verbose nil)
+
 (add-to-list 'python-shell-completion-native-disabled-interpreters "python")
 
 (add-to-list 'treesit-language-source-alist
@@ -121,17 +129,7 @@
 
 (add-hook 'python-base-mode-hook #'eglot-ensure)
 
-(reformatter-define black
-  :program "black"
-  :args '("-"))
-
-(add-hook 'python-base-mode-hook #'black-on-save-mode)
-
-;;;; julia
-(use-package julia-mode
-  :ensure t)
-
-;;;; R
+;;;; R / Julia
 (use-package ess
   :ensure t
   :defer 5
@@ -145,6 +143,8 @@
   (keymap-set ess-r-mode-map ";" 'ess-insert-assign)
   (keymap-set inferior-ess-r-mode-map ";" 'ess-insert-assign)
   (add-hook 'ess-r-mode-hook #'eglot-ensure))
+
+(use-package julia-mode :ensure t)
 
 (provide 'init-dev+)
 ;;; init-dev+.el ends here

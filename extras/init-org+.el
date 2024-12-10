@@ -27,13 +27,6 @@
       '((nil :maxlevel . 2)
         (org-agenda-files :maxlevel . 2)))
 
-(setq org-tag-persistent-alist
-      '((:startgroup . nil)
-        ("@home" . ?h)
-        ("@self" . ?s)
-        ("@work" . ?w)
-        (:endgroup . nil)))
-
 (setq org-todo-keywords
       '((sequence "TODO(t!)" "NEXT(n!)" "HOLD(h@/!)" "|" "CANCELED(c@/!)" "DONE(d!)")))
 
@@ -82,9 +75,7 @@
   (org-level-2 ((t (:height 1.15))))
   (org-level-3 ((t (:height 1.10))))
   (org-level-4 ((t (:height 1.05))))
-  (org-document-title ((t (:height 1.30))))
-  (org-done ((t (:strike-through t))))
-  (org-headline-done ((t (:strike-through t)))))
+  (org-document-title ((t (:height 1.30)))))
 
 (use-package ox-latex
   :init
