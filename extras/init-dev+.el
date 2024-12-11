@@ -68,7 +68,7 @@
   (keymap-set eglot-mode-map "C-c l r" #'eglot-rename)
   (keymap-set eglot-mode-map "C-c l f" #'eglot-format)
   (keymap-set eglot-mode-map "C-c l a" #'eglot-code-actions)
-  (keymap-set eglot-mode-map "C-c l d" #'eglot-help-at-point))
+  (keymap-set eglot-mode-map "C-c l h" #'eglot-help-at-point))
 
 (with-eval-after-load 'flymake
   (setopt flymake-fringe-indicator-position 'right-fringe)
