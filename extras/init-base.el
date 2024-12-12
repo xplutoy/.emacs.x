@@ -14,11 +14,6 @@
   :ensure t
   :init (no-littering-theme-backups))
 
-(use-package exec-path-from-shell
-  :ensure t
-  :when IS-MAC
-  :init (exec-path-from-shell-initialize))
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
 ;;;   Edit

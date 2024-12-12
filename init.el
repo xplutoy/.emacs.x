@@ -12,7 +12,7 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
-;;;   Basic settings
+;;;   Basic Settings
 ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -80,7 +80,7 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
-;;;   Global mirror mode
+;;;   Global Mirror Mode
 ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -146,13 +146,27 @@
 (with-eval-after-load 'isearch
   (keymap-substitute isearch-mode-map #'isearch-delete-char #'isearch-del-char))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;
+;;;   OS Specific
+;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (when IS-WIN
   (setq w32-lwindow-modifier 'super)
   (w32-register-hot-key [s-r]))
 
+(when IS-MAC
+  (let ((paths
+         (with-temp-buffer
+           (call-process-shell-command "cat /etc/paths /etc/paths.d/*" nil t)
+           (split-string (buffer-string)))))
+    (setenv "PATH" (mapconcat #'identity paths ":"))
+    (setq exec-path (append paths (list exec-directory)))))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
-;;;   Core extras
+;;;   Core Extras
 ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
