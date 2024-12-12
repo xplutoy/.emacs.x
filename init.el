@@ -90,9 +90,9 @@
 (auto-save-visited-mode +1)
 (global-auto-revert-mode +1)
 
+(cua-selection-mode +1)
 (window-divider-mode +1)
 (global-hl-line-mode +1)
-(delete-selection-mode +1)
 (pixel-scroll-precision-mode +1)
 
 (add-hook 'after-init-hook #'recentf-mode)

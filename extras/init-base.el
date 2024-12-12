@@ -40,7 +40,9 @@
   :bind (([remap kill-ring-save] . easy-kill)
 	 ([remap mark-sexp] . easy-mark)))
 
-(use-package speedrect :ensure t)
+(use-package speedrect
+  :ensure t
+  :config (speedrect-mode +1))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
