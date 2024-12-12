@@ -107,6 +107,7 @@
 (setopt nobreak-char-display nil)
 (setopt mode-line-end-spaces '(:eval (if (display-graphic-p) " 　" "-%-")))
 
+(set-face-attribute 'fixed-pitch nil :family "Iosevka")
 (set-fontset-font t 'han (font-spec :family "LXGW WenKai Mono"))
 
 (setopt modus-themes-mixed-fonts t)
