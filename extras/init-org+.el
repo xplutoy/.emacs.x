@@ -36,7 +36,6 @@
 
 (use-package org
   :custom
-  (org-crypt-key nil)
   (org-log-into-drawer t)
   (org-hide-emphasis-markers t)
   (org-special-ctrl-a/e t)
@@ -58,6 +57,7 @@
   (org-export-with-broken-links 'mark)
   :config
   (require 'org-tempo)
+  (setopt org-crypt-key nil)
   (org-crypt-use-before-save-magic)
   (add-hook 'org-mode-hook (lambda () (setq line-spacing 2)))
   (add-hook 'org-cycle-hook #'yx/org-toggle-inline-images-in-subtree)

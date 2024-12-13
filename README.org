@@ -71,5 +71,5 @@ Emacs 会优先到 HOME 环境变量指定的地址去寻找配置文件。
 
 ** 参考
 
-- [[ https://sr.ht/~ashton314/emacs-bedrock/][emacs-bedrock]]
+- [[https://sr.ht/~ashton314/emacs-bedrock/][emacs-bedrock]]
 - [[https://github.com/jamescherti/minimal-emacs.d][minimal-emacs.d]]

@@ -11,11 +11,11 @@
 ;;; Code:
 
 (show-paren-mode +1)
-(electric-pair-mode +1)
 (electric-indent-mode +1)
 
 (add-hook 'prog-mode-hook #'hs-minor-mode)
 (add-hook 'prog-mode-hook #'toggle-truncate-lines)
+(add-hook 'prog-mode-hook #'electric-pair-local-mode)
 (add-hook 'prog-mode-hook #'display-line-numbers-mode)
 
 (setopt vc-follow-symlinks t)

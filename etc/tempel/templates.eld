@@ -31,9 +31,10 @@ org-mode
 (cptn & "#+caption: ")
 (lnk & "[[" p "][" p "]]")
 (inlsrc "src_" p "{" q "}")
-(elsp & "#+begin_src emacs-lisp" n r n "#+end_src" :post (org-edit-src-code))
+(el & "#+begin_src emacs-lisp" n r n "#+end_src" :post (org-edit-src-code))
 (py & "#+begin_src python" n r n "#+end_src" :post (org-edit-src-code))
 (R & "#+begin_src R" n r n "#+end_src" :post (org-edit-src-code))
+(sh & "#+begin_src shell" n r n "#+end_src" :post (org-edit-src-code))
 
 
 python-base-mode
