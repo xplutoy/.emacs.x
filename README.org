@@ -1,0 +1,75 @@
+* .emacs.x
+
+An Emacs Configuration that Meets My Minimum Requirements.
+
+
+** On Windows
+
+我使用的是预编译好的[[https://www.gnu.org/software/emacs/download.html][安装包]]。
+
+
+*** 设置 HOME 环境变量
+
+Emacs 会优先到 HOME 环境变量指定的地址去寻找配置文件。
+
+
+*** 安装 msys2 和 unix tools
+
+#+begin_src shell
+  # msys2
+  winget install -e --id MSYS2.MSYS2
+  pacman -Syu
+  # diff
+  pacman -S diffutils
+  # aspell
+  pacman -S ucrt64/mingw-w64-ucrt-x86_64-aspell
+  pacman -S ucrt64/mingw-w64-ucrt-x86_64-aspell-en
+#+end_src
+
+设置 msys2 环境。新增 MSYSTEM 环境变量，值为 UCRT64。
+
+
+*** 安装 gnupg
+
+#+begin_src shell
+   winget install -e --id GnuPG.GnuPG
+#+end_src
+
+导入私钥：
+
+#+begin_src shell
+   gpg --import sub_private_key.asc
+#+end_src
+
+配置 gnupg，在 %APPDATA%\gnupg 目录下新建 gpg-agent.conf 文件，并写入下面两条配置：
+
+#+begin_src conf
+    allow-emacs-pinentry
+    allow-loopback-pinentry
+#+end_src
+
+
+*** 安装 rg/find/grep/git
+
+#+begin_src shell
+    winget install BurntSushi.ripgrep.GNU
+    winget install GnuWin32.FindUtils
+    winget install GnuWin32.Grep
+    winget install --id Git.Git
+    winget install -e --id sharkdp.fd
+#+end_src
+
+
+** On MacOS
+
+安装：
+
+#+begin_src shell
+  sudo port install emacs-app
+#+end_src
+
+
+** 参考
+
+- [[ https://sr.ht/~ashton314/emacs-bedrock/][emacs-bedrock]]
+- [[https://github.com/jamescherti/minimal-emacs.d][minimal-emacs.d]]
