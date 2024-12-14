@@ -165,6 +165,9 @@
     (setenv "PATH" (mapconcat #'identity paths ":"))
     (setq exec-path (append paths (list exec-directory)))))
 
+(setenv "HTTP_PROXY"  "http://localhost:7890")
+(setenv "HTTPS_PROXY" "http://localhost:7890")
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
 ;;;   Core Extras
