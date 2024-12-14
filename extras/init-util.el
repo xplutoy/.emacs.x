@@ -10,20 +10,42 @@
 
 ;;; Code:
 
-(defun yx/proxy-http-toggle ()
+(defvar my-http-proxy "127.0.0.1:7890")
+(defvar my-socks-proxy "127.0.0.1:7890")
+
+(defun yx/toggle-http-proxy ()
   "Toggle HTTP/HTTPS proxy."
   (interactive)
-  (let ((url-proxy "127.0.0.1:7890"))
-    (if (not (bound-and-true-p url-proxy-services))
-        (progn
-	  (setq url-proxy-services
-                `(("http" . ,url-proxy)
-		  ("https" . ,url-proxy)
-		  ("no_proxy" . "^\\(localhost\\|192.168.*\\|10.*\\)")))
-	  (message "Current HTTP proxy is `%s'" url-proxy))
-      (setq url-proxy-services nil))))
+  (if (not (bound-and-true-p url-proxy-services))
+      (progn
+	(setq url-proxy-services
+              `(("http" . ,my-http-proxy)
+		("https" . ,my-http-proxy)
+		("no_proxy" . "^\\(localhost\\|192.168.*\\|10.*\\)")))
+	(message "Current HTTP proxy is `%s'" my-http-proxy))
+    (setq url-proxy-services nil)
+    (message "No HTTP proxy")))
 
-(add-hook 'emacs-startup-hook #'yx/proxy-http-toggle)
+(defun yx/toggle-socks-proxy ()
+  "Toggle SOCKS proxy."
+  (interactive)
+  (if (not (bound-and-true-p socks-server))
+      (let* ((proxy (split-string my-socks-proxy ":"))
+             (host (car proxy))
+             (port (string-to-number (cadr proxy))))
+        (setq socks-server `("Default server" ,host ,port 5)
+              url-gateway-method 'socks
+              socks-noproxy '("localhost"))
+        (setenv "all_proxy" (concat "socks5://" my-socks-proxy))
+        (message "Current SOCKS%d proxy is %s:%s"
+                 (cadddr socks-server) (cadr socks-server) (caddr socks-server)))
+    (setq url-gateway-method 'native
+          socks-noproxy nil
+          socks-server nil)
+    (message "No SOCKS proxy")))
+
+(add-hook 'emacs-startup-hook #'yx/toggle-http-proxy)
+(add-hook 'emacs-startup-hook #'yx/toggle-socks-proxy)
 
 (defun yx/keyboard-quit ()
   "Do-What-I-Mean behaviour for a general `keyboard-quit'."
