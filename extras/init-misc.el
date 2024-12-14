@@ -40,8 +40,9 @@
   :custom
   (elfeed-feeds
    '(("https://planet.emacslife.com/atom.xml" emacs)
-     ("https://feeds.feedburner.com/RBloggers" R)
      ("https://www.juliabloggers.com/feed/" julia)
+     ("https://feeds.feedburner.com/RBloggers" R data-sci)
+     ("https://python-bloggers.com/feed/" data-sci python)
      ("https://www.planetpython.org/rss20.xml" python)
      ("https://planet.lisp.org/rss20.xml" lisp)
      ("https://planet.scheme.org/atom.xml" scheme)
@@ -49,9 +50,13 @@
      ("https://www.cyberciti.biz/feed/" linux)
      ("https://eranraviv.com/feed/" math)
      ("https://writings.stephenwolfram.com/feed/" math)
+     ("https://www.kdnuggets.com/feed" data-sci)
      ("https://towardsdatascience.com/feed" data-sci)
      ("https://machinelearningmastery.com/feed/" ai-new)
-     ("https://rss.arxiv.org/rss/cs.AI+cs.CV+cs.LG" ai-paper)))
+     ("https://www.marktechpost.com/feed/" ai-new)
+     ("https://deepmind.google/blog/rss.xml" ai-new)
+     ("https://bair.berkeley.edu/blog/feed.xml" ai-new)
+     ("https://rss.arxiv.org/rss/cs.AI+cs.CV+cs.LG" ai-arxiv)))
   :hook (elfeed-show-mode . olivetti-mode))
 
 (use-package tex
