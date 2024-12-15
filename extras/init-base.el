@@ -54,11 +54,10 @@
   :ensure t
   :init
   (vertico-mode +1)
-  :bind (:map vertico-map
-	("RET" . vertico-directory-enter)
-	("DEL" . vertico-directory-delete-char))
-  :config
-  (vertico-indexed-mode +1))
+  (vertico-indexed-mode +1)
+  (keymap-set vertico-map "RET" #'vertico-directory-enter)
+  (keymap-set vertico-map "DEL" #'vertico-directory-delete-char)
+  (keymap-set vertico-map "M-DEL" #'vertico-directory-delete-word))
 
 (use-package corfu
   :ensure t
@@ -68,11 +67,11 @@
 
 (use-package embark
   :ensure t
-  :init
-  (setq embark-cycle-key ".")
-  (setq prefix-help-command #'embark-prefix-help-command)
   :bind (("C-." . embark-act)
-         ("M-." . embark-dwim)))
+         ("M-." . embark-dwim))
+  :custom
+  (embark-cycle-key ".")
+  (prefix-help-command #'embark-prefix-help-command))
 
 (use-package consult
   :ensure t
@@ -113,7 +112,6 @@
   (use-package embark-consult :ensure t))
 
 (use-package consult-dir
-  :after consult
   :ensure t
   :bind (("C-x C-d" . consult-dir)
          :map vertico-map
