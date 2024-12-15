@@ -76,8 +76,6 @@
 (windmove-default-keybindings 'control)
 (windmove-swap-states-default-keybindings '(control shift))
 
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
 ;;;   Global Mirror Mode
@@ -173,6 +171,9 @@
 ;;;   Core Extras
 ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(with-eval-after-load 'package
+  (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t))
 
 (add-to-list 'load-path "~/.emacs.d/extras")
 
