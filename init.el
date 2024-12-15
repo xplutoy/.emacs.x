@@ -128,15 +128,14 @@
 
 (keymap-global-set "C-M-r"    #'raise-sexp)
 
-(keymap-global-set "C-x C-b"  #'ibuffer)
-(keymap-global-set "C-x C-d"  #'project-dired)
-
 (keymap-global-set "C-c a"    #'org-agenda)
 (keymap-global-set "C-c c"    #'org-capture)
 (keymap-global-set "C-c l"    #'org-store-link)
 (keymap-global-set "C-c d"    #'duplicate-dwim)
 (keymap-global-set "C-c s"    #'scratch-buffer)
 (keymap-global-set "C-c 3"    #'follow-delete-other-windows-and-split)
+
+(keymap-global-set "C-x C-b"  #'ibuffer)
 
 (with-eval-after-load 'flyspell
   (keymap-unset flyspell-mode-map "C-.")

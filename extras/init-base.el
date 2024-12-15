@@ -112,6 +112,14 @@
   (setq consult-ripgrep-args (concat consult-ripgrep-args " --hidden"))
   (use-package embark-consult :ensure t))
 
+(use-package consult-dir
+  :after consult
+  :ensure t
+  :bind (("C-x C-d" . consult-dir)
+         :map vertico-map
+         ("C-x C-d" . consult-dir)
+         ("C-x C-j" . consult-dir-jump-file)))
+
 (use-package orderless
   :ensure t
   :config
