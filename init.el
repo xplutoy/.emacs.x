@@ -186,6 +186,8 @@
 
 (require 'init-misc)
 
+(require 'init-blog)
+
 (load custom-file 'noerror)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
