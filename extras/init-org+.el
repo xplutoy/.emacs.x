@@ -51,6 +51,7 @@
   (org-refile-use-outline-path 'file)
   (org-goto-interface 'outline-path-completion)
   (org-outline-path-complete-in-steps nil)
+  (org-insert-heading-respect-content t)
   (org-tags-exclude-from-inheritance '(crypt))
   (org-agenda-skip-scheduled-if-deadline-is-shown t)
   (org-export-use-babel nil)

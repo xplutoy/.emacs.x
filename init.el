@@ -36,7 +36,6 @@
 (setopt inhibit-splash-screen t)
 (setopt inhibit-startup-message t)
 (setopt initial-scratch-message nil)
-(setopt frame-title-format '("%b - GNU Emacs"))
 
 (setopt bidi-inhibit-bpa t)
 (setopt bidi-paragraph-direction 'left-to-right)
@@ -67,6 +66,8 @@
 (setopt dired-dwim-target t)
 (setopt dired-mouse-drag-files t)
 (setopt dired-kill-when-opening-new-dired-buffer t)
+
+(setopt browse-url-browser-function 'eww-browse-url)
 
 (add-hook 'text-mode-hook #'abbrev-mode)
 (add-hook 'text-mode-hook #'visual-line-mode)

@@ -19,7 +19,8 @@
 
 (use-package gptel
   :ensure t
-  :bind ("C-c g" . gptel-menu)
+  :bind (("C-c <return>" . gptel-send)
+         ("C-c C-<return>" . gptel-menu))
   :custom
   (gptel-use-curl nil)
   (gptel-default-mode 'org-mode)
@@ -40,6 +41,7 @@
   :custom
   (elfeed-feeds
    '(("https://planet.emacslife.com/atom.xml" emacs)
+     ("http://xahlee.info/emacs/emacs/blog.xml" emacs)
      ("https://www.juliabloggers.com/feed/" julia)
      ("https://feeds.feedburner.com/RBloggers" R data-sci)
      ("https://python-bloggers.com/feed/" data-sci python)
@@ -56,7 +58,10 @@
      ("https://www.marktechpost.com/feed/" ai-new)
      ("https://deepmind.google/blog/rss.xml" ai-new)
      ("https://bair.berkeley.edu/blog/feed.xml" ai-new)
-     ("https://rss.arxiv.org/rss/cs.AI+cs.CV+cs.LG" ai-arxiv)))
+     ("https://rss.arxiv.org/rss/cs.AI+cs.CV+cs.LG" ai-arxiv)
+     ("https://wangyurui.com/feed.xml" life)
+     ("https://www.ruanyifeng.com/blog/atom.xml" tech)
+     ("https://www.ezindie.com/feed/rss.xml" tech wealth)))
   :hook (elfeed-show-mode . olivetti-mode))
 
 (use-package tex
