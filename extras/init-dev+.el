@@ -78,10 +78,12 @@
 
 (use-package magit
   :ensure t
-  :bind (("C-c v" . magit-file-dispatch))
-  :init
-  (setq magit-bury-buffer-function #'magit-restore-window-configuration)
-  (setq magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1))
+  :bind (("C-c g" . magit-dispatch)
+         ("C-c v" . magit-file-dispatch))
+  :custom
+  (magit-clone-default-directory "~/workspace/")
+  (magit-bury-buffer-function #'magit-restore-window-configuration)
+  (magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1))
 
 (use-package color-rg
   :load-path "elpa/color-rg"
