@@ -72,7 +72,7 @@
 (add-hook 'text-mode-hook #'abbrev-mode)
 (add-hook 'text-mode-hook #'visual-line-mode)
 (add-hook 'text-mode-hook #'variable-pitch-mode)
-(add-hook 'text-mode-hook (lambda () (hl-line-mode 'toggle)))
+(add-hook 'text-mode-hook (lambda () (setq line-spacing 0.2)))
 
 (windmove-default-keybindings 'control)
 (windmove-swap-states-default-keybindings '(control shift))

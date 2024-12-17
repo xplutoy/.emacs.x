@@ -57,10 +57,8 @@
   (org-export-use-babel nil)
   (org-export-with-broken-links 'mark)
   :config
-  (require 'org-tempo)
   (setopt org-crypt-key nil)
   (org-crypt-use-before-save-magic)
-  (add-hook 'org-mode-hook (lambda () (setq line-spacing 2)))
   (add-hook 'org-cycle-hook #'yx/org-toggle-inline-images-in-subtree)
   (org-babel-do-load-languages
    'org-babel-load-languages '((python . t) (emacs-lisp . t) (R . t)))
