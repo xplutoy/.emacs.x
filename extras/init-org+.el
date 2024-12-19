@@ -88,13 +88,23 @@
 
 (use-package citeproc :ensure t)
 
-(use-package olivetti
+(use-package tex
+  :ensure auctex
+  :hook ((LaTeX-mode . eglot-ensure)
+         (LaTeX-mode . turn-on-cdlatex)
+         (LaTeX-mode . prettify-symbols-mode))
+  :custom
+  (Tex-master 'dwim)
+  (TeX-engine 'xetex)
+  (TeX-auto-save t)
+  (TeX-parse-self t)
+  (TeX-save-query nil)
+  (reftex-plug-into-AUCTeX t))
+
+(use-package cdlatex
   :ensure t
-  :hook ((org-mode . olivetti-mode)
-         (org-agenda-mode . olivetti-mode))
-  :init
-  (setq olivetti-style nil)
-  (setq olivetti-mode-map nil))
+  :hook ((LaTeX-mode . turn-on-cdlatex)
+         (org-mode . turn-on-org-cdlatex)))
 
 (use-package denote
   :ensure t
@@ -115,6 +125,7 @@
   (require 'denote-org-extras)
   (denote-rename-buffer-mode 1)
   (add-hook 'dired-mode-hook #'denote-dired-mode-in-directories))
+
 
 (provide 'init-org+)
 ;;; init-org+.el ends here

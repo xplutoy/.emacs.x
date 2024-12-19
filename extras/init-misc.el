@@ -36,6 +36,37 @@
   :ensure t
   :hook (after-init . minions-mode))
 
+(use-package sis
+  :ensure t
+  :config
+  (add-to-list 'sis-prefix-override-keys "M-s")
+  (add-to-list 'sis-prefix-override-keys "M-g")
+  (when IS-MAC
+    (sis-ism-lazyman-config
+     "com.apple.keylayout.ABC"
+     "com.apple.inputmethod.SCIM.Shuangpin"))
+  (sis-global-inline-mode t)
+  (sis-global-respect-mode t)
+  (sis-global-context-mode t))
+
+(use-package bing-dict
+  :ensure t
+  :bind (("M-s d" . bing-dict-brief)))
+
+(use-package olivetti
+  :ensure t
+  :hook ((Info-mode . olivetti-mode)
+         (eww-mode . olivetti-mode)
+         (org-mode . olivetti-mode)
+         (org-agenda-mode . olivetti-mode))
+  :custom
+  (olivetti-style 'fancy)
+  (olivetti-body-width 100)
+  :config
+  (setq olivetti-mode-map nil)
+  (with-eval-after-load 'elfeed
+    (add-hook 'elfeed-show-mode-hook #'olivetti-mode)))
+
 (use-package elfeed
   :ensure t
   :custom
@@ -61,43 +92,7 @@
      ("https://rss.arxiv.org/rss/cs.AI+cs.CV+cs.LG" ai-arxiv)
      ("https://wangyurui.com/feed.xml" life)
      ("https://www.ruanyifeng.com/blog/atom.xml" tech)
-     ("https://www.ezindie.com/feed/rss.xml" tech wealth)))
-  :hook (elfeed-show-mode . olivetti-mode))
-
-(use-package tex
-  :ensure auctex
-  :hook ((LaTeX-mode . eglot-ensure)
-         (LaTeX-mode . turn-on-cdlatex)
-         (LaTeX-mode . prettify-symbols-mode))
-  :custom
-  (Tex-master 'dwim)
-  (TeX-engine 'xetex)
-  (TeX-auto-save t)
-  (TeX-parse-self t)
-  (TeX-save-query nil)
-  (reftex-plug-into-AUCTeX t))
-
-(use-package cdlatex
-  :ensure t
-  :hook ((LaTeX-mode . turn-on-cdlatex)
-         (org-mode . turn-on-org-cdlatex)))
-
-(use-package sis
-  :ensure t
-  :config
-  (add-to-list 'sis-prefix-override-keys "M-s")
-  (add-to-list 'sis-prefix-override-keys "M-g")
-  (when IS-MAC
-    (sis-ism-lazyman-config
-     "com.apple.keylayout.ABC"
-     "com.apple.inputmethod.SCIM.Shuangpin"))
-  (sis-global-inline-mode t)
-  (sis-global-respect-mode t)
-  (sis-global-context-mode t))
-
-(use-package bing-dict
-  :ensure t
-  :bind (("M-s d" . bing-dict-brief)))
+     ("https://www.ezindie.com/feed/rss.xml" tech wealth))))
 
 
 (provide 'init-misc)
