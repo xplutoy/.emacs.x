@@ -67,6 +67,7 @@
 (setopt dired-mouse-drag-files t)
 (setopt dired-kill-when-opening-new-dired-buffer t)
 
+(setopt dictionary-server "dict.org")
 (setopt browse-url-browser-function 'eww-browse-url)
 
 (add-hook 'text-mode-hook #'abbrev-mode)
@@ -135,6 +136,9 @@
 (keymap-global-set "C-c d"    #'duplicate-dwim)
 (keymap-global-set "C-c s"    #'scratch-buffer)
 (keymap-global-set "C-c 3"    #'follow-delete-other-windows-and-split)
+
+(keymap-global-set "M-s d"    #'dictionary-lookup-definition)
+(keymap-global-set "M-s M-d"  #'dictionary-search)
 
 (keymap-global-set "C-x C-b"  #'ibuffer)
 
