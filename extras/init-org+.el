@@ -108,19 +108,18 @@
 
 (use-package denote
   :ensure t
-  :bind (("C-c n c"   . denote)
-         ("C-c n r"   . denote-rename-file)
+  :bind (("C-c n c"   . denote-directory)
          ("C-c n n"   . denote-open-or-create)
          ("C-c n i"   . denote-link-or-create)
          ("C-c n l"   . denote-find-link)
          ("C-c n C-l" . denote-find-backlink)
+         ("C-c n r"   . denote-rename-file-using-front-matter)
+         ("C-c n C-r" . denote-rename-file)
          ("C-c n C-f" . denote-org-dblock-insert-links)
          ("C-c n C-b" . denote-org-dblock-insert-backlinks))
   :custom
   (denote-directory org-directory)
-  (denote-known-keywords nil)
   (denote-date-prompt-use-org-read-date t)
-  (denote-prompts '(subdirectory title keywords signature))
   :config
   (require 'denote-org-extras)
   (denote-rename-buffer-mode 1)
