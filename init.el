@@ -24,11 +24,9 @@
 (setopt system-time-locale "C")
 (setopt custom-file "~/.emacs.d/custom.el")
 
-(setopt fill-column 78)
 (setopt word-wrap t)
 (setopt word-wrap-by-category t)
 (setopt require-final-newline t)
-(setopt indent-tabs-mode nil)
 (setopt tab-always-indent 'complete)
 
 (setopt use-short-answers t)
@@ -113,6 +111,11 @@
 (setopt modus-themes-mixed-fonts t)
 (setopt modus-themes-variable-pitch-ui t)
 (setopt modus-themes-org-blocks 'tinted-background)
+
+(setopt modus-themes-headings '((0 . (1.3))
+				(1 . (1.2))
+				(2 . (semibold 1.1))
+				(t . (semibold 1.05))))
 
 (load-theme 'modus-operandi t)
 
