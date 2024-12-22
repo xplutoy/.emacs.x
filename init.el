@@ -145,10 +145,6 @@
 
 (keymap-global-set "C-x C-b"  #'ibuffer)
 
-(with-eval-after-load 'flyspell
-  (keymap-unset flyspell-mode-map "C-.")
-  (keymap-unset flyspell-mode-map "C-,"))
-
 (with-eval-after-load 'isearch
   (keymap-substitute isearch-mode-map #'isearch-delete-char #'isearch-del-char))
 
