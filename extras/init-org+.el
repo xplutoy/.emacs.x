@@ -57,8 +57,7 @@
 (setopt org-agenda-skip-scheduled-if-deadline-is-shown t)
 
 (setopt org-latex-compiler "xelatex")
-(setopt org-latex-packages-alist '(("" "amsfonts")))
-(setopt org-preview-latex-image-directory (no-littering-expand-var-file-name "ltximg"))
+(setopt org-preview-latex-image-directory (no-littering-expand-var-file-name "ltximg/"))
 
 (setopt org-cite-global-bibliography `(,(expand-file-name "bibliography.bib" org-directory)))
 (setopt org-cite-export-processors `((t csl ,(no-littering-expand-etc-file-name "ieee.csl"))))

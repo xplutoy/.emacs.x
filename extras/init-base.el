@@ -61,16 +61,19 @@
 
 (use-package corfu
   :ensure t
-  :hook (prog-mode . corfu-mode)
+  :hook ((prog-mode text-mode) . corfu-mode)
   :custom
   (corfu-auto t))
+
+(use-package marginalia
+  :ensure t
+  :init (marginalia-mode +1))
 
 (use-package embark
   :ensure t
   :bind (("C-." . embark-act)
          ("M-." . embark-dwim))
   :custom
-  (embark-cycle-key ".")
   (prefix-help-command #'embark-prefix-help-command))
 
 (use-package consult
@@ -122,9 +125,9 @@
   :ensure t
   :config
   (setq completion-styles '(basic orderless))
-  (setq completion-category-overrides '((eglot (styles orderless))
-                                        (eglot-capf (styles orderless))
-                                        (file (styles basic partial-completion)))))
+  (setq completion-category-overrides '((file (styles partial-completion))
+					(eglot (styles orderless))
+                                        (eglot-capf (styles orderless)))))
 
 
 (provide 'init-base)
