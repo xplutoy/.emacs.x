@@ -46,6 +46,7 @@
 (setopt delete-by-moving-to-trash t)
 (setopt mouse-wheel-tilt-scroll t)
 (setopt global-auto-revert-non-file-buffers t)
+(setopt backward-delete-char-untabify-method 'hungry)
 
 (setopt epg-pinentry-mode 'loopback)
 (setopt epa-file-encrypt-to user-mail-address)
@@ -75,6 +76,8 @@
 (add-hook 'text-mode-hook #'visual-line-mode)
 (add-hook 'text-mode-hook #'variable-pitch-mode)
 (add-hook 'text-mode-hook (lambda () (setq line-spacing 0.2)))
+
+(add-hook 'before-save-hook #'whitespace-cleanup)
 
 (add-hook 'eww-after-render-hook (lambda ()
 				   (eww-readable)
@@ -154,6 +157,9 @@
 
 (keymap-global-set "C-x C-b"  #'ibuffer)
 
+(add-hook 'eshell-mode-hook
+	  (lambda () (keymap-local-set "C-l" #'eshell/clear)))
+
 (with-eval-after-load 'isearch
   (keymap-substitute isearch-mode-map #'isearch-delete-char #'isearch-del-char))
 
@@ -169,9 +175,9 @@
 
 (when IS-MAC
   (let ((paths
-         (with-temp-buffer
-           (call-process-shell-command "cat /etc/paths /etc/paths.d/*" nil t)
-           (split-string (buffer-string)))))
+	 (with-temp-buffer
+	   (call-process-shell-command "cat /etc/paths /etc/paths.d/*" nil t)
+	   (split-string (buffer-string)))))
     (setenv "PATH" (mapconcat #'identity paths ":"))
     (setq exec-path (append paths (list exec-directory)))))
 

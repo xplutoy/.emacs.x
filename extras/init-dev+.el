@@ -78,7 +78,7 @@
 
 (use-package magit
   :bind (("C-c g" . magit-dispatch)
-         ("C-c v" . magit-file-dispatch))
+	 ("C-c v" . magit-file-dispatch))
   :custom
   (magit-clone-default-directory "~/workspace/")
   (magit-bury-buffer-function #'magit-restore-window-configuration)
@@ -88,7 +88,7 @@
   :load-path "elpa/color-rg"
   ;; :vc (:url "https://github.com/manateelazycat/color-rg")
   :bind(("M-s s"   . color-rg-search-input)
-        ("M-s p"   . color-rg-search-input-in-project))
+	("M-s p"   . color-rg-search-input-in-project))
   :custom
   (color-rg-recenter-match-line t)
   (color-rg-search-no-ignore-file nil)
@@ -116,7 +116,7 @@
 
 (use-package tempel
   :bind (("M-*" . tempel-insert)
-         ("M-+" . tempel-complete)))
+	 ("M-+" . tempel-complete)))
 
 ;;;; python
 (setopt python-shell-dedicated 'project)
@@ -125,7 +125,7 @@
 (add-to-list 'python-shell-completion-native-disabled-interpreters "python")
 
 (add-to-list 'treesit-language-source-alist
-             '(python . ("https://github.com/tree-sitter/tree-sitter-python")))
+	     '(python . ("https://github.com/tree-sitter/tree-sitter-python")))
 (add-to-list 'major-mode-remap-alist '(python-mode . python-ts-mode))
 
 (add-hook 'python-base-mode-hook #'eglot-ensure)

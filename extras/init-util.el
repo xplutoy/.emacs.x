@@ -20,9 +20,9 @@
   "Do-What-I-Mean behaviour for a general `keyboard-quit'."
   (interactive)
   (cond ((> (minibuffer-depth) 0)
-         (abort-recursive-edit))
-        (t
-         (keyboard-quit))))
+	 (abort-recursive-edit))
+	(t
+	 (keyboard-quit))))
 
 (keymap-global-set "C-g" #'yx/keyboard-quit)
 
@@ -59,25 +59,25 @@ Otherwise jump to a window by typing its assigned character label."
 						(edges2 (window-edges w2)))
 					    (or (< (car edges1) (car edges2))
 						(and (= (car edges1) (car edges2))
-                                                     (< (cadr edges1) (cadr edges2))))))))
+						     (< (cadr edges1) (cadr edges2))))))))
 		  (window-keys (seq-take '("j" "k" "l" ";" "a" "s" "d" "f") window-num))
 		  (window-map (cl-pairlis window-keys sorted-windows)))
-             (setq my-quick-window-overlays
+	     (setq my-quick-window-overlays
 		   (mapcar (lambda (entry)
-                             (let* ((key (car entry))
+			     (let* ((key (car entry))
 				    (window (cdr entry))
 				    (start (window-start window))
 				    (overlay (make-overlay start start (window-buffer window))))
-                               (overlay-put overlay 'after-string
+			       (overlay-put overlay 'after-string
 					    (propertize (format "[%s]" key)
 							'face '(:foreground "white" :background "blue" :weight bold)))
-                               (overlay-put overlay 'window window)
-                               overlay))
+			       (overlay-put overlay 'window window)
+			       overlay))
 			   window-map))
-             (let ((key (read-key (format "Select window [%s]: " (string-join window-keys ", ")))))
-               (mapc #'delete-overlay my/quick-window-overlays)
-               (setq my-quick-window-overlays nil)
-               (when-let ((selected-window (cdr (assoc (char-to-string key) window-map))))
+	     (let ((key (read-key (format "Select window [%s]: " (string-join window-keys ", ")))))
+	       (mapc #'delete-overlay my/quick-window-overlays)
+	       (setq my-quick-window-overlays nil)
+	       (when-let ((selected-window (cdr (assoc (char-to-string key) window-map))))
 		 (select-window selected-window))))))))
 
 (keymap-global-set "M-o" #'yx/quick-window-jump)
@@ -85,4 +85,3 @@ Otherwise jump to a window by typing its assigned character label."
 
 (provide 'init-util)
 ;;; init-util.el ends here
-

@@ -29,7 +29,7 @@
 
 (use-package expreg
   :bind (("C-M-=" . expreg-expand)
-         ("C-M--" . expreg-contract)))
+	 ("C-M--" . expreg-contract)))
 
 (use-package easy-kill
   :bind (([remap kill-ring-save] . easy-kill)
@@ -62,59 +62,61 @@
 
 (use-package embark
   :bind (("C-." . embark-act)
-         ("M-." . embark-dwim))
+	 ("M-." . embark-dwim))
   :custom
   (prefix-help-command #'embark-prefix-help-command))
 
 (use-package consult
   :bind (("s-r"     . consult-recent-file)
-         ("C-x b"   . consult-buffer)
+	 ("C-x b"   . consult-buffer)
 	 ("C-x 4 b" . consult-buffer-other-window)
-         ("C-x 5 b" . consult-buffer-other-frame)
+	 ("C-x 5 b" . consult-buffer-other-frame)
 	 ("C-x p b" . consult-project-buffer)
 	 ("C-x r b" . consult-bookmark)
-         ("C-x t b" . consult-buffer-other-tab)
+	 ("C-x t b" . consult-buffer-other-tab)
 	 ("C-x M-:" . consult-complex-command)
 	 ("M-X"     . consult-mode-command)
 	 ("M-y"     . consult-yank-pop)
 	 ("M-s f"   . consult-fd)
 	 ("M-s r"   . consult-ripgrep)
 	 ("M-s l"   . consult-line)
-         ("M-s k"   . consult-keep-lines)
-         ("M-s u"   . consult-focus-lines)
+	 ("M-s k"   . consult-keep-lines)
+	 ("M-s u"   . consult-focus-lines)
 	 ("M-s M-l" . consult-line-multi)
 	 ("M-g i"   . consult-imenu)
 	 ("M-g g"   . consult-goto-line)
 	 ("M-g f"   . consult-flymake)
-         ("M-g e"   . consult-compile-error)
+	 ("M-g e"   . consult-compile-error)
 	 ("M-g h"   . consult-outline)
-         ("M-g a"   . consult-org-agenda)
+	 ("M-g a"   . consult-org-agenda)
 	 ("M-'"     . consult-register-store)
 	 ("M-g '"   . consult-register)
 	 ("M-g M-'" . consult-register-load)
 	 ("M-g m"   . consult-mark)
 	 ("M-g M-m" . consult-global-mark)
-         :map org-mode-map
-         ("M-g h"   . consult-org-heading))
+	 :map org-mode-map
+	 ("M-g h"   . consult-org-heading))
   :config
   (setq xref-show-xrefs-function #'consult-xref
 	xref-show-definitions-function #'consult-xref)
   (setq consult-preview-key nil)
-  (setq consult-ripgrep-args (concat consult-ripgrep-args " --hidden"))
-  (use-package embark-consult))
+  (setq consult-ripgrep-args (concat consult-ripgrep-args " --hidden")))
+
+(use-package embark-consult
+  :after embark consult)
 
 (use-package consult-dir
   :bind (("C-x C-d" . consult-dir)
-         :map vertico-map
-         ("C-x C-d" . consult-dir)
-         ("C-x C-j" . consult-dir-jump-file)))
+	 :map vertico-map
+	 ("C-x C-d" . consult-dir)
+	 ("C-x C-j" . consult-dir-jump-file)))
 
 (use-package orderless
   :config
   (setq completion-styles '(basic orderless))
   (setq completion-category-overrides '((file (styles partial-completion))
 					(eglot (styles orderless))
-                                        (eglot-capf (styles orderless)))))
+					(eglot-capf (styles orderless)))))
 
 
 (provide 'init-base)

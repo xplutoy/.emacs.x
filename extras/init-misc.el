@@ -18,14 +18,14 @@
 
 (use-package gptel
   :bind (("C-c <return>" . gptel-send)
-         ("C-c C-<return>" . gptel-menu))
+	 ("C-c C-<return>" . gptel-menu))
   :custom
   (gptel-use-curl nil)
   (gptel-default-mode 'org-mode)
   (gptel-backend (gptel-make-openai "kimi"
-                        :host "api.moonshot.cn"
-                        :key 'gptel-api-key
-                        :models '(moonshot-v1-32k)))
+			:host "api.moonshot.cn"
+			:key 'gptel-api-key
+			:models '(moonshot-v1-32k)))
   (gptel-model 'moonshot-v1-32k)
   :config
   (add-hook 'gptel-post-response-functions 'gptel-end-of-response))
@@ -50,9 +50,9 @@
 
 (use-package olivetti
   :hook ((Info-mode . olivetti-mode)
-         (eww-mode . olivetti-mode)
-         (org-mode . olivetti-mode)
-         (org-agenda-mode . olivetti-mode))
+	 (eww-mode . olivetti-mode)
+	 (org-mode . olivetti-mode)
+	 (org-agenda-mode . olivetti-mode))
   :custom
   (olivetti-style 'fancy)
   (olivetti-body-width 100)
