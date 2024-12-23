@@ -27,6 +27,17 @@
 (keymap-global-set "C-g" #'yx/keyboard-quit)
 
 
+(defun yx/comment-dwim (n)
+  "Comment N lines, defaulting to the current one.
+When the region is active, comment its lines instead."
+  (interactive "p")
+  (if (use-region-p)
+      (comment-or-uncomment-region (region-beginning) (region-end))
+    (comment-line n)))
+
+(keymap-global-set "M-;" #'yx/comment-dwim)
+
+
 (defun yx/quick-window-jump ()
   "My DWIM window jumping.
 
@@ -37,7 +48,7 @@ Otherwise jump to a window by typing its assigned character label."
   (let* ((window-lst (window-list nil 'no-mini))
 	 (window-num (length window-lst)))
     (cond ((= window-num 1)
-	   (switch-to-buffer (other-buffer)))
+	   (switch-to-buffer (other-buffer (current-buffer))))
 	  ((= window-num 2)
 	   (select-window (other-window-for-scrolling)))
 	  (t
