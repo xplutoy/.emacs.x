@@ -111,6 +111,9 @@
     :args '("-"))
   (add-hook 'python-base-mode-hook #'black-on-save-mode))
 
+(use-package idle-highlight-mode
+  :hook (prog-mode . idle-highlight-mode))
+
 (use-package tempel
   :bind (("M-*" . tempel-insert)
          ("M-+" . tempel-complete)))
