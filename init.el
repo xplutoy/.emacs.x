@@ -114,7 +114,9 @@
 (setopt mode-line-end-spaces '(:eval (if (display-graphic-p) " 　" "-%-")))
 
 (set-face-attribute 'fixed-pitch nil :family "Iosevka")
-(set-fontset-font t 'han (font-spec :family "LXGW WenKai Mono"))
+
+(dolist (charset '(han cjk-misc))
+  (set-fontset-font t charset (font-spec :family "LXGW WenKai Mono")))
 
 (setopt modus-themes-mixed-fonts t)
 (setopt modus-themes-variable-pitch-ui t)
