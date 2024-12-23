@@ -63,6 +63,7 @@
            :publishing-function org-publish-attachment)))
 
 (defun yx/publish-blog ()
+  "Publish my blog."
   (interactive)
   (org-publish "my-blog" t nil))
 
