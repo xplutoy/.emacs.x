@@ -73,6 +73,11 @@
 (add-hook 'text-mode-hook #'variable-pitch-mode)
 (add-hook 'text-mode-hook (lambda () (setq line-spacing 0.2)))
 
+(add-hook 'eww-after-render-hook (lambda ()
+				   (eww-readable)
+				   (variable-pitch-mode +1)
+				   (setq line-spacing 0.2)))
+
 (windmove-default-keybindings 'control)
 (windmove-swap-states-default-keybindings '(control shift))
 
@@ -129,7 +134,6 @@
 
 (keymap-global-set "C-/"      #'undo-only)
 (keymap-global-set "M-/"      #'hippie-expand)
-(keymap-global-set "C-g"      #'yx/keyboard-quit)
 
 (keymap-global-set "C-M-r"    #'raise-sexp)
 

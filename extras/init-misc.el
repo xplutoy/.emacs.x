@@ -92,7 +92,9 @@
      ("https://rss.arxiv.org/rss/cs.AI+cs.CV+cs.LG" ai-arxiv)
      ("https://wangyurui.com/feed.xml" life)
      ("https://www.ruanyifeng.com/blog/atom.xml" tech)
-     ("https://www.ezindie.com/feed/rss.xml" tech wealth))))
+     ("https://www.ezindie.com/feed/rss.xml" tech wealth)))
+  :config
+  (add-hook 'elfeed-show-mode-hook (lambda () (setq line-spacing 0.2))))
 
 
 (provide 'init-misc)

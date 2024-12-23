@@ -73,6 +73,25 @@
   (plist-put org-format-latex-options :scale 1.3)
 
   (add-hook 'org-mode-hook (lambda () (setq-local global-hl-line-mode nil)))
+
+  (defun yx/org-toggle-inline-images-in-subtree (state &optional beg end)
+    "Refresh inline image previews in the current heading/tree."
+    (let* ((beg (or beg
+		    (if (org-before-first-heading-p)
+			(save-excursion (point-min))
+		      (save-excursion (org-back-to-heading) (point)))))
+	   (end (or end
+		    (if (org-before-first-heading-p)
+			(save-excursion (org-next-visible-heading 1) (point))
+		      (save-excursion (org-end-of-subtree) (point)))))
+	   (overlays (cl-remove-if-not (lambda (ov) (overlay-get ov 'org-image-overlay))
+				       (ignore-errors (overlays-in beg end)))))
+      (if (and (eq state 'subtree) (not overlays))
+	  (org-display-inline-images t t beg end)
+	(dolist (ov overlays nil)
+	  (delete-overlay ov)
+	  (setq org-inline-image-overlays (delete ov org-inline-image-overlays))))))
+
   (add-hook 'org-cycle-hook #'yx/org-toggle-inline-images-in-subtree)
 
   (org-babel-do-load-languages
