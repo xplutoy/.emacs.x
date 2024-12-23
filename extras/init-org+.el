@@ -31,6 +31,8 @@
 	'(("h" "home" entry (file+headline "Home") "* TODO %?" :prepend t)
 	  ("w" "work" entry (file+headline "Work") "* TODO %?" :prepend t)))
 
+(setopt org-crypt-key nil)
+
 (setopt org-log-into-drawer t)
 
 (setopt org-image-actual-width nil)
@@ -67,12 +69,19 @@
 
 (with-eval-after-load 'org
 
-  (setopt org-crypt-key nil)
   (org-crypt-use-before-save-magic)
+
+  (org-babel-do-load-languages
+   'org-babel-load-languages '((python . t)
+			       (emacs-lisp . t)
+			       (R . t)
+			       (julia . t)))
 
   (plist-put org-format-latex-options :scale 1.3)
 
   (add-hook 'org-mode-hook (lambda () (setq-local global-hl-line-mode nil)))
+
+  (add-to-list 'org-babel-default-header-args '(:eval . "no-export") t)
 
   (defun yx/org-toggle-inline-images-in-subtree (state &optional beg end)
     "Refresh inline image previews in the current heading/tree."
@@ -92,14 +101,7 @@
 	  (delete-overlay ov)
 	  (setq org-inline-image-overlays (delete ov org-inline-image-overlays))))))
 
-  (add-hook 'org-cycle-hook #'yx/org-toggle-inline-images-in-subtree)
-
-  (org-babel-do-load-languages
-   'org-babel-load-languages '((python . t)
-			       (emacs-lisp . t)
-			       (R . t)
-			       (julia . t)))
-  (add-to-list 'org-babel-default-header-args '(:eval . "no-export") t))
+  (add-hook 'org-cycle-hook #'yx/org-toggle-inline-images-in-subtree))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
@@ -107,7 +109,7 @@
 ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(use-package citeproc :ensure t)
+(use-package citeproc)
 
 (use-package tex
   :ensure auctex
@@ -123,12 +125,10 @@
   (reftex-plug-into-AUCTeX t))
 
 (use-package cdlatex
-  :ensure t
   :hook ((LaTeX-mode . turn-on-cdlatex)
 	 (org-mode . turn-on-org-cdlatex)))
 
 (use-package denote
-  :ensure t
   :bind (("C-c n c"   . denote)
 	 ("C-c n n"   . denote-subdirectory)
 	 ("C-c n j"   . denote-journal-extras-new-entry)

@@ -11,14 +11,12 @@
 ;;; Code:
 
 (use-package eat
-  :ensure t
   :init
   (setq eat-kill-buffer-on-exit t)
   (add-hook 'eshell-load-hook #'eat-eshell-mode)
   (add-hook 'eshell-load-hook #'eat-eshell-visual-command-mode))
 
 (use-package gptel
-  :ensure t
   :bind (("C-c <return>" . gptel-send)
          ("C-c C-<return>" . gptel-menu))
   :custom
@@ -33,11 +31,9 @@
   (add-hook 'gptel-post-response-functions 'gptel-end-of-response))
 
 (use-package minions
-  :ensure t
   :hook (after-init . minions-mode))
 
 (use-package sis
-  :ensure t
   :config
   (add-to-list 'sis-prefix-override-keys "M-s")
   (add-to-list 'sis-prefix-override-keys "M-g")
@@ -50,11 +46,9 @@
   (sis-global-context-mode t))
 
 (use-package bing-dict
-  :ensure t
   :bind (("M-s d" . bing-dict-brief)))
 
 (use-package olivetti
-  :ensure t
   :hook ((Info-mode . olivetti-mode)
          (eww-mode . olivetti-mode)
          (org-mode . olivetti-mode)
@@ -68,7 +62,6 @@
     (add-hook 'elfeed-show-mode-hook #'olivetti-mode)))
 
 (use-package elfeed
-  :ensure t
   :custom
   (elfeed-feeds
    '(("https://planet.emacslife.com/atom.xml" emacs)

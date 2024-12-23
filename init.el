@@ -57,6 +57,8 @@
 (setopt completion-auto-select 'second-tab)
 (setopt read-extended-command-predicate #'command-completion-default-include-p)
 
+(setopt use-package-always-ensure t)
+
 (setopt user-mail-address "yangxue.cs@foxmail.com")
 (setopt smtpmail-smtp-server "smtp.qq.com")
 (setopt gnus-select-method '(nnimap "foxmail.cs" (nnimap-address "imap.qq.com")))
@@ -65,6 +67,7 @@
 (setopt dired-mouse-drag-files t)
 (setopt dired-kill-when-opening-new-dired-buffer t)
 
+(setopt calendar-date-style 'iso)
 (setopt dictionary-server "dict.org")
 (setopt browse-url-browser-function 'eww-browse-url)
 

@@ -77,7 +77,6 @@
   (keymap-set flymake-mode-map "C-c l d" #'flymake-show-buffer-diagnostics))
 
 (use-package magit
-  :ensure t
   :bind (("C-c g" . magit-dispatch)
          ("C-c v" . magit-file-dispatch))
   :custom
@@ -100,14 +99,12 @@
 
 (use-package buffer-env
   :unless IS-WIN
-  :ensure t
   :init
   (add-hook 'comint-mode-hook #'buffer-env-update)
   (add-hook 'hack-local-variables-hook #'buffer-env-update)
   (setq buffer-env-script-name '(".envrc" ".venv/bin/activate")))
 
 (use-package reformatter
-  :ensure t
   :config
   (reformatter-define black
     :program "black"
@@ -115,7 +112,6 @@
   (add-hook 'python-base-mode-hook #'black-on-save-mode))
 
 (use-package tempel
-  :ensure t
   :bind (("M-*" . tempel-insert)
          ("M-+" . tempel-complete)))
 
@@ -133,7 +129,6 @@
 
 ;;;; R / Julia
 (use-package ess
-  :ensure t
   :defer 5
   :custom
   (ess-use-company nil)
@@ -146,7 +141,7 @@
   (keymap-set inferior-ess-r-mode-map ";" 'ess-insert-assign)
   (add-hook 'ess-r-mode-hook #'eglot-ensure))
 
-(use-package julia-mode :ensure t)
+(use-package julia-mode)
 
 (provide 'init-dev+)
 ;;; init-dev+.el ends here

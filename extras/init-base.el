@@ -11,7 +11,6 @@
 ;;; Code:
 
 (use-package no-littering
-  :ensure t
   :init (no-littering-theme-backups))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -21,27 +20,22 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (use-package avy
-  :ensure t
   :bind (("M-g w" . avy-goto-word-1)
 	 ("M-g l" . avy-goto-line)
 	 ("M-g c" . avy-goto-char-timer)))
 
 (use-package vundo
-  :ensure t
   :bind (("C-c /" . vundo)))
 
 (use-package expreg
-  :ensure t
   :bind (("C-M-=" . expreg-expand)
          ("C-M--" . expreg-contract)))
 
 (use-package easy-kill
-  :ensure t
   :bind (([remap kill-ring-save] . easy-kill)
 	 ([remap mark-sexp] . easy-mark)))
 
 (use-package speedrect
-  :ensure t
   :config (speedrect-mode +1))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -51,7 +45,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (use-package vertico
-  :ensure t
   :init
   (vertico-mode +1)
   (vertico-indexed-mode +1)
@@ -60,24 +53,20 @@
   (keymap-set vertico-map "M-DEL" #'vertico-directory-delete-word))
 
 (use-package corfu
-  :ensure t
-  :hook ((prog-mode text-mode) . corfu-mode)
   :custom
-  (corfu-auto t))
+  (corfu-auto t)
+  :hook ((prog-mode text-mode) . corfu-mode))
 
 (use-package marginalia
-  :ensure t
   :init (marginalia-mode +1))
 
 (use-package embark
-  :ensure t
   :bind (("C-." . embark-act)
          ("M-." . embark-dwim))
   :custom
   (prefix-help-command #'embark-prefix-help-command))
 
 (use-package consult
-  :ensure t
   :bind (("s-r"     . consult-recent-file)
          ("C-x b"   . consult-buffer)
 	 ("C-x 4 b" . consult-buffer-other-window)
@@ -112,17 +101,15 @@
 	xref-show-definitions-function #'consult-xref)
   (setq consult-preview-key nil)
   (setq consult-ripgrep-args (concat consult-ripgrep-args " --hidden"))
-  (use-package embark-consult :ensure t))
+  (use-package embark-consult))
 
 (use-package consult-dir
-  :ensure t
   :bind (("C-x C-d" . consult-dir)
          :map vertico-map
          ("C-x C-d" . consult-dir)
          ("C-x C-j" . consult-dir-jump-file)))
 
 (use-package orderless
-  :ensure t
   :config
   (setq completion-styles '(basic orderless))
   (setq completion-category-overrides '((file (styles partial-completion))
