@@ -129,6 +129,7 @@
 	 (org-mode . turn-on-org-cdlatex)))
 
 (use-package denote
+  :preface (require 'dired)
   :bind (("C-c n c"   . denote)
 	 ("C-c n n"   . denote-subdirectory)
 	 ("C-c n j"   . denote-journal-extras-new-entry)
@@ -141,8 +142,8 @@
 	 ("C-c n C-f" . denote-org-dblock-insert-links)
 	 ("C-c n C-b" . denote-org-dblock-insert-backlinks)
 	 :map dired-mode-map
-	 ("C-c n C-r" . denote-dired-rename-files)
-	 ("C-c n r"   . denote-dired-rename-marked-files-using-front-matter)
+	 ("C-c n r"   . denote-dired-rename-files)
+	 ("C-c n C-r" . denote-dired-rename-marked-files)
 	 ("C-c n k"   . denote-dired-rename-marked-files-with-keywords))
   :custom
   (denote-directory org-directory)
