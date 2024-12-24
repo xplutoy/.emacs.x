@@ -31,16 +31,13 @@
 	'(("h" "home" entry (file+headline "Home") "* TODO %?" :prepend t)
 	  ("w" "work" entry (file+headline "Work") "* TODO %?" :prepend t)))
 
-(setopt org-crypt-key nil)
-
-(setopt org-log-into-drawer t)
-
-(setopt org-image-actual-width nil)
-
-(setopt org-hide-emphasis-markers t)
-
-(setopt org-startup-align-all-tables t)
+(setopt org-startup-folded 'show2levels)
 (setopt org-startup-with-latex-preview t)
+
+(setopt org-crypt-key nil)
+(setopt org-log-into-drawer t)
+(setopt org-image-actual-width nil)
+(setopt org-hide-emphasis-markers t)
 
 (setopt org-special-ctrl-a/e t)
 (setopt org-use-speed-commands t)
