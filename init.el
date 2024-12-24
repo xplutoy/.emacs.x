@@ -45,6 +45,9 @@
 (setopt find-file-visit-truename t)
 (setopt delete-by-moving-to-trash t)
 (setopt mouse-wheel-tilt-scroll t)
+(setopt recentf-max-saved-items 100)
+(setopt use-package-always-ensure t)
+(setopt auto-save-visited-interval 10)
 (setopt global-auto-revert-non-file-buffers t)
 (setopt backward-delete-char-untabify-method 'hungry)
 
@@ -57,8 +60,6 @@
 
 (setopt completion-auto-select 'second-tab)
 (setopt read-extended-command-predicate #'command-completion-default-include-p)
-
-(setopt use-package-always-ensure t)
 
 (setopt user-mail-address "yangxue.cs@foxmail.com")
 (setopt smtpmail-smtp-server "smtp.qq.com")
