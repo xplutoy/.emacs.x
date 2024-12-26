@@ -55,8 +55,8 @@
 (setopt epa-file-encrypt-to user-mail-address)
 
 (setopt split-width-threshold 120)
+(setopt switch-to-prev-buffer-skip 'this)
 (setopt switch-to-buffer-obey-display-actions t)
-(setopt winner-boring-buffers-regexp "^\\*")
 
 (setopt completion-auto-select 'second-tab)
 (setopt read-extended-command-predicate #'command-completion-default-include-p)
@@ -184,6 +184,9 @@
 
 (setenv "HTTP_PROXY"  "http://localhost:7890")
 (setenv "HTTPS_PROXY" "http://localhost:7890")
+
+(require 'server)
+(or (server-running-p) (server-start))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;

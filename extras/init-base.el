@@ -11,7 +11,10 @@
 ;;; Code:
 
 (use-package no-littering
-  :init (no-littering-theme-backups))
+  :config
+  (with-eval-after-load 'recentf
+    (add-to-list 'recentf-exclude no-littering-var-directory))
+  (no-littering-theme-backups))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
