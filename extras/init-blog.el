@@ -50,8 +50,10 @@
 	   :html-preamble-format ,my-blog-preamble
 	   :html-postamble ,my-blog-postamble
 	   :html-doctype "html5"
+	   :html-html5-fancy t
 	   :html-head-include-scripts nil
 	   :html-head-include-default-style nil
+	   :html-htmlize-output-type 'css
 	   :with-footnotes  nil
 	   :with-smart-quotes t
 	   :with-sub-superscript nil)

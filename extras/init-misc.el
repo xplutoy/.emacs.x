@@ -42,8 +42,7 @@
      "com.apple.keylayout.ABC"
      "com.apple.inputmethod.SCIM.Shuangpin"))
   (sis-global-inline-mode t)
-  (sis-global-respect-mode t)
-  (sis-global-context-mode t))
+  (sis-global-respect-mode t))
 
 (use-package bing-dict
   :bind (("M-s d" . bing-dict-brief)))
@@ -84,8 +83,7 @@
      ("https://bair.berkeley.edu/blog/feed.xml" ai-new)
      ("https://rss.arxiv.org/rss/cs.AI+cs.CV+cs.LG" ai-arxiv)
      ("https://wangyurui.com/feed.xml" life)
-     ("https://www.ruanyifeng.com/blog/atom.xml" tech)
-     ("https://www.ezindie.com/feed/rss.xml" tech wealth)))
+     ("https://www.ruanyifeng.com/blog/atom.xml" tech)))
   :config
   (add-hook 'elfeed-show-mode-hook (lambda () (setq line-spacing 0.2))))
 

@@ -106,6 +106,7 @@
 ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+(use-package htmlize)
 (use-package citeproc)
 
 (use-package tex

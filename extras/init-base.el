@@ -105,8 +105,7 @@
   (setq consult-preview-key nil)
   (setq consult-ripgrep-args (concat consult-ripgrep-args " --hidden")))
 
-(use-package embark-consult
-  :after embark consult)
+(use-package embark-consult :defer)
 
 (use-package consult-dir
   :bind (("C-x C-d" . consult-dir)
