@@ -14,6 +14,7 @@
 (electric-pair-mode +1)
 (electric-indent-mode +1)
 
+(add-hook 'prog-mode-hook #'abbrev-mode)
 (add-hook 'prog-mode-hook #'hs-minor-mode)
 (add-hook 'prog-mode-hook #'toggle-truncate-lines)
 (add-hook 'prog-mode-hook #'display-line-numbers-mode)
@@ -33,28 +34,26 @@
 (setopt ediff-window-setup-function #'ediff-setup-windows-plain)
 (setopt ediff-split-window-function #'split-window-horizontally)
 
-(setopt auto-insert-alist nil)
-
 (define-skeleton yx/py-header  ""
   nil
   "# --------------------------------------------------"
-  "\n# Author:      " (user-mail-address)
+  "\n# Author:      " (user-full-name)
   "\n# Date:        " (format-time-string "%F %T")
   "\n# Description: " (skeleton-read "Description: ")
-  "\n#\n#\n"
+  "\n#\n"
   "# --------------------------------------------------"
   "\n\n" @ _ "\n")
 
 (define-skeleton yx/el-header  ""
   nil
   ";;; -*- lexical-binding: t -*-\n"
-  "\n;; Author:  " (message-user-mail-address)
+  "\n;; Author:  " (user-full-name)
   "\n;; Created: " (format-time-string "%F %T")
   "\n;; License: GPLv3"
   "\n\n;;; Commentary:\n\n;; " @ _
   "\n\n;;; Code:"
-  "\n\n(provide '" (file-name-base (buffer-file-name)) ")"
-  "\n;;; " (file-name-nondirectory (buffer-file-name)) " ends here\n")
+  "\n\n(provide '" (file-name-base (buffer-file-name)) ")\n"
+  ";;; " (file-name-nondirectory (buffer-file-name)) " ends here\n")
 
 (define-auto-insert "\\.el$" #'yx/el-header)
 (define-auto-insert "\\.py$" #'yx/py-header)

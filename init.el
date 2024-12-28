@@ -28,7 +28,6 @@
 (setopt word-wrap-by-category t)
 (setopt require-final-newline t)
 (setopt sentence-end-double-space nil)
-(setopt tab-always-indent 'complete)
 
 (setopt use-short-answers t)
 (setopt use-dialog-box nil)
@@ -42,11 +41,11 @@
 (setopt read-process-output-max (* 1024 1024))
 
 (setopt reb-re-syntax 'string)
+(setopt mouse-wheel-tilt-scroll t)
+(setopt tab-always-indent 'complete)
 (setopt set-mark-command-repeat-pop t)
-(setopt enable-recursive-minibuffers t)
 (setopt find-file-visit-truename t)
 (setopt delete-by-moving-to-trash t)
-(setopt mouse-wheel-tilt-scroll t)
 (setopt recentf-max-saved-items 100)
 (setopt auto-save-visited-interval 10)
 (setopt global-auto-revert-non-file-buffers t)
@@ -62,6 +61,7 @@
 (setopt switch-to-prev-buffer-skip 'this)
 (setopt switch-to-buffer-obey-display-actions t)
 
+(setopt enable-recursive-minibuffers t)
 (setopt completion-auto-select 'second-tab)
 (setopt read-extended-command-predicate #'command-completion-default-include-p)
 
