@@ -76,6 +76,11 @@
   (keymap-set flymake-mode-map "M-n" #'flymake-goto-next-error)
   (keymap-set flymake-mode-map "C-c l d" #'flymake-show-buffer-diagnostics))
 
+(with-eval-after-load 'treesit
+  (add-to-list 'treesit-language-source-alist
+	       '(python . ("https://github.com/tree-sitter/tree-sitter-python")))
+  (add-to-list 'major-mode-remap-alist '(python-mode . python-ts-mode)))
+
 (use-package magit
   :bind (("C-c g" . magit-dispatch)
 	 ("C-c v" . magit-file-dispatch))
@@ -87,8 +92,8 @@
 (use-package color-rg
   :load-path "elpa/color-rg"
   ;; :vc (:url "https://github.com/manateelazycat/color-rg")
-  :bind(("M-s s"   . color-rg-search-input)
-	("M-s p"   . color-rg-search-input-in-project))
+  :bind(("M-s s" . color-rg-search-input)
+	("M-s p" . color-rg-search-input-in-project))
   :custom
   (color-rg-recenter-match-line t)
   (color-rg-search-no-ignore-file nil)
@@ -122,11 +127,8 @@
 (setopt python-shell-dedicated 'project)
 (setopt python-indent-guess-indent-offset-verbose nil)
 
-(add-to-list 'python-shell-completion-native-disabled-interpreters "python")
-
-(add-to-list 'treesit-language-source-alist
-	     '(python . ("https://github.com/tree-sitter/tree-sitter-python")))
-(add-to-list 'major-mode-remap-alist '(python-mode . python-ts-mode))
+(with-eval-after-load 'python
+  (add-to-list 'python-shell-completion-native-disabled-interpreters "python"))
 
 (add-hook 'python-base-mode-hook #'eglot-ensure)
 

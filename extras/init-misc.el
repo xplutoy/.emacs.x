@@ -61,6 +61,7 @@
     (add-hook 'elfeed-show-mode-hook #'olivetti-mode)))
 
 (use-package elfeed
+  :defer
   :custom
   (elfeed-feeds
    '(("https://planet.emacslife.com/atom.xml" emacs)

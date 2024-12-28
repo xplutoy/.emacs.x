@@ -98,9 +98,7 @@
 	 ("M-g '"   . consult-register)
 	 ("M-g M-'" . consult-register-load)
 	 ("M-g m"   . consult-mark)
-	 ("M-g M-m" . consult-global-mark)
-	 :map org-mode-map
-	 ("M-g h"   . consult-org-heading))
+	 ("M-g M-m" . consult-global-mark))
   :config
   (with-eval-after-load 'em-hist
     (keymap-set eshell-hist-mode-map "M-r" #'consult-history))

@@ -27,6 +27,7 @@
 (setopt word-wrap t)
 (setopt word-wrap-by-category t)
 (setopt require-final-newline t)
+(setopt sentence-end-double-space nil)
 (setopt tab-always-indent 'complete)
 
 (setopt use-short-answers t)
@@ -37,7 +38,8 @@
 
 (setopt bidi-inhibit-bpa t)
 (setopt bidi-paragraph-direction 'left-to-right)
-(setopt sentence-end-double-space nil)
+(setopt inhibit-compacting-font-caches t)
+(setopt read-process-output-max (* 1024 1024))
 
 (setopt reb-re-syntax 'string)
 (setopt set-mark-command-repeat-pop t)
@@ -46,10 +48,12 @@
 (setopt delete-by-moving-to-trash t)
 (setopt mouse-wheel-tilt-scroll t)
 (setopt recentf-max-saved-items 100)
-(setopt use-package-always-ensure t)
 (setopt auto-save-visited-interval 10)
 (setopt global-auto-revert-non-file-buffers t)
 (setopt backward-delete-char-untabify-method 'hungry)
+
+(setopt use-package-always-ensure t)
+(setopt use-package-compute-statistics t)
 
 (setopt epg-pinentry-mode 'loopback)
 (setopt epa-file-encrypt-to user-mail-address)
@@ -82,8 +86,8 @@
 
 (add-hook 'eww-after-render-hook (lambda ()
 				   (eww-readable)
-				   (variable-pitch-mode +1)
-				   (setq line-spacing 0.2)))
+				   (setq line-spacing 0.2)
+				   (variable-pitch-mode +1)))
 
 (windmove-default-keybindings 'control)
 (windmove-swap-states-default-keybindings '(control shift))
