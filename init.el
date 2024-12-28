@@ -88,6 +88,13 @@
 (windmove-default-keybindings 'control)
 (windmove-swap-states-default-keybindings '(control shift))
 
+(with-eval-after-load 'esh-module
+  (add-to-list 'eshell-modules-list 'eshell-rebind))
+
+(add-hook 'eshell-mode-hook (lambda ()
+			      (eshell-hist-mode +1)
+			      (keymap-local-set "C-l" #'eshell/clear)))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
 ;;;   Global Mirror Mode
@@ -157,9 +164,6 @@
 (keymap-global-set "M-s M-d"  #'dictionary-search)
 
 (keymap-global-set "C-x C-b"  #'ibuffer)
-
-(add-hook 'eshell-mode-hook
-	  (lambda () (keymap-local-set "C-l" #'eshell/clear)))
 
 (with-eval-after-load 'isearch
   (keymap-substitute isearch-mode-map #'isearch-delete-char #'isearch-del-char))

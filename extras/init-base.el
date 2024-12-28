@@ -78,7 +78,6 @@
 	 ("C-x r b" . consult-bookmark)
 	 ("C-x t b" . consult-buffer-other-tab)
 	 ("C-x M-:" . consult-complex-command)
-	 ("C-c h"   . consult-history)
 	 ("M-X"     . consult-mode-command)
 	 ("M-y"     . consult-yank-pop)
 	 ("M-s f"   . consult-fd)
@@ -103,6 +102,8 @@
 	 :map org-mode-map
 	 ("M-g h"   . consult-org-heading))
   :config
+  (with-eval-after-load 'em-hist
+    (keymap-set eshell-hist-mode-map "M-r" #'consult-history))
   (setq xref-show-xrefs-function #'consult-xref
 	xref-show-definitions-function #'consult-xref)
   (setq consult-preview-key nil)
