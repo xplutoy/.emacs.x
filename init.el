@@ -174,6 +174,11 @@
 
 (keymap-global-set "C-x C-b"  #'ibuffer)
 
+(keymap-substitute global-map #'zap-to-char #'zap-up-to-char)
+(keymap-substitute global-map #'upcase-word #'upcase-dwim)
+(keymap-substitute global-map #'downcase-word #'downcase-dwim)
+(keymap-substitute global-map #'capitalize-word #'capitalize-dwim)
+
 (with-eval-after-load 'isearch
   (keymap-substitute isearch-mode-map #'isearch-delete-char #'isearch-del-char))
 
