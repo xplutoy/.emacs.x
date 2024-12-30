@@ -10,11 +10,30 @@
 
 ;;; Code:
 
-(use-package eat
-  :init
-  (setq eat-kill-buffer-on-exit t)
-  (add-hook 'eshell-load-hook #'eat-eshell-mode)
-  (add-hook 'eshell-load-hook #'eat-eshell-visual-command-mode))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;
+;;;   UI
+;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(use-package minions
+  :hook (after-init . minions-mode))
+
+(use-package ef-themes
+  :defer
+  :custom
+  (ef-themes-mixed-fonts t)
+  (ef-themes-headings '((0 . (1.3))
+			(1 . (1.2))
+			(2 . (semibold 1.1))
+			(t . (semibold 1.05))))
+  (ef-themes-variable-pitch-ui t))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;
+;;;   AI
+;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (use-package gptel
   :bind (("C-c <return>" . gptel-send)
@@ -30,8 +49,11 @@
   :config
   (add-hook 'gptel-post-response-functions 'gptel-end-of-response))
 
-(use-package minions
-  :hook (after-init . minions-mode))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;
+;;;   Chinese
+;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (use-package sis
   :config
@@ -46,6 +68,12 @@
 
 (use-package bing-dict
   :bind (("M-s d" . bing-dict-brief)))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;
+;;;   Reading
+;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (use-package olivetti
   :hook ((Info-mode . olivetti-mode)
@@ -88,6 +116,18 @@
      ("https://www.ruanyifeng.com/blog/atom.xml" tech)))
   :config
   (add-hook 'elfeed-show-mode-hook (lambda () (setq line-spacing 0.2))))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;
+;;;   Other
+;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(use-package eat
+  :init
+  (setq eat-kill-buffer-on-exit t)
+  (add-hook 'eshell-load-hook #'eat-eshell-mode)
+  (add-hook 'eshell-load-hook #'eat-eshell-visual-command-mode))
 
 
 (provide 'init-misc)
