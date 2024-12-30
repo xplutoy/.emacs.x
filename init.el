@@ -47,6 +47,7 @@
 (setopt find-file-visit-truename t)
 (setopt delete-by-moving-to-trash t)
 (setopt recentf-max-saved-items 100)
+(setopt auto-revert-avoid-polling t)
 (setopt auto-save-visited-interval 10)
 (setopt global-auto-revert-non-file-buffers t)
 (setopt backward-delete-char-untabify-method 'hungry)
@@ -76,6 +77,10 @@
 (setopt calendar-date-style 'iso)
 (setopt dictionary-server "dict.org")
 (setopt browse-url-browser-function 'eww-browse-url)
+
+(setopt tab-bar-show 1)
+(setopt tab-bar-close-button-show nil)
+(setopt tab-line-close-button-show 'selected)
 
 (add-hook 'text-mode-hook #'abbrev-mode)
 (add-hook 'text-mode-hook #'visual-line-mode)

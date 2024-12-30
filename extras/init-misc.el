@@ -23,9 +23,9 @@
   (gptel-use-curl nil)
   (gptel-default-mode 'org-mode)
   (gptel-backend (gptel-make-openai "kimi"
-			:host "api.moonshot.cn"
-			:key 'gptel-api-key
-			:models '(moonshot-v1-32k)))
+		   :host "api.moonshot.cn"
+		   :key 'gptel-api-key
+		   :models '(moonshot-v1-32k)))
   (gptel-model 'moonshot-v1-32k)
   :config
   (add-hook 'gptel-post-response-functions 'gptel-end-of-response))
@@ -84,6 +84,7 @@
      ("https://bair.berkeley.edu/blog/feed.xml" ai-new)
      ("https://rss.arxiv.org/rss/cs.AI+cs.CV+cs.LG" ai-arxiv)
      ("https://wangyurui.com/feed.xml" life)
+     ("https://roife.github.io/index.xml" pl)
      ("https://www.ruanyifeng.com/blog/atom.xml" tech)))
   :config
   (add-hook 'elfeed-show-mode-hook (lambda () (setq line-spacing 0.2))))
