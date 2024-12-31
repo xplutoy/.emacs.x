@@ -64,10 +64,15 @@
 	   :recursive t
 	   :publishing-function org-publish-attachment)))
 
-(defun yx/publish-blog ()
-  "Publish my blog."
-  (interactive)
-  (org-publish "my-blog" t nil))
+(defun yx/publish-blog (arg)
+  "Publish my personal blog.
+
+With the prefix argument ARG, forcing all posts to be republished."
+  (interactive "P")
+  (if arg
+      (org-publish "my-blog" t nil)
+    (org-publish "my-blog" nil nil))
+  (message "Publish Done. Check output in %s." my-blog-publish-dir))
 
 (provide 'init-blog)
 ;;; init-blog.el ends here

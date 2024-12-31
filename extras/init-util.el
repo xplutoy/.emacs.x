@@ -29,6 +29,7 @@
 
 (defun yx/comment-dwim (n)
   "Comment N lines, defaulting to the current one.
+
 When the region is active, comment its lines instead."
   (interactive "p")
   (if (use-region-p)
