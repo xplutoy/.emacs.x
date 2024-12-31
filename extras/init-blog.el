@@ -16,7 +16,7 @@
 
 (defvar my-blog-head "<link rel='stylesheet' href='./static/org.css' type='text/css'/> ")
 
-(defvar my-blog-preamble '(("en" "<nav class='nav'> <a href='/about.html' class='button'>HOME</a> | <a href='/index.html' class='button'>BLOG</a></nav><hr/>")))
+(defvar my-blog-preamble '(("en" "<nav class='nav'> <a href='/about.html' class='button'>HOME</a> <a href='/index.html' class='button'>BLOG</a></nav><hr/>")))
 
 (defvar my-blog-postamble "<div id='postamble'> <hr/> <p>Created with %c by YangXue <br\>Updated: %C<br/></p> </div>")
 
@@ -54,8 +54,8 @@
 	   :html-head-include-scripts nil
 	   :html-head-include-default-style nil
 	   :html-htmlize-output-type 'css
-	   :with-footnotes  nil
 	   :with-smart-quotes t
+	   :with-toc nil
 	   :with-sub-superscript nil)
 	  ("my-blog-static"
 	   :base-directory ,my-blog-dir

@@ -53,6 +53,7 @@
 
 (setopt org-use-tag-inheritance nil)
 (setopt org-agenda-skip-scheduled-if-deadline-is-shown t)
+(setopt org-fontify-quote-and-verse-blocks t)
 
 (setopt org-latex-compiler "xelatex")
 (setopt org-preview-latex-image-directory (no-littering-expand-var-file-name "ltximg/"))
