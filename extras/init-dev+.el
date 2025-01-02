@@ -71,8 +71,8 @@
 
 (with-eval-after-load 'flymake
   (setopt flymake-fringe-indicator-position 'right-fringe)
-  (keymap-set flymake-mode-map "M-p" #'flymake-goto-prev-error)
-  (keymap-set flymake-mode-map "M-n" #'flymake-goto-next-error)
+  (keymap-set flymake-mode-map "M-g p" #'flymake-goto-prev-error)
+  (keymap-set flymake-mode-map "M-g n" #'flymake-goto-next-error)
   (keymap-set flymake-mode-map "C-c l d" #'flymake-show-buffer-diagnostics))
 
 (with-eval-after-load 'treesit
@@ -121,6 +121,23 @@
 (use-package tempel
   :bind (("M-*" . tempel-insert)
 	 ("M-+" . tempel-complete)))
+
+(use-package citre
+  :defer
+  :hook (prog-mode . citre-auto-enable-citre-mode)
+  :bind (("C-x c ." . citre-jump)
+	 ("C-x c ," . citre-jump-back)
+	 ("C-x c ;" . citre-peek)
+	 ("C-x c /" . citre-jump-to-reference)
+	 ("C-x c u" . citre-update-this-tags-file))
+  :custom
+  (citre-auto-enable-citre-mode-modes '(prog-mode))
+  (citre-default-create-tags-file-location 'global-cache)
+  :config
+  (when (display-graphic-p)
+    (setq citre-peek-fill-fringe nil)
+    (setq citre-peek-use-dashes-as-horizontal-border t))
+  (keymap-set citre-peek-keymap "C-g" #'citre-peek-abort))
 
 ;;;; python
 (setopt python-shell-dedicated 'project)

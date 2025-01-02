@@ -21,6 +21,7 @@
 
 (set-language-environment "UTF-8")
 
+(setopt debug-on-error t)
 (setopt system-time-locale "C")
 (setopt custom-file "~/.emacs.d/custom.el")
 
@@ -81,6 +82,10 @@
 (setopt tab-bar-show 1)
 (setopt tab-bar-close-button-show nil)
 (setopt tab-line-close-button-show 'selected)
+
+(add-hook 'after-init-hook (lambda ()
+			     (load custom-file t t)
+			     (setopt debug-on-error nil)))
 
 (add-hook 'text-mode-hook #'abbrev-mode)
 (add-hook 'text-mode-hook #'visual-line-mode)
@@ -230,7 +235,5 @@
 (require 'init-misc)
 
 (require 'init-blog)
-
-(load custom-file 'noerror)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
