@@ -115,6 +115,13 @@
      ("https://roife.github.io/index.xml" pl)
      ("https://www.ruanyifeng.com/blog/atom.xml" tech)))
   :config
+  (defun yx/elfeed-show-quit ()
+    "Kill current elfeed-entry buffer and switch to elfeed-search buffer."
+    (interactive)
+    (when (derived-mode-p 'elfeed-show-mode)
+      (kill-buffer (current-buffer))
+      (switch-to-buffer (get-buffer "*elfeed-search*") nil t)))
+  (keymap-set elfeed-show-mode-map "q" #'yx/elfeed-show-quit)
   (add-hook 'elfeed-show-mode-hook (lambda () (setq line-spacing 0.2))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

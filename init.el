@@ -182,6 +182,8 @@
 (with-eval-after-load 'isearch
   (keymap-substitute isearch-mode-map #'isearch-delete-char #'isearch-del-char))
 
+(defalias 'run-el #'ielm)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
 ;;;   OS Specific
