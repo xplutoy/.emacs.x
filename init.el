@@ -196,8 +196,9 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (when IS-WIN
+  (setq w32-apps-modifier 'hyper)
   (setq w32-lwindow-modifier 'super)
-  (w32-register-hot-key [s-r]))
+  (w32-register-hot-key [s-.]))
 
 (when IS-MAC
   (let ((paths

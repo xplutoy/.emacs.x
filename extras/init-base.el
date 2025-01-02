@@ -51,9 +51,14 @@
   :init
   (vertico-mode +1)
   (vertico-indexed-mode +1)
-  (keymap-set vertico-map "RET" #'vertico-directory-enter)
-  (keymap-set vertico-map "DEL" #'vertico-directory-delete-char)
-  (keymap-set vertico-map "M-DEL" #'vertico-directory-delete-word))
+  :bind (("s-." . vertico-repeat)
+	 :map vertico-map
+	 ("M-N" . vertico-repeat-next)
+	 ("M-P" . vertico-repeat-previous)
+	 ("RET" . vertico-directory-enter)
+	 ("DEL" . vertico-directory-delete-char)
+	 ("M-DEL" .  vertico-directory-delete-word))
+  :hook (minibuffer-setup . vertico-repeat-save))
 
 (use-package corfu
   :custom
@@ -70,7 +75,7 @@
   (prefix-help-command #'embark-prefix-help-command))
 
 (use-package consult
-  :bind (("s-r"     . consult-recent-file)
+  :bind (("M-r"     . consult-recent-file)
 	 ("C-x b"   . consult-buffer)
 	 ("C-x 4 b" . consult-buffer-other-window)
 	 ("C-x 5 b" . consult-buffer-other-frame)
