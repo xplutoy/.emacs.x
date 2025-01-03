@@ -57,7 +57,7 @@
 	 ("M-P" . vertico-repeat-previous)
 	 ("RET" . vertico-directory-enter)
 	 ("DEL" . vertico-directory-delete-char)
-	 ("M-DEL" .  vertico-directory-delete-word))
+	 ("M-DEL" . vertico-directory-delete-word))
   :hook (minibuffer-setup . vertico-repeat-save))
 
 (use-package corfu

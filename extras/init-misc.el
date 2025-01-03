@@ -47,6 +47,11 @@
 		   :models '(moonshot-v1-32k)))
   (gptel-model 'moonshot-v1-32k)
   :config
+  (gptel-make-openai "DeepSeek"
+    :host "api.deepseek.com"
+    :key 'gptel-api-key
+    :endpoint "/chat/completions"
+    :models '(deepseek-chat deepseek-coder))
   (add-hook 'gptel-post-response-functions 'gptel-end-of-response))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
