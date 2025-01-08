@@ -5,4 +5,4 @@ server/
 tree-sitter/
 /custom.el
 etc/gnus/
-
+todo/
