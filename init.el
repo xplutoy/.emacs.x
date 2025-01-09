@@ -51,6 +51,7 @@
 (setopt global-auto-revert-non-file-buffers t)
 (setopt backward-delete-char-untabify-method 'hungry)
 
+(setopt use-package-always-defer t)
 (setopt use-package-always-ensure t)
 (setopt use-package-compute-statistics t)
 

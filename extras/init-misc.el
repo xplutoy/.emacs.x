@@ -20,7 +20,6 @@
   :hook (after-init . minions-mode))
 
 (use-package ef-themes
-  :defer
   :custom
   (ef-themes-mixed-fonts t)
   (ef-themes-headings '((0 . (1.3))
@@ -61,6 +60,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (use-package sis
+  :demand
   :config
   (add-to-list 'sis-prefix-override-keys "M-s")
   (add-to-list 'sis-prefix-override-keys "M-g")
@@ -85,16 +85,14 @@
 	 (eww-mode . olivetti-mode)
 	 (org-mode . olivetti-mode)
 	 (org-agenda-mode . olivetti-mode))
-  :custom
-  (olivetti-style 'fancy)
-  (olivetti-body-width 100)
-  :config
+  :init
   (setq olivetti-mode-map nil)
+  (setq olivetti-style 'fancy)
+  (setq olivetti-body-width 100)
   (with-eval-after-load 'elfeed
     (add-hook 'elfeed-show-mode-hook #'olivetti-mode)))
 
 (use-package elfeed
-  :defer
   :custom
   (elfeed-feeds
    '(("https://planet.emacslife.com/atom.xml" emacs)
@@ -138,10 +136,9 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (use-package eat
-  :init
-  (setq eat-kill-buffer-on-exit t)
-  (add-hook 'eshell-load-hook #'eat-eshell-mode)
-  (add-hook 'eshell-load-hook #'eat-eshell-visual-command-mode))
+  :hook ((eshell-mode . eat-eshell-mode)
+	 (eshell-mode . eat-eshell-visual-command-mode))
+  :init (setopt eat-kill-buffer-on-exit t))
 
 
 (provide 'init-misc)

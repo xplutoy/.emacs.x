@@ -11,6 +11,7 @@
 ;;; Code:
 
 (use-package no-littering
+  :demand
   :config
   (with-eval-after-load 'recentf
     (add-to-list 'recentf-exclude no-littering-var-directory))
@@ -27,9 +28,6 @@
 	 ("M-g l" . avy-goto-line)
 	 ("M-g c" . avy-goto-char-timer)))
 
-(use-package vundo
-  :bind (("C-c /" . vundo)))
-
 (use-package expreg
   :bind (("C-M-=" . expreg-expand)
 	 ("C-M--" . expreg-contract)))
@@ -39,7 +37,7 @@
 	 ([remap mark-sexp] . easy-mark)))
 
 (use-package speedrect
-  :config (speedrect-mode +1))
+  :hook (after-init . speedrect-mode))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
@@ -48,9 +46,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (use-package vertico
-  :init
-  (vertico-mode +1)
-  (vertico-indexed-mode +1)
+  :hook (after-init . vertico-mode)
   :bind (("s-." . vertico-repeat)
 	 :map vertico-map
 	 ("M-N" . vertico-repeat-next)
@@ -58,15 +54,16 @@
 	 ("RET" . vertico-directory-enter)
 	 ("DEL" . vertico-directory-delete-char)
 	 ("M-DEL" . vertico-directory-delete-word))
-  :hook (minibuffer-setup . vertico-repeat-save))
+  :config
+  (vertico-indexed-mode +1)
+  (add-hook 'minibuffer-setup-hook #'vertico-repeat-save))
 
 (use-package corfu
-  :custom
-  (corfu-auto t)
-  :hook ((prog-mode text-mode) . corfu-mode))
+  :hook ((prog-mode text-mode) . corfu-mode)
+  :init (setopt corfu-auto t))
 
 (use-package marginalia
-  :init (marginalia-mode +1))
+  :hook (after-init . marginalia-mode))
 
 (use-package embark
   :bind (("C-." . embark-act)
@@ -112,7 +109,7 @@
   (setq consult-preview-key nil)
   (setq consult-ripgrep-args (concat consult-ripgrep-args " --hidden")))
 
-(use-package embark-consult :defer)
+(use-package embark-consult)
 
 (use-package consult-dir
   :bind (("C-x C-d" . consult-dir)
@@ -121,7 +118,7 @@
 	 ("C-x C-j" . consult-dir-jump-file)))
 
 (use-package orderless
-  :config
+  :init
   (setq completion-styles '(basic orderless))
   (setq completion-category-overrides '((file (styles partial-completion))
 					(eglot (styles orderless))

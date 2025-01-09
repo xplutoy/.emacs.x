@@ -65,7 +65,6 @@
 (setopt org-export-with-broken-links 'mark)
 
 (with-eval-after-load 'org
-
   (org-crypt-use-before-save-magic)
 
   (org-babel-do-load-languages
@@ -106,7 +105,7 @@
 ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(use-package htmlize :defer)
+(use-package htmlize)
 
 (use-package tex
   :ensure auctex
@@ -126,7 +125,6 @@
 	 (org-mode . turn-on-org-cdlatex)))
 
 (use-package denote
-  :preface (require 'dired)
   :bind (("C-c n c"   . denote)
 	 ("C-c n n"   . denote-subdirectory)
 	 ("C-c n j"   . denote-journal-extras-new-entry)
@@ -137,18 +135,18 @@
 	 ("C-c n r"   . denote-rename-file-using-front-matter)
 	 ("C-c n C-r" . denote-rename-file)
 	 ("C-c n C-f" . denote-org-dblock-insert-links)
-	 ("C-c n C-b" . denote-org-dblock-insert-backlinks)
-	 :map dired-mode-map
-	 ("C-c n r"   . denote-dired-rename-files)
-	 ("C-c n C-r" . denote-dired-rename-marked-files)
-	 ("C-c n k"   . denote-dired-rename-marked-files-with-keywords))
+	 ("C-c n C-b" . denote-org-dblock-insert-backlinks))
   :custom
   (denote-directory org-directory)
   (denote-date-prompt-use-org-read-date t)
   (denote-journal-extras-title-format nil)
   :config
   (denote-rename-buffer-mode 1)
-  (add-hook 'dired-mode-hook #'denote-dired-mode-in-directories))
+  (add-hook 'dired-mode-hook #'denote-dired-mode-in-directories)
+  (with-eval-after-load 'dired
+    (keymap-set dired-mode-map "C-c n r" #'denote-dired-rename-files)
+    (keymap-set dired-mode-map "C-c n k" #'denote-dired-rename-marked-files-with-keywords)
+    (keymap-set dired-mode-map "C-c n C-r" #'denote-dired-rename-marked-files)))
 
 
 (provide 'init-org+)

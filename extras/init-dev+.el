@@ -123,7 +123,6 @@
 	 ("M-+" . tempel-complete)))
 
 (use-package citre
-  :defer
   :hook (prog-mode . citre-auto-enable-citre-mode)
   :bind (("C-x c ." . citre-jump)
 	 ("C-x c ," . citre-jump-back)
@@ -150,7 +149,6 @@
 
 ;;;; R / Julia
 (use-package ess
-  :defer 5
   :custom
   (ess-use-company nil)
   (ess-ask-for-ess-directory nil)
