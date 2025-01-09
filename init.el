@@ -74,6 +74,7 @@
 (setopt dired-mouse-drag-files t)
 (setopt dired-kill-when-opening-new-dired-buffer t)
 
+(setopt system-time-locale "C")
 (setopt calendar-date-style 'iso)
 (setopt dictionary-server "dict.org")
 (setopt browse-url-browser-function #'eww-browse-url)
@@ -231,5 +232,10 @@
 (require 'init-misc)
 
 (require 'init-blog)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(setq custom-file "~/.emacs.d/custom.el")
+(load custom-file t t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
