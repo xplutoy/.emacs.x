@@ -36,6 +36,8 @@
 (setopt bidi-paragraph-direction 'left-to-right)
 (setopt inhibit-compacting-font-caches t)
 (setopt read-process-output-max (* 1024 1024))
+(setopt scroll-conservatively 101)
+(setopt auto-revert-avoid-polling t)
 
 (setopt reb-re-syntax 'string)
 (setopt mouse-wheel-tilt-scroll t)
@@ -44,7 +46,7 @@
 (setopt find-file-visit-truename t)
 (setopt delete-by-moving-to-trash t)
 (setopt recentf-max-saved-items 100)
-(setopt auto-revert-avoid-polling t)
+(setopt electric-pair-preserve-balance nil)
 (setopt auto-save-visited-interval 10)
 (setopt global-auto-revert-non-file-buffers t)
 (setopt backward-delete-char-untabify-method 'hungry)
