@@ -21,6 +21,8 @@
 
 (set-language-environment "UTF-8")
 
+(setopt custom-file "~/.emacs.d/custom.el")
+
 (setopt word-wrap t)
 (setopt word-wrap-by-category t)
 (setopt require-final-newline t)
@@ -39,10 +41,10 @@
 (setopt scroll-conservatively 101)
 (setopt auto-revert-avoid-polling t)
 
-(setopt reb-re-syntax 'string)
-(setopt mouse-wheel-tilt-scroll t)
 (setopt tab-always-indent 'complete)
 (setopt set-mark-command-repeat-pop t)
+(setopt reb-re-syntax 'string)
+(setopt mouse-wheel-tilt-scroll t)
 (setopt find-file-visit-truename t)
 (setopt delete-by-moving-to-trash t)
 (setopt recentf-max-saved-items 100)
@@ -235,7 +237,6 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(setq custom-file "~/.emacs.d/custom.el")
 (load custom-file t t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
