@@ -204,7 +204,8 @@
 	   (call-process-shell-command "cat /etc/paths /etc/paths.d/*" nil t)
 	   (split-string (buffer-string)))))
     (setenv "PATH" (mapconcat #'identity paths ":"))
-    (setq exec-path (append paths (list exec-directory)))))
+    (setq exec-path (append paths (list exec-directory))))
+  (menu-bar-mode -1))
 
 (setenv "HTTP_PROXY"  "http://localhost:7890")
 (setenv "HTTPS_PROXY" "http://localhost:7890")

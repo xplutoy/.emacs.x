@@ -140,6 +140,7 @@
   (denote-directory org-directory)
   (denote-date-prompt-use-org-read-date t)
   (denote-journal-extras-title-format nil)
+  (denote-dired-directories-include-subdirectories t)
   :config
   (denote-rename-buffer-mode 1)
   (add-hook 'dired-mode-hook #'denote-dired-mode-in-directories)
