@@ -58,19 +58,21 @@
 (define-auto-insert "\\.el$" #'yx/el-header)
 (define-auto-insert "\\.py$" #'yx/py-header)
 
+(setopt eglot-autoshutdown t)
+(setopt eglot-extend-to-xref t)
+(setopt eglot-report-progress nil)
+(setopt eglot-send-changes-idle-time 0.1)
+
 (with-eval-after-load 'eglot
-  (setopt eglot-autoshutdown t)
-  (setopt eglot-extend-to-xref t)
-  (setopt eglot-report-progress nil)
-  (setopt eglot-send-changes-idle-time 0.1)
   (fset #'jsonrpc--log-event #'ignore)
   (keymap-set eglot-mode-map "C-c l r" #'eglot-rename)
   (keymap-set eglot-mode-map "C-c l f" #'eglot-format)
   (keymap-set eglot-mode-map "C-c l a" #'eglot-code-actions)
   (keymap-set eglot-mode-map "C-c l h" #'eglot-help-at-point))
 
+(setopt flymake-fringe-indicator-position 'right-fringe)
+
 (with-eval-after-load 'flymake
-  (setopt flymake-fringe-indicator-position 'right-fringe)
   (keymap-set flymake-mode-map "M-g p" #'flymake-goto-prev-error)
   (keymap-set flymake-mode-map "M-g n" #'flymake-goto-next-error)
   (keymap-set flymake-mode-map "C-c l d" #'flymake-show-buffer-diagnostics))
@@ -103,10 +105,10 @@
 
 (use-package buffer-env
   :unless IS-WIN
-  :init
-  (add-hook 'comint-mode-hook #'buffer-env-update)
-  (add-hook 'hack-local-variables-hook #'buffer-env-update)
-  (setq buffer-env-script-name '(".envrc" ".venv/bin/activate")))
+  :hook ((comint-mode . buffer-env-update)
+	 (hack-local-variables . buffer-env-update))
+  :custom
+  (buffer-env-script-name '(".envrc" ".venv/bin/activate")))
 
 (use-package reformatter
   :config
