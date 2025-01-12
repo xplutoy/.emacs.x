@@ -132,7 +132,7 @@
 	 ("C-x c /" . citre-jump-to-reference)
 	 ("C-x c u" . citre-update-this-tags-file))
   :custom
-  (citre-auto-enable-citre-mode-modes '(prog-mode))
+  (citre-edit-ctags-options-manually nil)
   (citre-default-create-tags-file-location 'global-cache)
   :config
   (when (display-graphic-p)
