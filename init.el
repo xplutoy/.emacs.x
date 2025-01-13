@@ -92,15 +92,14 @@
 
 (add-hook 'text-mode-hook #'abbrev-mode)
 (add-hook 'text-mode-hook #'visual-line-mode)
-(add-hook 'text-mode-hook #'variable-pitch-mode)
 (add-hook 'text-mode-hook (lambda () (setq line-spacing 0.2)))
 
 (add-hook 'before-save-hook #'whitespace-cleanup)
 
+(add-hook 'eww-mode-hook #'variable-pitch-mode)
 (add-hook 'eww-after-render-hook (lambda ()
 				   (eww-readable)
-				   (setq line-spacing 0.2)
-				   (variable-pitch-mode +1)))
+				   (setq line-spacing 0.2)))
 
 (windmove-default-keybindings 'control)
 (windmove-swap-states-default-keybindings '(control shift))

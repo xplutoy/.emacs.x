@@ -102,6 +102,8 @@
 	 ("M-g m"   . consult-mark)
 	 ("M-g M-m" . consult-global-mark))
   :config
+  (consult-customize
+   consult-line consult-line-multi :preview-key 'any)
   (with-eval-after-load 'em-hist
     (keymap-set eshell-hist-mode-map "M-r" #'consult-history))
   (setq xref-show-xrefs-function #'consult-xref

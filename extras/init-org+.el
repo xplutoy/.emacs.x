@@ -75,7 +75,9 @@
 
   (plist-put org-format-latex-options :scale 1.3)
 
-  (add-hook 'org-mode-hook (lambda () (setq-local global-hl-line-mode nil)))
+  (add-hook 'org-mode-hook (lambda ()
+			     (variable-pitch-mode +1)
+			     (setq-local global-hl-line-mode nil)))
 
   (add-to-list 'org-babel-default-header-args '(:eval . "no-export") t)
 

@@ -126,7 +126,20 @@
     (when (derived-mode-p 'elfeed-show-mode)
       (kill-buffer (current-buffer))
       (switch-to-buffer (get-buffer "*elfeed-search*") nil t)))
+
+  (defun yx/elfeed-show-external (&optional generic)
+    "Visit the current entry in Xwidget or external browser with a prefix argument."
+    (interactive "P")
+    (when-let* ((link (elfeed-entry-link elfeed-show-entry)))
+      (message "Sent to browser: %s" link)
+      (if (and (not generic)
+	       (featurep 'xwidget-internal))
+	  (xwidget-webkit-browse-url link)
+	(browse-url-default-browser link))))
+
   (keymap-set elfeed-show-mode-map "q" #'yx/elfeed-show-quit)
+  (keymap-set elfeed-show-mode-map "&" #'yx/elfeed-show-external)
+
   (add-hook 'elfeed-show-mode-hook (lambda () (setq line-spacing 0.2))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
