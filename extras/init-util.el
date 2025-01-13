@@ -19,7 +19,11 @@
 (defun yx/keyboard-quit ()
   "Do-What-I-Mean behaviour for a general `keyboard-quit'."
   (interactive)
-  (cond ((> (minibuffer-depth) 0)
+  (cond ((region-active-p)
+	 (keyboard-quit))
+	((derived-mode-p 'completion-list-mode)
+	 (delete-completion-window))
+	((> (minibuffer-depth) 0)
 	 (abort-recursive-edit))
 	(t
 	 (keyboard-quit))))

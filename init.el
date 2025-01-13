@@ -85,6 +85,11 @@
 (setopt tab-bar-close-button-show nil)
 (setopt tab-line-close-button-show 'selected)
 
+(add-to-list 'display-buffer-alist
+	     '("\\`\\*\\(Warnings\\|Compile-Log\\|Org Links\\)\\*\\'"
+	       (display-buffer-no-window)
+	       (allow-no-window . t)))
+
 (add-hook 'text-mode-hook #'abbrev-mode)
 (add-hook 'text-mode-hook #'visual-line-mode)
 (add-hook 'text-mode-hook #'variable-pitch-mode)
