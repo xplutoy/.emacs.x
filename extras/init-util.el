@@ -87,6 +87,24 @@ Otherwise jump to a window by typing its assigned character label."
 
 (keymap-global-set "M-o" #'yx/quick-window-jump)
 
+(defun yx/narrow-or-widen-dwim ()
+  "Widen if buffer is narrowed, narrow-dwim otherwise."
+  (interactive)
+  (cond ((buffer-narrowed-p)
+	 (widen)
+	 (recenter-top-bottom))
+	((region-active-p)
+	 (narrow-to-region (region-beginning)
+			   (region-end)))
+	((derived-mode-p 'org-mode)
+	 (or (ignore-errors (org-narrow-to-block) t)
+	     (org-narrow-to-subtree)))
+	(t
+	 (narrow-to-defun))))
+
+(keymap-global-set "C-z n" #'yx/narrow-or-widen-dwim)
+
+
 
 (provide 'init-util)
 ;;; init-util.el ends here
