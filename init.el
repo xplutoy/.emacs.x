@@ -41,9 +41,12 @@
 (setopt scroll-conservatively 101)
 (setopt auto-revert-avoid-polling t)
 
+(setopt show-trailing-whitespace t)
+(setopt search-default-mode t)
+(setopt isearch-lazy-count t)
+(setopt reb-re-syntax 'string)
 (setopt tab-always-indent 'complete)
 (setopt set-mark-command-repeat-pop t)
-(setopt reb-re-syntax 'string)
 (setopt mouse-wheel-tilt-scroll t)
 (setopt find-file-visit-truename t)
 (setopt delete-by-moving-to-trash t)

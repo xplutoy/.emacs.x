@@ -105,6 +105,5 @@ Otherwise jump to a window by typing its assigned character label."
 (keymap-global-set "C-z n" #'yx/narrow-or-widen-dwim)
 
 
-
 (provide 'init-util)
 ;;; init-util.el ends here
