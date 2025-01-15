@@ -107,9 +107,11 @@
      ("https://roife.github.io/index.xml" pl)
      ("https://www.cyberciti.biz/feed/" linux)
      ("https://eranraviv.com/feed/" math)
+     ("https://spaces.ac.cn/feed" math ai-new)
      ("https://writings.stephenwolfram.com/feed/" math)
      ("https://www.kdnuggets.com/feed" data-sci)
      ("https://towardsdatascience.com/feed" data-sci)
+     ("https://lilianweng.github.io/index.xml" ai-new)
      ("https://machinelearningmastery.com/feed/" ai-new)
      ("https://www.marktechpost.com/feed/" ai-new)
      ("https://deepmind.google/blog/rss.xml" ai-new)
@@ -126,7 +128,6 @@
     (when (derived-mode-p 'elfeed-show-mode)
       (kill-buffer (current-buffer))
       (switch-to-buffer (get-buffer "*elfeed-search*") nil t)))
-
   (defun yx/elfeed-show-external (&optional generic)
     "Visit the current entry in Xwidget or external browser with a prefix argument."
     (interactive "P")
@@ -136,10 +137,8 @@
 	       (featurep 'xwidget-internal))
 	  (xwidget-webkit-browse-url link)
 	(browse-url-default-browser link))))
-
   (keymap-set elfeed-show-mode-map "q" #'yx/elfeed-show-quit)
   (keymap-set elfeed-show-mode-map "&" #'yx/elfeed-show-external)
-
   (add-hook 'elfeed-show-mode-hook (lambda () (setq line-spacing 0.2))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
