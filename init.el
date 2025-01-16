@@ -175,6 +175,8 @@
 (keymap-global-set "C-c a"    #'org-agenda)
 (keymap-global-set "C-c c"    #'org-capture)
 (keymap-global-set "C-c l"    #'org-store-link)
+
+(keymap-global-set "C-c f"    #'ffap)
 (keymap-global-set "C-c d"    #'duplicate-dwim)
 (keymap-global-set "C-c s"    #'scratch-buffer)
 (keymap-global-set "C-c r"    #'rename-visited-file)

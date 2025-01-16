@@ -21,14 +21,14 @@
 (setopt org-agenda-files `(,org-default-notes-file))
 
 (setopt org-todo-keywords
-	'((sequence "TODO(t!)" "NEXT(n!)" "HOLD(h@/!)" "|" "CANCELED(c@/!)" "DONE(d!)")))
+	'((sequence "TODO(t!)" "NEXT(n!)" "HOLD(h@/!)" "|" "DONE(d!)")))
+
+(setopt org-refile-targets '((nil :maxlevel . 2)
+			     (org-agenda-files :maxlevel . 2)))
 
 (setopt org-capture-templates
 	'(("h" "home" entry (file+headline "Home") "* TODO %?" :prepend t)
 	  ("w" "work" entry (file+headline "Work") "* TODO %?" :prepend t)))
-
-(setopt org-refile-targets '((nil :maxlevel . 2)
-			     (org-agenda-files :maxlevel . 2)))
 
 (setopt org-startup-folded 'show2levels)
 (setopt org-startup-with-latex-preview t)
