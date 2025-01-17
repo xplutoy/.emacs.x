@@ -65,6 +65,8 @@
 (setopt org-export-with-broken-links 'mark)
 
 (with-eval-after-load 'org
+
+  (require 'org-tempo)
   (org-crypt-use-before-save-magic)
 
   (org-babel-do-load-languages
@@ -75,9 +77,13 @@
 
   (plist-put org-format-latex-options :scale 1.3)
 
-  (add-hook 'org-mode-hook (lambda ()
-			     (variable-pitch-mode +1)
-			     (setq-local global-hl-line-mode nil)))
+  (defun yx/org-mode-setup ()
+    (variable-pitch-mode +1)
+    (setq-local global-hl-line-mode nil)
+    (modify-syntax-entry ?< "." org-mode-syntax-table)
+    (modify-syntax-entry ?> "." org-mode-syntax-table))
+
+  (add-hook 'org-mode-hook #'yx/org-mode-setup)
 
   (add-to-list 'org-babel-default-header-args '(:eval . "no-export") t)
 
