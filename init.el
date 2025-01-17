@@ -48,13 +48,13 @@
 (setopt tab-always-indent 'complete)
 (setopt set-mark-command-repeat-pop t)
 (setopt mouse-wheel-tilt-scroll t)
-(setopt find-file-visit-truename t)
-(setopt delete-by-moving-to-trash t)
 (setopt recentf-max-saved-items 100)
 (setopt electric-pair-preserve-balance nil)
+(setopt backward-delete-char-untabify-method 'hungry)
+(setopt cua-rectangle-mark-key [C-S-return])
+
 (setopt auto-save-visited-interval 10)
 (setopt global-auto-revert-non-file-buffers t)
-(setopt backward-delete-char-untabify-method 'hungry)
 
 (setopt use-package-always-defer t)
 (setopt use-package-always-ensure t)
@@ -63,7 +63,6 @@
 (setopt epg-pinentry-mode 'loopback)
 (setopt epa-file-encrypt-to user-mail-address)
 
-(setopt split-width-threshold 120)
 (setopt switch-to-prev-buffer-skip 'this)
 (setopt switch-to-buffer-obey-display-actions t)
 
@@ -180,7 +179,10 @@
 (keymap-global-set "C-c d"    #'duplicate-dwim)
 (keymap-global-set "C-c s"    #'scratch-buffer)
 (keymap-global-set "C-c r"    #'rename-visited-file)
+(keymap-global-set "C-c z"    #'hs-toggle-hiding)
 (keymap-global-set "C-c 3"    #'follow-delete-other-windows-and-split)
+
+(keymap-global-set "C-x w f"  #'tear-off-window)
 
 (keymap-global-set "M-s d"    #'dictionary-lookup-definition)
 (keymap-global-set "M-s M-d"  #'dictionary-search)

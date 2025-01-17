@@ -56,6 +56,7 @@
 	   :html-htmlize-output-type 'css
 	   :with-smart-quotes t
 	   :with-toc nil
+	   :section-numbers nil
 	   :with-sub-superscript nil)
 	  ("my-blog-static"
 	   :base-directory ,my-blog-dir
