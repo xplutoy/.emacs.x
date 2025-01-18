@@ -47,7 +47,7 @@
 
 (use-package vertico
   :hook (after-init . vertico-mode)
-  :bind (("s-." . vertico-repeat)
+  :bind (("M-R" . vertico-repeat)
 	 :map vertico-map
 	 ("M-N" . vertico-repeat-next)
 	 ("M-P" . vertico-repeat-previous)
