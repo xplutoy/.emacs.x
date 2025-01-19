@@ -112,10 +112,7 @@
 
 (use-package reformatter
   :config
-  (reformatter-define black
-    :program "black"
-    :args '("-"))
-  (add-hook 'python-base-mode-hook #'black-on-save-mode))
+  (reformatter-define py-black :program "black" :args '("-")))
 
 (use-package idle-highlight-mode
   :hook (prog-mode . idle-highlight-mode))

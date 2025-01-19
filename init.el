@@ -41,9 +41,6 @@
 (setopt scroll-conservatively 101)
 (setopt auto-revert-avoid-polling t)
 
-(setopt show-trailing-whitespace t)
-(setopt search-default-mode t)
-(setopt isearch-lazy-count t)
 (setopt reb-re-syntax 'string)
 (setopt tab-always-indent 'complete)
 (setopt set-mark-command-repeat-pop t)
@@ -52,6 +49,10 @@
 (setopt electric-pair-preserve-balance nil)
 (setopt backward-delete-char-untabify-method 'hungry)
 (setopt cua-rectangle-mark-key [C-S-return])
+
+(setopt search-default-mode t)
+(setopt isearch-lazy-count t)
+(setopt isearch-yank-on-move 'shift)
 
 (setopt auto-save-visited-interval 10)
 (setopt global-auto-revert-non-file-buffers t)
@@ -96,8 +97,6 @@
 (add-hook 'text-mode-hook #'visual-line-mode)
 (add-hook 'text-mode-hook (lambda () (setq line-spacing 0.2)))
 
-(add-hook 'before-save-hook #'whitespace-cleanup)
-
 (add-hook 'eww-mode-hook #'variable-pitch-mode)
 (add-hook 'eww-after-render-hook (lambda ()
 				   (eww-readable)
@@ -112,6 +111,8 @@
 (add-hook 'eshell-mode-hook (lambda ()
 			      (eshell-hist-mode +1)
 			      (keymap-local-set "C-l" #'eshell/clear)))
+
+(add-hook 'after-save-hook #'whitespace-cleanup)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
