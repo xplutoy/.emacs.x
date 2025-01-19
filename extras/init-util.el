@@ -87,6 +87,7 @@ Otherwise jump to a window by typing its assigned character label."
 
 (keymap-global-set "M-o" #'yx/quick-window-jump)
 
+
 (defun yx/narrow-or-widen-dwim ()
   "Widen if buffer is narrowed, narrow-dwim otherwise."
   (interactive)
@@ -103,6 +104,19 @@ Otherwise jump to a window by typing its assigned character label."
 	 (narrow-to-defun))))
 
 (keymap-global-set "C-c /" #'yx/narrow-or-widen-dwim)
+
+
+(defun yx/github-search ()
+  "Search code from github.com via default browser."
+  (interactive)
+  (if-let* ((url-prefix "https://github.com/search?q=")
+	    (word (if (use-region-p)
+		      (buffer-substring-no-properties (region-beginning) (region-end))
+		    (thing-at-point 'symbol t))))
+      (browse-url-default-browser (concat url-prefix word))
+    (browse-url-default-browser (concat url-prefix (read-string "Look up github: ")))))
+
+(keymap-global-set "M-s /" #'yx/github-search)
 
 
 (provide 'init-util)
