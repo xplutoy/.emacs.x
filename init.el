@@ -21,6 +21,7 @@
 
 (set-language-environment "UTF-8")
 
+(setopt system-time-locale "C")
 (setopt custom-file "~/.emacs.d/custom.el")
 
 (setopt word-wrap t)
@@ -41,7 +42,6 @@
 (setopt scroll-conservatively 101)
 (setopt auto-revert-avoid-polling t)
 
-(setopt reb-re-syntax 'string)
 (setopt tab-always-indent 'complete)
 (setopt set-mark-command-repeat-pop t)
 (setopt mouse-wheel-tilt-scroll t)
@@ -79,7 +79,8 @@
 (setopt dired-mouse-drag-files t)
 (setopt dired-kill-when-opening-new-dired-buffer t)
 
-(setopt system-time-locale "C")
+(setopt reb-re-syntax 'string)
+(setopt bookmark-save-flag t)
 (setopt calendar-date-style 'iso)
 (setopt dictionary-server "dict.org")
 (setopt browse-url-browser-function #'eww-browse-url)
@@ -169,6 +170,8 @@
 
 (keymap-global-set "C-/"      #'undo-only)
 (keymap-global-set "M-/"      #'hippie-expand)
+(keymap-global-set "M-o"      #'other-window)
+(keymap-global-set "M-O"      #'other-frame)
 
 (keymap-global-set "C-M-r"    #'raise-sexp)
 
