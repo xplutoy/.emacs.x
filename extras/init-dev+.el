@@ -90,19 +90,6 @@
   (magit-bury-buffer-function #'magit-restore-window-configuration)
   (magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1))
 
-(use-package color-rg
-  :load-path "elpa/color-rg"
-  ;; :vc (:url "https://github.com/manateelazycat/color-rg")
-  :bind(("M-s s" . color-rg-search-input)
-	("M-s p" . color-rg-search-input-in-project))
-  :custom
-  (color-rg-recenter-match-line t)
-  (color-rg-search-no-ignore-file nil)
-  (color-rg-mac-load-path-from-shell nil)
-  :config
-  (when IS-WIN
-    (setq color-rg-command-prefix "powershell")))
-
 (use-package buffer-env
   :unless IS-WIN
   :hook ((comint-mode . buffer-env-update)
