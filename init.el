@@ -153,10 +153,9 @@
 (setopt modus-themes-variable-pitch-ui t)
 (setopt modus-themes-org-blocks 'tinted-background)
 
-(setopt modus-themes-headings '((0 . (1.3))
-				(1 . (1.2))
-				(2 . (semibold 1.1))
-				(t . (semibold 1.05))))
+(setopt modus-themes-headings '((1 . (overline background 1.25))
+				(2 . (1.15))
+				(t . (1.1))))
 
 (load-theme 'modus-operandi t)
 
