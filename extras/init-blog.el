@@ -14,7 +14,7 @@
 
 (defvar my-blog-publish-dir "~/workspace/xplutoy.github.io/")
 
-(defvar my-blog-head "<link rel='stylesheet' href='./static/org.css' type='text/css'/> ")
+(defvar my-blog-head "<link rel='stylesheet' href='/static/org.css' type='text/css'/>")
 
 (defvar my-blog-preamble '(("en" "<nav class='nav'> <a href='/about.html' class='button'>HOME</a> <a href='/index.html' class='button'>BLOG</a></nav><hr/>")))
 
@@ -22,7 +22,7 @@
 
 (defun yx/org-publish-sitemap-entry (entry style project)
   (cond ((not (directory-name-p entry))
-	 (format "%s - [[file:%s][%s]]"
+	 (format "[%s] [[file:%s][%s]]"
 		 (format-time-string "%Y-%m-%d" (org-publish-find-date entry project))
 		 entry
 		 (org-publish-find-title entry project)))
@@ -53,7 +53,6 @@
 	   :html-htmlize-output-type 'css
 	   :with-smart-quotes t
 	   :with-toc nil
-	   :section-numbers nil
 	   :with-sub-superscript nil)
 	  ("my-blog-static"
 	   :base-directory ,my-blog-dir

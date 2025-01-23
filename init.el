@@ -166,6 +166,8 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (keymap-global-unset "C-z")
+(keymap-global-unset "C-<wheel-up>")
+(keymap-global-unset "C-<wheel-down>")
 
 (keymap-global-set "C-/"      #'undo-only)
 (keymap-global-set "M-/"      #'hippie-expand)
@@ -185,12 +187,12 @@
 (keymap-global-set "C-c z"    #'hs-toggle-hiding)
 (keymap-global-set "C-c 3"    #'follow-delete-other-windows-and-split)
 
+(keymap-global-set "C-x C-b"  #'ibuffer)
+
 (keymap-global-set "C-x w f"  #'tear-off-window)
 
 (keymap-global-set "M-s d"    #'dictionary-lookup-definition)
 (keymap-global-set "M-s M-d"  #'dictionary-search)
-
-(keymap-global-set "C-x C-b"  #'ibuffer)
 
 (keymap-substitute global-map #'zap-to-char #'zap-up-to-char)
 (keymap-substitute global-map #'upcase-word #'upcase-dwim)
