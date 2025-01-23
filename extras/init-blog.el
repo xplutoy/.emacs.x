@@ -20,18 +20,15 @@
 
 (defvar my-blog-postamble "<div id='postamble'> <hr/> <p>Created with %c by YangXue <br\>Updated: %C<br/></p> </div>")
 
-(setopt org-export-global-macros '(("timestamp" . "@@html:<span class=\"timestamp\">$1 </span>@@")))
-
-(defun yx/org-sitemap-date-entry-format (entry style project)
-  "Format ENTRY in org-publish PROJECT Sitemap format ENTRY ENTRY STYLE format that includes date."
-  (let ((filename (org-publish-find-title entry project)))
-    (if (= (length filename) 0)
-	(format "*%s*" entry)
-      (format "{{{timestamp(%s)}}} » [[file:%s][%s]]"
-	      (format-time-string "%Y-%m-%d"
-				  (org-publish-find-date entry project))
-	      entry
-	      filename))))
+(defun yx/org-publish-sitemap-entry (entry style project)
+  (cond ((not (directory-name-p entry))
+	 (format "%s - [[file:%s][%s]]"
+		 (format-time-string "%Y-%m-%d" (org-publish-find-date entry project))
+		 entry
+		 (org-publish-find-title entry project)))
+	((eq style 'tree)
+	 (capitalize (file-name-nondirectory (directory-file-name entry))))
+	(t entry)))
 
 (setopt org-publish-project-alist
 	`(("my-blog"
@@ -45,7 +42,7 @@
 	   :sitemap-filename "index.org"
 	   :sitemap-title "Yx's Blog"
 	   :sitemap-sort-files anti-chronologically
-	   :sitemap-format-entry yx/org-sitemap-date-entry-format
+	   :sitemap-format-entry yx/org-publish-sitemap-entry
 	   :html-head ,my-blog-head
 	   :html-preamble-format ,my-blog-preamble
 	   :html-postamble ,my-blog-postamble
