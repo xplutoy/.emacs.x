@@ -110,12 +110,13 @@ Otherwise jump to a window by typing its assigned character label."
 (defun yx/github-search ()
   "Search code from github.com via default browser."
   (interactive)
-  (if-let* ((url-prefix "https://github.com/search?q=")
-	    (word (if (use-region-p)
-		      (buffer-substring-no-properties (region-beginning) (region-end))
-		    (thing-at-point 'symbol t))))
-      (browse-url-default-browser (concat url-prefix word))
-    (browse-url-default-browser (concat url-prefix (read-string "Look up github: ")))))
+  (if-let* ((base-url "https://github.com/search?q=")
+	    (query (if (use-region-p)
+		       (buffer-substring-no-properties (region-beginning) (region-end))
+		     (thing-at-point 'symbol t))))
+      (browse-url-default-browser (concat base-url query))
+    (browse-url-default-browser (concat base-url (read-string "Look up github: ")))))
+
 
 (keymap-global-set "M-s /" #'yx/github-search)
 

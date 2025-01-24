@@ -33,6 +33,9 @@
 (setopt org-startup-folded 'show2levels)
 (setopt org-startup-with-latex-preview t)
 
+(setopt org-pretty-entities t)
+(setopt org-pretty-entities-include-sub-superscripts nil)
+
 (setopt org-crypt-key nil)
 (setopt org-log-into-drawer t)
 (setopt org-image-actual-width nil)
@@ -74,6 +77,10 @@
 			       (emacs-lisp . t)
 			       (R . t)
 			       (julia . t)))
+
+  (add-to-list 'org-structure-template-alist '("R"  . "src R"))
+  (add-to-list 'org-structure-template-alist '("el" . "src elisp"))
+  (add-to-list 'org-structure-template-alist '("sh" . "src shell"))
 
   (plist-put org-format-latex-options :scale 1.3)
 

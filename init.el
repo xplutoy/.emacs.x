@@ -50,7 +50,6 @@
 (setopt backward-delete-char-untabify-method 'hungry)
 (setopt cua-rectangle-mark-key [C-S-return])
 
-(setopt search-default-mode t)
 (setopt isearch-lazy-count t)
 (setopt isearch-yank-on-move 'shift)
 
@@ -169,12 +168,11 @@
 (keymap-global-unset "C-<wheel-up>")
 (keymap-global-unset "C-<wheel-down>")
 
+(keymap-global-set "C-^"      #'raise-sexp)
 (keymap-global-set "C-/"      #'undo-only)
 (keymap-global-set "M-/"      #'hippie-expand)
-(keymap-global-set "M-o"      #'other-window)
 (keymap-global-set "M-O"      #'other-frame)
-
-(keymap-global-set "C-M-r"    #'raise-sexp)
+(keymap-global-set "M-o"      #'other-window)
 
 (keymap-global-set "C-c a"    #'org-agenda)
 (keymap-global-set "C-c c"    #'org-capture)
@@ -255,6 +253,6 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(load custom-file t t)
+(load custom-file :noerror)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
