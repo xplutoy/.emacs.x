@@ -45,14 +45,15 @@ When the region is active, comment its lines instead."
 
 (defun yx/quick-window-jump ()
   "My DWIM window jumping.
-
-If there is only one windows, switch to the other buffer.
+If there is only one windows, splite it sensibly.
 If there are only two windows, jump directly to the other window.
 Otherwise jump to a window by typing its assigned character label."
   (interactive)
   (let* ((window-lst (window-list nil 'no-mini))
 	 (window-num (length window-lst)))
     (cond ((= window-num 1)
+	   (split-window-sensibly)
+	   (other-window 1)
 	   (switch-to-buffer (other-buffer (current-buffer))))
 	  ((= window-num 2)
 	   (select-window (other-window-for-scrolling)))
@@ -117,6 +118,18 @@ Otherwise jump to a window by typing its assigned character label."
     (browse-url-default-browser (concat url-prefix (read-string "Look up github: ")))))
 
 (keymap-global-set "M-s /" #'yx/github-search)
+
+
+(defun yx/kill-buffer-dwim (&optional arg)
+  "Kill current buffer.
+With optional prefix ARG delete the buffer's window as well."
+  (interactive "P")
+  (kill-current-buffer)
+  (when (and arg
+	     (not (one-window-p)))
+    (delete-window)))
+
+(keymap-global-set "C-x k" #'yx/kill-buffer-dwim)
 
 
 (provide 'init-util)
