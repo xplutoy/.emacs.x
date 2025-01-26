@@ -33,7 +33,6 @@
 
 (defun yx/comment-dwim (n)
   "Comment N lines, defaulting to the current one.
-
 When the region is active, comment its lines instead."
   (interactive "p")
   (if (use-region-p)
@@ -117,20 +116,7 @@ Otherwise jump to a window by typing its assigned character label."
       (browse-url-default-browser (concat base-url query))
     (browse-url-default-browser (concat base-url (read-string "Look up github: ")))))
 
-
 (keymap-global-set "M-s /" #'yx/github-search)
-
-
-(defun yx/kill-buffer-dwim (&optional arg)
-  "Kill current buffer.
-With optional prefix ARG delete the buffer's window as well."
-  (interactive "P")
-  (kill-current-buffer)
-  (when (and arg
-	     (not (one-window-p)))
-    (delete-window)))
-
-(keymap-global-set "C-x k" #'yx/kill-buffer-dwim)
 
 
 (provide 'init-util)

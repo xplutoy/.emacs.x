@@ -60,7 +60,6 @@
 
 (setopt org-latex-compiler "xelatex")
 (setopt org-preview-latex-image-directory (no-littering-expand-var-file-name "ltximg/"))
-(setopt org-cite-csl-styles-dir "~/Zotero/styles/")
 (setopt org-cite-export-processors '((t . (basic "numeric" "numeric"))))
 (setopt org-cite-global-bibliography `(,(expand-file-name "bibliography.bib" org-directory)))
 
