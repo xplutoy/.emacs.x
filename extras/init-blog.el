@@ -63,7 +63,6 @@
 
 (defun yx/publish-blog (arg)
   "Publish my personal blog.
-
 With the prefix argument ARG, forcing all posts to be republished."
   (interactive "P")
   (if arg

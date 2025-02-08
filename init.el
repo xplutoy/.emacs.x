@@ -171,17 +171,13 @@
 (keymap-global-set "C-^"      #'raise-sexp)
 (keymap-global-set "C-/"      #'undo-only)
 (keymap-global-set "M-/"      #'hippie-expand)
-(keymap-global-set "M-O"      #'other-frame)
 (keymap-global-set "M-o"      #'other-window)
 
 (keymap-global-set "C-c a"    #'org-agenda)
 (keymap-global-set "C-c c"    #'org-capture)
 (keymap-global-set "C-c l"    #'org-store-link)
-
-(keymap-global-set "C-c f"    #'ffap)
 (keymap-global-set "C-c d"    #'duplicate-dwim)
 (keymap-global-set "C-c s"    #'scratch-buffer)
-(keymap-global-set "C-c r"    #'rename-visited-file)
 (keymap-global-set "C-c z"    #'hs-toggle-hiding)
 (keymap-global-set "C-c 3"    #'follow-delete-other-windows-and-split)
 
@@ -199,8 +195,6 @@
 
 (with-eval-after-load 'isearch
   (keymap-substitute isearch-mode-map #'isearch-delete-char #'isearch-del-char))
-
-(defalias 'run-el #'ielm)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
@@ -254,5 +248,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (load custom-file :noerror)
+
+(setopt debug-on-error nil)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

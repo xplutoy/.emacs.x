@@ -72,7 +72,7 @@
   (prefix-help-command #'embark-prefix-help-command))
 
 (use-package consult
-  :bind (("M-r"     . consult-recent-file)
+  :bind (("C-c f"   . consult-recent-file)
 	 ("C-x b"   . consult-buffer)
 	 ("C-x 4 b" . consult-buffer-other-window)
 	 ("C-x 5 b" . consult-buffer-other-frame)

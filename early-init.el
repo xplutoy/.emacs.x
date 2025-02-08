@@ -11,7 +11,7 @@
 ;;; Code:
 
 (setopt debug-on-error t)
-(setopt gc-cons-threshold most-positive-fixnum)
+(setopt gc-cons-threshold (* 16 1024 1024))
 
 (add-to-list 'default-frame-alist '(font . "Iosevka-15"))
 
@@ -20,10 +20,6 @@
 (add-to-list 'default-frame-alist '(menu-bar-lines . nil))
 (add-to-list 'default-frame-alist '(tool-bar-lines . nil))
 (add-to-list 'default-frame-alist '(vertical-scroll-bars . nil))
-
-(add-hook 'after-init-hook (lambda ()
-			     (setopt debug-on-error nil)
-			     (setopt gc-cons-threshold (* 16 1024 1024))))
 
 (advice-add #'display-startup-echo-area-message :override #'ignore)
 
