@@ -103,7 +103,7 @@ Otherwise jump to a window by typing its assigned character label."
 	(t
 	 (narrow-to-defun))))
 
-(keymap-global-set "C-c /" #'yx/narrow-or-widen-dwim)
+(keymap-global-set "C-x /" #'yx/narrow-or-widen-dwim)
 
 
 (defun yx/github-search ()

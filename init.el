@@ -165,6 +165,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (keymap-global-unset "C-z")
+(keymap-global-unset "<pinch>")
 (keymap-global-unset "C-<wheel-up>")
 (keymap-global-unset "C-<wheel-down>")
 
