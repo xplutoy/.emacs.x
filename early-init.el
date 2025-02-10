@@ -10,7 +10,6 @@
 
 ;;; Code:
 
-(setopt debug-on-error t)
 (setopt gc-cons-threshold (* 16 1024 1024))
 
 (add-to-list 'default-frame-alist '(font . "Iosevka-15"))

@@ -253,6 +253,4 @@
 
 (load custom-file :noerror)
 
-(setopt debug-on-error nil)
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
