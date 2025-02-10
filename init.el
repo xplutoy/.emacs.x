@@ -172,7 +172,10 @@
 (keymap-global-set "C-^"      #'raise-sexp)
 (keymap-global-set "C-/"      #'undo-only)
 (keymap-global-set "M-/"      #'hippie-expand)
+(keymap-global-set "M-`"      #'other-frame)
 (keymap-global-set "M-o"      #'other-window)
+(keymap-global-set "M-0"      #'delete-window)
+(keymap-global-set "M-1"      #'delete-other-windows)
 
 (keymap-global-set "C-c a"    #'org-agenda)
 (keymap-global-set "C-c c"    #'org-capture)
