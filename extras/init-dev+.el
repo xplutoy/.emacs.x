@@ -133,8 +133,6 @@
 
 (add-hook 'python-base-mode-hook #'eglot-ensure)
 
-(use-package pyvenv)
-
 ;;;; R / Julia
 (use-package ess
   :custom

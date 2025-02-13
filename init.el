@@ -212,13 +212,8 @@
   (w32-register-hot-key [s-t]))
 
 (when IS-MAC
-  (let ((paths
-	 (with-temp-buffer
-	   (call-process-shell-command "cat /etc/paths /etc/paths.d/*" nil t)
-	   (split-string (buffer-string)))))
-    (setenv "PATH" (mapconcat #'identity paths ":"))
-    (setq exec-path (append paths (list exec-directory))))
-  (menu-bar-mode -1))
+  (setenv "PATH" (concat "~/.local/bin:/Library/TeX/texbin:" (getenv "PATH")))
+  (setopt exec-path (split-string (getenv "PATH") path-separator)))
 
 (setenv "HTTP_PROXY"  "http://localhost:7890")
 (setenv "HTTPS_PROXY" "http://localhost:7890")

@@ -27,8 +27,7 @@
 			     (org-agenda-files :maxlevel . 2)))
 
 (setopt org-capture-templates
-	'(("h" "home" entry (file+headline "Home") "* TODO %?" :prepend t)
-	  ("w" "work" entry (file+headline "Work") "* TODO %?" :prepend t)))
+	'(("t" "Todo" entry (file "inbox.org") "* TODO %?" :prepend t)))
 
 (setopt org-startup-folded 'show2levels)
 (setopt org-startup-with-latex-preview t)
