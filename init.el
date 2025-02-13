@@ -206,11 +206,6 @@
 ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(when IS-WIN
-  (setq w32-apps-modifier 'hyper)
-  (setq w32-lwindow-modifier 'super)
-  (w32-register-hot-key [s-t]))
-
 (when IS-MAC
   (setenv "PATH" (concat "~/.local/bin:/Library/TeX/texbin:" (getenv "PATH")))
   (setopt exec-path (split-string (getenv "PATH") path-separator)))
