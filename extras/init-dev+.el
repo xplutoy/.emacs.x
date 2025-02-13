@@ -133,6 +133,8 @@
 
 (add-hook 'python-base-mode-hook #'eglot-ensure)
 
+(use-package pyvenv)
+
 ;;;; R / Julia
 (use-package ess
   :custom
@@ -140,7 +142,6 @@
   (ess-ask-for-ess-directory nil)
   (inferior-R-args "--quiet --no-save --no-restore")
   :config
-  (require 'ess-site)
   (require 'ess-julia)
   (keymap-set ess-r-mode-map ";" 'ess-insert-assign)
   (keymap-set inferior-ess-r-mode-map ";" 'ess-insert-assign)
