@@ -140,9 +140,6 @@
 ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(setopt nobreak-char-display nil)
-(setopt mode-line-end-spaces '(:eval (if (display-graphic-p) " 　" "-%-")))
-
 (set-face-attribute 'fixed-pitch nil :family "Iosevka")
 
 (dolist (charset '(han cjk-misc))
@@ -157,6 +154,9 @@
 				(t . (1.1))))
 
 (load-theme 'modus-operandi t)
+
+(setopt nobreak-char-display nil)
+(setopt mode-line-end-spaces '(:eval (if (display-graphic-p) " 　" "-%-")))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
@@ -202,19 +202,19 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
-;;;   OS Specific
+;;;   System
 ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(when IS-MAC
-  (setenv "PATH" (concat "~/.local/bin:/Library/TeX/texbin:" (getenv "PATH")))
-  (setopt exec-path (split-string (getenv "PATH") path-separator)))
+(require 'server)
+(or (server-running-p) (server-start))
 
 (setenv "HTTP_PROXY"  "http://localhost:7890")
 (setenv "HTTPS_PROXY" "http://localhost:7890")
 
-(require 'server)
-(or (server-running-p) (server-start))
+(when IS-MAC
+  (setenv "PATH" (concat "~/.local/bin:/Library/TeX/texbin:" (getenv "PATH")))
+  (setopt exec-path (split-string (getenv "PATH") path-separator)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
