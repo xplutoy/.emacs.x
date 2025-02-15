@@ -91,23 +91,17 @@
 (use-package elfeed
   :custom
   (elfeed-feeds
-   '(("https://planet.emacslife.com/atom.xml" emacs)
+   '(("https://feeds.feedburner.com/RBloggers" R)
+     ("https://www.planetpython.org/rss20.xml" py)
      ("https://www.juliabloggers.com/feed/" julia)
-     ("https://feeds.feedburner.com/RBloggers" R data-sci)
-     ("https://python-bloggers.com/feed/" data-sci python)
-     ("https://www.planetpython.org/rss20.xml" python)
-     ("https://planet.lisp.org/rss20.xml" lisp)
-     ("https://planet.scheme.org/atom.xml" scheme)
-     ("https://planet.haskell.org/rss20.xml" haskell)
-     ("https://spaces.ac.cn/feed" math ai-new)
-     ("https://writings.stephenwolfram.com/feed/" math)
-     ("https://www.kdnuggets.com/feed" data-sci)
-     ("https://towardsdatascience.com/feed" data-sci)
-     ("https://lilianweng.github.io/index.xml" ai-new)
-     ("https://www.marktechpost.com/feed/" ai-new)
-     ("https://rss.arxiv.org/rss/cs.AI+cs.CV+cs.LG" ai-arxiv)
-     ("https://wangyurui.com/feed.xml" life)
-     ("https://www.ruanyifeng.com/blog/atom.xml" tech)))
+     ("https://www.kdnuggets.com/feed" DS)
+     ("https://towardsdatascience.com/feed" DS)
+     ("https://www.jiqizhixin.com/rss" AI)
+     ("https://www.marktechpost.com/feed/" AI)
+     ("https://spaces.ac.cn/feed" math AI)
+     ("https://lilianweng.github.io/index.xml" AI)
+     ("https://planet.emacslife.com/atom.xml" emacs)
+     ("https://www.ruanyifeng.com/blog/atom.xml" IT)))
   :config
   (defun yx/elfeed-show-quit ()
     "Kill current elfeed-entry buffer and switch to elfeed-search buffer."
