@@ -40,7 +40,6 @@
 (setopt inhibit-compacting-font-caches t)
 (setopt read-process-output-max (* 1024 1024))
 (setopt scroll-conservatively 101)
-(setopt auto-revert-avoid-polling t)
 
 (setopt tab-always-indent 'complete)
 (setopt set-mark-command-repeat-pop t)
@@ -54,6 +53,8 @@
 (setopt isearch-yank-on-move 'shift)
 
 (setopt auto-save-visited-interval 10)
+(setopt auto-revert-verbose nil)
+(setopt auto-revert-avoid-polling t)
 (setopt global-auto-revert-non-file-buffers t)
 
 (setopt use-package-always-defer t)
