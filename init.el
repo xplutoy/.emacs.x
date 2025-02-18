@@ -84,6 +84,7 @@
 (setopt calendar-date-style 'iso)
 (setopt dictionary-server "dict.org")
 (setopt browse-url-browser-function #'eww-browse-url)
+(setopt project-vc-extra-root-markers '(".dir-locals.el"))
 
 (setopt tab-bar-show 1)
 (setopt tab-bar-close-button-show nil)

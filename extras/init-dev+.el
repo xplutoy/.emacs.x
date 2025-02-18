@@ -128,6 +128,8 @@
 (setopt python-shell-dedicated 'project)
 (setopt python-indent-guess-indent-offset-verbose nil)
 
+(add-to-list 'project-vc-extra-root-markers "pyproject.toml")
+
 (with-eval-after-load 'python
   (add-to-list 'python-shell-completion-native-disabled-interpreters "python"))
 
