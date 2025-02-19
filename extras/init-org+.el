@@ -26,9 +26,6 @@
 (setopt org-refile-targets '((nil :maxlevel . 2)
 			     (org-agenda-files :maxlevel . 2)))
 
-(setopt org-capture-templates
-	'(("t" "Todo" entry (file "inbox.org") "* TODO %?" :prepend t)))
-
 (setopt org-startup-folded 'show2levels)
 (setopt org-startup-with-latex-preview t)
 
@@ -56,6 +53,7 @@
 (setopt org-use-tag-inheritance nil)
 (setopt org-agenda-skip-scheduled-if-deadline-is-shown t)
 (setopt org-fontify-quote-and-verse-blocks t)
+(setopt org-id-link-to-org-use-id 'create-if-interactive)
 
 (setopt org-latex-compiler "xelatex")
 (setopt org-preview-latex-image-directory (no-littering-expand-var-file-name "ltximg/"))
@@ -151,6 +149,7 @@
 	 ("C-c n C-b" . denote-org-dblock-insert-backlinks))
   :custom
   (denote-directory org-directory)
+  (denote-org-store-link-to-heading nil)
   (denote-date-prompt-use-org-read-date t)
   (denote-journal-extras-title-format nil)
   (denote-dired-directories-include-subdirectories t)
