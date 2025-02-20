@@ -172,31 +172,25 @@
 
 (keymap-global-set "C-^"      #'raise-sexp)
 (keymap-global-set "C-/"      #'undo-only)
-(keymap-global-set "M-/"      #'hippie-expand)
 (keymap-global-set "M-`"      #'other-frame)
 (keymap-global-set "M-o"      #'other-window)
 (keymap-global-set "M-0"      #'delete-window)
 (keymap-global-set "M-1"      #'delete-other-windows)
 
+(keymap-global-set "C-M-/"    #'hippie-expand)
 (keymap-global-set "C-c a"    #'org-agenda)
 (keymap-global-set "C-c c"    #'org-capture)
 (keymap-global-set "C-c l"    #'org-store-link)
 (keymap-global-set "C-c d"    #'duplicate-dwim)
 (keymap-global-set "C-c s"    #'scratch-buffer)
-(keymap-global-set "C-c z"    #'hs-toggle-hiding)
+(keymap-global-set "C-c /"    #'hs-toggle-hiding)
 (keymap-global-set "C-c 3"    #'follow-delete-other-windows-and-split)
 
 (keymap-global-set "C-x C-b"  #'ibuffer)
-
 (keymap-global-set "C-x w f"  #'tear-off-window)
 
 (keymap-global-set "M-s d"    #'dictionary-lookup-definition)
 (keymap-global-set "M-s M-d"  #'dictionary-search)
-
-(keymap-substitute global-map #'zap-to-char #'zap-up-to-char)
-(keymap-substitute global-map #'upcase-word #'upcase-dwim)
-(keymap-substitute global-map #'downcase-word #'downcase-dwim)
-(keymap-substitute global-map #'capitalize-word #'capitalize-dwim)
 
 (with-eval-after-load 'isearch
   (keymap-substitute isearch-mode-map #'isearch-delete-char #'isearch-del-char))
