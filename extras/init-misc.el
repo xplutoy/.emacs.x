@@ -119,8 +119,7 @@
 	  (xwidget-webkit-browse-url link)
 	(browse-url-default-browser link))))
   (keymap-set elfeed-show-mode-map "q" #'yx/elfeed-show-quit)
-  (keymap-set elfeed-show-mode-map "&" #'yx/elfeed-show-external)
-  (add-hook 'elfeed-show-mode-hook (lambda () (setq line-spacing 0.2))))
+  (keymap-set elfeed-show-mode-map "&" #'yx/elfeed-show-external))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
