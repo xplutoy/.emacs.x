@@ -67,7 +67,9 @@
 (setopt switch-to-prev-buffer-skip 'this)
 (setopt switch-to-buffer-obey-display-actions t)
 
+(setopt minibuffer-visible-completions t)
 (setopt enable-recursive-minibuffers t)
+(setopt completions-sort 'historical)
 (setopt completion-auto-select 'second-tab)
 (setopt read-extended-command-predicate #'command-completion-default-include-p)
 
@@ -79,12 +81,14 @@
 (setopt dired-mouse-drag-files t)
 (setopt dired-kill-when-opening-new-dired-buffer t)
 
+(setopt imenu-flatten 'prefix)
 (setopt reb-re-syntax 'string)
 (setopt bookmark-save-flag t)
 (setopt calendar-date-style 'iso)
 (setopt dictionary-server "dict.org")
 (setopt browse-url-browser-function #'eww-browse-url)
 (setopt project-vc-extra-root-markers '(".dir-locals.el"))
+(setopt show-paren-context-when-offscreen t)
 
 (setopt tab-bar-show 1)
 (setopt tab-bar-close-button-show nil)
@@ -121,6 +125,9 @@
 ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+(which-key-mode +1)
+(global-completion-preview-mode +1)
+
 (repeat-mode +1)
 (winner-mode +1)
 (save-place-mode +1)
@@ -146,9 +153,11 @@
 (dolist (charset '(han cjk-misc))
   (set-fontset-font t charset (font-spec :family "LXGW WenKai Mono")))
 
+(setopt project-mode-line t)
+
 (setopt modus-themes-mixed-fonts t)
 (setopt modus-themes-variable-pitch-ui t)
-(setopt modus-themes-org-blocks 'tinted-background)
+(setopt modus-themes-org-blocks 'gray-background)
 
 (setopt modus-themes-headings '((1 . (overline background 1.25))
 				(2 . (1.15))
@@ -173,9 +182,7 @@
 (keymap-global-set "C-^"      #'raise-sexp)
 (keymap-global-set "C-/"      #'undo-only)
 (keymap-global-set "M-`"      #'other-frame)
-(keymap-global-set "M-o"      #'other-window)
 (keymap-global-set "M-0"      #'delete-window)
-(keymap-global-set "M-1"      #'delete-other-windows)
 
 (keymap-global-set "C-M-/"    #'hippie-expand)
 (keymap-global-set "C-c a"    #'org-agenda)
@@ -183,11 +190,10 @@
 (keymap-global-set "C-c l"    #'org-store-link)
 (keymap-global-set "C-c d"    #'duplicate-dwim)
 (keymap-global-set "C-c s"    #'scratch-buffer)
-(keymap-global-set "C-c /"    #'hs-toggle-hiding)
+(keymap-global-set "C-c h"    #'hs-toggle-hiding)
 (keymap-global-set "C-c 3"    #'follow-delete-other-windows-and-split)
 
 (keymap-global-set "C-x C-b"  #'ibuffer)
-(keymap-global-set "C-x w f"  #'tear-off-window)
 
 (keymap-global-set "M-s d"    #'dictionary-lookup-definition)
 (keymap-global-set "M-s M-d"  #'dictionary-search)
@@ -217,8 +223,10 @@
 ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(with-eval-after-load 'package
-  (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t))
+(require 'package)
+(require 'use-package-ensure)
+
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 
 (add-to-list 'load-path "~/.emacs.d/extras")
 

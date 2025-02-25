@@ -62,6 +62,7 @@
 
 (setopt org-export-use-babel nil)
 (setopt org-export-with-broken-links 'mark)
+(setopt org-export-dispatch-use-expert-ui t)
 
 (with-eval-after-load 'org
 
