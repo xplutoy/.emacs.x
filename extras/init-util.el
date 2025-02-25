@@ -119,5 +119,16 @@ Otherwise jump to a window by typing its assigned character label."
 (keymap-global-set "M-s /" #'yx/github-search)
 
 
+(defun yx/toggle-highlight-symbol-at-point ()
+  "Toggle highlighting for the symbol at point."
+  (interactive)
+  (when-let* ((regexp (find-tag-default-as-symbol-regexp)))
+    (if (member regexp (hi-lock--regexps-at-point))
+	(hi-lock-unface-buffer regexp)
+      (hi-lock-face-symbol-at-point))))
+
+(keymap-global-set "M-s h ." #'yx/toggle-highlight-symbol-at-point)
+
+
 (provide 'init-util)
 ;;; init-util.el ends here
