@@ -127,6 +127,8 @@
 
 (which-key-mode +1)
 (global-completion-preview-mode +1)
+(global-prettify-symbols-mode +1)
+(global-so-long-mode +1)
 
 (repeat-mode +1)
 (winner-mode +1)
@@ -190,6 +192,7 @@
 (keymap-global-set "C-/"      #'undo-only)
 (keymap-global-set "M-`"      #'other-frame)
 (keymap-global-set "M-0"      #'delete-window)
+(keymap-global-set "M-V"      #'scroll-other-window-down)
 
 (keymap-global-set "C-M-/"    #'hippie-expand)
 (keymap-global-set "C-c a"    #'org-agenda)

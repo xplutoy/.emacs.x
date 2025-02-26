@@ -122,6 +122,7 @@ Otherwise jump to a window by typing its assigned character label."
 (defun yx/toggle-highlight-symbol-at-point ()
   "Toggle highlighting for the symbol at point."
   (interactive)
+  (require 'hi-lock)
   (when-let* ((regexp (find-tag-default-as-symbol-regexp)))
     (if (member regexp (hi-lock--regexps-at-point))
 	(hi-lock-unface-buffer regexp)

@@ -54,6 +54,7 @@
 (setopt org-agenda-skip-scheduled-if-deadline-is-shown t)
 (setopt org-fontify-quote-and-verse-blocks t)
 (setopt org-id-link-to-org-use-id 'create-if-interactive)
+(setopt set-attach-di-dir (concat org-directory "data/"))
 
 (setopt org-latex-compiler "xelatex")
 (setopt org-preview-latex-image-directory (no-littering-expand-var-file-name "ltximg/"))
@@ -65,6 +66,14 @@
 (setopt org-export-dispatch-use-expert-ui t)
 
 (with-eval-after-load 'org
+
+  (defun yx/org-mode-setup ()
+    (variable-pitch-mode +1)
+    (setq-local global-hl-line-mode nil)
+    (modify-syntax-entry ?< "." org-mode-syntax-table)
+    (modify-syntax-entry ?> "." org-mode-syntax-table))
+
+  (add-hook 'org-mode-hook #'yx/org-mode-setup)
 
   (require 'org-tempo)
   (org-crypt-use-before-save-magic)
@@ -81,24 +90,23 @@
 
   (plist-put org-format-latex-options :scale 1.5)
 
-  (require 'ox-latex)
-  (add-to-list 'org-latex-classes '("ctexart" "\\documentclass[11pt]{ctexart}"
-				    ("\\section{%s}" . "\\section*{%s}")
-				    ("\\subsection{%s}" . "\\subsection*{%s}")
-				    ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
-				    ("\\paragraph{%s}" . "\\paragraph*{%s}")
-				    ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+  (setopt org-latex-classes '(("ctexart" "\\documentclass[11pt]{ctexart}"
+			       ("\\section{%s}" . "\\section*{%s}")
+			       ("\\subsection{%s}" . "\\subsection*{%s}")
+			       ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+			       ("\\paragraph{%s}" . "\\paragraph*{%s}")
+			       ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))))
+
   (setopt org-latex-default-class "ctexart")
 
-  (defun yx/org-mode-setup ()
-    (variable-pitch-mode +1)
-    (setq-local global-hl-line-mode nil)
-    (modify-syntax-entry ?< "." org-mode-syntax-table)
-    (modify-syntax-entry ?> "." org-mode-syntax-table))
-
-  (add-hook 'org-mode-hook #'yx/org-mode-setup)
-
   (add-to-list 'org-babel-default-header-args '(:eval . "no-export") t)
+
+  (defun yx/yank-image-file-name-f ()
+    (concat (format-time-string "%Y%m%dT%H%M%S") "_"
+	    (read-string "Caption: " nil nil "screenshot")))
+
+  (setopt org-yank-image-file-name-function #'yx/yank-image-file-name-f)
+  (setopt org-yank-image-save-method (concat org-directory "data/images/"))
 
   (defun yx/org-toggle-inline-images-in-subtree (state &optional beg end)
     "Refresh inline image previews in the current heading/tree."
@@ -128,13 +136,8 @@
 
 (use-package htmlize)
 
-(use-package tex
-  :ensure auctex
-  :hook ((LaTeX-mode . eglot-ensure)
-	 (LaTeX-mode . turn-on-cdlatex)
-	 (LaTeX-mode . prettify-symbols-mode))
+(use-package auctex
   :custom
-  (Tex-master 'dwim)
   (TeX-engine 'xetex)
   (TeX-auto-save t)
   (TeX-parse-self t)
@@ -142,8 +145,12 @@
   (reftex-plug-into-AUCTeX t))
 
 (use-package cdlatex
-  :hook ((LaTeX-mode . turn-on-cdlatex)
-	 (org-mode . turn-on-org-cdlatex)))
+  :init
+  (with-eval-after-load 'org
+    (keymap-set org-cdlatex-mode-map "$" #'cdlatex-dollar)
+    (keymap-set org-cdlatex-mode-map "¥" #'cdlatex-dollar))
+  (add-hook 'LaTeX-mode-hook #'turn-on-cdlatex)
+  (add-hook 'org-mode-hook #'turn-on-org-cdlatex))
 
 (use-package denote
   :bind (("C-c n c"   . denote)
