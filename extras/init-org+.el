@@ -79,7 +79,7 @@
   (add-to-list 'org-structure-template-alist '("el" . "src elisp"))
   (add-to-list 'org-structure-template-alist '("sh" . "src shell"))
 
-  (plist-put org-format-latex-options :scale 1.3)
+  (plist-put org-format-latex-options :scale 1.5)
 
   (defun yx/org-mode-setup ()
     (variable-pitch-mode +1)
