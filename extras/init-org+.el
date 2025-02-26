@@ -67,6 +67,8 @@
 
 (with-eval-after-load 'org
 
+  (org-crypt-use-before-save-magic)
+
   (defun yx/org-mode-setup ()
     (variable-pitch-mode +1)
     (setq-local global-hl-line-mode nil)
@@ -75,15 +77,14 @@
 
   (add-hook 'org-mode-hook #'yx/org-mode-setup)
 
-  (require 'org-tempo)
-  (org-crypt-use-before-save-magic)
-
   (org-babel-do-load-languages
    'org-babel-load-languages '((python . t)
 			       (emacs-lisp . t)
 			       (R . t)
 			       (julia . t)))
+  (add-to-list 'org-babel-default-header-args '(:eval . "no-export") t)
 
+  (require 'org-tempo)
   (add-to-list 'org-structure-template-alist '("R"  . "src R"))
   (add-to-list 'org-structure-template-alist '("el" . "src elisp"))
   (add-to-list 'org-structure-template-alist '("sh" . "src shell"))
@@ -98,8 +99,6 @@
 			       ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))))
 
   (setopt org-latex-default-class "ctexart")
-
-  (add-to-list 'org-babel-default-header-args '(:eval . "no-export") t)
 
   (defun yx/yank-image-file-name-f ()
     (concat (format-time-string "%Y%m%dT%H%M%S") "_"
