@@ -81,6 +81,15 @@
 
   (plist-put org-format-latex-options :scale 1.5)
 
+  (require 'ox-latex)
+  (add-to-list 'org-latex-classes '("ctexart" "\\documentclass[11pt]{ctexart}"
+				    ("\\section{%s}" . "\\section*{%s}")
+				    ("\\subsection{%s}" . "\\subsection*{%s}")
+				    ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+				    ("\\paragraph{%s}" . "\\paragraph*{%s}")
+				    ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+  (setopt org-latex-default-class "ctexart")
+
   (defun yx/org-mode-setup ()
     (variable-pitch-mode +1)
     (setq-local global-hl-line-mode nil)

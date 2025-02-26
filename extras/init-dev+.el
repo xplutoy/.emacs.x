@@ -106,7 +106,8 @@
 
 (use-package tempel
   :bind (("M-*" . tempel-insert)
-	 ("M-+" . tempel-complete)))
+	 ("M-+" . tempel-complete))
+  :init (setq tempel-trigger-prefix "<"))
 
 (use-package citre
   :hook (prog-mode . citre-auto-enable-citre-mode)
@@ -127,6 +128,7 @@
 ;;;; python
 (setopt python-shell-dedicated 'project)
 (setopt python-indent-guess-indent-offset-verbose nil)
+(setopt python-skeleton-autoinsert t)
 
 (add-to-list 'project-vc-extra-root-markers "pyproject.toml")
 

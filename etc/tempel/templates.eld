@@ -27,15 +27,23 @@ emacs-lisp-mode
 
 org-mode
 
-(nm & "#+name: " p n)
-(cptn & "#+caption: ")
 (lnk & "[[" p "][" p "]]")
 (inlsrc "src_" p "{" q "}")
+(nm & "#+name: " p n)
+(cn & "#+caption: ")
 (el & "#+begin_src emacs-lisp" n r n "#+end_src" :post (org-edit-src-code))
 (py & "#+begin_src python" n r n "#+end_src" :post (org-edit-src-code))
-(R & "#+begin_src R" n r n "#+end_src" :post (org-edit-src-code))
+(R  & "#+begin_src R" n r n "#+end_src" :post (org-edit-src-code))
 (sh & "#+begin_src shell" n r n "#+end_src" :post (org-edit-src-code))
-
+(lh & "#+latex_header: \\usepackage{wrapfig}" n
+    "#+latex_header: \\usepackage{amsthm}" n
+    "#+latex_header: \\theoremstyle{definition}" n
+    "#+latex_header: \\newtheorem{definition}{定义}" n
+    "#+latex_header: \\theoremstyle{remark}" n
+    "#+latex_header: \\newtheorem{remark}{备注}" n
+    "#+latex_header: \\theoremstyle{plain}" n
+    "#+latex_header: \\newtheorem{theorem}{定理}[section]" n
+    "#+latex_header: \\newtheorem{lemma}[theorem]{引理}" n)
 
 python-base-mode
 

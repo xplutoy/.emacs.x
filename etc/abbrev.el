@@ -37,6 +37,6 @@
 
 (define-abbrev-table 'org-mode-abbrev-table
   '(
-    ("aaorg" "#+attr_org: :width 600px" nil :count 0)
     ("ppbib" "#+print_bibliography:" nil :count 0)
+    ("aaorg" "#+attr_org: :width 600px" nil :count 0)
    ))
