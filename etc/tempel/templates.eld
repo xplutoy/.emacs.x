@@ -35,15 +35,18 @@ org-mode
 (py & "#+begin_src python" n r n "#+end_src" :post (org-edit-src-code))
 (R  & "#+begin_src R" n r n "#+end_src" :post (org-edit-src-code))
 (sh & "#+begin_src shell" n r n "#+end_src" :post (org-edit-src-code))
-(lh & "#+latex_header: \\usepackage{wrapfig}" n
-    "#+latex_header: \\usepackage{amsthm}" n
-    "#+latex_header: \\theoremstyle{definition}" n
-    "#+latex_header: \\newtheorem{definition}{定义}" n
-    "#+latex_header: \\theoremstyle{remark}" n
-    "#+latex_header: \\newtheorem{remark}{备注}" n
-    "#+latex_header: \\theoremstyle{plain}" n
-    "#+latex_header: \\newtheorem{theorem}{定理}[section]" n
-    "#+latex_header: \\newtheorem{lemma}[theorem]{引理}" n)
+(cart & "#+LATEX_COMPILER: xelatex" n
+      "#+LATEX_CLASS: ctexart" n
+      "#+LATEX_CLASS_OPTIONS: [a4paper,11pt]" n
+      "#+LATEX_HEADER: \\usepackage{amsthm}" n
+      "#+LATEX_HEADER: \\theoremstyle{definition}" n
+      "#+LATEX_HEADER: \\newtheorem{definition}{定义}" n
+      "#+LATEX_HEADER: \\theoremstyle{remark}" n
+      "#+LATEX_HEADER: \\newtheorem{remark}{备注}" n
+      "#+LATEX_HEADER: \\theoremstyle{plain}" n
+      "#+LATEX_HEADER: \\newtheorem{theorem}{定理}[section]" n
+      "#+LATEX_HEADER: \\newtheorem{lemma}[theorem]{引理}" n)
+
 
 python-base-mode
 

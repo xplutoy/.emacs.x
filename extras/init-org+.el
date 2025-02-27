@@ -56,7 +56,6 @@
 (setopt org-id-link-to-org-use-id 'create-if-interactive)
 (setopt set-attach-di-dir (concat org-directory "data/"))
 
-(setopt org-latex-compiler "xelatex")
 (setopt org-preview-latex-image-directory (no-littering-expand-var-file-name "ltximg/"))
 (setopt org-cite-export-processors '((t . (basic "numeric" "numeric"))))
 (setopt org-cite-global-bibliography `(,(expand-file-name "bibliography.bib" org-directory)))
@@ -91,14 +90,13 @@
 
   (plist-put org-format-latex-options :scale 1.5)
 
-  (setopt org-latex-classes '(("ctexart" "\\documentclass[11pt]{ctexart}"
-			       ("\\section{%s}" . "\\section*{%s}")
-			       ("\\subsection{%s}" . "\\subsection*{%s}")
-			       ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
-			       ("\\paragraph{%s}" . "\\paragraph*{%s}")
-			       ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))))
-
-  (setopt org-latex-default-class "ctexart")
+  (require 'ox-latex)
+  (add-to-list 'org-latex-classes '("ctexart" "\\documentclass[11pt]{ctexart}"
+				    ("\\section{%s}" . "\\section*{%s}")
+				    ("\\subsection{%s}" . "\\subsection*{%s}")
+				    ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+				    ("\\paragraph{%s}" . "\\paragraph*{%s}")
+				    ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
 
   (defun yx/yank-image-file-name-f ()
     (concat (format-time-string "%Y%m%dT%H%M%S") "_"
