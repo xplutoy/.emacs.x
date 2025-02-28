@@ -70,9 +70,8 @@
 		      (erase-buffer)
 		      (insert resp)
 		      (display-buffer (current-buffer)
-				      `((display-buffer-in-side-window)
-					(side . bottom)
-					(height ,#'fit-window-to-buffer)))))))))
+				      `((display-buffer-at-bottom)
+					(window-height . ,#'fit-window-to-buffer)))))))))
 
 (keymap-global-set "M-s q" #'yx/gptel-quick)
 
