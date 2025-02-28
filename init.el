@@ -45,7 +45,6 @@
 (setopt set-mark-command-repeat-pop t)
 (setopt mouse-wheel-tilt-scroll t)
 (setopt recentf-max-saved-items 100)
-(setopt electric-pair-preserve-balance nil)
 (setopt backward-delete-char-untabify-method 'hungry)
 (setopt cua-rectangle-mark-key [C-S-return])
 
@@ -192,7 +191,8 @@
 (keymap-global-set "C-/"      #'undo-only)
 (keymap-global-set "M-`"      #'other-frame)
 (keymap-global-set "M-0"      #'delete-window)
-(keymap-global-set "M-V"      #'scroll-other-window-down)
+(keymap-global-set "M-["      #'scroll-other-window-down)
+(keymap-global-set "M-]"      #'scroll-other-window)
 
 (keymap-global-set "C-M-/"    #'hippie-expand)
 (keymap-global-set "C-c a"    #'org-agenda)

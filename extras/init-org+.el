@@ -76,6 +76,9 @@
 
   (add-hook 'org-mode-hook #'yx/org-mode-setup)
 
+  (with-eval-after-load 'completion-preview
+    (push 'org-self-insert-command completion-preview-commands))
+
   (org-babel-do-load-languages
    'org-babel-load-languages '((python . t)
 			       (emacs-lisp . t)

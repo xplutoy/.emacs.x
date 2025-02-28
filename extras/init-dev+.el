@@ -87,6 +87,7 @@
 	 ("C-c v" . magit-file-dispatch))
   :custom
   (magit-clone-default-directory "~/workspace/")
+  (magit-save-repository-buffers 'dontask)
   (magit-bury-buffer-function #'magit-restore-window-configuration)
   (magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1))
 
