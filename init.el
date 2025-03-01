@@ -155,10 +155,6 @@
 (dolist (charset '(han cjk-misc))
   (set-fontset-font t charset (font-spec :family "LXGW WenKai Mono GB Lite")))
 
-(setopt project-mode-line t)
-
-(require-theme 'modus-themes)
-
 (setopt modus-themes-mixed-fonts t)
 (setopt modus-themes-variable-pitch-ui t)
 (setopt modus-themes-org-blocks 'gray-background)

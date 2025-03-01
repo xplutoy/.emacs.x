@@ -42,7 +42,8 @@
 		   :models '(deepseek-chat deepseek-coder)))
   (gptel-default-mode 'org-mode)
   :config
-  (when IS-WIN (setopt gptel-use-curl nil))
+  (when IS-WIN
+    (setopt gptel-use-curl nil))
   (add-hook 'gptel-post-response-functions 'gptel-end-of-response))
 
 (defun yx/gptel-quick (query-text)
@@ -55,8 +56,9 @@
 	  (t (thing-at-point 'sentence t)))))
   (require 'gptel)
   (let ((gptel-use-context nil)
-	(gptel-max-tokens (+ (floor (/ (length query-text) 5)) 250))
+	(gptel-max-tokens (+ (floor (length query-text) 8) 256))
 	(quick-msg "请用中文，清晰简洁地解释："))
+    (message "Query LLMs ...")
     (gptel-request query-text
       :system quick-msg
       :callback (lambda (resp info)
@@ -107,7 +109,8 @@
   :init
   (setq olivetti-style 'fancy)
   (setq olivetti-mode-map nil)
-  (add-hook 'olivetti-mode-hook (lambda () (setq line-spacing 0.2))))
+  (add-hook 'olivetti-mode-hook
+	    (lambda () (setq line-spacing 0.2))))
 
 (use-package elfeed
   :hook (elfeed-show-mode . olivetti-mode)
