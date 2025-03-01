@@ -111,30 +111,32 @@
   :init
   (setq olivetti-style 'fancy)
   (setq olivetti-mode-map nil)
-  (with-eval-after-load 'elfeed
-    (add-hook 'elfeed-show-mode-hook #'olivetti-mode)))
+  (add-hook 'olivetti-mode-hook (lambda () (setq line-spacing 0.2))))
 
 (use-package elfeed
   :custom
-  (elfeed-feeds
-   '(("https://feeds.feedburner.com/RBloggers" R)
-     ("https://www.planetpython.org/rss20.xml" py)
-     ("https://www.juliabloggers.com/feed/" julia)
-     ("https://www.kdnuggets.com/feed" DS)
-     ("https://towardsdatascience.com/feed" DS)
-     ("https://www.jiqizhixin.com/rss" AI)
-     ("https://www.marktechpost.com/feed/" AI)
-     ("https://spaces.ac.cn/feed" math AI)
-     ("https://lilianweng.github.io/index.xml" AI)
-     ("https://planet.emacslife.com/atom.xml" emacs)
-     ("https://www.ruanyifeng.com/blog/atom.xml" IT)))
+  (elfeed-feeds '(("https://feeds.feedburner.com/RBloggers" R)
+		  ("https://www.planetpython.org/rss20.xml" py)
+		  ("https://www.juliabloggers.com/feed/" julia)
+		  ("https://www.kdnuggets.com/feed" DS)
+		  ("https://towardsdatascience.com/feed" DS)
+		  ("https://www.jiqizhixin.com/rss" AI)
+		  ("https://www.marktechpost.com/feed/" AI)
+		  ("https://spaces.ac.cn/feed" math AI)
+		  ("https://lilianweng.github.io/index.xml" AI)
+		  ("https://planet.emacslife.com/atom.xml" emacs)
+		  ("https://www.ruanyifeng.com/blog/atom.xml" IT)))
   :config
+  (when (featurep 'olivetti)
+    (add-hook 'elfeed-show-mode-hook #'olivetti-mode))
+
   (defun yx/elfeed-show-quit ()
     "Kill current elfeed-entry buffer and switch to elfeed-search buffer."
     (interactive)
     (when (derived-mode-p 'elfeed-show-mode)
       (kill-buffer (current-buffer))
       (switch-to-buffer (get-buffer "*elfeed-search*") nil t)))
+
   (defun yx/elfeed-show-external (&optional generic)
     "Visit the current entry in Xwidget or external browser with a prefix argument."
     (interactive "P")
@@ -144,6 +146,7 @@
 	       (featurep 'xwidget-internal))
 	  (xwidget-webkit-browse-url link)
 	(browse-url-default-browser link))))
+
   (keymap-set elfeed-show-mode-map "q" #'yx/elfeed-show-quit)
   (keymap-set elfeed-show-mode-map "&" #'yx/elfeed-show-external))
 
