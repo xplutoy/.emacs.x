@@ -16,6 +16,9 @@
 ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+(defconst IS-MAC (eq system-type 'darwin))
+(defconst IS-WIN (eq system-type 'windows-nt))
+
 (set-language-environment "UTF-8")
 
 (setopt system-time-locale "C")

@@ -10,21 +10,17 @@
 
 ;;; Code:
 
-(defconst IS-MAC (eq system-type 'darwin))
-(defconst IS-WIN (eq system-type 'windows-nt))
-
 (setopt gc-cons-threshold (* 16 1024 1024))
 
-(add-to-list 'default-frame-alist '(font . "Iosevka-15"))
-
-(add-to-list 'default-frame-alist '(width  . 80))
-(add-to-list 'default-frame-alist '(height . 40))
-(add-to-list 'default-frame-alist '(menu-bar-lines . nil))
-(add-to-list 'default-frame-alist '(tool-bar-lines . nil))
-(add-to-list 'default-frame-alist '(vertical-scroll-bars . nil))
-
-(when IS-MAC
-  (push '(ns-transparent-titlebar . t) default-frame-alist))
+(let ((my-frame-alist '((font . "Iosevka-15")
+			(width . 80) (height . 40)
+			(menu-bar-lines . nil)
+			(tool-bar-lines . nil)
+			(vertical-scroll-bar . nil))))
+  (dolist (lst my-frame-alist)
+    (add-to-list 'default-frame-alist lst))
+  (when (eq system-type 'darwin)
+    (push '(ns-transparent-titlebar . t) 'default-frame-alist)))
 
 (advice-add #'display-startup-echo-area-message :override #'ignore)
 
