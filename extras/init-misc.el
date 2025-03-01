@@ -46,30 +46,33 @@
     (setopt gptel-use-curl nil))
   (add-hook 'gptel-post-response-functions 'gptel-end-of-response))
 
-(defun yx/gptel-quick (query-text)
+(defun yx/gptel-quick (capture-text &optional input)
   "Explain or summarize region or thing at point with an LLM."
   (interactive
    (list (cond
 	  ((use-region-p) (buffer-substring-no-properties (region-beginning)
 							  (region-end)))
 	  ((derived-mode-p 'prog-mode) (thing-at-point 'defun t))
-	  (t (thing-at-point 'sentence t)))))
+	  (t (thing-at-point 'sentence t)))
+	 current-prefix-arg))
   (require 'gptel)
-  (let ((gptel-use-context nil)
-	(gptel-max-tokens (+ (floor (length query-text) 8) 256))
-	(quick-msg "请用中文，清晰简洁地解释："))
+  (let* ((default-prompt  "请用精炼的中文解释和总结下面的内容：\n")
+	 (query-text (if input
+			 (read-string "Ask LLM: ")
+		       (concat default-prompt capture-text)))
+	 (gptel-use-context nil)
+	 (gptel-max-tokens (+ (floor (length query-text) 8) 256)))
     (message "Query LLMs ...")
     (gptel-request query-text
-      :system quick-msg
       :callback (lambda (resp info)
-		  (with-current-buffer (get-buffer-create "*gptel-quick*")
-		    (if (not resp)
-			(message "gptel-quick failed: %s" (plist-get info :status))
+		  (message "Query LLMs Done!")
+		  (if (length< resp 20)
+		      (message "LLM: %s" resp)
+		    (with-current-buffer
+			(get-buffer-create "*gptel-quick*")
 		      (erase-buffer)
 		      (insert resp)
-		      (display-buffer (current-buffer)
-				      `((display-buffer-at-bottom)
-					(window-height . ,#'fit-window-to-buffer)))))))))
+		      (display-buffer (current-buffer))))))))
 
 (keymap-global-set "M-s q" #'yx/gptel-quick)
 
