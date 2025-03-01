@@ -16,7 +16,7 @@
 			(width . 80) (height . 40)
 			(menu-bar-lines . nil)
 			(tool-bar-lines . nil)
-			(vertical-scroll-bar . nil))))
+			(vertical-scroll-bars . nil))))
   (dolist (lst my-frame-alist)
     (add-to-list 'default-frame-alist lst)))
 
