@@ -75,14 +75,14 @@
 
   (org-crypt-use-before-save-magic)
 
-  (defun yx/org-mode-setup ()
+  (defun yx/org-mode-init-h ()
     (visual-line-mode +1)
     (variable-pitch-mode +1)
     (setq-local global-hl-line-mode nil)
     (modify-syntax-entry ?< "." org-mode-syntax-table)
     (modify-syntax-entry ?> "." org-mode-syntax-table))
 
-  (add-hook 'org-mode-hook #'yx/org-mode-setup)
+  (add-hook 'org-mode-hook #'yx/org-mode-init-h)
 
   (with-eval-after-load 'completion-preview
     (push 'org-self-insert-command completion-preview-commands))

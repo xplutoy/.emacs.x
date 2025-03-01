@@ -110,16 +110,14 @@
 (with-eval-after-load 'esh-module
   (add-to-list 'eshell-modules-list 'eshell-rebind))
 
-(defun yx/eshell-setup ()
+(defun yx/eshell-init-h ()
   (eshell-hist-mode +1)
   (keymap-local-set "C-l" #'eshell/clear))
 
-(add-hook 'eshell-mode-hook #'yx/eshell-setup)
-
-(add-hook 'eww-mode-hook #'variable-pitch-mode)
-(add-hook 'eww-after-render-hook #'eww-readable)
+(add-hook 'eshell-mode-hook #'yx/eshell-init-h)
 
 (add-hook 'after-save-hook #'whitespace-cleanup)
+(add-hook 'eww-after-render-hook #'eww-readable)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;

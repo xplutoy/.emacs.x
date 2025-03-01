@@ -11,7 +11,11 @@
 ;;; Code:
 
 (setopt warning-minimum-level :error)
-(setopt gc-cons-threshold (* 16 1024 1024))
+(setopt gc-cons-threshold most-positive-fixnum)
+
+(add-hook 'emacs-startup-hook (lambda ()
+				(message "")
+				(setopt gc-cons-threshold (* 8 1024 1024))))
 
 (let ((my-frame-alist '((font . "Iosevka-15")
 			(width . 80) (height . 40)
@@ -26,6 +30,4 @@
 
 (advice-add #'display-startup-echo-area-message :override #'ignore)
 
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; early-init.el ends here
