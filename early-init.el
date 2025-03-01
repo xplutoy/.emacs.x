@@ -18,9 +18,10 @@
 			(tool-bar-lines . nil)
 			(vertical-scroll-bar . nil))))
   (dolist (lst my-frame-alist)
-    (add-to-list 'default-frame-alist lst))
-  (when (eq system-type 'darwin)
-    (push '(ns-transparent-titlebar . t) 'default-frame-alist)))
+    (add-to-list 'default-frame-alist lst)))
+
+(when (eq system-type 'darwin)
+  (push '(ns-transparent-titlebar . t) default-frame-alist))
 
 (advice-add #'display-startup-echo-area-message :override #'ignore)
 
