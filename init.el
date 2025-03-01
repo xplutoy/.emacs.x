@@ -24,6 +24,7 @@
 (setopt system-time-locale "C")
 (setopt custom-file "~/.emacs.d/custom.el")
 
+(setopt fill-column 100)
 (setopt word-wrap t)
 (setopt word-wrap-by-category t)
 (setopt require-final-newline t)

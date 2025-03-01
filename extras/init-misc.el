@@ -103,14 +103,14 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (use-package olivetti
-  :hook ((Info-mode . olivetti-mode)
-	 (eww-mode . olivetti-mode)
-	 (org-mode . olivetti-mode)
-	 (org-agenda-mode . olivetti-mode))
+  :hook ((Man-mode
+	  Info-mode
+	  org-mode
+	  org-agenda-mode
+	  eww-mode) . olivetti-mode)
   :init
-  (setq olivetti-mode-map nil)
   (setq olivetti-style 'fancy)
-  (setq olivetti-body-width 100)
+  (setq olivetti-mode-map nil)
   (with-eval-after-load 'elfeed
     (add-hook 'elfeed-show-mode-hook #'olivetti-mode)))
 
