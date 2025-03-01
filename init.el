@@ -16,9 +16,6 @@
 ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(defconst IS-MAC (eq system-type 'darwin))
-(defconst IS-WIN (eq system-type 'windows-nt))
-
 (set-language-environment "UTF-8")
 
 (setopt system-time-locale "C")
@@ -162,15 +159,6 @@
 (setopt modus-themes-mixed-fonts t)
 (setopt modus-themes-variable-pitch-ui t)
 (setopt modus-themes-org-blocks 'gray-background)
-
-(setopt modus-themes-headings '((1 . (bold 1.25))
-				(2 . (semibold 1.15))
-				(t . (medium 1.10))))
-
-(setopt modus-themes-common-palette-overrides (append
-					       '((bg-heading-1 bg-blue-nuanced)
-						 (overline-heading-1 blue-warmer))
-					       modus-themes-preset-overrides-warmer))
 
 (load-theme 'modus-operandi t)
 

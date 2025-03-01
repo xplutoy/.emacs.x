@@ -22,10 +22,6 @@
 (use-package ef-themes
   :custom
   (ef-themes-mixed-fonts t)
-  (ef-themes-headings '((0 . (1.3))
-			(1 . (1.2))
-			(2 . (semibold 1.1))
-			(t . (semibold 1.05))))
   (ef-themes-variable-pitch-ui t))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
