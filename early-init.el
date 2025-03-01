@@ -10,6 +10,7 @@
 
 ;;; Code:
 
+(setopt warning-minimum-level :error)
 (setopt gc-cons-threshold (* 16 1024 1024))
 
 (let ((my-frame-alist '((font . "Iosevka-15")
@@ -20,7 +21,7 @@
   (dolist (lst my-frame-alist)
     (add-to-list 'default-frame-alist lst)))
 
-(when (eq system-type 'darwin)
+(when (featurep 'ns)
   (push '(ns-transparent-titlebar . t) default-frame-alist))
 
 (advice-add #'display-startup-echo-area-message :override #'ignore)

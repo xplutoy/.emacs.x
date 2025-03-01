@@ -14,9 +14,7 @@
 (electric-pair-mode +1)
 (electric-indent-mode +1)
 
-(add-hook 'prog-mode-hook #'abbrev-mode)
 (add-hook 'prog-mode-hook #'hs-minor-mode)
-(add-hook 'prog-mode-hook #'toggle-truncate-lines)
 (add-hook 'prog-mode-hook #'display-line-numbers-mode)
 
 (setopt vc-follow-symlinks t)

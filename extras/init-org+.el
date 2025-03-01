@@ -76,6 +76,7 @@
   (org-crypt-use-before-save-magic)
 
   (defun yx/org-mode-setup ()
+    (visual-line-mode +1)
     (variable-pitch-mode +1)
     (setq-local global-hl-line-mode nil)
     (modify-syntax-entry ?< "." org-mode-syntax-table)

@@ -24,12 +24,13 @@
 (setopt system-time-locale "C")
 (setopt custom-file "~/.emacs.d/custom.el")
 
+(setopt truncate-lines t)
 (setopt fill-column 100)
-(setopt word-wrap t)
 (setopt word-wrap-by-category t)
 (setopt require-final-newline t)
 (setopt sentence-end-double-space nil)
 
+(setopt ring-bell-function #'ignore)
 (setopt use-short-answers t)
 (setopt use-dialog-box nil)
 (setopt inhibit-splash-screen t)
@@ -45,12 +46,14 @@
 (setopt tab-always-indent 'complete)
 (setopt set-mark-command-repeat-pop t)
 (setopt mouse-wheel-tilt-scroll t)
-(setopt recentf-max-saved-items 100)
 (setopt backward-delete-char-untabify-method 'hungry)
 (setopt cua-rectangle-mark-key [C-S-return])
 
 (setopt isearch-lazy-count t)
 (setopt isearch-yank-on-move 'shift)
+
+(setopt recentf-auto-cleanup 'never)
+(setopt recentf-max-saved-items 100)
 
 (setopt auto-save-visited-interval 10)
 (setopt auto-revert-verbose nil)
@@ -63,9 +66,6 @@
 
 (setopt epg-pinentry-mode 'loopback)
 (setopt epa-file-encrypt-to user-mail-address)
-
-(setopt switch-to-prev-buffer-skip 'this)
-(setopt switch-to-buffer-obey-display-actions t)
 
 (setopt minibuffer-visible-completions t)
 (setopt enable-recursive-minibuffers t)
@@ -81,6 +81,7 @@
 (setopt dired-mouse-drag-files t)
 (setopt dired-kill-when-opening-new-dired-buffer t)
 
+(setopt abbrev-mode t)
 (setopt imenu-flatten 'prefix)
 (setopt reb-re-syntax 'string)
 (setopt bookmark-save-flag t)
@@ -94,10 +95,14 @@
 (setopt tab-bar-close-button-show nil)
 (setopt tab-line-close-button-show 'selected)
 
-(add-to-list 'display-buffer-alist
-	     '("\\`\\*\\(Warnings\\|Compile-Log\\|Org Links\\)\\*\\'"
-	       (display-buffer-no-window)
-	       (allow-no-window . t)))
+(setopt switch-to-prev-buffer-skip 'this)
+(setopt switch-to-buffer-obey-display-actions t)
+
+(setopt display-buffer-alist '(("\\`\\*\\(Org Links\\|Compile-Log\\)\\*\\'"
+				(display-buffer-no-window)
+				(allow-no-window . t))
+			       ("\\`\\*\\(Warnings\\|Async Shell Command\\)\\*\\'"
+				(display-buffer-no-window))))
 
 (windmove-default-keybindings 'control)
 (windmove-swap-states-default-keybindings '(control shift))
@@ -110,9 +115,6 @@
   (keymap-local-set "C-l" #'eshell/clear))
 
 (add-hook 'eshell-mode-hook #'yx/eshell-setup)
-
-(add-hook 'text-mode-hook #'abbrev-mode)
-(add-hook 'text-mode-hook #'visual-line-mode)
 
 (add-hook 'eww-mode-hook #'variable-pitch-mode)
 (add-hook 'eww-after-render-hook #'eww-readable)
