@@ -82,15 +82,16 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (use-package sis
-  :init
+  :demand t
+  :config
   (add-to-list 'sis-prefix-override-keys "M-s")
   (add-to-list 'sis-prefix-override-keys "M-g")
   (when IS-MAC
     (sis-ism-lazyman-config
      "com.apple.keylayout.ABC"
      "com.apple.inputmethod.SCIM.Shuangpin"))
-  (sis-global-inline-mode t)
-  (sis-global-respect-mode t))
+  (sis-global-inline-mode +1)
+  (sis-global-respect-mode +1))
 
 (use-package bing-dict
   :bind (("M-s d" . bing-dict-brief)))

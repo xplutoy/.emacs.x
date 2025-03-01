@@ -11,7 +11,7 @@
 ;;; Code:
 
 (use-package no-littering
-  :demand
+  :demand t
   :config
   (with-eval-after-load 'recentf
     (add-to-list 'recentf-exclude no-littering-var-directory))
