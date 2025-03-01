@@ -114,6 +114,7 @@
   (add-hook 'olivetti-mode-hook (lambda () (setq line-spacing 0.2))))
 
 (use-package elfeed
+  :hook (elfeed-show-mode . olivetti-mode)
   :custom
   (elfeed-feeds '(("https://feeds.feedburner.com/RBloggers" R)
 		  ("https://www.planetpython.org/rss20.xml" py)
@@ -127,9 +128,6 @@
 		  ("https://planet.emacslife.com/atom.xml" emacs)
 		  ("https://www.ruanyifeng.com/blog/atom.xml" IT)))
   :config
-  (when (featurep 'olivetti)
-    (add-hook 'elfeed-show-mode-hook #'olivetti-mode))
-
   (defun yx/elfeed-show-quit ()
     "Kill current elfeed-entry buffer and switch to elfeed-search buffer."
     (interactive)
