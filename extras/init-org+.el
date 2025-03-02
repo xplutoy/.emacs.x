@@ -79,6 +79,9 @@
     (visual-line-mode +1)
     (variable-pitch-mode +1)
     (setq-local global-hl-line-mode nil)
+    (setq-local electric-pair-pairs
+		(append electric-pair-pairs '((?~ . ?~) (?+ . ?+))))
+    (setq-local electric-pair-text-pairs electric-pair-pairs)
     (modify-syntax-entry ?< "." org-mode-syntax-table)
     (modify-syntax-entry ?> "." org-mode-syntax-table))
 

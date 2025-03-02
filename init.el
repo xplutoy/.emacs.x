@@ -175,7 +175,6 @@
 (keymap-global-unset "C-<wheel-up>")
 (keymap-global-unset "C-<wheel-down>")
 
-(keymap-global-set "C-^"      #'raise-sexp)
 (keymap-global-set "C-/"      #'undo-only)
 (keymap-global-set "M-`"      #'other-frame)
 (keymap-global-set "M-0"      #'delete-window)
