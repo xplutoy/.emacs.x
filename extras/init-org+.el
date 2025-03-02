@@ -67,11 +67,11 @@
 (with-eval-after-load 'org
 
   (custom-set-faces
-   '(org-drawer  ((t (:height 0.85))))
    '(org-level-1 ((t (:height 1.20 :weight extrabold :overline t))))
    '(org-level-2 ((t (:height 1.15 :weight bold))))
    '(org-level-3 ((t (:height 1.10 :weight semibold))))
-   '(org-level-4 ((t (:height 1.05 :weight medium)))))
+   '(org-level-4 ((t (:height 1.05 :weight medium))))
+   '(org-quote   ((t (:inherit org-block :slant italic)))))
 
   (org-crypt-use-before-save-magic)
 

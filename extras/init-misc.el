@@ -57,17 +57,18 @@
 	 current-prefix-arg))
   (require 'gptel)
   (let* ((default-prompt  "请用精炼的中文解释和总结下面的内容：\n")
+	 (llm-name (gptel-backend-name gptel-backend))
 	 (query-text (if input
-			 (read-string "Ask LLM: ")
+			 (read-string "Ask %s: llm-name")
 		       (concat default-prompt capture-text)))
 	 (gptel-use-context nil)
 	 (gptel-max-tokens (+ (floor (length query-text) 8) 256)))
-    (message "Query LLMs ...")
+    (message "Query %s ..."  llm-name)
     (gptel-request query-text
       :callback (lambda (resp info)
-		  (message "Query LLMs Done!")
+		  (message "Query %s Done!" llm-name)
 		  (if (length< resp 20)
-		      (message "LLM: %s" resp)
+		      (message "%s: %s" llm-name resp)
 		    (with-current-buffer
 			(get-buffer-create "*gptel-quick*")
 		      (erase-buffer)
