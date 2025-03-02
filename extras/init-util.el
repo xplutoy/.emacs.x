@@ -135,7 +135,7 @@ Otherwise jump to a window by typing its assigned character label."
 	(hi-lock-unface-buffer regexp)
       (hi-lock-face-symbol-at-point))))
 
-(keymap-global-set "M-s h ." #'yx/toggle-highlight-symbol-at-point)
+(keymap-global-set "M-s h h" #'yx/toggle-highlight-symbol-at-point)
 
 
 (provide 'init-util)

@@ -165,6 +165,11 @@
 (use-package vundo
   :bind ("C-_" . vundo))
 
+(use-package outli
+  :vc (:url "https://github.com/jdtsmith/outli")
+  :hook ((prog-mode
+	  text-mode) . outli-mode))
+
 
 (provide 'init-misc)
 ;;; init-misc.el ends here

@@ -102,6 +102,8 @@
 	 ("M-g m"   . consult-mark)
 	 ("M-g M-m" . consult-global-mark))
   :config
+  (with-eval-after-load 'org
+    (keymap-set org-mode-map "M-g h" #'consult-org-heading))
   (consult-customize
    consult-line consult-line-multi :preview-key 'any)
   (with-eval-after-load 'em-hist
