@@ -194,6 +194,17 @@
 (keymap-global-set "M-s d"    #'dictionary-lookup-definition)
 (keymap-global-set "M-s M-d"  #'dictionary-search)
 
+(let ((trans-keys '(("C-；" . "C-;")
+		    ("C-。" . "C-.")
+		    ("C-：" . "C-:")
+		    ("C-，" . "C-,")
+		    ("M-；" . "M-;")
+		    ("M-。" . "M-.")
+		    ("M-：" . "M-:")
+		    ("M-，" . "M-,"))))
+  (dolist (keys trans-keys)
+    (keymap-set key-translation-map (car keys) (cdr keys))))
+
 (with-eval-after-load 'isearch
   (keymap-substitute isearch-mode-map #'isearch-delete-char #'isearch-del-char))
 

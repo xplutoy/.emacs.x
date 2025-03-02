@@ -50,8 +50,10 @@
 (setopt org-goto-interface 'outline-path-completion)
 (setopt org-outline-path-complete-in-steps nil)
 
-(setopt org-use-tag-inheritance nil)
+(setopt org-agenda-inhibit-startup t)
 (setopt org-agenda-skip-scheduled-if-deadline-is-shown t)
+
+(setopt org-modules '(ol-eww ol-info))
 (setopt org-fontify-quote-and-verse-blocks t)
 (setopt org-id-link-to-org-use-id 'create-if-interactive)
 (setopt set-attach-di-dir (concat org-directory "data/"))
