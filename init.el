@@ -115,6 +115,7 @@
   (keymap-local-set "C-l" #'eshell/clear))
 
 (add-hook 'eshell-mode-hook #'yx/eshell-init-h)
+
 (add-hook 'eww-after-render-hook #'eww-readable)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

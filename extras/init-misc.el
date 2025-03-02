@@ -162,6 +162,9 @@
 	 (eshell-mode . eat-eshell-visual-command-mode))
   :init (setopt eat-kill-buffer-on-exit t))
 
+(use-package vundo
+  :bind ("C-_" . vundo))
+
 
 (provide 'init-misc)
 ;;; init-misc.el ends here
