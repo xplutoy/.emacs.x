@@ -106,7 +106,15 @@
 (use-package tempel
   :bind (("M-*" . tempel-insert)
 	 ("M-+" . tempel-complete))
-  :init (setq tempel-trigger-prefix "<"))
+  :hook
+  (prog-mode . tempel-setup-capf)
+  (text-mode . tempel-setup-capf)
+  :init
+  (defun tempel-setup-capf ()
+    (setq-local completion-at-point-functions
+		(cons #'tempel-expand
+		      completion-at-point-functions)))
+  (setopt tempel-trigger-prefix "<"))
 
 (use-package citre
   :hook (prog-mode . citre-auto-enable-citre-mode)
@@ -125,18 +133,19 @@
   (keymap-set citre-peek-keymap "C-g" #'citre-peek-abort))
 
 ;;;; python
+
 (setopt python-shell-dedicated 'project)
 (setopt python-indent-guess-indent-offset-verbose nil)
-(setopt python-skeleton-autoinsert t)
 
 (add-to-list 'project-vc-extra-root-markers "pyproject.toml")
 
 (with-eval-after-load 'python
   (add-to-list 'python-shell-completion-native-disabled-interpreters "python"))
 
-(add-hook 'python-base-mode-hook #'eglot-ensure)
+(add-hook 'python-mode-hook #'eglot-ensure)
 
 ;;;; R / Julia
+
 (use-package ess
   :custom
   (ess-use-company nil)

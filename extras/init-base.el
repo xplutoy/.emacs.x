@@ -46,17 +46,17 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (use-package vertico
-  :hook (after-init . vertico-mode)
+  :hook ((after-init . vertico-mode)
+	 (minibuffer-setup . vertico-repeat-save))
   :bind (("M-R" . vertico-repeat)
 	 :map vertico-map
 	 ("M-N" . vertico-repeat-next)
 	 ("M-P" . vertico-repeat-previous)
 	 ("RET" . vertico-directory-enter)
-	 ("DEL" . vertico-directory-delete-char)
-	 ("M-DEL" . vertico-directory-delete-word))
+	 ("DEL" . vertico-directory-delete-char))
   :config
   (vertico-indexed-mode +1)
-  (add-hook 'minibuffer-setup-hook #'vertico-repeat-save))
+  (vertico-multiform-mode +1))
 
 (use-package corfu
   :hook ((prog-mode text-mode) . corfu-mode)
@@ -67,7 +67,8 @@
 
 (use-package embark
   :bind (("C-." . embark-act)
-	 ("M-." . embark-dwim))
+	 ("M-." . embark-dwim)
+	 ("C-h B" . embark-bindings))
   :custom
   (prefix-help-command #'embark-prefix-help-command))
 
@@ -84,8 +85,8 @@
 	 ("M-y"     . consult-yank-pop)
 	 ("M-s f"   . consult-fd)
 	 ("M-s r"   . consult-ripgrep)
-	 ("M-s m"   . consult-man)
-	 ("M-s i"   . consult-info)
+	 ("M-s g"   . consult-git-grep)
+	 ("M-s I"   . consult-info)
 	 ("M-s l"   . consult-line)
 	 ("M-s k"   . consult-keep-lines)
 	 ("M-s u"   . consult-focus-lines)
@@ -102,16 +103,13 @@
 	 ("M-g m"   . consult-mark)
 	 ("M-g M-m" . consult-global-mark))
   :config
-  (with-eval-after-load 'org
-    (keymap-set org-mode-map "M-g h" #'consult-org-heading))
+  (setq consult-preview-key nil)
   (consult-customize
    consult-line consult-line-multi :preview-key 'any)
-  (with-eval-after-load 'em-hist
-    (keymap-set eshell-hist-mode-map "M-r" #'consult-history))
-  (setq xref-show-xrefs-function #'consult-xref
-	xref-show-definitions-function #'consult-xref)
-  (setq consult-preview-key nil)
-  (setq consult-ripgrep-args (concat consult-ripgrep-args " --hidden")))
+  (with-eval-after-load 'org
+    (keymap-set org-mode-map "M-g h" #'consult-org-heading))
+    (setq xref-show-xrefs-function #'consult-xref)
+  (setq	xref-show-definitions-function #'consult-xref))
 
 (use-package embark-consult)
 

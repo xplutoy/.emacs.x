@@ -51,6 +51,7 @@
 
 (setopt isearch-lazy-count t)
 (setopt isearch-yank-on-move 'shift)
+(setopt grep-use-headings t)
 
 (setopt recentf-auto-cleanup 'never)
 (setopt recentf-max-saved-items 100)
@@ -63,6 +64,7 @@
 (setopt use-package-always-defer t)
 (setopt use-package-always-ensure t)
 (setopt use-package-compute-statistics t)
+(setopt use-package-enable-imenu-support t)
 
 (setopt epg-pinentry-mode 'loopback)
 (setopt epa-file-encrypt-to user-mail-address)

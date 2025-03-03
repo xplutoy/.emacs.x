@@ -48,7 +48,7 @@ org-mode
       "#+LATEX_HEADER: \\newtheorem{lemma}[theorem]{引理}" n)
 
 
-python-base-mode
+python-mode
 
 (for "for " p " in " p ":" n> q)
 (from "from " p " import " q)
