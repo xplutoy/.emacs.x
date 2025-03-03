@@ -138,5 +138,5 @@ Otherwise jump to a window by typing its assigned character label."
 (keymap-global-set "M-s h h" #'yx/toggle-highlight-symbol-at-point)
 
 
-(provide 'init-util)
-;;; init-util.el ends here
+(provide 'init-utils)
+;;; init-utils.el ends here

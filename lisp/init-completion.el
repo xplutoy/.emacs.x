@@ -119,5 +119,5 @@
 					(eglot-capf (styles orderless)))))
 
 
-(provide 'init-base)
-;;; init-base.el ends here
+(provide 'init-completion)
+;;; init-completion.el ends here

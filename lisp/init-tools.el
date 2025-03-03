@@ -149,5 +149,5 @@
   (keymap-set elfeed-show-mode-map "&" #'yx/elfeed-show-external))
 
 
-(provide 'init-misc)
-;;; init-misc.el ends here
+(provide 'init-tools)
+;;; init-tools.el ends here

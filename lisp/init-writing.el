@@ -91,10 +91,68 @@
 
   (add-hook 'org-cycle-hook #'yx/org-toggle-inline-images-in-subtree))
 
-;;; Org+
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Blog
 
 (use-package htmlize)
+
+(defvar my-blog-dir (expand-file-name "blog" org-directory))
+(defvar my-blog-publish-dir "~/workspace/xplutoy.github.io/")
+
+(defvar my-blog-head "<link rel='stylesheet' href='/static/org.css' type='text/css'/>")
+(defvar my-blog-preamble '(("en" "<nav class='nav'> <a href='/about.html' class='button'>HOME</a> <a href='/index.html' class='button'>BLOG</a></nav><hr/>")))
+(defvar my-blog-postamble "<div id='postamble'> <hr/> <p>Created with %c by YangXue <br\>Updated: %C<br/></p> </div>")
+
+(defun yx/org-publish-sitemap-entry (entry style project)
+  (cond ((not (directory-name-p entry))
+	 (format "[%s] [[file:%s][%s]]"
+		 (format-time-string "%Y-%m-%d" (org-publish-find-date entry project))
+		 entry
+		 (org-publish-find-title entry project)))
+	((eq style 'tree)
+	 (capitalize (file-name-nondirectory (directory-file-name entry))))
+	(t entry)))
+
+(setopt org-publish-project-alist
+	`(("my-blog"
+	   :components ("my-blog-posts" "my-blog-static"))
+	  ("my-blog-posts"
+	   :base-directory ,my-blog-dir
+	   :publishing-directory ,my-blog-publish-dir
+	   :publishing-function org-html-publish-to-html
+	   :recursive t
+	   :auto-sitemap t
+	   :sitemap-filename "index.org"
+	   :sitemap-title "Yx's Blog"
+	   :sitemap-sort-files anti-chronologically
+	   :sitemap-format-entry yx/org-publish-sitemap-entry
+	   :html-head ,my-blog-head
+	   :html-preamble-format ,my-blog-preamble
+	   :html-postamble ,my-blog-postamble
+	   :html-doctype "html5"
+	   :html-html5-fancy t
+	   :html-head-include-scripts nil
+	   :html-head-include-default-style nil
+	   :html-htmlize-output-type 'css
+	   :with-smart-quotes t
+	   :with-toc nil
+	   :with-sub-superscript nil)
+	  ("my-blog-static"
+	   :base-directory ,my-blog-dir
+	   :base-extension "css\\|js\\|png\\|jpg\\|gif"
+	   :publishing-directory ,my-blog-publish-dir
+	   :recursive t
+	   :publishing-function org-publish-attachment)))
+
+(defun yx/publish-blog (arg)
+  "Publish my personal blog.
+With the prefix argument ARG, forcing all posts to be republished."
+  (interactive "P")
+  (if arg
+      (org-publish "my-blog" t nil)
+    (org-publish "my-blog" nil nil))
+  (message "Publish Done. Check output in %s." my-blog-publish-dir))
+
+;;; Latex
 
 (use-package auctex
   :custom
@@ -112,18 +170,17 @@
   (add-hook 'LaTeX-mode-hook #'turn-on-cdlatex)
   (add-hook 'org-mode-hook #'turn-on-org-cdlatex))
 
+;; Denote
+
 (use-package denote
-  :bind (("C-c n c"   . denote)
-	 ("C-c n n"   . denote-subdirectory)
+  :bind (("C-c n n"   . denote-subdirectory)
 	 ("C-c n j"   . denote-journal-extras-new-entry)
 	 ("C-c n o"   . denote-open-or-create)
 	 ("C-c n i"   . denote-link-or-create)
 	 ("C-c n l"   . denote-find-link)
 	 ("C-c n C-l" . denote-find-backlink)
 	 ("C-c n r"   . denote-rename-file-using-front-matter)
-	 ("C-c n C-r" . denote-rename-file)
-	 ("C-c n C-f" . denote-org-dblock-insert-links)
-	 ("C-c n C-b" . denote-org-dblock-insert-backlinks))
+	 ("C-c n C-r" . denote-rename-file))
   :custom
   (denote-directory org-directory)
   (denote-org-store-link-to-heading nil)
@@ -131,13 +188,9 @@
   (denote-journal-extras-title-format nil)
   (denote-dired-directories-include-subdirectories t)
   :config
-  (with-eval-after-load 'dired
-    (keymap-set dired-mode-map "C-c n r" #'denote-dired-rename-files)
-    (keymap-set dired-mode-map "C-c n k" #'denote-dired-rename-marked-files-with-keywords)
-    (keymap-set dired-mode-map "C-c n C-r" #'denote-dired-rename-marked-files))
   (denote-rename-buffer-mode 1)
   (add-hook 'dired-mode-hook #'denote-dired-mode-in-directories))
 
 
-(provide 'init-org+)
-;;; init-org+.el ends here
+(provide 'init-writing)
+;;; init-writing.el ends here

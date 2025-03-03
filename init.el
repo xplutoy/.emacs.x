@@ -27,7 +27,6 @@
 
 (defun yx/global-minor-mode-init-h ()
   "Toggle frequently used global minor modes."
-
   (setopt abbrev-mode t)
 
   (which-key-mode +1)
@@ -119,7 +118,7 @@
 (setenv "HTTPS_PROXY" "http://localhost:7890")
 
 (defun yx/exec-path-and-PATH-update (paths)
-  "Update exec-path and `PATH' environment variable."
+  "Update `exec-path' and `PATH' environment variable."
   (setopt exec-path (append
 		     (mapcar #'expand-file-name paths) exec-path))
   (setenv "PATH" (string-join exec-path path-separator)))
@@ -256,18 +255,16 @@
 
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 
-(add-to-list 'load-path "~/.emacs.d/extras")
+(add-to-list 'load-path "~/.emacs.d/lisp")
 
-(require 'init-util)
+(require 'init-utils)
 
-(require 'init-base)
+(require 'init-completion)
 
-(require 'init-org+)
+(require 'init-writing)
 
-(require 'init-dev+)
+(require 'init-programing)
 
-(require 'init-misc)
-
-(require 'init-blog)
+(require 'init-tools)
 
 (load (locate-user-emacs-file "user-local.el") :noerror)
