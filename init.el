@@ -10,29 +10,25 @@
 
 ;;; Code:
 
-
-;;; Basic
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 (defconst IS-MAC (eq system-type 'darwin))
 (defconst IS-WIN (eq system-type 'windows-nt))
 
 (setopt user-full-name "xplutoyz")
 (setopt user-mail-address "yangxue.cs@foxmail.com")
-(setopt smtpmail-smtp-server "smtp.qq.com")
-(setopt gnus-select-method '(nnimap "foxmail.cs" (nnimap-address "imap.qq.com")))
+
 (setopt epa-file-encrypt-to user-mail-address)
 
-(setopt abbrev-mode t)
+(setopt smtpmail-smtp-server "smtp.qq.com")
+(setopt gnus-select-method '(nnimap "foxmail.cs" (nnimap-address "imap.qq.com")))
 
 (setopt display-buffer-alist '(("\\`\\*\\(Org Links\\|Compile-Log\\)\\*\\'"
 				(display-buffer-no-window)
-				(allow-no-window . t))
-			       ("\\`\\*\\(Warnings\\|Async Shell Command\\)\\*\\'"
-				(display-buffer-no-window))))
+				(allow-no-window . t))))
 
 (defun yx/global-minor-mode-init-h ()
   "Toggle frequently used global minor modes."
+
+  (setopt abbrev-mode t)
 
   (which-key-mode +1)
   (global-completion-preview-mode +1)
@@ -58,7 +54,6 @@
 (windmove-swap-states-default-keybindings '(control shift))
 
 ;;; Keybindings
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (keymap-global-unset "C-z")
 (keymap-global-unset "<pinch>")
@@ -100,7 +95,6 @@
   (keymap-substitute isearch-mode-map #'isearch-delete-char #'isearch-del-char))
 
 ;;; UI
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (set-face-attribute 'fixed-pitch nil :family "Iosevka")
 
@@ -117,7 +111,6 @@
 (setopt mode-line-end-spaces '(:eval (if (display-graphic-p) " 　" "-%-")))
 
 ;;; System
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (require 'server)
 (or (server-running-p) (server-start))
@@ -128,8 +121,7 @@
 (defun yx/exec-path-and-PATH-update (paths)
   "Update exec-path and `PATH' environment variable."
   (setopt exec-path (append
-		     (mapcar #'expand-file-name paths)
-		     exec-path))
+		     (mapcar #'expand-file-name paths) exec-path))
   (setenv "PATH" (string-join exec-path path-separator)))
 
 (when IS-MAC
@@ -139,7 +131,6 @@
     (yx/exec-path-and-PATH-update my-paths)))
 
 ;;; Build-in
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -163,6 +154,7 @@
  '(dired-dwim-target t)
  '(dired-kill-when-opening-new-dired-buffer t)
  '(dired-mouse-drag-files t)
+ '(dired-movement-style 'cycle)
  '(ediff-split-window-function 'split-window-horizontally)
  '(ediff-window-setup-function 'ediff-setup-windows-plain)
  '(eglot-autoshutdown t)
@@ -201,7 +193,7 @@
  '(org-image-actual-width nil)
  '(org-insert-heading-respect-content t)
  '(org-log-into-drawer t)
- '(org-modules '(ol-eww ol-info))
+ '(org-modules '(ol-docview ol-eww ol-info))
  '(org-outline-path-complete-in-steps nil)
  '(org-pretty-entities t)
  '(org-pretty-entities-include-sub-superscripts nil)
@@ -258,7 +250,6 @@
  '(org-quote ((t (:inherit org-block :slant italic)))))
 
 ;;; Extras
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (require 'package)
 (require 'use-package-ensure)
@@ -280,5 +271,3 @@
 (require 'init-blog)
 
 (load (locate-user-emacs-file "user-local.el") :noerror)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
