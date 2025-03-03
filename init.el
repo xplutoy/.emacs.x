@@ -269,4 +269,6 @@
 
 (require 'init-blog)
 
+(load (locate-user-emacs-file "user-local.el") :noerror)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

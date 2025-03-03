@@ -16,6 +16,7 @@
 
 (setopt bidi-inhibit-bpa t)
 (setopt inhibit-compacting-font-caches t)
+(setopt frame-inhibit-implied-resize t)
 (setopt read-process-output-max (* 1024 1024))
 
 (set-language-environment "UTF-8")
