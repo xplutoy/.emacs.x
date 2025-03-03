@@ -10,11 +10,20 @@
 
 ;;; Code:
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;
-;;;   UI
-;;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(use-package eat
+  :hook ((eshell-mode . eat-eshell-mode)
+	 (eshell-mode . eat-eshell-visual-command-mode))
+  :init (setopt eat-kill-buffer-on-exit t))
+
+(use-package vundo
+  :bind ("C-_" . vundo))
+
+(use-package outli
+  :vc (:url "https://github.com/jdtsmith/outli")
+  :hook ((prog-mode
+	  text-mode) . outli-mode))
+
+;;; UI
 
 (use-package minions
   :hook (after-init . minions-mode))
@@ -24,11 +33,7 @@
   (ef-themes-mixed-fonts t)
   (ef-themes-variable-pitch-ui t))
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;
-;;;   AI
-;;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; AI
 
 (use-package gptel
   :bind (("C-c <return>" . gptel-send)
@@ -65,23 +70,19 @@
 	 (gptel-max-tokens (+ (floor (length query-text) 8) 256)))
     (message "Query %s ..."  llm-name)
     (gptel-request query-text
-      :callback (lambda (resp info)
-		  (message "Query %s Done!" llm-name)
-		  (if (length< resp 20)
-		      (message "%s: %s" llm-name resp)
-		    (with-current-buffer
-			(get-buffer-create "*gptel-quick*")
-		      (erase-buffer)
-		      (insert resp)
-		      (display-buffer (current-buffer))))))))
+		   :callback (lambda (resp info)
+			       (message "Query %s Done!" llm-name)
+			       (if (length< resp 20)
+				   (message "%s: %s" llm-name resp)
+				 (with-current-buffer
+				     (get-buffer-create "*gptel-quick*")
+				   (erase-buffer)
+				   (insert resp)
+				   (display-buffer (current-buffer))))))))
 
 (keymap-global-set "M-s q" #'yx/gptel-quick)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;
-;;;   Chinese
-;;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Chinese
 
 (use-package sis
   :demand t
@@ -98,11 +99,7 @@
 (use-package bing-dict
   :bind (("M-s d" . bing-dict-brief)))
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;
-;;;   Reading
-;;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Reading
 
 (use-package olivetti
   :hook ((Man-mode
@@ -150,25 +147,6 @@
 
   (keymap-set elfeed-show-mode-map "q" #'yx/elfeed-show-quit)
   (keymap-set elfeed-show-mode-map "&" #'yx/elfeed-show-external))
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;
-;;;   Other
-;;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(use-package eat
-  :hook ((eshell-mode . eat-eshell-mode)
-	 (eshell-mode . eat-eshell-visual-command-mode))
-  :init (setopt eat-kill-buffer-on-exit t))
-
-(use-package vundo
-  :bind ("C-_" . vundo))
-
-(use-package outli
-  :vc (:url "https://github.com/jdtsmith/outli")
-  :hook ((prog-mode
-	  text-mode) . outli-mode))
 
 
 (provide 'init-misc)

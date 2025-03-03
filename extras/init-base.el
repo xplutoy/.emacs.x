@@ -17,11 +17,7 @@
     (add-to-list 'recentf-exclude no-littering-var-directory))
   (no-littering-theme-backups))
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;
-;;;   Edit
-;;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Edit
 
 (use-package avy
   :bind (("M-g w" . avy-goto-word-1)
@@ -39,11 +35,7 @@
 (use-package speedrect
   :hook (after-init . speedrect-mode))
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;
-;;;   Minibuffer
-;;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Minibuffer
 
 (use-package vertico
   :hook ((after-init . vertico-mode)

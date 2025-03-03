@@ -33,6 +33,7 @@
 
 (defun yx/global-minor-mode-init-h ()
   "Toggle frequently used global minor modes."
+
   (which-key-mode +1)
   (global-completion-preview-mode +1)
   (global-prettify-symbols-mode +1)
@@ -124,10 +125,18 @@
 (setenv "HTTP_PROXY"  "http://localhost:7890")
 (setenv "HTTPS_PROXY" "http://localhost:7890")
 
-(when IS-MAC
-  (setenv "PATH" (concat "~/.local/bin:/Library/TeX/texbin:" (getenv "PATH")))
-  (setopt exec-path (split-string (getenv "PATH") path-separator)))
+(defun yx/exec-path-and-PATH-update (paths)
+  "Update exec-path and `PATH' environment variable."
+  (setopt exec-path (append
+		     (mapcar #'expand-file-name paths)
+		     exec-path))
+  (setenv "PATH" (string-join exec-path path-separator)))
 
+(when IS-MAC
+  (let ((my-paths `("~/.local/bin"
+		    "/Library/TeX/texbin"
+		    ,(concat (invocation-directory) "bin"))))
+    (yx/exec-path-and-PATH-update my-paths)))
 
 ;;; Build-in
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -149,6 +158,7 @@
  '(completion-auto-select 'second-tab)
  '(completions-sort 'historical)
  '(cua-rectangle-mark-key [C-S-return])
+ '(delete-by-moving-to-trash t)
  '(dictionary-server "dict.org")
  '(dired-dwim-target t)
  '(dired-kill-when-opening-new-dired-buffer t)
@@ -162,6 +172,7 @@
  '(epg-pinentry-mode 'loopback)
  '(fill-column 100)
  '(flymake-fringe-indicator-position 'right-fringe)
+ '(frame-resize-pixelwise t)
  '(gdb-many-windows t)
  '(gdb-restore-window-configuration-after-quit t)
  '(global-auto-revert-non-file-buffers t)
@@ -232,7 +243,6 @@
  '(use-package-enable-imenu-support t)
  '(use-package-expand-minimally t)
  '(use-short-answers t)
- '(user-mail-address "yangxue.cs@foxmail.com")
  '(vc-follow-symlinks t)
  '(vc-handled-backends '(Git))
  '(word-wrap-by-category t))

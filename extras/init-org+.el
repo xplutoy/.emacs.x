@@ -10,10 +10,8 @@
 
 ;;; Code:
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;
-;;;   Org
-;;;
+
+;;; Org
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (setopt org-directory "~/org-notes/")
@@ -31,6 +29,7 @@
   (defun yx/org-mode-init-h ()
     (visual-line-mode +1)
     (variable-pitch-mode +1)
+    (visual-wrap-prefix-mode +1)
     (setq-local global-hl-line-mode nil)
     (setq-local electric-pair-pairs
 		(append electric-pair-pairs '((?~ . ?~) (?+ . ?+))))
@@ -92,10 +91,7 @@
 
   (add-hook 'org-cycle-hook #'yx/org-toggle-inline-images-in-subtree))
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;
-;;;   Org+
-;;;
+;;; Org+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (use-package htmlize)
