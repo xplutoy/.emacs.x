@@ -12,6 +12,13 @@
 
 (setopt warning-minimum-level :error)
 (setopt gc-cons-threshold most-positive-fixnum)
+(setopt system-time-locale "C")
+
+(setopt bidi-inhibit-bpa t)
+(setopt inhibit-compacting-font-caches t)
+(setopt read-process-output-max (* 1024 1024))
+
+(set-language-environment "UTF-8")
 
 (add-hook 'emacs-startup-hook (lambda ()
 				(message "")

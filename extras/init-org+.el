@@ -20,60 +20,11 @@
 (setopt org-default-notes-file (file-name-concat org-directory "inbox.org"))
 (setopt org-agenda-files `(,org-default-notes-file))
 
-(setopt org-todo-keywords
-	'((sequence "TODO(t!)" "NEXT(n!)" "HOLD(h@/!)" "|" "DONE(d!)")))
-
-(setopt org-refile-targets '((nil :maxlevel . 2)
-			     (org-agenda-files :maxlevel . 2)))
-
-(setopt org-startup-folded 'show2levels)
-(setopt org-startup-with-latex-preview t)
-
-(setopt org-pretty-entities t)
-(setopt org-pretty-entities-include-sub-superscripts nil)
-
-(setopt org-crypt-key nil)
-(setopt org-log-into-drawer t)
-(setopt org-image-actual-width nil)
-(setopt org-hide-emphasis-markers t)
-
-(setopt org-special-ctrl-a/e t)
-(setopt org-use-speed-commands t)
-(setopt org-support-shift-select t)
-(setopt org-M-RET-may-split-line nil)
-
-(setopt org-yank-adjusted-subtrees t)
-(setopt org-footnote-auto-adjust t)
-(setopt org-insert-heading-respect-content t)
-
-(setopt org-refile-use-outline-path 'file)
-(setopt org-goto-interface 'outline-path-completion)
-(setopt org-outline-path-complete-in-steps nil)
-
-(setopt org-agenda-inhibit-startup t)
-(setopt org-agenda-skip-scheduled-if-deadline-is-shown t)
-
-(setopt org-modules '(ol-eww ol-info))
-(setopt org-fontify-quote-and-verse-blocks t)
-(setopt org-id-link-to-org-use-id 'create-if-interactive)
 (setopt set-attach-di-dir (concat org-directory "data/"))
-
 (setopt org-preview-latex-image-directory (no-littering-expand-var-file-name "ltximg/"))
-(setopt org-cite-export-processors '((t . (basic "numeric" "numeric"))))
 (setopt org-cite-global-bibliography `(,(expand-file-name "bibliography.bib" org-directory)))
 
-(setopt org-export-use-babel nil)
-(setopt org-export-with-broken-links 'mark)
-(setopt org-export-dispatch-use-expert-ui t)
-
 (with-eval-after-load 'org
-
-  (custom-set-faces
-   '(org-level-1 ((t (:height 1.20 :weight extrabold :overline t))))
-   '(org-level-2 ((t (:height 1.15 :weight bold))))
-   '(org-level-3 ((t (:height 1.10 :weight semibold))))
-   '(org-level-4 ((t (:height 1.05 :weight medium))))
-   '(org-quote   ((t (:inherit org-block :slant italic)))))
 
   (org-crypt-use-before-save-magic)
 
@@ -184,12 +135,12 @@
   (denote-journal-extras-title-format nil)
   (denote-dired-directories-include-subdirectories t)
   :config
-  (denote-rename-buffer-mode 1)
-  (add-hook 'dired-mode-hook #'denote-dired-mode-in-directories)
   (with-eval-after-load 'dired
     (keymap-set dired-mode-map "C-c n r" #'denote-dired-rename-files)
     (keymap-set dired-mode-map "C-c n k" #'denote-dired-rename-marked-files-with-keywords)
-    (keymap-set dired-mode-map "C-c n C-r" #'denote-dired-rename-marked-files)))
+    (keymap-set dired-mode-map "C-c n C-r" #'denote-dired-rename-marked-files))
+  (denote-rename-buffer-mode 1)
+  (add-hook 'dired-mode-hook #'denote-dired-mode-in-directories))
 
 
 (provide 'init-org+)

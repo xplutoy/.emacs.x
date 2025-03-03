@@ -10,95 +10,20 @@
 
 ;;; Code:
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;
-;;;   Basic Settings
-;;;
+
+;;; Basic
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (defconst IS-MAC (eq system-type 'darwin))
 (defconst IS-WIN (eq system-type 'windows-nt))
 
-(set-language-environment "UTF-8")
-
-(setopt system-time-locale "C")
-(setopt custom-file "~/.emacs.d/custom.el")
-
-(setopt truncate-lines t)
-(setopt fill-column 100)
-(setopt word-wrap-by-category t)
-(setopt require-final-newline t)
-(setopt sentence-end-double-space nil)
-
-(setopt ring-bell-function #'ignore)
-(setopt use-short-answers t)
-(setopt use-dialog-box nil)
-(setopt inhibit-splash-screen t)
-(setopt inhibit-startup-message t)
-(setopt initial-scratch-message nil)
-
-(setopt bidi-inhibit-bpa t)
-(setopt bidi-paragraph-direction 'left-to-right)
-(setopt inhibit-compacting-font-caches t)
-(setopt read-process-output-max (* 1024 1024))
-(setopt scroll-conservatively 101)
-
-(setopt tab-always-indent 'complete)
-(setopt set-mark-command-repeat-pop t)
-(setopt mouse-wheel-tilt-scroll t)
-(setopt backward-delete-char-untabify-method 'hungry)
-(setopt cua-rectangle-mark-key [C-S-return])
-
-(setopt isearch-lazy-count t)
-(setopt isearch-yank-on-move 'shift)
-(setopt grep-use-headings t)
-
-(setopt recentf-auto-cleanup 'never)
-(setopt recentf-max-saved-items 100)
-
-(setopt auto-save-visited-interval 10)
-(setopt auto-revert-verbose nil)
-(setopt auto-revert-avoid-polling t)
-(setopt global-auto-revert-non-file-buffers t)
-
-(setopt use-package-always-defer t)
-(setopt use-package-always-ensure t)
-(setopt use-package-compute-statistics t)
-(setopt use-package-enable-imenu-support t)
-
-(setopt epg-pinentry-mode 'loopback)
-(setopt epa-file-encrypt-to user-mail-address)
-
-(setopt minibuffer-visible-completions t)
-(setopt enable-recursive-minibuffers t)
-(setopt completions-sort 'historical)
-(setopt completion-auto-select 'second-tab)
-(setopt read-extended-command-predicate #'command-completion-default-include-p)
-
+(setopt user-full-name "xplutoyz")
 (setopt user-mail-address "yangxue.cs@foxmail.com")
 (setopt smtpmail-smtp-server "smtp.qq.com")
 (setopt gnus-select-method '(nnimap "foxmail.cs" (nnimap-address "imap.qq.com")))
-
-(setopt dired-dwim-target t)
-(setopt dired-mouse-drag-files t)
-(setopt dired-kill-when-opening-new-dired-buffer t)
+(setopt epa-file-encrypt-to user-mail-address)
 
 (setopt abbrev-mode t)
-(setopt imenu-flatten 'prefix)
-(setopt reb-re-syntax 'string)
-(setopt bookmark-save-flag t)
-(setopt calendar-date-style 'iso)
-(setopt dictionary-server "dict.org")
-(setopt browse-url-browser-function #'eww-browse-url)
-(setopt project-vc-extra-root-markers '(".dir-locals.el"))
-(setopt show-paren-context-when-offscreen t)
-
-(setopt tab-bar-show 1)
-(setopt tab-bar-close-button-show nil)
-(setopt tab-line-close-button-show 'selected)
-
-(setopt switch-to-prev-buffer-skip 'this)
-(setopt switch-to-buffer-obey-display-actions t)
 
 (setopt display-buffer-alist '(("\\`\\*\\(Org Links\\|Compile-Log\\)\\*\\'"
 				(display-buffer-no-window)
@@ -106,69 +31,32 @@
 			       ("\\`\\*\\(Warnings\\|Async Shell Command\\)\\*\\'"
 				(display-buffer-no-window))))
 
+(defun yx/global-minor-mode-init-h ()
+  "Toggle frequently used global minor modes."
+  (which-key-mode +1)
+  (global-completion-preview-mode +1)
+  (global-prettify-symbols-mode +1)
+  (global-so-long-mode +1)
+
+  (repeat-mode +1)
+  (winner-mode +1)
+  (save-place-mode +1)
+  (auto-save-visited-mode +1)
+  (global-auto-revert-mode +1)
+
+  (recentf-mode +1)
+  (savehist-mode +1)
+  (cua-selection-mode +1)
+  (window-divider-mode +1)
+  (global-hl-line-mode +1)
+  (pixel-scroll-precision-mode +1))
+
+(add-hook 'after-init-hook #'yx/global-minor-mode-init-h)
+
 (windmove-default-keybindings 'control)
 (windmove-swap-states-default-keybindings '(control shift))
 
-(with-eval-after-load 'esh-module
-  (add-to-list 'eshell-modules-list 'eshell-rebind))
-
-(defun yx/eshell-init-h ()
-  (eshell-hist-mode +1)
-  (keymap-local-set "C-l" #'eshell/clear))
-
-(add-hook 'eshell-mode-hook #'yx/eshell-init-h)
-
-(add-hook 'eww-after-render-hook #'eww-readable)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;
-;;;   Global Mirror Mode
-;;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(which-key-mode +1)
-(global-completion-preview-mode +1)
-(global-prettify-symbols-mode +1)
-(global-so-long-mode +1)
-
-(repeat-mode +1)
-(winner-mode +1)
-(save-place-mode +1)
-(auto-save-visited-mode +1)
-(global-auto-revert-mode +1)
-
-(cua-selection-mode +1)
-(window-divider-mode +1)
-(global-hl-line-mode +1)
-(pixel-scroll-precision-mode +1)
-
-(add-hook 'after-init-hook #'recentf-mode)
-(add-hook 'after-init-hook #'savehist-mode)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;
-;;;   Ui
-;;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(set-face-attribute 'fixed-pitch nil :family "Iosevka")
-
-(dolist (charset '(han cjk-misc))
-  (set-fontset-font t charset (font-spec :family "LXGW WenKai Mono GB Lite")))
-
-(setopt modus-themes-mixed-fonts t)
-(setopt modus-themes-variable-pitch-ui t)
-(setopt modus-themes-org-blocks 'gray-background)
-
-(load-theme 'modus-operandi t)
-
-(setopt nobreak-char-display nil)
-(setopt mode-line-end-spaces '(:eval (if (display-graphic-p) " 　" "-%-")))
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;
-;;;   Keybindings
-;;;
+;;; Keybindings
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (keymap-global-unset "C-z")
@@ -210,10 +98,24 @@
 (with-eval-after-load 'isearch
   (keymap-substitute isearch-mode-map #'isearch-delete-char #'isearch-del-char))
 
+;;; UI
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;
-;;;   System
-;;;
+
+(set-face-attribute 'fixed-pitch nil :family "Iosevka")
+
+(dolist (charset '(han cjk-misc))
+  (set-fontset-font t charset (font-spec :family "LXGW WenKai Mono GB Lite")))
+
+(setopt modus-themes-mixed-fonts t)
+(setopt modus-themes-variable-pitch-ui t)
+(setopt modus-themes-org-blocks 'gray-background)
+
+(load-theme 'modus-operandi t)
+
+(setopt nobreak-char-display nil)
+(setopt mode-line-end-spaces '(:eval (if (display-graphic-p) " 　" "-%-")))
+
+;;; System
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (require 'server)
@@ -226,10 +128,126 @@
   (setenv "PATH" (concat "~/.local/bin:/Library/TeX/texbin:" (getenv "PATH")))
   (setopt exec-path (split-string (getenv "PATH") path-separator)))
 
+
+;;; Build-in
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;
-;;;   Core Extras
-;;;
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(auto-revert-avoid-polling t)
+ '(auto-revert-verbose nil)
+ '(auto-save-visited-interval 10)
+ '(backward-delete-char-untabify-method 'hungry)
+ '(bidi-paragraph-direction 'left-to-right)
+ '(browse-url-browser-function 'eww-browse-url)
+ '(calendar-date-style 'iso)
+ '(compilation-auto-jump-to-first-error t)
+ '(compilation-scroll-output 'first-error)
+ '(completion-auto-select 'second-tab)
+ '(completions-sort 'historical)
+ '(cua-rectangle-mark-key [C-S-return])
+ '(dictionary-server "dict.org")
+ '(dired-dwim-target t)
+ '(dired-kill-when-opening-new-dired-buffer t)
+ '(dired-mouse-drag-files t)
+ '(ediff-split-window-function 'split-window-horizontally)
+ '(ediff-window-setup-function 'ediff-setup-windows-plain)
+ '(eglot-autoshutdown t)
+ '(eglot-extend-to-xref t)
+ '(eglot-report-progress nil)
+ '(enable-recursive-minibuffers t)
+ '(epg-pinentry-mode 'loopback)
+ '(fill-column 100)
+ '(flymake-fringe-indicator-position 'right-fringe)
+ '(gdb-many-windows t)
+ '(gdb-restore-window-configuration-after-quit t)
+ '(global-auto-revert-non-file-buffers t)
+ '(grep-use-headings t)
+ '(gud-highlight-current-line t)
+ '(imenu-flatten 'prefix)
+ '(inhibit-startup-screen t)
+ '(initial-scratch-message nil)
+ '(isearch-lazy-count t)
+ '(isearch-yank-on-move 'shift)
+ '(minibuffer-visible-completions t)
+ '(mouse-wheel-tilt-scroll t)
+ '(org-M-RET-may-split-line nil)
+ '(org-agenda-inhibit-startup t)
+ '(org-agenda-skip-scheduled-if-deadline-is-shown t)
+ '(org-cite-export-processors '((t basic "numeric" "numeric")))
+ '(org-crypt-key nil)
+ '(org-export-dispatch-use-expert-ui t)
+ '(org-export-use-babel nil)
+ '(org-export-with-broken-links 'mark)
+ '(org-fontify-quote-and-verse-blocks t)
+ '(org-footnote-auto-adjust t)
+ '(org-goto-interface 'outline-path-completion)
+ '(org-hide-emphasis-markers t)
+ '(org-id-link-to-org-use-id 'create-if-interactive)
+ '(org-image-actual-width nil)
+ '(org-insert-heading-respect-content t)
+ '(org-log-into-drawer t)
+ '(org-modules '(ol-eww ol-info))
+ '(org-outline-path-complete-in-steps nil)
+ '(org-pretty-entities t)
+ '(org-pretty-entities-include-sub-superscripts nil)
+ '(org-refile-targets '((nil :maxlevel . 2)))
+ '(org-refile-use-outline-path 'file)
+ '(org-special-ctrl-a/e t)
+ '(org-startup-folded 'show2levels)
+ '(org-startup-with-latex-preview t)
+ '(org-support-shift-select t)
+ '(org-todo-keywords
+   '((sequence "TODO(t!)" "NEXT(n!)" "WAIT(h@/!)" "|" "DONE(d!)")))
+ '(org-use-speed-commands t)
+ '(org-yank-adjusted-subtrees t)
+ '(project-vc-extra-root-markers '(".dir-locals.el"))
+ '(python-indent-guess-indent-offset-verbose nil)
+ '(python-shell-dedicated 'project)
+ '(read-extended-command-predicate 'command-completion-default-include-p)
+ '(reb-re-syntax 'string)
+ '(recentf-auto-cleanup 'never)
+ '(recentf-max-saved-items 100)
+ '(require-final-newline t)
+ '(ring-bell-function 'ignore)
+ '(scroll-conservatively 101)
+ '(sentence-end-double-space nil)
+ '(set-mark-command-repeat-pop t)
+ '(shell-kill-buffer-on-exit t)
+ '(show-paren-context-when-offscreen t)
+ '(switch-to-buffer-obey-display-actions t)
+ '(switch-to-prev-buffer-skip 'this)
+ '(tab-always-indent 'complete)
+ '(tab-bar-close-button-show nil)
+ '(tab-bar-show 1)
+ '(tab-line-close-button-show 'selected)
+ '(truncate-lines t)
+ '(use-dialog-box nil)
+ '(use-package-always-defer t)
+ '(use-package-always-ensure t)
+ '(use-package-compute-statistics t)
+ '(use-package-enable-imenu-support t)
+ '(use-package-expand-minimally t)
+ '(use-short-answers t)
+ '(user-mail-address "yangxue.cs@foxmail.com")
+ '(vc-follow-symlinks t)
+ '(vc-handled-backends '(Git))
+ '(word-wrap-by-category t))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(org-level-1 ((t (:overline t :weight extrabold :height 1.2))))
+ '(org-level-2 ((t (:weight bold :height 1.15))))
+ '(org-level-3 ((t (:weight semibold :height 1.1))))
+ '(org-level-4 ((t (:weight medium :height 1.05))))
+ '(org-quote ((t (:inherit org-block :slant italic)))))
+
+;;; Extras
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (require 'package)
@@ -250,9 +268,5 @@
 (require 'init-misc)
 
 (require 'init-blog)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(load custom-file :noerror)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

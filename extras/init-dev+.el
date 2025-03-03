@@ -17,20 +17,12 @@
 (add-hook 'prog-mode-hook #'hs-minor-mode)
 (add-hook 'prog-mode-hook #'display-line-numbers-mode)
 
-(setopt vc-follow-symlinks t)
-(setopt vc-handled-backends '(Git))
-
-(setopt gdb-many-windows t)
-(setopt gdb-restore-window-configuration-after-quit t)
-(setopt gud-highlight-current-line t)
-
-(setopt shell-kill-buffer-on-exit t)
-
-(setopt compilation-scroll-output 'first-error)
-(setopt compilation-auto-jump-to-first-error t)
-
-(setopt ediff-window-setup-function #'ediff-setup-windows-plain)
-(setopt ediff-split-window-function #'split-window-horizontally)
+(with-eval-after-load 'eshell
+  (defun yx/eshell-init-h ()
+  (eshell-hist-mode +1)
+  (keymap-local-set "C-l" #'eshell/clear))
+  (add-hook 'eshell-mode-hook #'yx/eshell-init-h)
+  (push 'eshell-rebind eshell-modules-list))
 
 (define-skeleton yx/py-header  ""
   nil
@@ -56,19 +48,12 @@
 (define-auto-insert "\\.el$" #'yx/el-header)
 (define-auto-insert "\\.py$" #'yx/py-header)
 
-(setopt eglot-autoshutdown t)
-(setopt eglot-extend-to-xref t)
-(setopt eglot-report-progress nil)
-(setopt eglot-send-changes-idle-time 0.1)
-
 (with-eval-after-load 'eglot
   (fset #'jsonrpc--log-event #'ignore)
   (keymap-set eglot-mode-map "C-c l r" #'eglot-rename)
   (keymap-set eglot-mode-map "C-c l f" #'eglot-format)
   (keymap-set eglot-mode-map "C-c l a" #'eglot-code-actions)
   (keymap-set eglot-mode-map "C-c l h" #'eglot-help-at-point))
-
-(setopt flymake-fringe-indicator-position 'right-fringe)
 
 (with-eval-after-load 'flymake
   (keymap-set flymake-mode-map "M-g p" #'flymake-goto-prev-error)
@@ -110,11 +95,13 @@
   (prog-mode . tempel-setup-capf)
   (text-mode . tempel-setup-capf)
   :init
+  (setopt tempel-trigger-prefix "<")
   (defun tempel-setup-capf ()
     (setq-local completion-at-point-functions
 		(cons #'tempel-expand
 		      completion-at-point-functions)))
-  (setopt tempel-trigger-prefix "<"))
+  (add-hook 'prog-mode-hook 'tempel-setup-capf)
+  (add-hook 'text-mode-hook 'tempel-setup-capf))
 
 (use-package citre
   :hook (prog-mode . citre-auto-enable-citre-mode)
@@ -134,12 +121,8 @@
 
 ;;;; python
 
-(setopt python-shell-dedicated 'project)
-(setopt python-indent-guess-indent-offset-verbose nil)
-
-(add-to-list 'project-vc-extra-root-markers "pyproject.toml")
-
 (with-eval-after-load 'python
+  (add-to-list 'project-vc-extra-root-markers "pyproject.toml")
   (add-to-list 'python-shell-completion-native-disabled-interpreters "python"))
 
 (add-hook 'python-mode-hook #'eglot-ensure)
