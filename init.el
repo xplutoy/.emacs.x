@@ -231,7 +231,6 @@
  '(use-package-always-defer t)
  '(use-package-always-ensure t)
  '(use-package-compute-statistics t)
- '(use-package-enable-imenu-support t)
  '(use-package-expand-minimally t)
  '(use-short-answers t)
  '(vc-follow-symlinks t)
