@@ -148,6 +148,7 @@
  '(completion-auto-select 'second-tab)
  '(completions-sort 'historical)
  '(cua-rectangle-mark-key [C-S-return])
+ '(default-input-method "TeX")
  '(delete-by-moving-to-trash t)
  '(dictionary-server "dict.org")
  '(dired-dwim-target t)

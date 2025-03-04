@@ -79,7 +79,7 @@
 	 (gptel-use-context nil)
     (gptel-request query-text
       :system "你是一位生活在 Emacs 中专业的编码和写作助手，善于分析代码和总结文章。"
-      :callback #'yx/gptel-quick--callback)))
+      :callback #'yx/gptel-quick--callback))))
 
 (keymap-global-set "M-s q" #'yx/gptel-quick)
 

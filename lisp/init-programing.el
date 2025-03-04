@@ -24,29 +24,17 @@
   (add-hook 'eshell-mode-hook #'yx/eshell-init-h)
   (push 'eshell-rebind eshell-modules-list))
 
-(define-skeleton yx/py-header  ""
-  nil
-  "# --------------------------------------------------"
-  "\n# Author:      " (user-full-name)
-  "\n# Date:        " (format-time-string "%F %T")
-  "\n# Description: " (skeleton-read "Description: ")
-  "\n#\n"
-  "# --------------------------------------------------"
-  "\n\n" @ _ "\n")
-
 (define-skeleton yx/el-header  ""
   nil
-  ";;; -*- lexical-binding: t -*-\n"
-  "\n;; Author:  " (user-full-name)
-  "\n;; Created: " (format-time-string "%F %T")
-  "\n;; License: GPLv3"
-  "\n\n;;; Commentary:\n\n;; " @ _
-  "\n\n;;; Code:"
-  "\n\n(provide '" (file-name-base (buffer-file-name)) ")\n"
-  ";;; " (file-name-nondirectory (buffer-file-name)) " ends here\n")
+  ";;; -*- lexical-binding: t -*-" \n \n
+  ";; Author:  " (user-full-name) \n
+  ";; Created: " (format-time-string "%F %T") \n \n
+  ";;; Commentary:\n\n;; " @ _ \n \n
+  ";;; Code:" \n \n
+  "(provide '" (file-name-base (buffer-file-name)) ")" \n
+  ";;; " (file-name-nondirectory (buffer-file-name)) " ends here")
 
 (define-auto-insert "\\.el$" #'yx/el-header)
-(define-auto-insert "\\.py$" #'yx/py-header)
 
 (with-eval-after-load 'eglot
   (fset #'jsonrpc--log-event #'ignore)
@@ -93,17 +81,14 @@
 (use-package tempel
   :bind (("M-*" . tempel-insert)
 	 ("M-+" . tempel-complete))
-  :hook
-  (prog-mode . tempel-setup-capf)
-  (text-mode . tempel-setup-capf)
   :init
   (setopt tempel-trigger-prefix "<")
-  (defun tempel-setup-capf ()
+  (defun yx/tempel-setup-capf ()
     (setq-local completion-at-point-functions
 		(cons #'tempel-expand
 		      completion-at-point-functions)))
-  (add-hook 'prog-mode-hook 'tempel-setup-capf)
-  (add-hook 'text-mode-hook 'tempel-setup-capf))
+  (add-hook 'prog-mode-hook 'yx/tempel-setup-capf)
+  (add-hook 'text-mode-hook 'yx/tempel-setup-capf))
 
 (use-package citre
   :hook (prog-mode . citre-auto-enable-citre-mode)
