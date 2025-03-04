@@ -236,6 +236,9 @@
  '(use-short-answers t)
  '(vc-follow-symlinks t)
  '(vc-handled-backends '(Git))
+ '(winner-boring-buffers
+   '("*Completions*" "*Help*" "*Buffer List*" "*Compile-Log*" "*Messages*"))
+ '(winner-boring-buffers-regexp "^magit")
  '(word-wrap-by-category t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
