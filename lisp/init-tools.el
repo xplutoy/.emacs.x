@@ -11,8 +11,8 @@
 ;;; Code:
 
 (use-package eat
-  :hook ((eshell-mode . eat-eshell-mode)
-	 (eshell-mode . eat-eshell-visual-command-mode))
+  :hook ((eshell-load . eat-eshell-mode)
+	 (eshell-load . eat-eshell-visual-command-mode))
   :init (setopt eat-kill-buffer-on-exit t))
 
 (use-package vundo
