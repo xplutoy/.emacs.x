@@ -18,10 +18,13 @@
 (setopt org-default-notes-file (file-name-concat org-directory "inbox.org"))
 (setopt org-agenda-files `(,org-default-notes-file))
 
-(setopt set-attach-di-dir (concat org-directory "attachments/"))
+(defvar my-org-attach-dir (expand-file-name "attachments" org-directory)
+  "my global `org attach' directory.")
+
+(setopt set-attach-id-dir my-org-attach-dir)
 (setopt org-preview-latex-image-directory (no-littering-expand-var-file-name "ltximg/"))
 (setopt org-cite-global-bibliography `(,(expand-file-name "bibliography.bib" org-directory)))
-(setopt org-yank-image-save-method (concat set-attach-di-dir "images/"))
+(setopt org-yank-image-save-method (expand-file-name "images" my-org-attach-dir))
 
 (setopt org-capture-templates
 	'(("t" "Task" entry (file+headline "" "Tasks") "** TODO %?")
