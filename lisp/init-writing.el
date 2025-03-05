@@ -18,22 +18,28 @@
 (setopt org-default-notes-file (file-name-concat org-directory "inbox.org"))
 (setopt org-agenda-files `(,org-default-notes-file))
 
-(setopt set-attach-di-dir (concat org-directory "data/"))
+(setopt set-attach-di-dir (concat org-directory "attachments/"))
 (setopt org-preview-latex-image-directory (no-littering-expand-var-file-name "ltximg/"))
 (setopt org-cite-global-bibliography `(,(expand-file-name "bibliography.bib" org-directory)))
+(setopt org-yank-image-save-method (concat set-attach-di-dir "images/"))
+
+(setopt org-capture-templates
+	'(("t" "Task" entry (file+headline "" "Tasks") "** TODO %?")
+	  ("f" "Fleeting note" entry (file+headline "" "Notes") "** %?")))
 
 (with-eval-after-load 'org
 
   (org-crypt-use-before-save-magic)
 
   (defun yx/org-mode-init-h ()
-    (visual-line-mode +1)
-    (variable-pitch-mode +1)
-    (visual-wrap-prefix-mode +1)
+    "Initializes `org-mode' to my taste."
     (setq-local global-hl-line-mode nil)
     (setq-local electric-pair-pairs
 		(append electric-pair-pairs '((?~ . ?~) (?+ . ?+))))
     (setq-local electric-pair-text-pairs electric-pair-pairs)
+    (variable-pitch-mode +1)
+    (visual-line-mode +1)
+    (visual-wrap-prefix-mode +1)
     (modify-syntax-entry ?< "." org-mode-syntax-table)
     (modify-syntax-entry ?> "." org-mode-syntax-table))
 
@@ -67,9 +73,7 @@
   (defun yx/yank-image-file-name-f ()
     (concat (format-time-string "%Y%m%dT%H%M%S") "_"
 	    (read-string "Caption: " nil nil "screenshot")))
-
   (setopt org-yank-image-file-name-function #'yx/yank-image-file-name-f)
-  (setopt org-yank-image-save-method (concat org-directory "data/images/"))
 
   (defun yx/org-toggle-inline-images-in-subtree (state &optional beg end)
     "Refresh inline image previews in the current heading/tree."

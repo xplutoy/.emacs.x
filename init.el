@@ -73,7 +73,6 @@
 (keymap-global-set "C-c d"    #'duplicate-dwim)
 (keymap-global-set "C-c s"    #'scratch-buffer)
 (keymap-global-set "C-c h"    #'hs-toggle-hiding)
-(keymap-global-set "C-c 3"    #'follow-delete-other-windows-and-split)
 
 (keymap-global-set "C-x C-b"  #'ibuffer)
 
