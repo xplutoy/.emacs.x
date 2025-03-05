@@ -77,9 +77,6 @@
 
 (keymap-global-set "C-x C-b"  #'ibuffer)
 
-(keymap-global-set "M-s d"    #'dictionary-lookup-definition)
-(keymap-global-set "M-s M-d"  #'dictionary-search)
-
 (let ((trans-keys '(("C-；" . "C-;")
 		    ("C-。" . "C-.")
 		    ("C-：" . "C-:")
@@ -151,7 +148,6 @@
  '(cua-rectangle-mark-key [C-S-return])
  '(default-input-method "TeX")
  '(delete-by-moving-to-trash t)
- '(dictionary-server "dict.org")
  '(dired-dwim-target t)
  '(dired-kill-when-opening-new-dired-buffer t)
  '(dired-mouse-drag-files t)
