@@ -62,6 +62,7 @@
 (keymap-global-set "C-/"      #'undo-only)
 (keymap-global-set "M-`"      #'other-frame)
 (keymap-global-set "M-0"      #'delete-window)
+(keymap-global-set "M-1"      #'delete-other-windows)
 (keymap-global-set "M-["      #'scroll-other-window-down)
 (keymap-global-set "M-]"      #'scroll-other-window)
 
@@ -236,6 +237,7 @@
  '(use-short-answers t)
  '(vc-follow-symlinks t)
  '(vc-handled-backends '(Git))
+ '(view-read-only t)
  '(winner-boring-buffers
    '("*Completions*" "*Help*" "*Buffer List*" "*Compile-Log*" "*Messages*"))
  '(winner-boring-buffers-regexp "^magit")

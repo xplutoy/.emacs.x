@@ -58,8 +58,8 @@
   :hook (after-init . marginalia-mode))
 
 (use-package embark
-  :bind (("C-." . embark-act)
-	 ("M-." . embark-dwim)
+  :bind (("C-;" . embark-act)
+	 ("C-." . embark-dwim)
 	 ("C-h B" . embark-bindings))
   :custom
   (prefix-help-command #'embark-prefix-help-command))
