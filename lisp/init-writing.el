@@ -19,9 +19,10 @@
 (setopt org-agenda-files `(,org-default-notes-file))
 
 (defvar my-org-attach-dir (expand-file-name "attachments" org-directory)
-  "my global `org attach' directory.")
+  "My global `org attach' directory.")
 
 (setopt set-attach-id-dir my-org-attach-dir)
+(setopt org-agenda-diary-file (file-name-concat org-directory "diary.org"))
 (setopt org-preview-latex-image-directory (no-littering-expand-var-file-name "ltximg/"))
 (setopt org-cite-global-bibliography `(,(expand-file-name "bibliography.bib" org-directory)))
 (setopt org-yank-image-save-method (expand-file-name "images" my-org-attach-dir))

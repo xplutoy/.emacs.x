@@ -195,6 +195,7 @@
  '(org-pretty-entities-include-sub-superscripts nil)
  '(org-refile-targets '((nil :maxlevel . 2)))
  '(org-refile-use-outline-path 'file)
+ '(org-reverse-note-order t)
  '(org-special-ctrl-a/e t)
  '(org-startup-folded 'show2levels)
  '(org-startup-with-latex-preview t)
