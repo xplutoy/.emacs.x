@@ -10,33 +10,6 @@
 
 ;;; Code:
 
-(use-package no-littering
-  :demand t
-  :config
-  (with-eval-after-load 'recentf
-    (add-to-list 'recentf-exclude no-littering-var-directory))
-  (no-littering-theme-backups))
-
-;;; Edit
-
-(use-package avy
-  :bind (("M-g w" . avy-goto-word-1)
-	 ("M-g l" . avy-goto-line)
-	 ("M-g c" . avy-goto-char-timer)))
-
-(use-package expreg
-  :bind (("C-M-=" . expreg-expand)
-	 ("C-M--" . expreg-contract)))
-
-(use-package easy-kill
-  :bind (([remap kill-ring-save] . easy-kill)
-	 ([remap mark-sexp] . easy-mark)))
-
-(use-package speedrect
-  :hook (after-init . speedrect-mode))
-
-;;; Minibuffer
-
 (use-package vertico
   :hook ((after-init . vertico-mode)
 	 (minibuffer-setup . vertico-repeat-save))

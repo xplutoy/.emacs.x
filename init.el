@@ -205,6 +205,7 @@
    '((sequence "TODO(t!)" "NEXT(n!)" "WAIT(h@/!)" "|" "DONE(d!)")))
  '(org-use-speed-commands t)
  '(org-yank-adjusted-subtrees t)
+ '(project-mode-line t)
  '(project-vc-extra-root-markers '(".dir-locals.el"))
  '(python-indent-guess-indent-offset-verbose nil)
  '(python-shell-dedicated 'project)
@@ -239,7 +240,8 @@
  '(winner-boring-buffers
    '("*Completions*" "*Help*" "*Buffer List*" "*Compile-Log*" "*Messages*" "*Backtrace*"))
  '(winner-boring-buffers-regexp "^magit")
- '(word-wrap-by-category t))
+ '(word-wrap-by-category t)
+ '(xref-history-storage 'xref-window-local-history))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -262,12 +264,12 @@
 
 (require 'init-utils)
 
+(require 'init-tools)
+
 (require 'init-completion)
 
 (require 'init-writing)
 
 (require 'init-programing)
-
-(require 'init-tools)
 
 (load (locate-user-emacs-file "local-config.el") :noerror)
