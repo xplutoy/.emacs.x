@@ -171,6 +171,7 @@
  '(initial-scratch-message nil)
  '(isearch-lazy-count t)
  '(isearch-yank-on-move 'shift)
+ '(jit-lock-defer-time 0)
  '(minibuffer-visible-completions t)
  '(mouse-wheel-tilt-scroll t)
  '(org-M-RET-may-split-line nil)
@@ -230,12 +231,13 @@
  '(use-package-always-ensure t)
  '(use-package-compute-statistics t)
  '(use-package-expand-minimally t)
+ '(use-package-vc-prefer-newest t)
  '(use-short-answers t)
  '(vc-follow-symlinks t)
  '(vc-handled-backends '(Git))
  '(view-read-only t)
  '(winner-boring-buffers
-   '("*Completions*" "*Help*" "*Buffer List*" "*Compile-Log*" "*Messages*"))
+   '("*Completions*" "*Help*" "*Buffer List*" "*Compile-Log*" "*Messages*" "*Backtrace*"))
  '(winner-boring-buffers-regexp "^magit")
  '(word-wrap-by-category t))
 (custom-set-faces
@@ -257,6 +259,7 @@
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 
 (add-to-list 'load-path "~/.emacs.d/lisp")
+(add-to-list 'load-path "~/.emacs.d/extras")
 
 (require 'init-utils)
 

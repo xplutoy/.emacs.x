@@ -19,9 +19,8 @@
   :bind ("C-_" . vundo))
 
 (use-package outli
-  :vc (:url "https://github.com/jdtsmith/outli")
-  :hook ((prog-mode
-	  text-mode) . outli-mode))
+  :vc (:url "https://github.com/jdtsmith/outli" :branch "main")
+  :hook ((prog-mode text-mode) . outli-mode))
 
 ;;; UI
 
