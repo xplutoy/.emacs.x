@@ -29,5 +29,6 @@
 
 ;; (setopt safe-local-variable-directories '("~/.emacs.d/" "~/org-notes/"))
 
+;; (ef-themes-select 'ef-night)
 
 ;;; user-config.el ends here

@@ -226,7 +226,6 @@
  '(tab-bar-close-button-show nil)
  '(tab-bar-show 1)
  '(tab-line-close-button-show 'selected)
- '(truncate-lines t)
  '(use-dialog-box nil)
  '(use-package-always-defer t)
  '(use-package-always-ensure t)
