@@ -17,8 +17,8 @@
 
 ;; (require 'init-ultra-scroll)
 
-;;; Local config
+;;; User:
 
 
 
-;;; init-locals.el ends here
+;;; local-config.el ends here

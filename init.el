@@ -270,4 +270,4 @@
 
 (require 'init-tools)
 
-(load (locate-user-emacs-file "init-locals.el") :noerror)
+(load (locate-user-emacs-file "local-config.el") :noerror)
