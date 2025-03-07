@@ -9,6 +9,7 @@
 
 ;;; Code:
 
+(add-to-list 'load-path "~/.emacs.d/extras")
 
 ;; (require 'init-color-rg)
 
@@ -16,7 +17,8 @@
 
 ;; (require 'init-ultra-scroll)
 
-;;
+;;; Local config
 
 
-;;; user-local.el ends here
+
+;;; init-local.el ends here

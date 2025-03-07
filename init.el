@@ -259,7 +259,6 @@
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 
 (add-to-list 'load-path "~/.emacs.d/lisp")
-(add-to-list 'load-path "~/.emacs.d/extras")
 
 (require 'init-utils)
 
@@ -271,4 +270,4 @@
 
 (require 'init-tools)
 
-(load (locate-user-emacs-file "user-local.el") :noerror)
+(load (locate-user-emacs-file "init-local.el") :noerror)
