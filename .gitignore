@@ -11,3 +11,4 @@ etc/gnus/
 todo/
 /etc/transient/
 /TAGS
+user-config.el

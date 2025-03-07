@@ -11,14 +11,23 @@
 
 (add-to-list 'load-path "~/.emacs.d/extras")
 
+;; (require 'init-gptel)
+
 ;; (require 'init-color-rg)
 
 ;; (require 'init-dwim-shell-command)
 
 ;; (require 'init-ultra-scroll)
 
+;; (require 'init-elfeed)
+
 ;;; User:
 
+;; (setopt shr-inhibit-images nil)
+
+;; (setopt python-shell-virtualenv-root "~/workspace/my-draft/.venv/")
+
+;; (setopt safe-local-variable-directories '("~/.emacs.d/" "~/org-notes/"))
 
 
-;;; local-config.el ends here
+;;; user-config.el ends here

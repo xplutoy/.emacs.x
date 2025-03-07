@@ -272,4 +272,4 @@
 
 (require 'init-programing)
 
-(load (locate-user-emacs-file "local-config.el") :noerror)
+(load (locate-user-emacs-file "user-config.el") :noerror)

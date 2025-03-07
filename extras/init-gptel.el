@@ -20,10 +20,12 @@
 		   :endpoint "/chat/completions"
 		   :models '(deepseek-chat deepseek-coder)))
   (gptel-default-mode 'org-mode)
+
   :config
 
   (when IS-WIN
     (setopt gptel-use-curl nil))
+
   (add-hook 'gptel-post-response-functions 'gptel-end-of-response)
 
   (defun yx/gptel-quick--callback (resp info)
