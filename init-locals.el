@@ -21,4 +21,4 @@
 
 
 
-;;; init-local.el ends here
+;;; init-locals.el ends here
