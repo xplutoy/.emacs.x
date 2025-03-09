@@ -19,7 +19,8 @@
   (dirvish-side-attributes '(vc-state file-size collapse))
   (dired-listing-switches "-l --almost-all --human-readable --group-directories-first --no-group")
   (dirvish-quick-access-entries '(("h" "~/" "Home")  ; `setq' won't work
-				  ("d" "~/workspace/" "Workspace")))
+				  ("d" "~/workspace/" "Workspace")
+				  ("n" "~/org-notes/" "Notes")))
   :config
   ;; (dirvish-peek-mode +1)
   (dirvish-side-follow-mode +1)

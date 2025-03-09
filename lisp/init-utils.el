@@ -10,11 +10,6 @@
 
 ;;; Code:
 
-(defun yx/auth-get-pwd (host)
-  "Find `secret' in `auth-sources' for HOST entry."
-  (when-let ((source (auth-source-search :host host)))
-    (funcall (plist-get (car source) :secret))))
-
 (defun yx/top-join-line ()
   "Join the current line with the line beneath it."
   (interactive)

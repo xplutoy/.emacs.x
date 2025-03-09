@@ -25,6 +25,9 @@
   (add-hook 'eshell-mode-hook #'yx/eshell-init-h)
   (push 'eshell-rebind eshell-modules-list))
 
+(with-eval-after-load 'comint
+  (keymap-set comint-mode-map "S-<return>" #'comint-accumulate))
+
 (define-skeleton yx/el-header  ""
   nil
   ";;; -*- lexical-binding: t -*-" \n \n
