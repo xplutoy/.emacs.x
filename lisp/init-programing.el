@@ -110,7 +110,7 @@
     (setq citre-peek-use-dashes-as-horizontal-border t))
   (keymap-set citre-peek-keymap "C-g" #'citre-peek-abort))
 
-;;; python
+;;; Langs
 
 (with-eval-after-load 'python
   (add-to-list 'project-vc-extra-root-markers "pyproject.toml")
@@ -118,12 +118,11 @@
 
 (add-hook 'python-mode-hook #'eglot-ensure)
 
-;;; R / Julia
-
 (use-package ess
   :custom
   (ess-use-company nil)
   (ess-ask-for-ess-directory nil)
+  (ess-history-directory no-littering-var-directory)
   (inferior-R-args "--quiet --no-save --no-restore")
   :config
   (require 'ess-julia)
