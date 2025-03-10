@@ -70,7 +70,8 @@
   (sis-global-respect-mode +1))
 
 (use-package bing-dict
-  :bind (("M-s d" . bing-dict-brief)))
+  :bind ("M-s d" . bing-dict-brief)
+  :init (setopt bing-dict-vocabulary-save t))
 
 (use-package olivetti
   :hook ((Man-mode

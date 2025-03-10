@@ -34,7 +34,8 @@
     (interactive)
     (when (eq 'elfeed-show-mode major-mode)
       (setq shr-inhibit-images (not shr-inhibit-images))
-      (elfeed-show-refresh)))
+      (elfeed-show-refresh)
+      (message (format "Image is %s now." (if shr-inhibit-images "Off" "On")))))
 
   (defun yx/elfeed-show-quit ()
     "Kill current elfeed-entry buffer and switch to elfeed-search buffer."
