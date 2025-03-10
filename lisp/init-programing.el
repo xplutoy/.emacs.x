@@ -57,7 +57,7 @@
 	       '(python . ("https://github.com/tree-sitter/tree-sitter-python")))
   (add-to-list 'major-mode-remap-alist '(python-mode . python-ts-mode)))
 
-;;; Ide
+;;; Ide+
 
 (use-package magit
   :bind (("C-c g" . magit-dispatch)
@@ -78,6 +78,9 @@
 (use-package reformatter
   :config
   (reformatter-define py-black :program "black" :args '("-")))
+
+(use-package rainbow-delimiters
+  :hook (prog-mode . rainbow-delimiters-mode))
 
 (use-package idle-highlight-mode
   :hook (prog-mode . idle-highlight-mode))
