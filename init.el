@@ -55,6 +55,8 @@
  '(isearch-yank-on-move 'shift)
  '(jit-lock-defer-time 0)
  '(minibuffer-visible-completions t)
+ '(modus-themes-mixed-fonts t)
+ '(modus-themes-variable-pitch-ui t)
  '(mouse-wheel-tilt-scroll t)
  '(org-M-RET-may-split-line nil)
  '(org-agenda-inhibit-startup t)
@@ -217,13 +219,6 @@
   (keymap-substitute isearch-mode-map #'isearch-delete-char #'isearch-del-char))
 
 ;;; UI
-
-(dolist (charset '(han cjk-misc))
-  (set-fontset-font t charset (font-spec :family "LXGW WenKai Mono GB Lite")))
-
-(setopt modus-themes-mixed-fonts t)
-(setopt modus-themes-variable-pitch-ui t)
-(setopt modus-themes-org-blocks 'gray-background)
 
 (load-theme 'modus-operandi t)
 

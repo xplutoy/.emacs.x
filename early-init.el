@@ -11,9 +11,7 @@
 ;;; Code:
 
 (setopt warning-minimum-level :error)
-(setopt gc-cons-threshold most-positive-fixnum)
 (setopt system-time-locale "C")
-
 (setopt bidi-inhibit-bpa t)
 (setopt inhibit-compacting-font-caches t)
 (setopt frame-inhibit-implied-resize t)
@@ -21,9 +19,11 @@
 
 (set-language-environment "UTF-8")
 
-(add-hook 'emacs-startup-hook (lambda ()
-				(message "")
-				(setopt gc-cons-threshold (* 8 1024 1024))))
+(set-face-attribute 'default nil :family "Iosevka" :height 150)
+(set-face-attribute 'fixed-pitch nil :family "Iosevka" :height 1.0)
+
+(dolist (charset '(han cjk-misc))
+  (set-fontset-font t charset (font-spec :family "LXGW WenKai Mono GB Lite" :height 1.0)))
 
 (let ((my-frame-alist '((width . 80) (height . 40)
 			(menu-bar-lines . nil)
@@ -33,10 +33,7 @@
     (add-to-list 'default-frame-alist lst)))
 
 (when (featurep 'ns)
-  (push '(ns-transparent-titlebar . t) default-frame-alist))
-
-(set-face-attribute 'default nil :family "Iosevka" :height 150)
-(set-face-attribute 'fixed-pitch nil :family "Iosevka" :height 1.0)
+  (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t)))
 
 (advice-add #'display-startup-echo-area-message :override #'ignore)
 
