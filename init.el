@@ -218,8 +218,6 @@
 
 ;;; UI
 
-(set-face-attribute 'fixed-pitch nil :family "Iosevka")
-
 (dolist (charset '(han cjk-misc))
   (set-fontset-font t charset (font-spec :family "LXGW WenKai Mono GB Lite")))
 

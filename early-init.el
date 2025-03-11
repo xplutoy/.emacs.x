@@ -25,8 +25,7 @@
 				(message "")
 				(setopt gc-cons-threshold (* 8 1024 1024))))
 
-(let ((my-frame-alist '((font . "Iosevka-15")
-			(width . 80) (height . 40)
+(let ((my-frame-alist '((width . 80) (height . 40)
 			(menu-bar-lines . nil)
 			(tool-bar-lines . nil)
 			(vertical-scroll-bars . nil))))
@@ -35,6 +34,9 @@
 
 (when (featurep 'ns)
   (push '(ns-transparent-titlebar . t) default-frame-alist))
+
+(set-face-attribute 'default nil :family "Iosevka" :height 150)
+(set-face-attribute 'fixed-pitch nil :family "Iosevka" :height 1.0)
 
 (advice-add #'display-startup-echo-area-message :override #'ignore)
 
