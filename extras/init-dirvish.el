@@ -10,8 +10,7 @@
 ;;; Code:
 
 (use-package dirvish
-  :init
-  (dirvish-override-dired-mode +1)
+  :hook (after-init . dirvish-override-dired-mode)
   :custom
   (dirvish-default-layout '(0 0.4 0.6))
   (dirvish-side-auto-close t)

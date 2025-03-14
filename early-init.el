@@ -22,9 +22,6 @@
 (set-face-attribute 'default nil :family "Iosevka" :height 150)
 (set-face-attribute 'fixed-pitch nil :family "Iosevka" :height 1.0)
 
-(dolist (charset '(han cjk-misc))
-  (set-fontset-font t charset (font-spec :family "LXGW WenKai Mono GB Lite" :height 1.0)))
-
 (let ((my-frame-alist '((width . 80) (height . 40)
 			(menu-bar-lines . nil)
 			(tool-bar-lines . nil)

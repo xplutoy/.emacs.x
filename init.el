@@ -220,6 +220,9 @@
 
 ;;; UI
 
+(dolist (charset '(han cjk-misc))
+  (set-fontset-font t charset (font-spec :family "LXGW WenKai Mono GB Lite" :height 1.0)))
+
 (load-theme 'modus-operandi t)
 
 (setopt nobreak-char-display nil)
