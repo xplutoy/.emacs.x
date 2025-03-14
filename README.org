@@ -3,7 +3,7 @@
 An Emacs Configuration that Meets My Minimum Requirements.
 
 
-** On Windows
+** Windows
 
 我使用的是预编译好的[[https://www.gnu.org/software/emacs/download.html][安装包]]。
 
@@ -60,13 +60,33 @@ Emacs 会优先到 HOME 环境变量指定的地址去寻找配置文件。
 #+end_src
 
 
-** On MacOS
+** MacOS
 
 安装：
 
 #+begin_src shell
   sudo port install emacs-app
 #+end_src
+
+
+** 字体
+
+通过下面的语句设置中英文字体：
+
+#+begin_src elisp
+  (set-face-attribute 'default nil :family "Iosevka" :height 150)
+  (set-face-attribute 'fixed-pitch nil :family "Iosevka" :height 1.0)
+
+  (dolist (charset '(han cjk-misc))
+    (set-fontset-font t charset (font-spec :family "LXGW WenKai Mono GB Lite" :height 1.0)))
+#+end_src
+
+为了使中英文字体对齐，最好使用中英文宽度比例为 2:1 的等宽字体。下面是我使用过的一些字体组合：
+
+| 英文                   | 中文                       |
+|------------------------+----------------------------|
+| "Iosevka"              | "LXGW WenKai Mono GB Lite" |
+| "JetBrains Maple Mono" | "JetBrains Maple Mono"     |
 
 
 ** 参考
