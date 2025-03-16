@@ -60,9 +60,10 @@
   (add-to-list 'org-babel-default-header-args '(:eval . "no-export") t)
 
   (require 'org-tempo)
-  (add-to-list 'org-structure-template-alist '("R"  . "src R"))
-  (add-to-list 'org-structure-template-alist '("el" . "src elisp"))
+  (add-to-list 'org-structure-template-alist '("t"  . "theorem"))
+  (add-to-list 'org-structure-template-alist '("el" . "src emacs-lisp"))
   (add-to-list 'org-structure-template-alist '("sh" . "src shell"))
+  (add-to-list 'org-structure-template-alist '("py" . "src python"))
 
   (plist-put org-format-latex-options :scale 1.5)
 
