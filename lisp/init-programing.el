@@ -85,34 +85,6 @@
 (use-package idle-highlight-mode
   :hook (prog-mode . idle-highlight-mode))
 
-(use-package tempel
-  :bind (("M-*" . tempel-insert)
-	 ("M-+" . tempel-complete))
-  :init
-  (setopt tempel-trigger-prefix "<")
-  (defun yx/tempel-setup-capf ()
-    (setq-local completion-at-point-functions
-		(cons #'tempel-expand
-		      completion-at-point-functions)))
-  (add-hook 'prog-mode-hook 'yx/tempel-setup-capf)
-  (add-hook 'text-mode-hook 'yx/tempel-setup-capf))
-
-(use-package citre
-  :hook (prog-mode . citre-auto-enable-citre-mode)
-  :bind (("C-x c ." . citre-jump)
-	 ("C-x c ," . citre-jump-back)
-	 ("C-x c ;" . citre-peek)
-	 ("C-x c /" . citre-jump-to-reference)
-	 ("C-x c u" . citre-update-this-tags-file))
-  :custom
-  (citre-edit-ctags-options-manually nil)
-  (citre-default-create-tags-file-location 'global-cache)
-  :config
-  (when (display-graphic-p)
-    (setq citre-peek-fill-fringe nil)
-    (setq citre-peek-use-dashes-as-horizontal-border t))
-  (keymap-set citre-peek-keymap "C-g" #'citre-peek-abort))
-
 ;;; Langs
 
 (with-eval-after-load 'python
@@ -120,20 +92,6 @@
   (add-to-list 'python-shell-completion-native-disabled-interpreters "python"))
 
 (add-hook 'python-mode-hook #'eglot-ensure)
-
-(use-package ess
-  :custom
-  (ess-use-company nil)
-  (ess-ask-for-ess-directory nil)
-  (ess-history-directory no-littering-var-directory)
-  (inferior-R-args "--quiet --no-save --no-restore")
-  :config
-  (require 'ess-julia)
-  (keymap-set ess-r-mode-map ";" 'ess-insert-assign)
-  (keymap-set inferior-ess-r-mode-map ";" 'ess-insert-assign)
-  (add-hook 'ess-r-mode-hook #'eglot-ensure))
-
-(use-package julia-mode)
 
 (provide 'init-programing)
 ;;; init-programing.el ends here
