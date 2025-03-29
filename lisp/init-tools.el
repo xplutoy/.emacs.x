@@ -50,11 +50,6 @@
 (use-package minions
   :hook (after-init . minions-mode))
 
-(use-package ef-themes
-  :custom
-  (ef-themes-mixed-fonts t)
-  (ef-themes-variable-pitch-ui t))
-
 ;;; Misc
 
 (use-package sis
