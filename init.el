@@ -90,7 +90,7 @@
  '(org-startup-with-latex-preview t)
  '(org-support-shift-select t)
  '(org-todo-keywords
-   '((sequence "TODO(t!)" "NEXT(n!)" "WAIT(h@/!)" "|" "DONE(d!)")))
+   '((sequence "TODO(t!)" "NEXT(n!)" "WAIT(w@/!)" "|" "DONE(d!)" "CANCELED(c@/!)")))
  '(org-use-speed-commands t)
  '(org-yank-adjusted-subtrees t)
  '(prettify-symbols-unprettify-at-point 'right-edge)

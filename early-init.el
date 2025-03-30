@@ -35,6 +35,15 @@
 (when (featurep 'ns)
   (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t)))
 
+;; avoid flashing at startup
+(defun yx/avoid-flashing-at-startup ()
+  "Avoid flashing at startup via delaying `make-frame-visible'."
+  (push '(visibility . nil) initial-frame-alist)
+  (run-at-time 2 nil #'make-frame-visible)
+  (add-hook 'emacs-startup-hook #'make-frame-visible))
+
+(yx/avoid-flashing-at-startup)
+
 (advice-add #'display-startup-echo-area-message :override #'ignore)
 
 ;;; early-init.el ends here
