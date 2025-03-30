@@ -56,6 +56,7 @@
  '(isearch-motion-changes-direction t)
  '(isearch-yank-on-move 'shift)
  '(jit-lock-defer-time 0)
+ '(line-move-visual nil)
  '(minibuffer-visible-completions t)
  '(modus-themes-bold-constructs t)
  '(modus-themes-italic-constructs t)
@@ -115,6 +116,7 @@
  '(tab-bar-close-button-show nil)
  '(tab-bar-show 1)
  '(tab-line-close-button-show 'selected)
+ '(track-eol t)
  '(use-dialog-box nil)
  '(use-package-always-defer t)
  '(use-package-always-ensure t)
@@ -124,6 +126,7 @@
  '(use-short-answers t)
  '(vc-follow-symlinks t)
  '(vc-handled-backends '(Git))
+ '(version-control t)
  '(view-read-only t)
  '(winner-boring-buffers
    '("*Completions*" "*Help*" "*Buffer List*" "*Compile-Log*" "*Messages*" "*Backtrace*"))
