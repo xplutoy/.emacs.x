@@ -146,8 +146,9 @@
 
 ;;; Build-in
 
-(defconst IS-MAC (eq system-type 'darwin))
-(defconst IS-WIN (eq system-type 'windows-nt))
+(defconst IS-MAC   (eq system-type 'darwin))
+(defconst IS-WIN   (eq system-type 'windows-nt))
+(defconst IS-LINUX (eq system-type 'gnu/linux))
 
 (setopt user-full-name "xplutoyz")
 (setopt user-mail-address "yangxue.cs@foxmail.com")
@@ -240,9 +241,6 @@
 
 (require 'server)
 (or (server-running-p) (server-start))
-
-(setenv "HTTP_PROXY"  "http://localhost:7890")
-(setenv "HTTPS_PROXY" "http://localhost:7890")
 
 (defun yx/exec-path-and-PATH-update (paths)
   "Update `exec-path' and `PATH' environment variable."
