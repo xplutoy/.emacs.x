@@ -75,10 +75,6 @@
   :custom
   (buffer-env-script-name '(".envrc" ".venv/bin/activate")))
 
-(use-package reformatter
-  :config
-  (reformatter-define py-black :program "black" :args '("-")))
-
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
 
