@@ -154,6 +154,7 @@
 (setopt user-mail-address "yangxue.cs@foxmail.com")
 
 (setopt epa-file-encrypt-to user-mail-address)
+(setopt frame-title-format '(buffer-file-name "%f" ("%b")))
 
 (setopt smtpmail-smtp-server "smtp.qq.com")
 (setopt gnus-select-method '(nnimap "foxmail.cs" (nnimap-address "imap.qq.com")))
