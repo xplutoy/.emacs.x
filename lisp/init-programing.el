@@ -20,8 +20,8 @@
 
 (with-eval-after-load 'eshell
   (defun yx/eshell-init-h ()
-  (eshell-hist-mode +1)
-  (keymap-local-set "C-l" #'eshell/clear))
+    (eshell-hist-mode +1)
+    (keymap-local-set "C-l" #'eshell/clear))
   (add-hook 'eshell-mode-hook #'yx/eshell-init-h)
   (push 'eshell-rebind eshell-modules-list))
 
@@ -53,9 +53,12 @@
   (keymap-set flymake-mode-map "C-c l d" #'flymake-show-buffer-diagnostics))
 
 (with-eval-after-load 'treesit
-  (add-to-list 'treesit-language-source-alist
-	       '(python . ("https://github.com/tree-sitter/tree-sitter-python")))
-  (add-to-list 'major-mode-remap-alist '(python-mode . python-ts-mode)))
+  (setopt treesit-language-source-alist
+	  '((cpp .  ("https://github.com/tree-sitter/tree-sitter-cpp"))
+	    (python . ("https://github.com/tree-sitter/tree-sitter-python"))))
+  (setopt major-mode-remap-alist '((c++-mode . c++-ts-mode)
+				   (python-mode . python-ts-mode)))
+  (add-to-list 'treesit-load-name-override-list '(c++ "libtree-sitter-cpp")))
 
 ;;; Ide+
 
@@ -83,11 +86,12 @@
 
 ;;; Langs
 
+;; python
+
 (with-eval-after-load 'python
   (add-to-list 'project-vc-extra-root-markers "pyproject.toml")
   (add-to-list 'python-shell-completion-native-disabled-interpreters "python"))
 
-(add-hook 'python-mode-hook #'eglot-ensure)
 
 (provide 'init-programing)
 ;;; init-programing.el ends here
