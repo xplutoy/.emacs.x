@@ -179,27 +179,6 @@ With the prefix argument ARG, forcing all posts to be republished."
   (add-hook 'LaTeX-mode-hook #'turn-on-cdlatex)
   (add-hook 'org-mode-hook #'turn-on-org-cdlatex))
 
-;; Denote
-
-(use-package denote
-  :bind (("C-c n n"   . denote-subdirectory)
-	 ("C-c n j"   . denote-journal-extras-new-entry)
-	 ("C-c n o"   . denote-open-or-create)
-	 ("C-c n i"   . denote-link-or-create)
-	 ("C-c n l"   . denote-find-link)
-	 ("C-c n C-l" . denote-find-backlink)
-	 ("C-c n r"   . denote-rename-file-using-front-matter)
-	 ("C-c n C-r" . denote-rename-file))
-  :custom
-  (denote-directory org-directory)
-  (denote-org-store-link-to-heading nil)
-  (denote-date-prompt-use-org-read-date t)
-  (denote-journal-extras-title-format nil)
-  (denote-dired-directories-include-subdirectories t)
-  :config
-  (denote-rename-buffer-mode 1)
-  (add-hook 'dired-mode-hook #'denote-dired-mode-in-directories))
-
 
 (provide 'init-writing)
 ;;; init-writing.el ends here
