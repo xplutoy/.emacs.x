@@ -14,22 +14,24 @@
 	 ("C-c n g"   . denote-grep)
 	 ("C-c n o"   . denote-open-or-create)
 	 ("C-c n i"   . denote-link-or-create)
-	 ("C-c n l"   . denote-find-link)
-	 ("C-c n C-l" . denote-find-backlink)
-	 ("C-c n q c" . denote-query-contents-link)
+	 ("C-c n l l" . denote-find-link)
+	 ("C-c n l b" . denote-find-backlink)
+	 ("C-c n l c" . denote-query-contents-link)
 	 ("C-c n r"   . denote-rename-file-using-front-matter)
 	 ("C-c n C-r" . denote-rename-file))
   :custom
   (denote-directory org-directory)
-  (denote-known-keywords '("tool" "robot" "ai"))
-  (denote-org-store-link-to-heading nil)
+  (denote-known-keywords '("ai" "tool"))
   (denote-date-prompt-use-org-read-date t)
+  (denote-org-store-link-to-heading nil)
   (denote-dired-directories-include-subdirectories t)
   :config
   (denote-rename-buffer-mode +1)
   (add-hook 'dired-mode-hook #'denote-dired-mode-in-directories))
 
-(use-package denote-org)
+(use-package denote-org
+  :bind (("C-c n l h" . denote-org-link-to-heading)
+	 ("C-c n e s" . denote-org-extract-org-subtree)))
 
 (use-package denote-journal
   :init
