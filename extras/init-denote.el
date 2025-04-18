@@ -33,11 +33,19 @@
 
 (use-package denote-journal
   :init
-  (setopt denote-journal-extras-title-format nil)
-  (keymap-global-set "C-c n j" #'denote-journal-new-or-existing-entry)
+  (setopt denote-journal-title-format nil)
+  (keymap-global-set "C-c n j" #'denote-journal-new-entry)
   (add-hook 'calendar-mode-hook #'denote-journal-calendar-mode))
 
-(use-package denote-sequence)
+(use-package denote-sequence
+  :bind (("C-c n s s" . denote-sequence)
+	 ("C-c n s f" . denote-sequence-find)
+	 ("C-c n s l" . denote-sequence-link)
+	 ("C-c n s d" . denote-sequence-dired)
+	 ("C-c n s r" . denote-sequence-reparent)
+	 ("C-c n s c" . denote-sequence-convert))
+  :config
+  (setopt denote-sequence-scheme 'alphanumeric))
 
 (provide 'init-denote)
 ;;; init-denote.el ends here

@@ -161,24 +161,6 @@ With the prefix argument ARG, forcing all posts to be republished."
     (org-publish "my-blog" nil nil))
   (message "Publish Done. Check output in %s." my-blog-publish-dir))
 
-;;; Latex
-
-(use-package auctex
-  :custom
-  (TeX-engine 'xetex)
-  (TeX-auto-save t)
-  (TeX-parse-self t)
-  (TeX-save-query nil)
-  (reftex-plug-into-AUCTeX t))
-
-(use-package cdlatex
-  :init
-  (with-eval-after-load 'org
-    (keymap-set org-cdlatex-mode-map "$" #'cdlatex-dollar)
-    (keymap-set org-cdlatex-mode-map "¥" #'cdlatex-dollar))
-  (add-hook 'LaTeX-mode-hook #'turn-on-cdlatex)
-  (add-hook 'org-mode-hook #'turn-on-org-cdlatex))
-
 
 (provide 'init-writing)
 ;;; init-writing.el ends here
