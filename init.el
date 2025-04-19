@@ -29,6 +29,7 @@
  '(cua-rectangle-mark-key [C-S-return])
  '(default-input-method "TeX")
  '(delete-by-moving-to-trash t)
+ '(delete-old-versions t)
  '(dired-dwim-target t)
  '(dired-kill-when-opening-new-dired-buffer t)
  '(dired-mouse-drag-files t)
@@ -105,6 +106,7 @@
  '(recentf-max-saved-items 100)
  '(require-final-newline t)
  '(ring-bell-function 'ignore)
+ '(safe-local-variable-directories '("~/.emacs.d/" "~/org-notes/"))
  '(scroll-conservatively 101)
  '(sentence-end-double-space nil)
  '(set-mark-command-repeat-pop t)
@@ -183,7 +185,8 @@
   (cua-selection-mode +1)
   (window-divider-mode +1)
   (global-hl-line-mode +1)
-  (pixel-scroll-precision-mode +1))
+  (pixel-scroll-precision-mode +1)
+  (toggle-indicate-empty-lines +1))
 
 (add-hook 'after-init-hook #'yx/global-minor-mode-init-h)
 

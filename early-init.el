@@ -10,6 +10,9 @@
 
 ;;; Code:
 
+(setopt frame-title-format
+	(list '(buffer-file-name "%f" "%b")))
+
 (setopt warning-minimum-level :error)
 (setopt system-time-locale "C")
 (setopt bidi-inhibit-bpa t)
