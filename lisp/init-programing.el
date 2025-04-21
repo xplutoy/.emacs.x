@@ -55,8 +55,12 @@
 
 (with-eval-after-load 'treesit
   (setopt treesit-language-source-alist
-	  '((cpp .  ("https://github.com/tree-sitter/tree-sitter-cpp"))
-	    (python . ("https://github.com/tree-sitter/tree-sitter-python"))))
+	  '((python . ("https://github.com/tree-sitter/tree-sitter-python"))
+	    (cpp . ("https://github.com/tree-sitter/tree-sitter-cpp"))
+	    (cmake . ("https://github.com/uyha/tree-sitter-cmake"))
+	    (json . ("https://github.com/tree-sitter/tree-sitter-json"))
+	    (yaml . ("https://github.com/ikatyang/tree-sitter-yaml"))
+	    (toml . ("https://github.com/tree-sitter/tree-sitter-toml"))))
   (setopt major-mode-remap-alist '((c++-mode . c++-ts-mode)
 				   (python-mode . python-ts-mode)))
   (add-to-list 'treesit-load-name-override-list '(c++ "libtree-sitter-cpp")))

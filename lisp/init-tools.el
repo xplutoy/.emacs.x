@@ -76,7 +76,7 @@
 	  org-agenda-mode
 	  eww-mode) . olivetti-mode)
   :init
-  (setq olivetti-style 'fancy)
+  (setq olivetti-style 'nil)
   (setq olivetti-mode-map nil)
   (add-hook 'olivetti-mode-hook (lambda () (setq line-spacing 0.2))))
 
