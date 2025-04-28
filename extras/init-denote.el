@@ -34,6 +34,7 @@
 	 ("C-c n e s" . denote-org-extract-org-subtree)))
 
 (use-package denote-journal
+  :commands (denote-journal-calendar-mode)
   :init
   (setopt denote-journal-title-format nil)
   (keymap-global-set "C-c n j" #'denote-journal-new-entry)

@@ -22,6 +22,7 @@
  '(bidi-paragraph-direction 'left-to-right)
  '(browse-url-browser-function 'eww-browse-url)
  '(calendar-date-style 'iso)
+ '(calendar-week-start-day 1)
  '(compilation-auto-jump-to-first-error t)
  '(compilation-scroll-output 'first-error)
  '(completion-auto-select 'second-tab)
@@ -167,6 +168,9 @@
 				(display-buffer-no-window)
 				(allow-no-window . t))))
 
+(windmove-default-keybindings 'control)
+(windmove-swap-states-default-keybindings '(control shift))
+
 (defun yx/global-minor-mode-init-h ()
   "Toggle frequently used global minor modes."
   (setopt abbrev-mode t)
@@ -192,8 +196,7 @@
 
 (add-hook 'after-init-hook #'yx/global-minor-mode-init-h)
 
-(windmove-default-keybindings 'control)
-(windmove-swap-states-default-keybindings '(control shift))
+(add-hook 'write-file-hooks #'time-stamp)
 
 ;;; Keybindings
 
