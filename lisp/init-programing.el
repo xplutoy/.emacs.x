@@ -97,6 +97,8 @@
   (add-to-list 'project-vc-extra-root-markers "pyproject.toml")
   (add-to-list 'python-shell-completion-native-disabled-interpreters "python"))
 
+(add-hook 'python-mode-hook #'eglot-ensure)
+
 
 (provide 'init-programing)
 ;;; init-programing.el ends here
