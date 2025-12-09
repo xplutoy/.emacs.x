@@ -10,7 +10,6 @@
 ;;; Code:
 
 (use-package ultra-scroll
-  :vc (:url "https://github.com/jdtsmith/ultra-scroll" :branch "main" :rev :newest)
   :hook (after-init . ultra-scroll-mode))
 
 

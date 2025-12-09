@@ -52,6 +52,7 @@
  '(gud-highlight-current-line t)
  '(imenu-flatten 'prefix)
  '(inhibit-startup-screen t)
+ '(initial-major-mode 'text-mode)
  '(initial-scratch-message nil)
  '(isearch-allow-motion t)
  '(isearch-lazy-count t)
