@@ -13,11 +13,15 @@
 
 ;; (require 'init-gptel)
 
+;; (require 'init-denote)
+
 ;; (require 'init-color-rg)
 
 ;; (require 'init-dwim-shell-command)
 
 ;; (require 'init-ultra-scroll)
+
+;; (require 'init-spacious-padding)
 
 ;; (require 'init-elfeed)
 

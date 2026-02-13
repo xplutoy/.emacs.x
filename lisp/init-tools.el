@@ -54,6 +54,7 @@
 
 (use-package sis
   :demand
+  :if IS-MAC
   :config
   (add-to-list 'sis-prefix-override-keys "M-s")
   (add-to-list 'sis-prefix-override-keys "M-g")

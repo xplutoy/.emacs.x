@@ -99,6 +99,7 @@
    '((sequence "TODO(t!)" "NEXT(n!)" "WAIT(w@/!)" "|" "DONE(d!)" "CANCELED(c@/!)")))
  '(org-use-speed-commands t)
  '(org-yank-adjusted-subtrees t)
+ '(package-check-signature nil)
  '(prettify-symbols-unprettify-at-point 'right-edge)
  '(project-mode-line t)
  '(project-vc-extra-root-markers '(".dir-locals.el"))
@@ -266,6 +267,13 @@
 		    "/Library/TeX/texbin"
 		    ,(concat (invocation-directory) "bin"))))
     (yx/exec-path-and-PATH-update my-paths)))
+
+(when IS-WIN
+  (w32-register-hot-key [s-])
+  (w32-register-hot-key [H-])
+  (setopt w32-pipe-read-delay 0)
+  (setopt w32-get-true-file-attributes nil)
+  (setopt w32-pipe-buffer-size  (* 64 1024)))
 
 ;;; Extras
 
