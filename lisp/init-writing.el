@@ -41,7 +41,8 @@
     (setq-local electric-pair-pairs
 		(append electric-pair-pairs '((?~ . ?~) (?+ . ?+))))
     (setq-local electric-pair-text-pairs electric-pair-pairs)
-    ;; (variable-pitch-mode +1)
+    (setq-local delete-trailing-whitespace nil)
+    (variable-pitch-mode +1)
     (visual-line-mode +1)
     (visual-wrap-prefix-mode +1)
     (modify-syntax-entry ?< "." org-mode-syntax-table)
