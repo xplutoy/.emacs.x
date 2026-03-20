@@ -25,10 +25,10 @@
 (defvar yx/en-font "Iosevka")
 (defvar yx/cn-font "LXGW WenKai Mono GB Lite")
 
-(set-face-attribute 'default nil :family yx/en-font :height 150)
+(set-face-attribute 'default nil :family yx/en-font :height 160)
 (set-face-attribute 'fixed-pitch nil :family yx/en-font :height 1.0)
 
-(let ((my-frame-alist '((width . 80) (height . 40)
+(let ((my-frame-alist '((width . 80) (height . 37)
 			(menu-bar-lines . nil)
 			(tool-bar-lines . nil)
 			(vertical-scroll-bars . nil))))

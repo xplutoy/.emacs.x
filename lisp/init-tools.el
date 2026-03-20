@@ -55,10 +55,9 @@
 (use-package pyim
   :init
   (setq default-input-method "pyim")
-  (setq pyim-english-input-switch-functions '(pyim-probe-program-mode
-					      pyim-probe-org-speed-commands
-					      pyim-probe-org-structure-template))
-  (pyim-default-scheme 'xiaohe-shuangpin))
+  (pyim-default-scheme 'xiaohe-shuangpin)
+  (setq pyim-english-input-switch-functions '(pyim-probe-org-speed-commands
+					      pyim-probe-org-structure-template)))
 
 (use-package bing-dict
   :bind ("M-s d" . bing-dict-brief)
