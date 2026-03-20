@@ -52,19 +52,13 @@
 
 ;;; Misc
 
-(use-package sis
-  :demand
-  :if IS-MAC
-  :config
-  (add-to-list 'sis-prefix-override-keys "M-s")
-  (add-to-list 'sis-prefix-override-keys "M-g")
-  (when IS-MAC
-    (sis-ism-lazyman-config "com.apple.keylayout.ABC"
-			    "com.apple.inputmethod.SCIM.Shuangpin"))
-  (when IS-LINUX
-    (sis-ism-lazyman-config "1" "2" 'fcitx5))
-  (sis-global-inline-mode +1)
-  (sis-global-respect-mode +1))
+(use-package pyim
+  :init
+  (setq default-input-method "pyim")
+  (setq pyim-english-input-switch-functions '(pyim-probe-program-mode
+					      pyim-probe-org-speed-commands
+					      pyim-probe-org-structure-template))
+  (pyim-default-scheme 'xiaohe-shuangpin))
 
 (use-package bing-dict
   :bind ("M-s d" . bing-dict-brief)

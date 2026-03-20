@@ -28,7 +28,6 @@
  '(completion-auto-select 'second-tab)
  '(completions-sort 'historical)
  '(cua-rectangle-mark-key [C-S-return])
- '(default-input-method "TeX")
  '(delete-by-moving-to-trash t)
  '(delete-old-versions t)
  '(dired-dwim-target t)
