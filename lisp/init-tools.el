@@ -57,7 +57,8 @@
   (setq default-input-method "pyim")
   (pyim-default-scheme 'xiaohe-shuangpin)
   (setq pyim-english-input-switch-functions '(pyim-probe-org-speed-commands
-					      pyim-probe-org-structure-template)))
+					      pyim-probe-org-structure-template))
+  (setq pyim-punctuation-half-width-functions '(pyim-probe-punctuation-line-beginning)))
 
 (use-package bing-dict
   :bind ("M-s d" . bing-dict-brief)
