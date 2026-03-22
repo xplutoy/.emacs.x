@@ -56,9 +56,14 @@
   :init
   (setq default-input-method "pyim")
   (pyim-default-scheme 'xiaohe-shuangpin)
+  (setq pyim-punctuation-translate-p '(no))
   (setq pyim-english-input-switch-functions '(pyim-probe-org-speed-commands
-					      pyim-probe-org-structure-template))
-  (setq pyim-punctuation-half-width-functions '(pyim-probe-punctuation-line-beginning)))
+					      pyim-probe-org-structure-template)))
+
+(use-package pyim-tsinghua-dict
+  :vc (:url "https://github.com/redguardtoo/pyim-tsinghua-dict")
+  :after pyim
+  :init (pyim-tsinghua-dict-enable))
 
 (use-package bing-dict
   :bind ("M-s d" . bing-dict-brief)
