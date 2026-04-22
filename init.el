@@ -86,7 +86,7 @@
  '(org-image-actual-width nil)
  '(org-insert-heading-respect-content t)
  '(org-log-into-drawer t)
- '(org-modules '(ol-docview ol-doi ol-eww ol-info))
+ '(org-modules '(ol-eww ol-info))
  '(org-outline-path-complete-in-steps nil)
  '(org-pretty-entities t)
  '(org-pretty-entities-include-sub-superscripts nil)
