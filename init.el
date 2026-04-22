@@ -71,6 +71,7 @@
  '(org-blank-before-new-entry '((heading) (plain-list-item)))
  '(org-cite-export-processors '((t basic "numeric" "numeric")))
  '(org-crypt-key nil)
+ '(org-cycle-include-plain-lists 'integrate)
  '(org-cycle-separator-lines -1)
  '(org-export-dispatch-use-expert-ui t)
  '(org-export-use-babel nil)
