@@ -30,6 +30,7 @@
  '(cua-rectangle-mark-key [C-S-return])
  '(delete-by-moving-to-trash t)
  '(delete-old-versions t)
+ '(dired-auto-revert-buffer 'dired-directory-changed-p)
  '(dired-dwim-target t)
  '(dired-kill-when-opening-new-dired-buffer t)
  '(dired-mouse-drag-files t)
@@ -161,7 +162,7 @@
 
 (defconst IS-MAC   (eq system-type 'darwin))
 (defconst IS-WIN   (eq system-type 'windows-nt))
-(defconst IS-LINUX (eq system-type 'gnu/linux))
+(defconst IS-LIN (eq system-type 'gnu/linux))
 
 (setopt user-full-name "xplutoyz")
 (setopt user-mail-address "yangxue.cs@foxmail.com")

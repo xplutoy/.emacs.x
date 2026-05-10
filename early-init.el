@@ -23,7 +23,7 @@
 (set-language-environment "UTF-8")
 
 (defvar yx/en-font "Iosevka")
-(defvar yx/cn-font "LXGW WenKai Mono GB Lite")
+(defvar yx/cn-font "LXGW WenKai Mono")
 
 (set-face-attribute 'default nil :family yx/en-font :height 160)
 (set-face-attribute 'fixed-pitch nil :family yx/en-font :height 1.0)
