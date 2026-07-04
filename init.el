@@ -20,7 +20,6 @@
  '(auto-save-visited-interval 10)
  '(backward-delete-char-untabify-method 'hungry)
  '(bidi-paragraph-direction 'left-to-right)
- '(browse-url-browser-function 'eww-browse-url)
  '(calendar-date-style 'iso)
  '(calendar-week-start-day 1)
  '(compilation-auto-jump-to-first-error t)

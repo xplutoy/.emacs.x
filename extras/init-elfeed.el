@@ -23,6 +23,8 @@
 		  ;; ("https://www.jiqizhixin.com/rss" AI)
 		  ;; ("https://www.marktechpost.com/feed/" AI)
 		  ("https://spaces.ac.cn/feed" math AI)
+		  ("https://neozhaoliang.github.io/atom.xml" math)
+		  ("https://johncarlosbaez.wordpress.com/feed/" math)
 		  ("https://lilianweng.github.io/index.xml" AI)
 		  ;; ("https://rss.arxiv.org/rss/cs.RO" RO)
 		  ;; ("https://rss.arxiv.org/rss/cs.CV" CV)
