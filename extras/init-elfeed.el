@@ -19,6 +19,7 @@
 		  ;; ("https://feeds.feedburner.com/RBloggers" R)
 		  ;; ("https://www.planetpython.org/rss20.xml" py)
 		  ;; ("https://www.juliabloggers.com/feed/" julia)
+		  ("https://www.cppstories.com/index.xml" CPP)
 		  ("https://federicosarrocco.com/rss.xml")
 		  ;; ("https://www.jiqizhixin.com/rss" AI)
 		  ;; ("https://www.marktechpost.com/feed/" AI)

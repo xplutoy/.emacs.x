@@ -19,6 +19,7 @@
  '(auto-revert-verbose nil)
  '(auto-save-visited-interval 10)
  '(backward-delete-char-untabify-method 'hungry)
+ '(before-save-hook '(copyright-update time-stamp))
  '(bidi-paragraph-direction 'left-to-right)
  '(calendar-date-style 'iso)
  '(calendar-week-start-day 1)
@@ -203,8 +204,6 @@
   (toggle-indicate-empty-lines +1))
 
 (add-hook 'after-init-hook #'yx/global-minor-mode-init-h)
-
-(add-hook 'write-file-hooks #'time-stamp)
 
 ;;; Keybindings
 

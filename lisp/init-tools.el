@@ -42,7 +42,8 @@
   :bind ("C-_" . vundo))
 
 (use-package outli
-  :vc (:url "https://github.com/jdtsmith/outli" :branch "main")
+  :bind (:map outli-mode-map
+	      ("C-c C-p" . (lambda () (interactive (outline-back-to-heading)))))
   :hook ((prog-mode text-mode) . outli-mode))
 
 ;;; UI
@@ -59,15 +60,6 @@
   (setq pyim-punctuation-translate-p '(no))
   (setq pyim-english-input-switch-functions '(pyim-probe-org-speed-commands
 					      pyim-probe-org-structure-template)))
-
-(use-package pyim-tsinghua-dict
-  :vc (:url "https://github.com/redguardtoo/pyim-tsinghua-dict")
-  :after pyim
-  :init (pyim-tsinghua-dict-enable))
-
-(use-package bing-dict
-  :bind ("M-s d" . bing-dict-brief)
-  :init (setopt bing-dict-vocabulary-save t))
 
 (use-package olivetti
   :hook ((Man-mode
