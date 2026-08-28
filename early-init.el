@@ -10,15 +10,12 @@
 
 ;;; Code:
 
-(setopt frame-title-format
-	(list '(buffer-file-name "%f" "%b")))
-
 (setopt warning-minimum-level :error)
 (setopt system-time-locale "C")
 (setopt bidi-inhibit-bpa t)
 (setopt inhibit-compacting-font-caches t)
 (setopt frame-inhibit-implied-resize t)
-(setopt read-process-output-max (* 1024 1024))
+(setopt read-process-output-max (* 8 1024 1024))
 
 (set-language-environment "UTF-8")
 
@@ -42,7 +39,6 @@
 (defun yx/avoid-flashing-at-startup ()
   "Avoid flashing at startup via delaying `make-frame-visible'."
   (push '(visibility . nil) initial-frame-alist)
-  (run-at-time 2 nil #'make-frame-visible)
   (add-hook 'emacs-startup-hook #'make-frame-visible))
 
 (yx/avoid-flashing-at-startup)

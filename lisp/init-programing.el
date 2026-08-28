@@ -17,12 +17,13 @@
 
 (add-hook 'prog-mode-hook #'hs-minor-mode)
 (add-hook 'prog-mode-hook #'toggle-truncate-lines)
+(add-hook 'prog-mode-hook #'delete-trailing-whitespace-mode)
 (add-hook 'prog-mode-hook #'display-line-numbers-mode)
 
 (with-eval-after-load 'eshell
   (defun yx/eshell-init-h ()
     (eshell-hist-mode +1)
-    (keymap-local-set "C-l" #'eshell/clear))
+    (keymap-local-set "C-l" #'eshell-clear))
   (add-hook 'eshell-mode-hook #'yx/eshell-init-h)
   (push 'eshell-rebind eshell-modules-list))
 

@@ -16,8 +16,7 @@
 			      :tab-width 4
 			      :right-divider-width 15
 			      :scroll-bar-width 8
-			      :internal-border-width 15))
-  (spacious-padding-subtle-mode-line nil))
+			      :internal-border-width 15)))
 
 (spacious-padding-mode +1)
 

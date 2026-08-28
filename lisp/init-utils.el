@@ -15,9 +15,6 @@
   (interactive)
   (delete-indentation 1))
 
-(keymap-global-set "C-^" #'yx/top-join-line)
-
-
 (defun yx/keyboard-quit ()
   "Do-What-I-Mean behaviour for a general `keyboard-quit'."
   (interactive)
@@ -30,9 +27,6 @@
 	(t
 	 (keyboard-quit))))
 
-(keymap-global-set "C-g" #'yx/keyboard-quit)
-
-
 (defun yx/comment-dwim (n)
   "Comment N lines, defaulting to the current one.
 When the region is active, comment its lines instead."
@@ -40,9 +34,6 @@ When the region is active, comment its lines instead."
   (if (use-region-p)
       (comment-or-uncomment-region (region-beginning) (region-end))
     (comment-line n)))
-
-(keymap-global-set "M-;" #'yx/comment-dwim)
-
 
 (defun yx/quick-window-jump ()
   "My DWIM window jumping.
@@ -69,26 +60,25 @@ Otherwise jump to a window by typing its assigned character label."
 						     (< (cadr edges1) (cadr edges2))))))))
 		  (window-keys (seq-take '("j" "k" "l" ";" "a" "s" "d" "f") window-num))
 		  (window-map (cl-pairlis window-keys sorted-windows)))
-	     (setq my-quick-window-overlays
-		   (mapcar (lambda (entry)
-			     (let* ((key (car entry))
-				    (window (cdr entry))
-				    (start (window-start window))
-				    (overlay (make-overlay start start (window-buffer window))))
-			       (overlay-put overlay 'after-string
-					    (propertize (format "[%s]" key)
-							'face '(:foreground "white" :background "blue" :weight bold)))
-			       (overlay-put overlay 'window window)
-			       overlay))
-			   window-map))
-	     (let ((key (read-key (format "Select window [%s]: " (string-join window-keys ", ")))))
-	       (mapc #'delete-overlay my/quick-window-overlays)
-	       (setq my-quick-window-overlays nil)
-	       (when-let* ((selected-window (cdr (assoc (char-to-string key) window-map))))
-		 (select-window selected-window))))))))
-
-(keymap-global-set "M-o" #'yx/quick-window-jump)
-
+	     (unwind-protect
+		 (progn
+		   (setq my-quick-window-overlays
+			 (mapcar (lambda (entry)
+				   (let* ((key (car entry))
+					  (window (cdr entry))
+					  (start (window-start window))
+					  (overlay (make-overlay start start (window-buffer window))))
+				     (overlay-put overlay 'after-string
+						  (propertize (format "[%s]" key)
+							      'face '(:foreground "white" :background "blue" :weight bold)))
+				     (overlay-put overlay 'window window)
+				     overlay))
+				 window-map))
+		   (let ((key (read-key (format "Select window [%s]: " (string-join window-keys ", ")))))
+		     (when-let* ((selected-window (cdr (assoc (char-to-string key) window-map))))
+		       (select-window selected-window))))
+	       (mapc #'delete-overlay my-quick-window-overlays)
+	       (setq my-quick-window-overlays nil)))))))
 
 (defun yx/narrow-or-widen-dwim ()
   "Widen if buffer is narrowed, narrow-dwim otherwise."
@@ -105,9 +95,6 @@ Otherwise jump to a window by typing its assigned character label."
 	(t
 	 (narrow-to-defun))))
 
-(keymap-global-set "C-x /" #'yx/narrow-or-widen-dwim)
-
-
 (defun yx/github-search ()
   "Search code from github.com via default browser."
   (interactive)
@@ -118,9 +105,6 @@ Otherwise jump to a window by typing its assigned character label."
       (browse-url-default-browser (concat base-url query))
     (browse-url-default-browser (concat base-url (read-string "Look up github: ")))))
 
-(keymap-global-set "M-s /" #'yx/github-search)
-
-
 (defun yx/toggle-highlight-symbol-at-point ()
   "Toggle highlighting for the symbol at point."
   (interactive)
@@ -130,8 +114,25 @@ Otherwise jump to a window by typing its assigned character label."
 	(hi-lock-unface-buffer regexp)
       (hi-lock-face-symbol-at-point))))
 
-(keymap-global-set "M-s h h" #'yx/toggle-highlight-symbol-at-point)
+(defun yx/delete-this-file ()
+  "Delete the current file, and kill the buffer."
+  (interactive)
+  (unless (buffer-file-name)
+    (error "No file is currently being edited"))
+  (when (yes-or-no-p (format "Really delete '%s'?"
+			     (file-name-nondirectory buffer-file-name)))
+    (delete-file (buffer-file-name))
+    (kill-current-buffer)))
 
+;;; Keybindings
+
+(keymap-global-set "C-^" #'yx/top-join-line)
+(keymap-global-set "C-g" #'yx/keyboard-quit)
+(keymap-global-set "M-;" #'yx/comment-dwim)
+(keymap-global-set "M-o" #'yx/quick-window-jump)
+(keymap-global-set "C-x /" #'yx/narrow-or-widen-dwim)
+(keymap-global-set "M-s /" #'yx/github-search)
+(keymap-global-set "M-s h h" #'yx/toggle-highlight-symbol-at-point)
 
 (provide 'init-utils)
 ;;; init-utils.el ends here

@@ -71,7 +71,7 @@
    consult-line consult-line-multi :preview-key 'any)
   (with-eval-after-load 'org
     (keymap-set org-mode-map "M-g h" #'consult-org-heading))
-    (setq xref-show-xrefs-function #'consult-xref)
+  (setq xref-show-xrefs-function #'consult-xref)
   (setq	xref-show-definitions-function #'consult-xref))
 
 (use-package embark-consult)

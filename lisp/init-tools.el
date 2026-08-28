@@ -43,7 +43,7 @@
 
 (use-package outli
   :bind (:map outli-mode-map
-	      ("C-c C-p" . (lambda () (interactive (outline-back-to-heading)))))
+	      ("C-c C-p" . (lambda () (interactive) (outline-back-to-heading))))
   :hook ((prog-mode text-mode) . outli-mode))
 
 ;;; Misc

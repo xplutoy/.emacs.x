@@ -21,7 +21,7 @@
 (defvar my-org-attach-dir (expand-file-name "attachments" org-directory)
   "My global `org attach' directory.")
 
-(setopt set-attach-id-dir my-org-attach-dir)
+(setopt org-attach-id-dir my-org-attach-dir)
 (setopt org-agenda-diary-file (file-name-concat org-directory "diary.org"))
 (setopt org-preview-latex-image-directory (no-littering-expand-var-file-name "ltximg/"))
 (setopt org-cite-global-bibliography `(,(expand-file-name "bibliography.bib" org-directory)))
@@ -37,7 +37,6 @@
 
   (defun yx/org-mode-init-h ()
     "Initializes `org-mode' to my taste."
-    (setq-local global-hl-line-mode nil)
     (setq-local electric-pair-pairs
 		(append electric-pair-pairs '((?~ . ?~) (?+ . ?+))))
     (setq-local electric-pair-text-pairs electric-pair-pairs)

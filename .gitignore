@@ -1,14 +1,29 @@
-history
-places
-recentf
-var/
-elpa/
-eln-cache/
-server/
-tree-sitter/
+# -*- mode: gitignore; coding: utf-8 -*-
+# Per-user Emacs state — everything here is machine-local or generated.
+
+# Minibuffer history, save-place, recentf, and Customize persisted state.
+/history
+/places
+/recentf
 /custom.el
-etc/gnus/
-todo/
+
+# no-littering var/ dir plus other transient runtime state.
+/var/
+/server/
+/auto-save-list/
 /etc/transient/
+/etc/gnus/
+/todo/
+
+# Package archives, native-comp cache, and tree-sitter grammars.
+/elpa/
+/eln-cache/
+/tree-sitter/
+
+# Generated artifacts.
+*.elc
 /TAGS
-user-config.el
+/.*eld
+
+# Local machine config — copy user-config.example and edit, don't track it.
+/user-config.el
