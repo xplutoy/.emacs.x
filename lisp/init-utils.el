@@ -84,7 +84,7 @@ Otherwise jump to a window by typing its assigned character label."
 	     (let ((key (read-key (format "Select window [%s]: " (string-join window-keys ", ")))))
 	       (mapc #'delete-overlay my/quick-window-overlays)
 	       (setq my-quick-window-overlays nil)
-	       (when-let ((selected-window (cdr (assoc (char-to-string key) window-map))))
+	       (when-let* ((selected-window (cdr (assoc (char-to-string key) window-map))))
 		 (select-window selected-window))))))))
 
 (keymap-global-set "M-o" #'yx/quick-window-jump)
