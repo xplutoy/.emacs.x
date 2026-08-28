@@ -40,6 +40,7 @@
  '(eglot-autoshutdown t)
  '(eglot-extend-to-xref t)
  '(eglot-report-progress nil)
+ '(elisp-fontify-semantically t)
  '(enable-recursive-minibuffers t)
  '(epg-pinentry-mode 'loopback)
  '(fill-column 100)
@@ -50,6 +51,7 @@
  '(global-auto-revert-non-file-buffers t)
  '(grep-use-headings t)
  '(gud-highlight-current-line t)
+ '(ibuffer-human-readable-size t)
  '(imenu-flatten 'prefix)
  '(inhibit-startup-screen t)
  '(initial-major-mode 'text-mode)
@@ -61,6 +63,7 @@
  '(jit-lock-defer-time 0)
  '(line-move-visual nil)
  '(minibuffer-visible-completions t)
+ '(mode-line-collapse-minor-modes t)
  '(modus-themes-bold-constructs t)
  '(modus-themes-italic-constructs t)
  '(modus-themes-mixed-fonts t)
@@ -131,6 +134,7 @@
  '(tab-line-close-button-show 'selected)
  '(track-eol t)
  '(tramp-use-scp-direct-remote-copying t)
+ '(treesit-enabled-modes t)
  '(use-dialog-box nil)
  '(use-package-always-defer t)
  '(use-package-always-ensure t)
@@ -138,6 +142,7 @@
  '(use-package-expand-minimally t)
  '(use-package-vc-prefer-newest t)
  '(use-short-answers t)
+ '(vc-auto-revert-mode t)
  '(vc-follow-symlinks t)
  '(vc-handled-backends '(Git))
  '(version-control t)
@@ -242,6 +247,10 @@
 
 (with-eval-after-load 'isearch
   (keymap-substitute isearch-mode-map #'isearch-delete-char #'isearch-del-char))
+
+(use-package mode-line-invisible-mode
+  :ensure nil
+  :hook (dired-mode help-mode term-mode shell-mode eshell-mode))
 
 ;;; UI
 

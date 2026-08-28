@@ -46,11 +46,6 @@
 	      ("C-c C-p" . (lambda () (interactive (outline-back-to-heading)))))
   :hook ((prog-mode text-mode) . outli-mode))
 
-;;; UI
-
-(use-package minions
-  :hook (after-init . minions-mode))
-
 ;;; Misc
 
 (use-package pyim
