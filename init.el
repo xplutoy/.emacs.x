@@ -265,7 +265,7 @@
 
 (use-package mode-line-invisible-mode
   :ensure nil
-  :hook (dired-mode help-mode term-mode shell-mode eshell-mode))
+  :hook (help-mode term-mode shell-mode eshell-mode comint-mode))
 
 ;;; UI
 

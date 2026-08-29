@@ -34,7 +34,8 @@
   :hook (after-init . speedrect-mode))
 
 (use-package eat
-  :hook ((eshell-load . eat-eshell-mode)
+  :hook ((eat-mode . mode-line-invisible-mode)
+	 (eshell-load . eat-eshell-mode)
 	 (eshell-load . eat-eshell-visual-command-mode))
   :init (setopt eat-kill-buffer-on-exit t))
 
