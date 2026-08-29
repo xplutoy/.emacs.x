@@ -13,7 +13,7 @@
   :hook (elfeed-show-mode . olivetti-mode)
   :custom
   (elfeed-curl-timeout 5)
-  (elfeed-feeds '(("https://planet.emacslife.com/atom.xml" emacs)
+  (elfeed-feeds '(;; ("https://planet.emacslife.com/atom.xml" emacs)
 		  ;; ("https://www.kdnuggets.com/feed" DS)
 		  ;; ("https://towardsdatascience.com/feed" DS)
 		  ;; ("https://feeds.feedburner.com/RBloggers" R)
@@ -31,7 +31,6 @@
 		  ;; ("https://rss.arxiv.org/rss/cs.CV" CV)
 		  ("https://www.ruanyifeng.com/blog/atom.xml" IT)))
   :config
-
   (when IS-WIN
     (setopt elfeed-use-curl nil))
 
