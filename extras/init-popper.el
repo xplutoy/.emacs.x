@@ -17,9 +17,23 @@
   (popper-reference-buffers
 	'("Output\\*$"
 	  "\\*Async Shell Command\\*"
+	  "\\*Calendar\\*$"
 	  "\\*eat\\*"
 	  "^\\*eshell.*\\*$" eshell-mode
+	  "^\\*.*shell.*\\*.*$" shell-mode
+	  "^\\*.*terminal.*\\*.*$" term-mode
+	  "\\*Agenda Commands\\*"
+	  "\\*Org Select\\*"
+	  "\\*Capture\\*" "^CAPTURE-.*\\.org*"
+	  "\\*Embark \\(Collect\\|Live\\):.*\\*$"
+	  "^\\*eldoc.*\\*$"
 	  help-mode
+	  grep-mode
+	  occur-mode
+	  bookmark-bmenu-mode
+	  flymake-diagnostics-buffer-mode
+	  inferior-python-mode
+	  comint-mode
 	  compilation-mode))
   ;; (popper-group-function #'popper-group-by-project)
   :init
