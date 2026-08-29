@@ -31,11 +31,11 @@
   :hook (after-init . marginalia-mode))
 
 (use-package embark
-  :bind (("C-;" . embark-act)
-	 ("C-." . embark-dwim)
+  :bind (("C-." . embark-act)
+	 ("C-;" . embark-dwim)
 	 ("C-h B" . embark-bindings))
-  :custom
-  (prefix-help-command #'embark-prefix-help-command))
+  :init
+  (setq prefix-help-command #'embark-prefix-help-command))
 
 (use-package consult
   :bind (("C-x b"   . consult-buffer)
