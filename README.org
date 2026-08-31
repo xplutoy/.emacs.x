@@ -2,18 +2,17 @@
 
 An Emacs Configuration that Meets My Minimum Requirements.
 
+** 安装
 
-** Windows
+*** Windows
 
 我使用的是预编译好的[[https://www.gnu.org/software/emacs/download.html][安装包]]。
 
-
-*** 设置 HOME 环境变量
+**** 设置 HOME 环境变量
 
 Emacs 会优先到 HOME 环境变量指定的地址去寻找配置文件。
 
-
-*** 安装 msys2 和 unix tools
+**** 安装 msys2 和 unix tools
 
 #+begin_src shell
   # msys2
@@ -28,8 +27,7 @@ Emacs 会优先到 HOME 环境变量指定的地址去寻找配置文件。
 
 设置 msys2 环境。新增 MSYSTEM 环境变量，值为 UCRT64。
 
-
-*** 安装 gnupg
+**** 安装 gnupg
 
 #+begin_src shell
    winget install -e --id GnuPG.GnuPG
@@ -41,15 +39,14 @@ Emacs 会优先到 HOME 环境变量指定的地址去寻找配置文件。
    gpg --import sub_private_key.asc
 #+end_src
 
-配置 gnupg，在 %APPDATA%\gnupg 目录下新建 gpg-agent.conf 文件，并写入下面两条配置：
+配置 gnupg，在 =%APPDATA%\gnupg= 目录下新建 =gpg-agent.conf= 文件，并写入下面两条配置：
 
 #+begin_src conf
     allow-emacs-pinentry
     allow-loopback-pinentry
 #+end_src
 
-
-*** 安装 rg/find/grep/git
+**** 安装 rg/find/grep/git
 
 #+begin_src shell
     winget install BurntSushi.ripgrep.GNU
@@ -59,27 +56,15 @@ Emacs 会优先到 HOME 环境变量指定的地址去寻找配置文件。
     winget install -e --id sharkdp.fd
 #+end_src
 
-
-** MacOS
-
-安装：
+*** MacOS
 
 #+begin_src shell
   sudo port install emacs-app
+  sudo port install ripgrep fd git
 #+end_src
 
 
 ** 字体
-
-通过下面的语句设置中英文字体：
-
-#+begin_src elisp
-  (set-face-attribute 'default nil :family "Iosevka" :height 150)
-  (set-face-attribute 'fixed-pitch nil :family "Iosevka" :height 1.0)
-
-  (dolist (charset '(han cjk-misc))
-    (set-fontset-font t charset (font-spec :family "LXGW WenKai Mono GB Lite" :height 1.0)))
-#+end_src
 
 为了使中英文字体对齐，最好使用中英文宽度比例为 2:1 的等宽字体。下面是我使用过的一些字体组合：
 
@@ -89,8 +74,19 @@ Emacs 会优先到 HOME 环境变量指定的地址去寻找配置文件。
 | "JetBrains Maple Mono" | "JetBrains Maple Mono"     |
 
 
+** 开发
+
+- python用buffer-env管理虚拟环境
+- 安装常用的lsp-server：
+
+#+begin_src shell
+  sudo apt install clangd
+  uv tool install ty@latest
+#+end_src
+
+
 ** 参考
 
 - [[https://sr.ht/~ashton314/emacs-bedrock/][emacs-bedrock]]
 - [[https://github.com/jamescherti/minimal-emacs.d][minimal-emacs.d]]
-- [[https://github.com/seagle0128/.emacs.d][Centaur Emacs]]  
+- [[https://github.com/seagle0128/.emacs.d][Centaur Emacs]]

@@ -16,7 +16,7 @@
 (electric-indent-mode +1)
 
 (add-hook 'prog-mode-hook #'hs-minor-mode)
-(add-hook 'prog-mode-hook #'toggle-truncate-lines)
+(add-hook 'prog-mode-hook #'word-wrap-whitespace-mode)
 (add-hook 'prog-mode-hook #'delete-trailing-whitespace-mode)
 (add-hook 'prog-mode-hook #'display-line-numbers-mode)
 
@@ -85,8 +85,6 @@
 (with-eval-after-load 'python
   (add-to-list 'project-vc-extra-root-markers "pyproject.toml")
   (add-to-list 'python-shell-completion-native-disabled-interpreters "python"))
-
-(add-hook 'python-mode-hook #'eglot-ensure)
 
 
 (provide 'init-programing)

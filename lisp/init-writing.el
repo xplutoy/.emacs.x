@@ -10,8 +10,10 @@
 
 ;;; Code:
 
+(add-hook 'text-mode-hook #'turn-on-visual-line-mode)
+(add-hook 'text-mode-hook #'word-wrap-whitespace-mode)
 
-;;; Org
+;;;; Org
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (setopt org-directory "~/org-notes/")
@@ -99,7 +101,7 @@
 
   (add-hook 'org-cycle-hook #'yx/org-toggle-inline-images-in-subtree))
 
-;;; Blog
+;;;; Blog
 
 (use-package htmlize)
 
