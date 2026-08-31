@@ -15,26 +15,33 @@
 	 ("C-M-`" . popper-toggle-type))
   :custom
   (popper-reference-buffers
-	'("Output\\*$"
-	  "\\*Async Shell Command\\*"
-	  "\\*Calendar\\*$"
-	  "\\*eat\\*"
-	  "^\\*eshell.*\\*$" eshell-mode
-	  "^\\*.*shell.*\\*.*$" shell-mode
-	  "^\\*.*terminal.*\\*.*$" term-mode
-	  "\\*Agenda Commands\\*"
-	  "\\*Org Select\\*"
-	  "\\*Capture\\*" "^CAPTURE-.*\\.org*"
-	  "\\*Embark \\(Collect\\|Live\\):.*\\*$"
-	  "^\\*eldoc.*\\*$"
-	  help-mode
-	  grep-mode
-	  occur-mode
-	  bookmark-bmenu-mode
-	  flymake-diagnostics-buffer-mode
-	  inferior-python-mode
-	  comint-mode
-	  compilation-mode))
+   '("\\*Messages\\*$"
+     "\\*Warnings\\*$"
+     "Output\\*$"
+     "\\*Backtrace\\*$"
+     "\\*Apropos\\*$"
+     "^\\*eldoc.*\\*$"
+     "\\*[Wo]*Man.*\\*$"
+     "\\*Async Shell Command\\*"
+     "\\*Calendar\\*$"
+     "^\\*Process List\\*$"
+     "\\*eat\\*"
+     "^\\*eshell.*\\*$" eshell-mode
+     "^\\*.*shell.*\\*.*$" shell-mode
+     "^\\*.*terminal.*\\*.*$" term-mode
+     "\\*Agenda Commands\\*"
+     "\\*Org Select\\*"
+     "\\*Capture\\*" "^CAPTURE-.*\\.org*"
+     "\\*Embark \\(Collect\\|Live\\):.*\\*$"
+     "^\\*eldoc.*\\*$"
+     help-mode
+     grep-mode
+     occur-mode
+     bookmark-bmenu-mode
+     flymake-diagnostics-buffer-mode
+     inferior-python-mode
+     comint-mode
+     compilation-mode))
   ;; (popper-group-function #'popper-group-by-project)
   :init
   (popper-mode +1)
