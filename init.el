@@ -27,6 +27,7 @@
  '(compilation-auto-jump-to-first-error t)
  '(compilation-scroll-output 'first-error)
  '(completion-auto-select 'second-tab)
+ '(completion-pcm-leading-wildcard t)
  '(completions-sort 'historical)
  '(cua-rectangle-mark-key [C-S-return])
  '(delete-by-moving-to-trash t)

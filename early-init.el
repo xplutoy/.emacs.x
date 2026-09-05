@@ -25,7 +25,7 @@
 (set-face-attribute 'default nil :family yx/en-font :height 160)
 (set-face-attribute 'fixed-pitch nil :family yx/en-font :height 1.0)
 
-(let ((my-frame-alist '((width . 76) (height . 38)
+(let ((my-frame-alist '((width . 100) (height . 35)
 			(menu-bar-lines . nil)
 			(tool-bar-lines . nil)
 			(vertical-scroll-bars . nil))))

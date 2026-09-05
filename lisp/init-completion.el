@@ -84,10 +84,12 @@
 
 (use-package orderless
   :init
-  (setq completion-styles '(basic orderless))
-  (setq completion-category-overrides '((file (styles partial-completion))
-					(eglot (styles orderless))
-					(eglot-capf (styles orderless)))))
+  (setq completion-styles '(orderless basic))
+  (setq completion-category-overrides '((file (styles partial-completion)))))
+
+(use-package hotfuzz
+  :init
+  (push 'hotfuzz completion-styles))
 
 
 (provide 'init-completion)
