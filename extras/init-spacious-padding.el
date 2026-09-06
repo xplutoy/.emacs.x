@@ -11,12 +11,14 @@
 
 (use-package spacious-padding
   :custom
-  (spacious-padding-widths '( :header-line-width 4
-			      :mode-line-width 3
+  (spacious-padding-widths '( :mode-line-width 1
+			      :header-line-width 1
 			      :tab-width 4
-			      :right-divider-width 15
+			      :right-divider-width 20
 			      :scroll-bar-width 8
-			      :internal-border-width 15)))
+			      :custom-button-width 2
+			      :fringe-width 8
+			      :internal-border-width 12)))
 
 (spacious-padding-mode +1)
 
