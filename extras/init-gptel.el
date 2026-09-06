@@ -10,8 +10,7 @@
 ;;; Code:
 
 (use-package gptel
-  :bind (("C-c <return>" . gptel-send)
-	 ("C-c C-<return>" . gptel-menu))
+  :bind (("C-c <return>" . gptel-send))
   :custom
   (gptel-model 'deepseek-chat)
   (gptel-backend (gptel-make-openai "DeepSeek"

@@ -35,6 +35,7 @@
 
 (with-eval-after-load 'org
 
+  (require 'org-tempo)
   (org-crypt-use-before-save-magic)
 
   (defun yx/org-mode-init-h ()
@@ -59,12 +60,6 @@
 			       (R . t)
 			       (julia . t)))
   (add-to-list 'org-babel-default-header-args '(:eval . "no-export") t)
-
-  (require 'org-tempo)
-  (add-to-list 'org-structure-template-alist '("t"  . "theorem"))
-  (add-to-list 'org-structure-template-alist '("el" . "src emacs-lisp"))
-  (add-to-list 'org-structure-template-alist '("sh" . "src shell"))
-  (add-to-list 'org-structure-template-alist '("py" . "src python"))
 
   (plist-put org-format-latex-options :scale 1.5)
 

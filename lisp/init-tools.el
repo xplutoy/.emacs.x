@@ -33,12 +33,6 @@
 (use-package speedrect
   :hook (after-init . speedrect-mode))
 
-(use-package eat
-  :hook ((eat-mode . mode-line-invisible-mode)
-	 (eshell-load . eat-eshell-mode)
-	 (eshell-load . eat-eshell-visual-command-mode))
-  :init (setopt eat-kill-buffer-on-exit t))
-
 (use-package vundo
   :bind ("C-_" . vundo))
 

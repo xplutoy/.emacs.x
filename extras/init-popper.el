@@ -22,13 +22,15 @@
      "\\*Apropos\\*$"
      "^\\*eldoc.*\\*$"
      "\\*[Wo]*Man.*\\*$"
+     "\\*Customize Option.*\\*$"
      "\\*Async Shell Command\\*"
      "\\*Calendar\\*$"
-     "^\\*Process List\\*$"
      "\\*eat\\*"
-     "^\\*eshell.*\\*$" eshell-mode
+     "^\\*Process List\\*$" process-menu-mode
+     "^\\*.*eshell.*\\*.*$" eshell-mode
      "^\\*.*shell.*\\*.*$" shell-mode
      "^\\*.*terminal.*\\*.*$" term-mode
+     "^\\*ghostel\\*$" ghostel-mode
      "\\*Agenda Commands\\*"
      "\\*Org Select\\*"
      "\\*Capture\\*" "^CAPTURE-.*\\.org*"
@@ -44,6 +46,9 @@
      compilation-mode))
   ;; (popper-group-function #'popper-group-by-project)
   :init
+  (setopt popper-window-height
+	  (lambda (win) (let ((desired-height (floor (/ (frame-height) 3))))
+		     (fit-window-to-buffer win desired-height desired-height))))
   (popper-mode +1)
   (popper-echo-mode +1))
 
