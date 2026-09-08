@@ -9,11 +9,12 @@
 
 ;;; Code:
 
-;; (use-package eat
-;;   :hook ((eat-mode . mode-line-invisible-mode)
-;;	 (eshell-load . eat-eshell-mode)
-;;	 (eshell-load . eat-eshell-visual-command-mode))
-;;   :init (setopt eat-kill-buffer-on-exit t))
+(use-package eat
+  :disabled t
+  :hook ((eat-mode . mode-line-invisible-mode)
+	 (eshell-load . eat-eshell-mode)
+	 (eshell-load . eat-eshell-visual-command-mode))
+  :init (setopt eat-kill-buffer-on-exit t))
 
 (use-package ghostel
   :bind

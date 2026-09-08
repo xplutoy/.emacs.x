@@ -35,6 +35,8 @@
 
 (require 'init-terminal)
 
+(require 'init-diff-hl)
+
 ;;; User:
 
 ;; (setq url-proxy-services '(("http" . "127.0.0.1:7897")
