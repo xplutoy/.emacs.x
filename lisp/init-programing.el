@@ -62,6 +62,7 @@
   :custom
   (magit-clone-default-directory "~/workspace/")
   (magit-save-repository-buffers 'dontask)
+  (magit-diff-refine-hunk 'all)
   (magit-bury-buffer-function #'magit-restore-window-configuration)
   (magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1))
 

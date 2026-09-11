@@ -38,14 +38,6 @@
 
 ;;; Misc
 
-(use-package pyim
-  :init
-  (setq default-input-method "pyim")
-  (pyim-default-scheme 'xiaohe-shuangpin)
-  (setq pyim-punctuation-translate-p '(no))
-  (setq pyim-english-input-switch-functions '(pyim-probe-org-speed-commands
-					      pyim-probe-org-structure-template)))
-
 (use-package olivetti
   :hook ((Man-mode
 	  Info-mode
