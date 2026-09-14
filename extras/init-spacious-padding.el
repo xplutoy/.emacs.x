@@ -13,7 +13,7 @@
   :custom
   (spacious-padding-widths '( :mode-line-width 1
 			      :header-line-width 1
-			      :tab-width 4
+			      :tab-width 0
 			      :right-divider-width 20
 			      :scroll-bar-width 8
 			      :custom-button-width 2
