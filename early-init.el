@@ -22,13 +22,15 @@
 
 (set-language-environment "UTF-8")
 
-(defvar yx/en-font "Iosevka")
-(defvar yx/cn-font "LXGW WenKai Mono")
+;; (defvar yx/en-font "Iosevka")
+(defvar yx/en-font "Aporetic Sans Mono")
+(defvar yx/cn-font "LXGW WenKai Mono Screen")
 
 (set-face-attribute 'default nil :family yx/en-font :height 160)
 (set-face-attribute 'fixed-pitch nil :family yx/en-font :height 1.0)
 
-(let ((my-frame-alist '((width . 100) (height . 35)
+(let ((my-frame-alist '((width . (text-pixels . 1000))
+			(height . (text-pixels . 750))
 			(menu-bar-lines . nil)
 			(tool-bar-lines . nil)
 			(vertical-scroll-bars . nil))))
