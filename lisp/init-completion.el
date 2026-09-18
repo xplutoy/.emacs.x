@@ -11,14 +11,10 @@
 ;;; Code:
 
 (use-package vertico
-  :hook ((after-init . vertico-mode)
-	 (minibuffer-setup . vertico-repeat-save))
-  :bind (("M-R" . vertico-repeat)
-	 :map vertico-map
-	 ("M-N" . vertico-repeat-next)
-	 ("M-P" . vertico-repeat-previous)
-	 ("RET" . vertico-directory-enter)
-	 ("DEL" . vertico-directory-delete-char))
+  :hook (after-init . vertico-mode)
+  :bind ( :map vertico-map
+	  ("RET" . vertico-directory-enter)
+	  ("DEL" . vertico-directory-delete-char))
   :config
   (vertico-indexed-mode +1)
   (vertico-multiform-mode +1))

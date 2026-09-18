@@ -37,6 +37,8 @@
 
 (require 'init-diff-hl)
 
+(require 'init-project-x)
+
 ;;; User:
 
 ;; (setq url-proxy-services '(("http" . "127.0.0.1:7897")
