@@ -6,15 +6,14 @@
 ;;; Commentary:
 
 (use-package sis
-  :unless IS-WIN
+  :unless yx/winp
   :demand
   :config
   (add-to-list 'sis-prefix-override-keys "M-s")
   (add-to-list 'sis-prefix-override-keys "M-g")
-  (when IS-MAC
-    (sis-ism-lazyman-config "com.apple.keylayout.ABC"
-			    "com.apple.inputmethod.SCIM.Shuangpin"))
-  (when IS-LIN
+  (if yx/macp
+      (sis-ism-lazyman-config "com.apple.keylayout.ABC"
+			      "com.apple.inputmethod.SCIM.Shuangpin")
     (sis-ism-lazyman-config "1" "2" 'fcitx5))
   (sis-global-inline-mode +1)
   (sis-global-respect-mode +1))

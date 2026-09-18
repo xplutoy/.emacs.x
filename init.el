@@ -40,7 +40,7 @@
  '(dired-kill-when-opening-new-dired-buffer t)
  '(dired-mouse-drag-files t)
  '(dired-movement-style 'cycle)
- '(display-line-numbers-width 3)
+ '(display-line-numbers-width 4)
  '(ediff-split-window-function 'split-window-horizontally)
  '(ediff-window-setup-function 'ediff-setup-windows-plain)
  '(eglot-autoshutdown t)
@@ -200,9 +200,8 @@
 
 ;;; Build-in
 
-(defconst IS-MAC   (eq system-type 'darwin))
-(defconst IS-WIN   (eq system-type 'windows-nt))
-(defconst IS-LIN (eq system-type 'gnu/linux))
+(defconst yx/macp   (eq system-type 'darwin))
+(defconst yx/winp   (eq system-type 'windows-nt))
 
 (setopt user-full-name "xplutoyz")
 (setopt user-mail-address "yangxue.cs@foxmail.com")
@@ -309,13 +308,13 @@
 		     (mapcar #'expand-file-name paths) exec-path))
   (setenv "PATH" (string-join exec-path path-separator)))
 
-(when IS-MAC
+(when yx/macp
   (let ((my-paths `("~/.local/bin"
 		    "/Library/TeX/texbin"
 		    ,(concat (invocation-directory) "bin"))))
     (yx/exec-path-and-PATH-update my-paths)))
 
-(when IS-WIN
+(when yx/winp
   (w32-register-hot-key [s-])
   (w32-register-hot-key [H-])
   (setopt w32-pipe-read-delay 0)

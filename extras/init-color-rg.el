@@ -18,7 +18,7 @@
   :init
   (setopt color-rg-search-no-ignore-file nil)
   (setopt color-rg-mac-load-path-from-shell nil)
-  (when IS-WIN (setopt color-rg-command-prefix "powershell")))
+  (when yx/winp (setopt color-rg-command-prefix "powershell")))
 
 
 (provide 'init-color-rg)

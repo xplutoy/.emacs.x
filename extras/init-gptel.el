@@ -22,7 +22,7 @@
 
   :config
 
-  (when IS-WIN
+  (when yx/winp
     (setopt gptel-use-curl nil))
 
   (add-hook 'gptel-post-response-functions 'gptel-end-of-response)

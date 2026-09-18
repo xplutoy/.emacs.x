@@ -67,7 +67,7 @@
   (magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1))
 
 (use-package buffer-env
-  :unless IS-WIN
+  :unless yx/winp
   :hook ((comint-mode . buffer-env-update)
 	 (hack-local-variables . buffer-env-update))
   :custom

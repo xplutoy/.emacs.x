@@ -20,6 +20,7 @@
 
 (setq-default bidi-display-reordering nil)
 
+(prefer-coding-system 'utf-8)
 (set-language-environment "UTF-8")
 
 ;; (defvar yx/en-font "Iosevka")

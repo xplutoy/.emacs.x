@@ -31,7 +31,7 @@
 		  ;; ("https://rss.arxiv.org/rss/cs.CV" CV)
 		  ("https://www.ruanyifeng.com/blog/atom.xml" IT)))
   :config
-  (when IS-WIN
+  (when yx/winp
     (setopt elfeed-use-curl nil))
 
   (defun yx/elfeed-toggle-images ()
