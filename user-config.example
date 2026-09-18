@@ -39,6 +39,8 @@
 
 (require 'init-project-x)
 
+(require 'init-themes)
+
 ;;; User:
 
 ;; (setq url-proxy-services '(("http" . "127.0.0.1:7897")

@@ -290,7 +290,7 @@
 ;;; UI
 
 (dolist (charset '(han cjk-misc))
-  (set-fontset-font t charset (font-spec :family yx/cn-font :height 1.0)))
+  (set-fontset-font t charset (font-spec :family yx/font-cn :height 1.0)))
 
 (load-theme 'modus-operandi t)
 

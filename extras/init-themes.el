@@ -14,5 +14,7 @@
   (ef-themes-mixed-fonts t)
   (ef-themes-variable-pitch-ui t))
 
-(provide 'init-ef-themes)
-;;; init-ef-themes.el ends here
+(use-package doric-themes)
+
+(provide 'init-themes)
+;;; init-themes.el ends here

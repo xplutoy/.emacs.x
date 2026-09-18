@@ -24,11 +24,13 @@
 (set-language-environment "UTF-8")
 
 ;; (defvar yx/en-font "Iosevka")
-(defvar yx/en-font "Aporetic Sans Mono")
-(defvar yx/cn-font "LXGW WenKai Mono Screen")
+(defvar yx/font-en-v "Aporetic Sans")
+(defvar yx/font-en-f "Aporetic Sans Mono")
+(defvar yx/font-cn "LXGW WenKai Mono Screen")
 
-(set-face-attribute 'default nil :family yx/en-font :height 160)
-(set-face-attribute 'fixed-pitch nil :family yx/en-font :height 1.0)
+(set-face-attribute 'default nil :family yx/font-en-f :height 160)
+(set-face-attribute 'fixed-pitch nil :family yx/font-en-f :height 1.0)
+(set-face-attribute 'variable-pitch nil :family yx/font-en-v :height 1.0)
 
 (let ((my-frame-alist '((width . (text-pixels . 1000))
 			(height . (text-pixels . 750))
