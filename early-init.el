@@ -33,7 +33,7 @@
 (set-face-attribute 'variable-pitch nil :family yx/font-en-v :height 1.0)
 
 (let ((my-frame-alist '((width . (text-pixels . 1000))
-			(height . (text-pixels . 750))
+			(height . (text-pixels . 700))
 			(menu-bar-lines . nil)
 			(tool-bar-lines . nil)
 			(vertical-scroll-bars . nil))))

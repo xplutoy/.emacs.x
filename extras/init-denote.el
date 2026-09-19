@@ -21,7 +21,7 @@
 	 ("C-c n C-r" . denote-rename-file))
   :custom
   (denote-directory org-directory)
-  (denote-known-keywords '("ai" "tool"))
+  (denote-known-keywords nil)
   (denote-date-prompt-use-org-read-date t)
   (denote-org-store-link-to-heading nil)
   (denote-dired-directories-include-subdirectories t)
@@ -34,11 +34,10 @@
 	 ("C-c n e s" . denote-org-extract-org-subtree)))
 
 (use-package denote-journal
-  :commands (denote-journal-calendar-mode)
+  :hook (calendar-mode . denote-journal-calendar-mode)
   :init
   (setopt denote-journal-title-format nil)
-  (keymap-global-set "C-c n j" #'denote-journal-new-entry)
-  (add-hook 'calendar-mode-hook #'denote-journal-calendar-mode))
+  (keymap-global-set "C-c n j" #'denote-journal-new-entry))
 
 (use-package denote-sequence
   :bind (("C-c n s s" . denote-sequence)
@@ -47,8 +46,15 @@
 	 ("C-c n s d" . denote-sequence-dired)
 	 ("C-c n s r" . denote-sequence-reparent)
 	 ("C-c n s c" . denote-sequence-convert))
-  :config
+  :init
   (setopt denote-sequence-scheme 'alphanumeric))
+
+(use-package consult-denote
+  :bind (("C-c n f" . consult-denote-find)
+	 ("C-c n g" . consult-denote-grep))
+  :init
+  (setopt consult-denote-grep-command #'consult-ripgrep)
+  (consult-denote-mode +1))
 
 (provide 'init-denote)
 ;;; init-denote.el ends here

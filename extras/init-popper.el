@@ -17,6 +17,7 @@
   (popper-reference-buffers
    '("\\*Messages\\*$"
      "\\*Warnings\\*$"
+     "\\*Ibuffer\\*$"
      "Output\\*$"
      "\\*Backtrace\\*$"
      "\\*Apropos\\*$"
