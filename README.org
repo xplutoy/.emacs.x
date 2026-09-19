@@ -6,7 +6,7 @@ An Emacs Configuration that Meets My Minimum Requirements.
 
 *** Windows
 
-我使用的是预编译好的[[https://www.gnu.org/software/emacs/download.html][安装包]]。
+直接使用官网提供的安装器（[[https://mirrors.tuna.tsinghua.edu.cn/gnu/emacs/windows][emacs-31.1-installer-UCRT64.exe]]）进行安装。
 
 **** 设置 HOME 环境变量
 
@@ -46,14 +46,17 @@ Emacs 会优先到 HOME 环境变量指定的地址去寻找配置文件。
     allow-loopback-pinentry
 #+end_src
 
-**** 安装 rg/find/grep/git
+**** 安装 rg/find/grep/git/diff
 
 #+begin_src shell
-    winget install BurntSushi.ripgrep.GNU
-    winget install GnuWin32.FindUtils
-    winget install GnuWin32.Grep
-    winget install --id Git.Git
-    winget install -e --id sharkdp.fd
+  winget install -e --id GnuWin32.DiffUtils
+  winget install -e --id GnuWin32.FindUtils
+  winget install -e --id GnuWin32.Grep
+  winget install -e --id FSFhu.Hunspell
+  winget install -e --id Git.Git
+  winget install -e --id sharkdp.fd
+  winget install -e --id BurntSushi.ripgrep.GNU
+  winget install -e --id uutils.coreutils
 #+end_src
 
 *** MacOS
@@ -72,6 +75,7 @@ Emacs 会优先到 HOME 环境变量指定的地址去寻找配置文件。
 |------------------------+----------------------------|
 | "Iosevka"              | "LXGW WenKai Mono GB Lite" |
 | "JetBrains Maple Mono" | "JetBrains Maple Mono"     |
+| "Aporetic Sans Mono"   | "LXGW WenKai Mono Screen"  |
 
 
 ** 开发

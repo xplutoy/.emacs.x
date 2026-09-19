@@ -15,7 +15,7 @@
   :custom
   (project-x-auto-save-delay 5)
   (project-prompter #'project-x--project-prompt)
-  (project-x-restore-last-project-on-startup t)
+  (project-x-restore-last-project-on-startup nil)
   (project-x-window-list-file (no-littering-expand-var-file-name "project-x-window-list")))
 
 (provide 'init-project-x)
