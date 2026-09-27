@@ -234,6 +234,7 @@
   (save-place-mode +1)
   (auto-save-visited-mode +1)
   (global-auto-revert-mode +1)
+  (midnight-mode +1)
 
   (recentf-mode +1)
   (savehist-mode +1)
