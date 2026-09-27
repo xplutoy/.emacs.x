@@ -44,7 +44,7 @@
 		(append electric-pair-pairs '((?~ . ?~) (?+ . ?+))))
     (setq-local electric-pair-text-pairs electric-pair-pairs)
     (variable-pitch-mode +1)
-    (visual-line-mode +1)
+    ;; (visual-line-mode +1)
     (visual-wrap-prefix-mode +1)
     (modify-syntax-entry ?< "." org-mode-syntax-table)
     (modify-syntax-entry ?> "." org-mode-syntax-table))
