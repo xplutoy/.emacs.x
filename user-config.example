@@ -41,6 +41,8 @@
 
 (require 'init-themes)
 
+;; (require 'init-pyim)
+
 ;;; User:
 
 ;; (setq url-proxy-services '(("http" . "127.0.0.1:7897")

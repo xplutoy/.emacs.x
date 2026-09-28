@@ -17,5 +17,7 @@
   (setq pyim-english-input-switch-functions '(pyim-probe-org-speed-commands
 					      pyim-probe-org-structure-template)))
 
+(toggle-input-method 'pyim)
+
 (provide 'init-pyim)
 ;;; init-pyim.el ends here
